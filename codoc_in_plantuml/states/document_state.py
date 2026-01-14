@@ -149,13 +149,13 @@ deactivate App
             self._diagram_type = "Unknown"
 
     @rx.event
-    def handle_drop(self, item: dict):
+    def add_node(self, node_type: str):
         new_id = "".join(random.choices(string.ascii_lowercase + string.digits, k=6))
         self._visual_nodes.append(
             {
-                "id": f"{item['type']}_{new_id}",
-                "type": item["type"],
-                "label": item["type"].title(),
+                "id": f"{node_type}_{new_id}",
+                "type": node_type,
+                "label": node_type.title(),
             }
         )
 

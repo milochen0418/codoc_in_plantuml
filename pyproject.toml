@@ -12,7 +12,6 @@ authors = [
 dependencies = [
 	"reflex==0.8.24.post1",
 	"reflex-monaco",
-	"reflex-enterprise",
 ]
 
 [tool.poetry]

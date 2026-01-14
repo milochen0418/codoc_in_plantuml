@@ -1,18 +1,18 @@
 import reflex as rx
-import reflex_enterprise as rxe
 from codoc_in_plantuml.states.editor_state import EditorState
 from codoc_in_plantuml.states.document_state import DocumentState
 
 
 def palette_item(label: str, icon: str, type_id: str, color: str) -> rx.Component:
-    return rxe.dnd.draggable(
+    return rx.el.button(
         rx.el.div(
             rx.icon(icon, class_name=f"w-5 h-5 {color}"),
             rx.el.span(label, class_name="text-sm font-medium text-gray-700"),
-            class_name="flex items-center gap-3 p-3 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md cursor-grab active:cursor-grabbing transition-all hover:border-indigo-300",
+            class_name="flex items-center gap-3",
         ),
-        type="node_type",
-        item={"type": type_id},
+        on_click=lambda: EditorState.add_node(type_id),
+        class_name="w-full text-left p-3 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md cursor-pointer transition-all hover:border-indigo-300",
+        type="button",
     )
 
 
@@ -90,7 +90,6 @@ def edge_item(edge: dict) -> rx.Component:
 
 
 def visual_editor() -> rx.Component:
-    drop_params = rxe.dnd.DropTarget.collected_params
     return rx.el.div(
         rx.el.div(
             rx.el.h2(
@@ -120,38 +119,29 @@ def visual_editor() -> rx.Component:
             ),
             class_name="w-64 bg-gray-50 border-r border-gray-200 p-4 flex flex-col h-full overflow-y-auto",
         ),
-        rxe.dnd.drop_target(
-            rx.el.div(
-                rx.cond(
-                    DocumentState.visual_nodes.length() == 0,
-                    rx.el.div(
-                        rx.icon(
-                            "mouse-pointer-click",
-                            class_name="w-12 h-12 text-gray-300 mb-4",
-                        ),
-                        rx.el.p(
-                            "Drag elements from the sidebar here",
-                            class_name="text-gray-400 font-medium",
-                        ),
-                        class_name="flex flex-col items-center justify-center h-full border-2 border-dashed border-gray-200 rounded-xl m-8",
+        rx.el.div(
+            rx.cond(
+                DocumentState.visual_nodes.length() == 0,
+                rx.el.div(
+                    rx.icon(
+                        "mouse-pointer-click",
+                        class_name="w-12 h-12 text-gray-300 mb-4",
                     ),
-                    rx.el.div(
-                        rx.foreach(
-                            DocumentState.visual_nodes,
-                            lambda node: node_card(node=node, key=node["id"]),
-                        ),
-                        class_name="flex flex-wrap content-start gap-4 p-8 w-full h-full align-start",
+                    rx.el.p(
+                        "Click an element on the left to add it here",
+                        class_name="text-gray-400 font-medium",
                     ),
+                    class_name="flex flex-col items-center justify-center h-full border-2 border-dashed border-gray-200 rounded-xl m-8",
                 ),
-                class_name=rx.cond(
-                    drop_params.is_over,
-                    "bg-indigo-50/50 ring-inset ring-2 ring-indigo-500/20",
-                    "bg-white",
-                )
-                + " w-full h-full transition-all duration-200",
+                rx.el.div(
+                    rx.foreach(
+                        DocumentState.visual_nodes,
+                        lambda node: node_card(node=node, key=node["id"]),
+                    ),
+                    class_name="flex flex-wrap content-start gap-4 p-8 w-full h-full align-start",
+                ),
             ),
-            accept=["node_type"],
-            on_drop=EditorState.handle_drop,
+            class_name="bg-white w-full h-full transition-all duration-200",
         ),
         class_name="flex flex-row w-full h-full bg-white",
     )

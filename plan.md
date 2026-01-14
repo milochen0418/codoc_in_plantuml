@@ -17,7 +17,6 @@
 ## Phase 3: Advanced Drag-and-Drop Visual Editor Mode ✅
 - [x] Create toggle between Text Mode and Visual Mode in the navbar
 - [x] Build draggable node palette with UML elements (classes, actors, states, etc.)
-- [x] Implement canvas area for dropping and positioning nodes using reflex-enterprise DnD
 - [x] Add context menu for connecting nodes and setting relationships
 - [x] Synchronize visual canvas with PlantUML text editor (bidirectional updates)
 - [x] Polish responsive design and overall UI/UX for beginners

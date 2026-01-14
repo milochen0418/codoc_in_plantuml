@@ -123,5 +123,4 @@ MIT License. See [LICENSE](LICENSE).
 
 - **Reflex**: Full-stack Python web framework
 - **reflex-monaco**: Monaco Editor integration
-- **reflex-enterprise**: UI primitives (used by parts of the app)
 - **Python 3.11**

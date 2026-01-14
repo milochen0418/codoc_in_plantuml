@@ -1,5 +1,4 @@
 import reflex as rx
-import reflex_enterprise as rxe
 from codoc_in_plantuml.components.navbar import navbar
 from codoc_in_plantuml.components.editor_pane import editor_pane
 from codoc_in_plantuml.components.preview_pane import preview_pane
@@ -68,7 +67,7 @@ def index() -> rx.Component:
     )
 
 
-app = rxe.App(
+app = rx.App(
     theme=rx.theme(appearance="light"),
     stylesheets=[
         "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"

@@ -889,11 +889,11 @@ User ||--o{ Post : writes
         self.layout_mode = mode
 
     @rx.event
-    async def handle_drop(self, item: dict):
+    async def add_node(self, node_type: str):
         from codoc_in_plantuml.states.document_state import DocumentState
 
         doc = await self.get_state(DocumentState)
-        doc.handle_drop(item)
+        doc.add_node(node_type)
 
     @rx.event
     async def delete_node(self, node_id: str):
