@@ -1,24 +1,25 @@
 import reflex as rx
+from pydantic import BaseModel, Field
 from codoc_in_plantuml.utils.plantuml import PlantUML
 
 
-class Snippet(rx.Base):
+class Snippet(BaseModel):
     label: str
     code: str
     description: str
 
 
-class SubCategory(rx.Base):
+class SubCategory(BaseModel):
     name: str
-    snippets: list[Snippet] = []
+    snippets: list[Snippet] = Field(default_factory=list)
 
 
-class Category(rx.Base):
+class Category(BaseModel):
     name: str
     icon: str
     color: str
-    snippets: list[Snippet] = []
-    subcategories: list[SubCategory] = []
+    snippets: list[Snippet] = Field(default_factory=list)
+    subcategories: list[SubCategory] = Field(default_factory=list)
 
 
 class EditorState(rx.State):
@@ -31,7 +32,11 @@ class EditorState(rx.State):
     @rx.event
     async def on_load(self):
         """Handle page load: redirect if no share_id, or link to shared state."""
-        share_id = self.router.page.params.get("share_id")
+        path = self.router.url.path or ""
+        share_id = ""
+        if path.startswith("/doc/"):
+            share_id = path[len("/doc/") :].split("/", 1)[0]
+
         if not share_id:
             import random
             import string
@@ -53,7 +58,14 @@ class EditorState(rx.State):
     @rx.event
     def copy_link(self):
         """Copy the current document URL to clipboard."""
-        yield rx.set_clipboard(f"{self.router.page.host}/doc/{self.current_doc_id}")
+        origin = self.router.url.origin
+        if not origin and self.router.url.hostname:
+            scheme = self.router.url.scheme or "http"
+            port = f":{self.router.url.port}" if self.router.url.port else ""
+            origin = f"{scheme}://{self.router.url.hostname}{port}"
+
+        prefix = origin or ""
+        yield rx.set_clipboard(f"{prefix}/doc/{self.current_doc_id}")
         yield rx.toast("Link copied to clipboard!")
 
     snippet_categories: list[Category] = [

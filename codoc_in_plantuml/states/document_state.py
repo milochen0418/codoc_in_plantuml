@@ -3,10 +3,11 @@ import random
 import string
 import asyncio
 from typing import Any
+from pydantic import BaseModel
 from codoc_in_plantuml.utils.plantuml import PlantUML
 
 
-class UserInfo(rx.Base):
+class UserInfo(BaseModel):
     name: str
     color: str
     token: str
