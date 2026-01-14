@@ -1,0 +1,23 @@
+[project]
+name = "codoc-in-plantuml"
+version = "0.1.0"
+description = "Real-time collaborative PlantUML editor built with Reflex."
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+	{ name = "Milo Chen", email = "milo_chen@mail2000.com.tw" },
+]
+dependencies = [
+	"reflex==0.8.24.post1",
+	"reflex-monaco",
+	"reflex-enterprise",
+]
+
+[tool.poetry]
+packages = [{ include = "codoc_in_plantuml" }]
+
+[build-system]
+requires = ["poetry-core>=1.8.0"]
+build-backend = "poetry.core.masonry.api"
