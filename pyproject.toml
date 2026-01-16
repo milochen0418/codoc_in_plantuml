@@ -10,7 +10,7 @@ authors = [
 	{ name = "Milo Chen", email = "milo_chen@mail2000.com.tw" },
 ]
 dependencies = [
-	"reflex==0.8.24.post1",
+	"reflex==0.8.25",
 	"reflex-monaco",
 ]
 
