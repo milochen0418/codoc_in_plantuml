@@ -63,6 +63,34 @@ def index() -> rx.Component:
             ),
             class_name="flex flex-row h-[calc(100vh-64px)] w-full overflow-hidden",
         ),
+        rx.cond(
+            EditorState.tutorial_open,
+            rx.el.div(
+                rx.el.div(
+                    rx.el.div(
+                        rx.el.h2(
+                            "Examples 教學",
+                            class_name="text-base font-semibold text-gray-50",
+                        ),
+                        rx.el.button(
+                            rx.icon("x", class_name="w-5 h-5 text-gray-200"),
+                            on_click=EditorState.close_tutorial,
+                            class_name="p-1.5 rounded hover:bg-white/10 transition-colors",
+                            type="button",
+                        ),
+                        class_name="flex items-center justify-between px-5 py-4 border-b border-white/10 bg-[#2f343b]",
+                    ),
+                    rx.el.iframe(
+                        src=f"/examples.html#{EditorState.tutorial_anchor}",
+                        class_name="w-full h-full bg-[#111827]",
+                    ),
+                    class_name="w-[92vw] h-[88vh] max-w-[1200px] bg-[#2b2f36] border border-white/10 rounded-2xl overflow-hidden shadow-2xl",
+                    on_click=rx.stop_propagation,
+                ),
+                on_click=EditorState.close_tutorial,
+                class_name="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center",
+            ),
+        ),
         class_name="flex flex-col h-screen w-screen bg-gray-900 font-['Inter'] overflow-hidden",
     )
 

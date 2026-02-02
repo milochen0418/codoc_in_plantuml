@@ -1,12 +1,39 @@
+import re
 import reflex as rx
 from pydantic import BaseModel, Field
 from codoc_in_plantuml.utils.plantuml import PlantUML
+
+
+def _slugify(text: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", text.lower())
+    return slug.strip("-")
+
+
+def _make_anchor(category_name: str, subcategory_name: str, label: str) -> str:
+    parts = [_slugify(category_name)]
+    if subcategory_name:
+        parts.append(_slugify(subcategory_name))
+    parts.append(_slugify(label))
+    return "-".join(filter(None, parts))
+
+
+def _apply_snippet_anchors(categories: list["Category"]) -> list["Category"]:
+    for category in categories:
+        for snippet in category.snippets:
+            snippet.anchor = _make_anchor(category.name, "", snippet.label)
+        for subcategory in category.subcategories:
+            for snippet in subcategory.snippets:
+                snippet.anchor = _make_anchor(
+                    category.name, subcategory.name, snippet.label
+                )
+    return categories
 
 
 class Snippet(BaseModel):
     label: str
     code: str
     description: str
+    anchor: str = ""
 
 
 class SubCategory(BaseModel):
@@ -28,6 +55,8 @@ class EditorState(rx.State):
     linking_source_id: str = ""
     expanded_categories: list[str] = ["Sequence", "Class", "Use Case", "JSON / YAML"]
     current_doc_id: str = ""
+    tutorial_open: bool = False
+    tutorial_anchor: str = ""
 
     @rx.event
     async def on_load(self):
@@ -68,7 +97,7 @@ class EditorState(rx.State):
         yield rx.set_clipboard(f"{prefix}/doc/{self.current_doc_id}")
         yield rx.toast("Link copied to clipboard!")
 
-    snippet_categories: list[Category] = [
+    snippet_categories: list[Category] = _apply_snippet_anchors([
         Category(
             name="Sequence",
             icon="arrow-right-left",
@@ -883,7 +912,7 @@ User ||--o{ Post : writes
                 )
             ],
         ),
-    ]
+    ])
 
     @rx.event
     def toggle_sidebar(self):
@@ -899,6 +928,15 @@ User ||--o{ Post : writes
     @rx.event
     def set_layout(self, mode: str):
         self.layout_mode = mode
+
+    @rx.event
+    def open_tutorial(self, anchor: str):
+        self.tutorial_anchor = anchor
+        self.tutorial_open = True
+
+    @rx.event
+    def close_tutorial(self):
+        self.tutorial_open = False
 
     @rx.event
     async def add_node(self, node_type: str):
