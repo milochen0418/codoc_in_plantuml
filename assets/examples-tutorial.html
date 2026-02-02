@@ -13,9 +13,25 @@
     .section { padding: 12px 0; }
     .note { background: #1f2937; padding: 12px; border-radius: 8px; border: 1px solid #374151; }
     .rules li { margin-bottom: 6px; }
+    .lang-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 0 0 16px 0; padding: 12px; background: #0f172a; border: 1px solid #1f2937; border-radius: 10px; }
+    .lang-label { font-weight: 600; }
+    .lang-select { background: #111827; color: #e5e7eb; border: 1px solid #374151; border-radius: 8px; padding: 6px 10px; }
+    .lang-note { font-size: 12px; color: #9ca3af; }
   </style>
 </head>
 <body>
+  <div class="lang-bar">
+    <span class="lang-label">Language</span>
+    <select id="lang-select" class="lang-select" aria-label="Select language">
+      <option value="zh-Hant">繁體中文</option>
+      <option value="zh-Hans">简体中文</option>
+      <option value="en">English</option>
+      <option value="es">Español</option>
+    </select>
+    <span class="lang-note" id="lang-note">切換語言後會自動翻譯內容，可能需要幾秒。</span>
+  </div>
+
+  <div id="tutorial-root">
   <h1>Examples 教學（給小朋友也看得懂）</h1>
   <p class="note">
     這份教學會用簡單的方式說明：每個範例在畫什麼、為什麼要用、如何使用、常見用途，
@@ -1400,5 +1416,102 @@
       <li>連線兩端代表兩個資料表。</li>
     </ul>
   </div>
+
+  </div>
+  <script>
+    const langSelect = document.getElementById("lang-select");
+    const langNote = document.getElementById("lang-note");
+    const root = document.getElementById("tutorial-root");
+    const excludedTags = new Set(["CODE", "PRE", "SCRIPT", "STYLE", "TEXTAREA", "KBD", "SAMP"]);
+    const originalTextMap = new WeakMap();
+
+    function collectTextNodes(node, nodes) {
+      if (!node) return;
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        if (excludedTags.has(node.tagName)) return;
+        for (const child of node.childNodes) {
+          collectTextNodes(child, nodes);
+        }
+        return;
+      }
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.nodeValue;
+        if (!text || !text.trim()) return;
+        if (!originalTextMap.has(node)) {
+          originalTextMap.set(node, text);
+        }
+        nodes.push(node);
+      }
+    }
+
+    function restoreOriginal() {
+      const nodes = [];
+      collectTextNodes(root, nodes);
+      nodes.forEach((node) => {
+        const original = originalTextMap.get(node);
+        if (original !== undefined) {
+          node.nodeValue = original;
+        }
+      });
+    }
+
+    async function translateBatch(texts, targetLang) {
+      const query = texts.join("\n");
+      const url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" +
+        encodeURIComponent(targetLang) + "&dt=t&q=" + encodeURIComponent(query);
+      const response = await fetch(url);
+      const data = await response.json();
+      const translated = data[0].map((entry) => entry[0]).join("");
+      return translated.split("\n");
+    }
+
+    async function applyTranslation(targetLang) {
+      const nodes = [];
+      collectTextNodes(root, nodes);
+      const texts = nodes.map((node) => originalTextMap.get(node) || node.nodeValue);
+      const batchSize = 40;
+      const translatedTexts = [];
+      for (let i = 0; i < texts.length; i += batchSize) {
+        const batch = texts.slice(i, i + batchSize);
+        const translatedBatch = await translateBatch(batch, targetLang);
+        translatedTexts.push(...translatedBatch);
+      }
+      nodes.forEach((node, index) => {
+        if (translatedTexts[index]) {
+          node.nodeValue = translatedTexts[index];
+        }
+      });
+    }
+
+    function updateNote(lang) {
+      const notes = {
+        "zh-Hant": "切換語言後會自動翻譯內容，可能需要幾秒。",
+        "zh-Hans": "切换语言后会自动翻译内容，可能需要几秒。",
+        "en": "Switching languages auto-translates content and may take a few seconds.",
+        "es": "Al cambiar el idioma, el contenido se traduce automáticamente y puede tardar unos segundos."
+      };
+      langNote.textContent = notes[lang] || notes["en"];
+    }
+
+    async function setLanguage(lang) {
+      document.documentElement.lang = lang;
+      updateNote(lang);
+      if (lang === "zh-Hant") {
+        restoreOriginal();
+        return;
+      }
+      await applyTranslation(lang);
+    }
+
+    const savedLang = localStorage.getItem("tutorial-lang") || "zh-Hant";
+    langSelect.value = savedLang;
+    setLanguage(savedLang);
+
+    langSelect.addEventListener("change", async (event) => {
+      const lang = event.target.value;
+      localStorage.setItem("tutorial-lang", lang);
+      await setLanguage(lang);
+    });
+  </script>
 </body>
 </html>

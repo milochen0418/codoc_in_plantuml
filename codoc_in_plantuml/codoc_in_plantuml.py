@@ -81,7 +81,7 @@ def index() -> rx.Component:
                         class_name="flex items-center justify-between px-5 py-4 border-b border-white/10 bg-[#2f343b]",
                     ),
                     rx.el.iframe(
-                        src=f"/examples.html#{EditorState.tutorial_anchor}",
+                        src=f"/examples-tutorial.html#{EditorState.tutorial_anchor}",
                         class_name="w-full h-full bg-[#111827]",
                     ),
                     class_name="w-[92vw] h-[88vh] max-w-[1200px] bg-[#2b2f36] border border-white/10 rounded-2xl overflow-hidden shadow-2xl",
