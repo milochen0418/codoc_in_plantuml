@@ -778,6 +778,17 @@ Object03 *-- Object01
 @enduml
 ```
 
+## Default Editor Sample (PlantUMLState)
+
+This is the default code in `PlantUMLState.code`.
+
+```plantuml
+@startuml
+Alice -> Bob: Hello Bob!
+Bob --> Alice: Hello Alice!
+@enduml
+```
+
 ## Default Document Sample
 
 This is the initial document content when a new shared document is created.
