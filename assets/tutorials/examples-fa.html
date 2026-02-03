@@ -1,0 +1,1363 @@
+<h1>آموزش مثال‌ها (ساده برای کودکان)</h1>
+<p class="note">
+  این آموزش به زبان ساده توضیح می‌دهد هر مثال چه چیزی می‌کشد، چرا مفید است،
+  چگونه از آن استفاده می‌شود، موارد استفادهٔ رایج و قواعد PlantUML
+  (به صورت فهرست‌های کامل و کاربردی).
+</p>
+
+<h2>فهرست مطالب</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>این مثال نشان می‌دهد «شخص A یک پیام به شخص B می‌فرستد»، مثل دادن یک یادداشت.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul>
+    <li>ترتیب گفتگو را ساده و قابل فهم نشان می‌دهد.</li>
+    <li>برای داستان‌های «چه کسی اول حرف می‌زند، بعد چه کسی جواب می‌دهد» عالی است.</li>
+  </ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li><code>@startuml</code> و <code>@enduml</code> را بنویسید.</li>
+    <li>با <code>Alice -> Bob: Message</code> نشان دهید A با B صحبت می‌کند.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul>
+    <li>جریان ورود: User → System → Server.</li>
+    <li>چت‌بات: شما می‌پرسید → ربات پاسخ می‌دهد.</li>
+  </ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: <code>Alice</code> و <code>Bob</code> را به نام‌های دلخواه تغییر دهید و پیام را به یک مکالمهٔ روزمره تبدیل کنید.</li>
+    <li>تمرین ۲: ابتدا یک خط <code>participant</code> اضافه کنید، سپس پیام را به «اول سؤال، بعد جواب» تغییر دهید.</li>
+    <li>تمرین ۳: پیام را به دو خط تقسیم کنید: اول سؤال، بعد جواب، و یکی از خطوط را کوتاه کنید.</li>
+    <li>تمرین ۴: جای کسی که اول حرف می‌زند را عوض کنید و متن پیام را تغییر دهید.</li>
+    <li>تمرین ۵: یک نفر سوم اضافه کنید که یک خط بگوید، سپس نام یکی را عوض کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>با <code>@startuml</code> شروع و با <code>@enduml</code> تمام کنید.</li>
+    <li>شرکت‌کننده‌ها را می‌توان با <code>participant</code> تعریف کرد یا مستقیم استفاده کرد.</li>
+    <li><code>A -> B</code> فراخوانی است، <code>A --> B</code> پاسخ است.</li>
+    <li>متن را بعد از کولن بگذارید: <code>A -> B: Hello</code>.</li>
+    <li>زمان از بالا به پایین می‌رود.</li>
+    <li>چند خط پیام یعنی گفت‌وگوی طولانی‌تر.</li>
+    <li>متن پیام اختیاری است: <code>A -> B</code> هم درست است.</li>
+    <li>نام‌های دارای فاصله را داخل کوتیشن بنویسید.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>این مثال «درخواست و پاسخ» را نشان می‌دهد، مثل سؤال و جواب.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul>
+    <li>مرحلهٔ درخواست و مرحلهٔ پاسخ را واضح نشان می‌دهد.</li>
+  </ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li><code>A -> B</code> درخواست است.</li>
+    <li><code>B --> A</code> پاسخ است.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul>
+    <li>فراخوانی API: Frontend → Backend → بازگشت داده.</li>
+  </ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: نقش‌ها را به <code>Client</code> و <code>Server</code> تغییر دهید، پیام‌ها را به «دریافت داده / بازگرداندن داده» تبدیل کنید.</li>
+    <li>تمرین ۲: درخواست را «query» و پاسخ را «query result» کنید.</li>
+    <li>تمرین ۳: یک جفت درخواست/پاسخ دیگر اضافه کنید (در مجموع چهار خط) و متن خط دوم را تغییر دهید.</li>
+    <li>تمرین ۴: شخص دیگری پاسخ بدهد و متن را تنظیم کنید.</li>
+    <li>تمرین ۵: قبل از درخواست، یک self-message «آماده‌سازی» اضافه کنید، سپس درخواست را دقیق‌تر کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li><code>-></code> یک پیام می‌فرستد.</li>
+    <li><code>--></code> معمولاً پاسخ را نشان می‌دهد.</li>
+    <li>برای توضیح پاسخ، متن اضافه کنید.</li>
+    <li>درخواست و پاسخ اغلب جفت هستند ولی اجباری نیستند.</li>
+    <li>برای وضوح می‌توانید شرکت‌کننده‌ها را اول تعریف کنید.</li>
+    <li>زمان از بالا به پایین جریان دارد.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>این یعنی «صحبت با خود»، که یک گام داخلی را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul>
+    <li>کار داخلی یک شیء را بدون دیگران نشان می‌دهد.</li>
+  </ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul>
+    <li>گام‌های الگوریتم، محاسبات داخلی.</li>
+  </ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: <code>Alice</code> را به نام خودتان (مثلاً <code>Me</code>) تغییر دهید و پیام را به کاری که امروز می‌خواهید انجام دهید تبدیل کنید.</li>
+    <li>تمرین ۲: عمل را «خواندن داده» کنید، سپس <code>Me -> Me: دوباره بررسی</code> اضافه کنید.</li>
+    <li>تمرین ۳: پیام را «فکر کردن» کنید، سپس <code>Me -> Me: نکات مهم را بنویس</code> اضافه کنید.</li>
+    <li>تمرین ۴: نام را <code>Robot</code> کنید، سپس <code>Robot -> Robot: شارژ</code> اضافه کنید.</li>
+    <li>تمرین ۵: در ابتدا <code>Me -> Me: start</code> و در انتها <code>Me -> Me: done</code> اضافه کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>هر دو سر پیکان می‌تواند یک شرکت‌کننده باشد.</li>
+    <li>فرمت پایه: <code>Role -> Role: Text</code>.</li>
+    <li>نام‌ها می‌توانند بدون تعریف قبلی استفاده شوند.</li>
+    <li>متن بعد از کولن اختیاری است.</li>
+    <li>چند self-message یعنی چند گام داخلی.</li>
+    <li>می‌تواند با <code>activate</code> / <code>deactivate</code> همراه شود.</li>
+    <li>زمان از بالا به پایین می‌رود.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>این مثال آیکون‌های متفاوت برای نقش‌های مختلف را نشان می‌دهد، مثل شخص، سیستم، دیتابیس.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>آیکون‌ها نقش‌ها را سریع‌تر قابل تشخیص می‌کنند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>actor</code>، <code>boundary</code>، <code>control</code>، <code>database</code>، <code>entity</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>جریان ورود: User → Web → Logic → Database.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: <code>User</code> را به <code>Student</code> تغییر دهید و پیام را به «ورود تکلیف» تبدیل کنید.</li>
+    <li>تمرین ۲: <code>boundary App</code> اضافه کنید، سپس پیکان را اول به App بفرستید.</li>
+    <li>تمرین ۳: <code>database DB</code> را به <code>database Books</code> تغییر دهید و پیام را عوض کنید.</li>
+    <li>تمرین ۴: یک نقش <code>control</code> اضافه کنید و یک خط تعامل بنویسید.</li>
+    <li>تمرین ۵: ترتیب شرکت‌کننده‌ها را عوض کنید و پیام‌ها را تنظیم کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>نوع نقش ظاهر را عوض می‌کند، نه نام را.</li>
+    <li>برای تعامل از <code>-></code> استفاده کنید.</li>
+    <li>فرمت تعریف: <code>actor/boundary/control/database/entity Name</code>.</li>
+    <li>نقش‌ها را اول تعریف کنید، سپس نامشان را به کار ببرید.</li>
+    <li>نام‌های تعریف‌نشده شرکت‌کنندهٔ عادی هستند.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>این مثال رنگ‌ها و سبک‌ها را برای واضح‌تر شدن نمودار نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>نقش‌های مهم با رنگ برجسته می‌شوند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>برای تنظیم سبک از <code>skinparam</code> استفاده کنید.</li>
+    <li>بعد از نقش رنگ اضافه کنید: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>نشان دادن «سیستم مرکزی» با رنگ روشن.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: نام <code>Alice</code> را عوض کنید و رنگ دیگری بگذارید.</li>
+    <li>تمرین ۲: پیام را «شروع» کنید و نقش دیگر را تیره‌تر کنید.</li>
+    <li>تمرین ۳: نقش سوم اضافه کنید و رنگ متفاوت بدهید.</li>
+    <li>تمرین ۴: <code>skinparam sequenceMessageAlign</code> را تغییر دهید و یک خط پیام را تنظیم کنید.</li>
+    <li>تمرین ۵: از نام سبک (مثل <code>#technology</code>) برای یک نقش استفاده کنید و پیام را تغییر دهید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> تراز، فونت، رنگ و ... را کنترل می‌کند.</li>
+    <li>نقش‌ها می‌توانند رنگ یا نام سبک داشته باشند.</li>
+    <li>رنگ‌ها می‌توانند نام یا hex باشند، مثل <code>#AliceBlue</code>.</li>
+    <li>اگر یک نقش دوباره تعریف شود، آخرین مورد اعمال می‌شود.</li>
+    <li>تنظیمات سبک نحو پیام را تغییر نمی‌دهد.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>این مثال «اگر... وگرنه...» را مثل چند انتخاب نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>شاخه‌های مختلف برای شرط‌های مختلف را نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>با <code>alt</code> شروع کنید، برای شاخهٔ دیگر از <code>else</code> استفاده کنید، و با <code>end</code> تمام کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>پرداخت موفق یا ناموفق.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: شرط‌ها را به «پول داریم / پول نداریم» تغییر دهید و پیام‌ها را عوض کنید.</li>
+    <li>تمرین ۲: یک شاخهٔ <code>else</code> سوم اضافه کنید و یک پیام بنویسید.</li>
+    <li>تمرین ۳: عنوان <code>alt</code> را به سناریوی خودتان تغییر دهید و پیام‌ها را ویرایش کنید.</li>
+    <li>تمرین ۴: در هر شاخه یک خط اضافه کنید و عنوان‌ها را تغییر دهید.</li>
+    <li>تمرین ۵: یک شاخه «تلاش دوباره بعد از خطا» بسازید و شاخهٔ دیگر را به پایان متفاوت تبدیل کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> یک شاخه را شروع می‌کند.</li>
+    <li>می‌تواند چندین شاخهٔ <code>else</code> داشته باشد.</li>
+    <li>با <code>end</code> تمام کنید.</li>
+    <li>هر شاخه می‌تواند چند پیام داشته باشد.</li>
+    <li>متن شرط اختیاری است ولی بهتر است باشد.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>این مثال کارهای تکراری را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>گام‌های تکراری را نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>خطوط تکراری را داخل <code>loop</code> و <code>end</code> قرار دهید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>هر ثانیه وضعیت را چک کردن.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: برچسب لوپ را «هر ۳ بار» بگذارید و پیام را تغییر دهید.</li>
+    <li>تمرین ۲: یک پیام دیگر داخل لوپ اضافه کنید و پیام اصلی را کوتاه‌تر کنید.</li>
+    <li>تمرین ۳: نام نقش‌ها را عوض کنید و پیام را «بررسی» بگذارید.</li>
+    <li>تمرین ۴: برچسب لوپ را به شرطی مثل «تا وقتی تمام شود» تغییر دهید و پیام‌ها را تنظیم کنید.</li>
+    <li>تمرین ۵: پیام‌های شروع/پایان را بیرون از لوپ اضافه کنید و متن‌ها را سفارشی کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> می‌تواند در همان خط بیاید.</li>
+    <li><code>end</code> بلوک لوپ را تمام می‌کند.</li>
+    <li>چندین پیام می‌تواند داخل لوپ باشد.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>این مثال دو کار هم‌زمان را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>کارهای موازی را نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>با <code>par</code> شروع کنید، برای شاخهٔ موازی دیگر از <code>else</code> استفاده کنید، و با <code>end</code> تمام کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>اطلاع دادن هم‌زمان به دو سرویس.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: شاخه‌ها را به «ارسال ایمیل» و «ارسال SMS» تغییر دهید و نقش‌ها را عوض کنید.</li>
+    <li>تمرین ۲: نقش‌ها را عوض کنید و در هر شاخه یک خط دیگر اضافه کنید.</li>
+    <li>تمرین ۳: یک شاخهٔ سوم (<code>else</code>) اضافه کنید و یک پیام بنویسید، سپس یکی از خطوط را کوتاه کنید.</li>
+    <li>تمرین ۴: یکی از شاخه‌ها را «آهسته انجام بده» کنید، یک پیام پایانی اضافه کنید و متن شاخهٔ دیگر را تنظیم کنید.</li>
+    <li>تمرین ۵: قبل از <code>par</code> پیام «شروع کار» و بعد از <code>end</code> پیام «تمام شد» اضافه کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li><code>par</code> یک بلوک موازی می‌سازد.</li>
+    <li>هر شاخه می‌تواند دنبالهٔ پیام خودش را داشته باشد.</li>
+    <li><code>else</code> به شاخهٔ موازی دیگر می‌رود.</li>
+    <li>با <code>end</code تمام می‌شود.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>این مثال با نوارهای activation نشان می‌دهد چه زمانی یک نقش مشغول است.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>نشان می‌دهد چه کسی مشغول کار است و چقدر طول می‌کشد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>برای شروع از <code>activate Role</code> استفاده کنید.</li>
+    <li>برای پایان از <code>deactivate Role</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>نشان دادن زمان پردازش سرور.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: نقش را <code>Server</code> کنید و پیام را «processing» بگذارید.</li>
+    <li>تمرین ۲: یک خط درخواست اضافه کنید، سپس <code>activate</code> را بلافاصله بعد از درخواست بگذارید.</li>
+    <li>تمرین ۳: یک پیام میانی مانند «نیمه‌راه» اضافه کنید و با متن خودتان جایگزین کنید.</li>
+    <li>تمرین ۴: نقش دیگری با activation و پیام خودش اضافه کنید.</li>
+    <li>تمرین ۵: شروع/پایان activation را یک خط پایین‌تر ببرید و پیام را تنظیم کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>می‌توانید activate/deactivate را قبل یا بعد از پیام‌ها قرار دهید.</li>
+    <li><code>activate</code> و <code>deactivate</code> باید جفت باشند.</li>
+    <li>وقتی نقش فعال است، می‌توان پیام اضافه کرد.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>این مثال نحوهٔ افزودن یادداشت‌های چسبان را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>برای شفافیت توضیح اضافه می‌کند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>note left</code> یا <code>note right</code> استفاده کنید.</li>
+    <li>یادداشت را با <code>end note</code> تمام کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>یادآوری مثل «این مرحله ممکن است خطا بدهد».</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: متن یادداشت را به یادداشت خودتان تغییر دهید.</li>
+    <li>تمرین ۲: یادداشت را به سمت راست ببرید و متن را تغییر دهید.</li>
+    <li>تمرین ۳: کنار نقش دیگری یک یادداشت دوم اضافه کنید.</li>
+    <li>تمرین ۴: یادداشت را دوخطی کنید و در خط دوم دلیل بنویسید.</li>
+    <li>تمرین ۵: یادداشت را بعد از یک پیام دیگر منتقل کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>یادداشت‌ها می‌توانند <code>left</code>، <code>right</code> یا <code>over</code> باشند.</li>
+    <li>یادداشت‌های چندخطی از <code>note</code> و <code>end note</code> استفاده می‌کنند.</li>
+    <li>یادداشت‌ها جریان پیام را تغییر نمی‌دهند.</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>نمودار Use Case فهرستی از «کارهایی که سیستم می‌تواند انجام دهد» است.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>عملکردهایی که کاربر نیاز دارد را واضح فهرست می‌کند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>برای کاربر از <code>actor</code> استفاده کنید.</li>
+    <li>برای یک عملکرد از <code>(UseCase)</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>ورود، جست‌وجو، پرداخت و ...</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: کاربر را <code>Teacher</code> و Use Case را «create quiz» کنید.</li>
+    <li>تمرین ۲: یک Use Case دیگر اضافه کنید.</li>
+    <li>تمرین ۳: نام‌های Use Case و actor را عوض کنید.</li>
+    <li>تمرین ۴: actor دوم اضافه کنید و به Use Case وصل کنید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>Use Case داخل پرانتز است: <code>(Login)</code>.</li>
+    <li>Actor به شکل آدمک است: <code>actor User</code>.</li>
+    <li>Actor را با خط به Use Case وصل کنید.</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>این مثال رابطهٔ include/extend بین Use Caseها را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>گام مشترک یا اختیاری را نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li><code><<include>></code> یعنی «همیشه شامل می‌شود».</li>
+    <li><code><<extend>></code> یعنی «اختیاری».</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>ورود نیازمند احراز هویت؛ پرداخت با تخفیف به‌صورت extend.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: Use Caseها را با مثال خودتان جایگزین کنید.</li>
+    <li>تمرین ۲: include و extend را جابه‌جا کنید.</li>
+    <li>تمرین ۳: یک Use Case جدید اضافه کنید و include کنید.</li>
+    <li>تمرین ۴: جهت پیکان را برعکس کنید و متن را به‌روزرسانی کنید.</li>
+    <li>تمرین ۵: متن رابطه را با کلمات خودتان بنویسید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>نحو Include: <code>(A) .> (B) : <<include>></code>.</li>
+    <li>نحو Extend: <code>(A) .> (B) : <<extend>></code>.</li>
+    <li>از پیکان خط‌چین استفاده کنید.</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>نمودار کلاس، ویژگی‌ها و متدها را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>ساختار داده را منظم می‌کند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>با <code>class</code> کلاس تعریف کنید.</li>
+    <li>ویژگی‌ها و متدها را داخل آکولاد بنویسید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>طراحی مدل دادهٔ برنامه.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: نام کلاس را عوض کنید (مثلاً <code>Book</code>).</li>
+    <li>تمرین ۲: یک ویژگی یا متد اضافه کنید.</li>
+    <li>تمرین ۳: نام فیلدها را کوتاه یا ترجمه کنید.</li>
+    <li>تمرین ۴: کلاس دوم و دو ویژگی اضافه کنید.</li>
+    <li>تمرین ۵: متد را با عمل خودتان جایگزین کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>فرمت کلاس: <code>class Name { ... }</code>.</li>
+    <li>ویژگی‌ها فیلد هستند، متدها <code>()</code> دارند.</li>
+    <li>کلاس خالی هم معتبر است.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>این مثال متدها و نوع بازگشتی را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>نشان می‌دهد کلاس چه کارهایی می‌تواند انجام دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>متد را این‌طور بنویسید: <code>name(): type</code>.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>توضیح API یا منطق کسب‌وکار.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: متدی با نوع بازگشتی اضافه کنید.</li>
+    <li>تمرین ۲: نام متد را به عمل خودتان تغییر دهید.</li>
+    <li>تمرین ۳: نوع بازگشتی را <code>bool</code> یا <code>string</code> کنید.</li>
+    <li>تمرین ۴: یک متد دیگر اضافه کنید و یکی را private کنید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>متدها می‌توانند پارامتر داشته باشند: <code>name(param): type</code>.</li>
+    <li>نوع بازگشتی بعد از کولن نوشته می‌شود.</li>
+    <li>متدها می‌توانند نمادهای visibility داشته باشند.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>سطوح دسترسی public, private و protected را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>دسترسی بیرونی و جزئیات داخلی را جدا می‌کند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li><code>+</code> public، <code>-</code> private، <code>#</code> protected.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>پنهان کردن جزئیات داخلی.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: یک فیلد را private کنید.</li>
+    <li>تمرین ۲: یک فیلد protected اضافه کنید.</li>
+    <li>تمرین ۳: یک متد را public کنید.</li>
+    <li>تمرین ۴: یک متد private اضافه کنید.</li>
+    <li>تمرین ۵: نام‌ها را مطابق مثال خودتان تغییر دهید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>نمادهای visibility قبل از فیلد/متد می‌آیند.</li>
+    <li>نمادهای رایج: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>نشانه‌های abstract و static را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>تفاوت «الزام به پیاده‌سازی» و «ابزار مشترک» را نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>Abstract: ایتالیک یا <code>{abstract}</code>.</li>
+    <li>Static: <code>{static}</code>.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>کلاس پایه و متدهای کمکی.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: یک متد را static کنید.</li>
+    <li>تمرین ۲: نام کلاس را به مثال خودتان تغییر دهید.</li>
+    <li>تمرین ۳: یک متد abstract اضافه کنید.</li>
+    <li>تمرین ۴: روش دیگر نمایش abstract را استفاده کنید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> کلاس یا متد abstract را نشان می‌دهد.</li>
+    <li><code>{static}</code> متد static را نشان می‌دهد.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>این مثال وراثت را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>کلاس‌های والد و فرزند را نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>برای وراثت از <code>--|></code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>طبقه‌بندی حیوانات.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: نام کلاس‌ها را با مثال خودتان عوض کنید.</li>
+    <li>تمرین ۲: یک خط وراثت دیگر اضافه کنید.</li>
+    <li>تمرین ۳: نام کلاس والد را تغییر دهید.</li>
+    <li>تمرین ۴: یک کلاس فرزند جدید اضافه کنید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> یعنی وراثت.</li>
+    <li>پیکان به سمت کلاس والد است.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>این مثال composition (مالکیت قوی) را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>نشان می‌دهد بخش‌ها بدون کل نمی‌توانند وجود داشته باشند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>برای composition از <code>*--</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>خانه همیشه اتاق دارد.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: نام‌ها را با مثال خودتان تغییر دهید.</li>
+    <li>تمرین ۲: composition را به aggregation تبدیل کنید و مقایسه کنید.</li>
+    <li>تمرین ۳: یک خط composition دیگر اضافه کنید.</li>
+    <li>تمرین ۴: متن برچسب را تغییر دهید.</li>
+    <li>تمرین ۵: جهت را عوض کنید و ببینید چه می‌شود.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> یعنی composition.</li>
+    <li>الماس پر به سمت مالک است.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>این مثال aggregation (مالکیت ضعیف) را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>نشان می‌دهد بخش‌ها می‌توانند مستقل وجود داشته باشند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>برای aggregation از <code>o--</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>یک کلاس و دانش‌آموزانش.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: نام‌ها را با مثال خودتان تغییر دهید.</li>
+    <li>تمرین ۲: aggregation را به composition تبدیل کنید و مقایسه کنید.</li>
+    <li>تمرین ۳: یک خط aggregation دیگر اضافه کنید.</li>
+    <li>تمرین ۴: سناریوی دیگری را جایگزین کنید.</li>
+    <li>تمرین ۵: جهت را عوض کنید و توضیح اضافه کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> یعنی aggregation.</li>
+    <li>الماس خالی به سمت مالک است.</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>نمودار Object یک «نمونه از کلاس» را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>دادهٔ یک لحظهٔ خاص را نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>برای ساخت نمونه از <code>object</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>نمایش مقدار فیلدهای یک شیء.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: نام شیء را با مثال خودتان عوض کنید.</li>
+    <li>تمرین ۲: یک شیء دیگر اضافه کنید.</li>
+    <li>تمرین ۳: فیلدها را با دادهٔ خودتان جایگزین کنید.</li>
+    <li>تمرین ۴: دو شیء را به هم وصل کنید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>فرمت شیء: <code>object name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>نمودار Activity مراحل یک فرایند را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>جریان کار را توضیح می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>start</code> و <code>stop</code> استفاده کنید.</li>
+    <li>اکشن را به شکل <code>:action;</code> بنویسید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>جریان برنامه، پردازش سفارش.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: اکشن‌ها را با جریان کار خودتان عوض کنید.</li>
+    <li>تمرین ۲: یک اکشن اضافه کنید.</li>
+    <li>تمرین ۳: جای start/stop را عوض کنید.</li>
+    <li>تمرین ۴: یک تصمیم اضافه کنید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>جریان از بالا به پایین می‌رود.</li>
+    <li>اکشن‌ها داخل <code>: ... ;</code> نوشته می‌شوند.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>شاخه‌های تصمیم را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>مسیرهای مختلف را واضح نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>if</code>، <code>then</code>، <code>else</code> و <code>endif</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>بررسی فرم، پرداخت موفق/ناموفق.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: شرط را به دلخواه خودتان تغییر دهید.</li>
+    <li>تمرین ۲: یک شاخهٔ else دیگر اضافه کنید.</li>
+    <li>تمرین ۳: متن اکشن را تغییر دهید.</li>
+    <li>تمرین ۴: متن if را با سناریوی خودتان عوض کنید.</li>
+    <li>تمرین ۵: فرایند خودتان را بسازید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> یک شاخه شروع می‌کند.</li>
+    <li><code>else</code> به شاخهٔ دیگر می‌رود.</li>
+    <li><code>endif</code> بلوک را می‌بندد.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>کارهای تکراری را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>حلقه را توضیح می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>while</code> و <code>endwhile</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>بارها وضعیت را چک کردن.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: شرط را به دلخواه خودتان تغییر دهید.</li>
+    <li>تمرین ۲: داخل حلقه یک اکشن اضافه کنید.</li>
+    <li>تمرین ۳: سناریوی دیگری استفاده کنید.</li>
+    <li>تمرین ۴: while را از نظر مفهومی مثل until ببینید.</li>
+    <li>تمرین ۵: اکشن‌های شروع/پایان را اضافه کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> حلقه را شروع می‌کند.</li>
+    <li><code>endwhile</code> حلقه را تمام می‌کند.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>سویم‌لین مراحل را بر اساس مسئولیت گروه‌بندی می‌کند.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>مسئول هر قدم را نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>برای تغییر لین از <code>|Role|</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>جریان کار بین تیم‌ها.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: یک نقش سویم‌لین جدید اضافه کنید.</li>
+    <li>تمرین ۲: یک اکشن را به لین دیگر منتقل کنید.</li>
+    <li>تمرین ۳: نام لین‌ها را با نقش‌های خودتان عوض کنید.</li>
+    <li>تمرین ۴: یک اکشن دیگر اضافه کنید.</li>
+    <li>تمرین ۵: فرایند خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>با <code>|Name|</code> لین عوض می‌شود.</li>
+    <li>اکشن داخل لین فعلی قرار می‌گیرد.</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>نمودار Component ماژول‌ها را بیان می‌کند.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>ساختار ماژول‌ها را نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>برای ساخت Component از <code>component</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>لایه‌های معماری سیستم.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: یک Component اضافه کنید.</li>
+    <li>تمرین ۲: نام Component را تغییر دهید.</li>
+    <li>تمرین ۳: یک اتصال اضافه کنید.</li>
+    <li>تمرین ۴: سناریوی خودتان را استفاده کنید.</li>
+    <li>تمرین ۵: Componentها را دوباره مرتب کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>Componentها با <code>component</code> ساخته می‌شوند.</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>Componentها را در Packageها گروه‌بندی می‌کند.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>سیستم‌های بزرگ منظم می‌شوند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>Componentها را داخل <code>package</code> قرار دهید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>گروه‌بندی بر اساس عملکرد.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: یک package اضافه کنید.</li>
+    <li>تمرین ۲: یک Component را به package دیگر منتقل کنید.</li>
+    <li>تمرین ۳: نام package را تغییر دهید.</li>
+    <li>تمرین ۴: یک Component اضافه کنید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>فرمت package: <code>package Name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>نمودار Deployment سرورها و نودها را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>استقرار سیستم را توضیح می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>برای ساخت نود از <code>node</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>معماری استقرار ابری.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: یک نود اضافه کنید.</li>
+    <li>تمرین ۲: نام نود را تغییر دهید.</li>
+    <li>تمرین ۳: یک اتصال اضافه کنید.</li>
+    <li>تمرین ۴: سناریوی خودتان را استفاده کنید.</li>
+    <li>تمرین ۵: نود را با دستگاه خودتان جایگزین کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>نودها با <code>node</code> ساخته می‌شوند.</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>نمودار State تغییر بین حالت‌ها را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>تغییر حالت‌ها را واضح می‌کند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>حالت‌ها را با <code>state</code> بسازید.</li>
+    <li>حالت‌ها را با پیکان وصل کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>جریان حالت سفارش.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: از نام حالت‌های خودتان استفاده کنید.</li>
+    <li>تمرین ۲: یک حالت دیگر اضافه کنید.</li>
+    <li>تمرین ۳: یک انتقال دیگر اضافه کنید.</li>
+    <li>تمرین ۴: فرایند خودتان را استفاده کنید.</li>
+    <li>تمرین ۵: نام یک حالت را عوض کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>حالت‌ها با <code>state</code> نوشته می‌شوند.</li>
+    <li>انتقال‌ها با <code>--> </code> نمایش داده می‌شوند.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>حالت‌های مرکب چند حالت فرعی دارند.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>حالت‌های پیچیده منظم می‌شوند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>state Name { ... }</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>جریان کار پیچیده.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: یک حالت فرعی اضافه کنید.</li>
+    <li>تمرین ۲: سناریوی خودتان را استفاده کنید.</li>
+    <li>تمرین ۳: یک انتقال اضافه کنید.</li>
+    <li>تمرین ۴: نام حالت مرکب را عوض کنید.</li>
+    <li>تمرین ۵: فرایند خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>حالت‌های مرکب از آکولاد استفاده می‌کنند.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>شرط‌های Guard انتقال‌ها را واضح‌تر می‌کنند.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>شرط انتقال را نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>[condition]</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>شرط‌های انتقال حالت.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: شرط خودتان را استفاده کنید.</li>
+    <li>تمرین ۲: یک شرط Guard دیگر اضافه کنید.</li>
+    <li>تمرین ۳: فرایند خودتان را استفاده کنید.</li>
+    <li>تمرین ۴: متن انتقال را تغییر دهید.</li>
+    <li>تمرین ۵: مثال خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>شرط‌های Guard داخل براکت مربع هستند.</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>نمودار Timing تغییر سیگنال را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>تغییر سیگنال در طول زمان را توضیح می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از تنظیم <code>concise</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>تغییرات سیگنال سخت‌افزار.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: سیگنال خودتان را استفاده کنید.</li>
+    <li>تمرین ۲: یک خط سیگنال دیگر اضافه کنید.</li>
+    <li>تمرین ۳: نام سیگنال را تغییر دهید.</li>
+    <li>تمرین ۴: مثال خودتان را استفاده کنید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>در نمودار Timing می‌توان از <code>concise</code> استفاده کرد.</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>نمودار JSON ساختار داده را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>ساختار JSON خواناتر می‌شود.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startjson</code> و <code>@endjson</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>شکل پاسخ API.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: JSON خودتان را جایگزین کنید.</li>
+    <li>تمرین ۲: یک فیلد اضافه کنید.</li>
+    <li>تمرین ۳: مقادیر داده را تغییر دهید.</li>
+    <li>تمرین ۴: سناریوی خودتان را استفاده کنید.</li>
+    <li>تمرین ۵: دادهٔ خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>JSON را با <code>@startjson</code> احاطه می‌کنیم.</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>نمودار YAML ساختار داده را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>ساختار YAML خواناتر می‌شود.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startyaml</code> و <code>@endyaml</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>فایل‌های تنظیمات.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: YAML خودتان را استفاده کنید.</li>
+    <li>تمرین ۲: یک فیلد اضافه کنید.</li>
+    <li>تمرین ۳: محتوای داده را تغییر دهید.</li>
+    <li>تمرین ۴: سناریوی خودتان را استفاده کنید.</li>
+    <li>تمرین ۵: دادهٔ خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>YAML را با <code>@startyaml</code> احاطه می‌کنیم.</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>نمودار EBNF قواعد گرامر را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>ساختار گرامر را واضح می‌کند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startebnf</code> و <code>@endebnf</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>بیان گرامر زبان برنامه‌نویسی.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: گرامر خودتان را جایگزین کنید.</li>
+    <li>تمرین ۲: یک قاعدهٔ دیگر اضافه کنید.</li>
+    <li>تمرین ۳: مثال خودتان را استفاده کنید.</li>
+    <li>تمرین ۴: نمادها را تغییر دهید.</li>
+    <li>تمرین ۵: گرامر خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>در EBNF از <code>@startebnf</code> استفاده می‌شود.</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>نمودار Regex الگوی عبارات باقاعده را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>الگوی Regex را توضیح می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startregex</code> و <code>@endregex</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>مستندسازی Regex.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: Regex خودتان را جایگزین کنید.</li>
+    <li>تمرین ۲: یک قاعدهٔ دیگر اضافه کنید.</li>
+    <li>تمرین ۳: مثال خودتان را استفاده کنید.</li>
+    <li>تمرین ۴: محتوا را تغییر دهید.</li>
+    <li>تمرین ۵: گرامر خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>در Regex از <code>@startregex</code> استفاده می‌شود.</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>نمودار توپولوژی شبکهٔ ساده.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>اتصالات شبکه را نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startnwdiag</code> و <code>@endnwdiag</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>روتر و سوئیچ.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: دستگاه‌های خودتان را جایگزین کنید.</li>
+    <li>تمرین ۲: یک دستگاه اضافه کنید.</li>
+    <li>تمرین ۳: اتصالات را تغییر دهید.</li>
+    <li>تمرین ۴: سناریوی خودتان را استفاده کنید.</li>
+    <li>تمرین ۵: مثال خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>در nwdiag از <code>@startnwdiag</code> استفاده می‌شود.</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>نمودار وایرفریم رابط کاربری.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>طرح صفحه را سریع نمایش می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startsalt</code> و <code>@endsalt</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>نمونهٔ اولیهٔ صفحه.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: صفحهٔ خودتان را جایگزین کنید.</li>
+    <li>تمرین ۲: یک دکمه اضافه کنید.</li>
+    <li>تمرین ۳: متن را تغییر دهید.</li>
+    <li>تمرین ۴: چیدمان را تغییر دهید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>در Salt از <code>@startsalt</code> استفاده می‌شود.</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>نمودار معماری سازمانی (Archimate).</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>معماری سازمانی سیستم را توضیح می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startarchimate</code> و <code>@endarchimate</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>معماری سازمانی سیستم‌ها.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: معماری خودتان را جایگزین کنید.</li>
+    <li>تمرین ۲: یک Component اضافه کنید.</li>
+    <li>تمرین ۳: سناریوی خودتان را استفاده کنید.</li>
+    <li>تمرین ۴: نام عناصر را تغییر دهید.</li>
+    <li>تمرین ۵: مثال خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>در Archimate از <code>@startarchimate</code> استفاده می‌شود.</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>نمودار جریان فرایند SDL.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>فرایند را توضیح می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startsdl</code> و <code>@endsdl</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>جریان ارتباطات.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: فرایند خودتان را جایگزین کنید.</li>
+    <li>تمرین ۲: یک گام اضافه کنید.</li>
+    <li>تمرین ۳: نام عناصر را تغییر دهید.</li>
+    <li>تمرین ۴: سناریوی خودتان را استفاده کنید.</li>
+    <li>تمرین ۵: مثال خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>در SDL از <code>@startsdl</code> استفاده می‌شود.</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>نمودار Ditaa با هنر ASCII.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>از متن می‌توان شکل ساخت.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startditaa</code> و <code>@endditaa</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>اسکیچ سریع.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: هنر ASCII خودتان را جایگزین کنید.</li>
+    <li>تمرین ۲: یک بلوک دیگر اضافه کنید.</li>
+    <li>تمرین ۳: حروف را تغییر دهید.</li>
+    <li>تمرین ۴: سناریوی خودتان را استفاده کنید.</li>
+    <li>تمرین ۵: مثال خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>در Ditaa از <code>@startditaa</code> استفاده می‌شود.</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>نمودار Gantt زمان‌بندی پروژه را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>برنامه‌ریزی خط زمانی پروژه.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startgantt</code> و <code>@endgantt</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>تقویم پروژه.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: برنامهٔ خودتان را جایگزین کنید.</li>
+    <li>تمرین ۲: یک کار اضافه کنید.</li>
+    <li>تمرین ۳: مثال خودتان را استفاده کنید.</li>
+    <li>تمرین ۴: تاریخ‌ها را تغییر دهید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>در Gantt از <code>@startgantt</code> استفاده می‌شود.</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>خط زمانی رویدادها.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>رویدادها را بر اساس زمان مرتب می‌کند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startchronology</code> و <code>@endchronology</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>تاریخچهٔ رویدادها.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: رویدادهای خودتان را جایگزین کنید.</li>
+    <li>تمرین ۲: یک رویداد دیگر اضافه کنید.</li>
+    <li>تمرین ۳: مثال خودتان را استفاده کنید.</li>
+    <li>تمرین ۴: تاریخ‌ها را تغییر دهید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>در Chronology از <code>@startchronology</code> استفاده می‌شود.</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>نمودار MindMap طبقه‌بندی ایده‌ها را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>ایده‌ها را منظم می‌کند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startmindmap</code> و <code>@endmindmap</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>طوفان فکری.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: موضوع خودتان را استفاده کنید.</li>
+    <li>تمرین ۲: شاخه‌ها اضافه کنید.</li>
+    <li>تمرین ۳: مثال خودتان را استفاده کنید.</li>
+    <li>تمرین ۴: متن را تغییر دهید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>در MindMap از <code>@startmindmap</code> استفاده می‌شود.</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>نمودار ساختار شکست کار.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>کار را به بخش‌های کوچک تقسیم می‌کند.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startwbs</code> و <code>@endwbs</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>تقسیم وظایف پروژه.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: کارهای خودتان را استفاده کنید.</li>
+    <li>تمرین ۲: زیروظیفه اضافه کنید.</li>
+    <li>تمرین ۳: مثال خودتان را استفاده کنید.</li>
+    <li>تمرین ۴: متن را تغییر دهید.</li>
+    <li>تمرین ۵: سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>در WBS از <code>@startwbs</code> استفاده می‌شود.</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>برای فرمول‌ها از AsciiMath استفاده کنید.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>فرمول‌ها را سریع می‌شود نوشت.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>از <code>@startmath</code> و <code>@endmath</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>نمایش فرمول‌ها.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: فرمول خودتان را استفاده کنید.</li>
+    <li>تمرین ۲: یک فرمول دیگر اضافه کنید.</li>
+    <li>تمرین ۳: مثال خودتان را استفاده کنید.</li>
+    <li>تمرین ۴: سناریوی خودتان را استفاده کنید.</li>
+    <li>تمرین ۵: نمادها را تغییر دهید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>نمادهای رایج AsciiMath پشتیبانی می‌شوند.</li>
+    <li>با <code>@startmath</code> و <code>@endmath</code> احاطه کنید.</li>
+    <li><code>^</code> توان و <code>/</code> تقسیم است.</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>نمودار ER جدول‌های دیتابیس را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>طراحی ساختار دیتابیس.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol>
+    <li>برای ساخت جدول از <code>entity</code> استفاده کنید.</li>
+    <li>برای کلید اصلی از <code>*</code> استفاده کنید.</li>
+  </ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>طراحی جدول کاربران.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: نام جدول را <code>Book</code> کنید و فیلدها را <code>title</code>, <code>author</code> بگذارید.</li>
+    <li>تمرین ۲: یک فیلد اضافه کنید و یک نوع <code>int</code> قرار دهید.</li>
+    <li>تمرین ۳: نام و نوع فیلد کلید اصلی را تغییر دهید.</li>
+    <li>تمرین ۴: یک جدول دیگر با دو فیلد اضافه کنید.</li>
+    <li>تمرین ۵: یک خط جداکننده اضافه کنید و فیلدها را مرتب کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li>خط جداکنندهٔ <code>--</code> بخش‌ها را جدا می‌کند.</li>
+    <li><code>*</code> فیلد کلید اصلی را نشان می‌دهد.</li>
+    <li>فرمت فیلد: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>این مثال رابطه‌های بین جدول‌ها را نشان می‌دهد.</p>
+  <h3>چرا استفاده کنیم</h3>
+  <ul><li>one‑to‑many یا many‑to‑many را نشان می‌دهد.</li></ul>
+  <h3>چطور استفاده کنیم</h3>
+  <ol><li><code>User ||--o{ Post</code> یعنی one‑to‑many.</li></ol>
+  <h3>موارد استفادهٔ ممکن</h3>
+  <ul><li>یک کاربر با چند پست.</li></ul>
+  <h3>تمرین (ساده برای کودکان)</h3>
+  <ol>
+    <li>تمرین ۱: <code>User</code> را به <code>Student</code> و <code>Post</code> را به <code>Homework</code> تغییر دهید، سپس برچسب را به‌روزرسانی کنید.</li>
+    <li>تمرین ۲: one‑to‑many را به one‑to‑one تبدیل کنید و توضیح را به‌روزرسانی کنید.</li>
+    <li>تمرین ۳: یک رابطهٔ دیگر اضافه کنید و نام جدول را تغییر دهید.</li>
+    <li>تمرین ۴: جهت را برعکس کنید و نام‌ها را تنظیم کنید.</li>
+    <li>تمرین ۵: one‑to‑many را نگه دارید و سناریوی خودتان را استفاده کنید.</li>
+  </ol>
+  <h3>قواعد PlantUML (فهرست کامل)</h3>
+  <ul class="rules">
+    <li><code>||</code> و <code>o{</code> کاردینالیتی را نشان می‌دهند.</li>
+    <li><code>||--o{</code> معمولاً one‑to‑many است.</li>
+    <li>خط دو جدول را به هم وصل می‌کند.</li>
+  </ul>
+</div>
