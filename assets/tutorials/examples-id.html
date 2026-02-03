@@ -1,0 +1,1363 @@
+<h1>Tutorial Contoh (mudah untuk anak-anak)</h1>
+<p class="note">
+  Tutorial ini menjelaskan secara sederhana setiap contoh menggambar apa, mengapa berguna,
+  cara memakainya, kasus penggunaan umum, dan aturan sintaks PlantUML
+  (dikumpulkan dalam daftar yang lengkap dan praktis).
+</p>
+
+<h2>Daftar Isi</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>Contoh ini menunjukkan “Orang A mengirim pesan ke orang B”, seperti mengirim catatan.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul>
+    <li>Menunjukkan urutan percakapan secara sederhana.</li>
+    <li>Cocok untuk cerita “siapa bicara dulu, siapa menjawab setelahnya”.</li>
+  </ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Tulis <code>@startuml</code> dan <code>@enduml</code>.</li>
+    <li>Gunakan <code>Alice -> Bob: Message</code> untuk menunjukkan A berbicara ke B.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul>
+    <li>Alur login: User → Sistem → Server.</li>
+    <li>Chatbot: Kamu tanya → Bot menjawab.</li>
+  </ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti <code>Alice</code> dan <code>Bob</code> dengan nama favorit, dan ubah kalimat menjadi percakapan harian.</li>
+    <li>Latihan 2: Tambahkan baris <code>participant</code> dulu, lalu ubah jadi “tanya dulu, jawab kemudian”.</li>
+    <li>Latihan 3: Pecah pesan menjadi dua baris: pertanyaan lalu jawaban, dan pendekkan satu baris.</li>
+    <li>Latihan 4: Tukar siapa yang bicara dulu dan ubah teksnya.</li>
+    <li>Latihan 5: Tambahkan orang ketiga dan ganti nama seseorang.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Mulai dengan <code>@startuml</code> dan akhiri dengan <code>@enduml</code>.</li>
+    <li>Peserta dapat dideklarasikan dengan <code>participant</code> atau dipakai langsung.</li>
+    <li><code>A -> B</code> adalah panggilan, <code>A --> B</code> adalah balasan.</li>
+    <li>Teks ditulis setelah titik dua: <code>A -> B: Hello</code>.</li>
+    <li>Waktu mengalir dari atas ke bawah.</li>
+    <li>Semakin banyak pesan berarti percakapan lebih panjang.</li>
+    <li>Teks pesan opsional: <code>A -> B</code> tetap valid.</li>
+    <li>Nama yang memakai spasi harus dalam tanda kutip.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>Contoh ini menunjukkan “permintaan dan jawaban”, seperti tanya‑jawab.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul>
+    <li>Menunjukkan langkah permintaan dan jawaban dengan jelas.</li>
+  </ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li><code>A -> B</code> adalah permintaan.</li>
+    <li><code>B --> A</code> adalah jawaban.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul>
+    <li>Panggilan API: Frontend → Backend → Mengembalikan data.</li>
+  </ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah peran menjadi <code>Client</code> dan <code>Server</code>, dan ubah pesan menjadi “minta data / balas data”.</li>
+    <li>Latihan 2: Ubah permintaan menjadi “query” dan jawaban menjadi “query result”.</li>
+    <li>Latihan 3: Tambahkan satu permintaan dan jawaban lagi (empat baris) dan ubah teks kedua.</li>
+    <li>Latihan 4: Biarkan orang lain yang menjawab dan sesuaikan teksnya.</li>
+    <li>Latihan 5: Tambahkan self‑message “persiapan” sebelum permintaan.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li><code>-></code> mengirim pesan.</li>
+    <li><code>--></code> sering menunjukkan balasan.</li>
+    <li>Tambahkan teks untuk menjelaskan isi balasan.</li>
+    <li>Permintaan dan jawaban sering berpasangan, tetapi tidak wajib.</li>
+    <li>Deklarasikan peserta dulu jika ingin jelas.</li>
+    <li>Waktu mengalir dari atas ke bawah.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>Ini adalah “bicara dengan diri sendiri”, menunjukkan langkah internal.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul>
+    <li>Menunjukkan objek yang bekerja di dalam.</li>
+  </ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul>
+    <li>Langkah algoritma, perhitungan internal.</li>
+  </ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti <code>Alice</code> dengan namamu (mis. <code>Me</code>) dan ubah teks pesan.</li>
+    <li>Latihan 2: Ubah aksi menjadi “baca data” dan tambahkan <code>Me -> Me: cek lagi</code>.</li>
+    <li>Latihan 3: Ubah pesan menjadi “pikirkan” dan tambahkan <code>Me -> Me: tulis poin kunci</code>.</li>
+    <li>Latihan 4: Ganti nama menjadi <code>Robot</code> dan tambahkan <code>Robot -> Robot: isi ulang</code>.</li>
+    <li>Latihan 5: Tambahkan <code>Me -> Me: start</code> di awal dan <code>Me -> Me: done</code> di akhir.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Dua ujung panah bisa peserta yang sama.</li>
+    <li>Format dasar: <code>Role -> Role: Text</code>.</li>
+    <li>Nama boleh dipakai tanpa deklarasi.</li>
+    <li>Teks setelah titik dua bersifat opsional.</li>
+    <li>Lebih banyak self‑message menunjukkan lebih banyak langkah internal.</li>
+    <li>Dapat dipakai bersama <code>activate</code> / <code>deactivate</code>.</li>
+    <li>Waktu mengalir dari atas ke bawah.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>Contoh ini menunjukkan ikon berbeda untuk peran berbeda, seperti orang, sistem, basis data.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Ikon membantu mengenali peran lebih cepat.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Alur login: User → Web → Logic → Database.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah <code>User</code> menjadi <code>Student</code> dan ubah pesannya.</li>
+    <li>Latihan 2: Tambahkan <code>boundary App</code> dan arahkan panah ke App dulu.</li>
+    <li>Latihan 3: Ubah <code>database DB</code> menjadi <code>database Books</code> dan ubah pesannya.</li>
+    <li>Latihan 4: Tambahkan peran <code>control</code> dan satu baris interaksi.</li>
+    <li>Latihan 5: Atur ulang peserta dan sesuaikan pesan.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Tipe peran mengubah tampilan, bukan nama.</li>
+    <li>Gunakan <code>-></code> untuk interaksi.</li>
+    <li>Format deklarasi: <code>actor/boundary/control/database/entity Name</code>.</li>
+    <li>Deklarasikan peran dulu, lalu gunakan nama.</li>
+    <li>Nama yang tidak dideklarasikan adalah peserta biasa.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>Contoh ini menunjukkan warna dan gaya agar diagram lebih jelas.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menyorot peran penting dengan warna.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>skinparam</code> untuk mengatur gaya.</li>
+    <li>Tambahkan warna setelah peran: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Menunjukkan “sistem pusat” dengan warna cerah.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah nama <code>Alice</code> dan ganti warnanya.</li>
+    <li>Latihan 2: Ubah pesan menjadi “start” dan gelapkan peran lain.</li>
+    <li>Latihan 3: Tambah peran ketiga dengan warna berbeda.</li>
+    <li>Latihan 4: Ubah <code>skinparam sequenceMessageAlign</code> dan sesuaikan satu baris.</li>
+    <li>Latihan 5: Gunakan nama gaya (mis. <code>#technology</code>) dan ubah pesan.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> mengatur perataan, font, warna, dll.</li>
+    <li>Peran bisa diberi warna atau nama gaya.</li>
+    <li>Warna bisa nama atau hex, mis. <code>#AliceBlue</code>.</li>
+    <li>Jika peran dideklarasikan ulang, yang terakhir berlaku.</li>
+    <li>Pengaturan gaya tidak mengubah sintaks pesan.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>Menunjukkan “jika… jika tidak…”, seperti pilihan.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan cabang berbeda untuk kondisi berbeda.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>alt</code> untuk mulai, <code>else</code> untuk cabang lain, <code>end</code> untuk selesai.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Pembayaran berhasil atau gagal.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah kondisi menjadi “punya uang / tidak punya uang” dan ubah pesannya.</li>
+    <li>Latihan 2: Tambahkan cabang <code>else</code> ketiga dan satu pesan.</li>
+    <li>Latihan 3: Ganti judul <code>alt</code> dengan skenario kamu.</li>
+    <li>Latihan 4: Tambahkan satu baris di tiap cabang dan ganti judul.</li>
+    <li>Latihan 5: Buat cabang “coba lagi setelah error”.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> memulai satu cabang.</li>
+    <li>Bisa ada banyak cabang <code>else</code>.</li>
+    <li>Tutup dengan <code>end</code>.</li>
+    <li>Setiap cabang bisa berisi beberapa pesan.</li>
+    <li>Teks kondisi opsional tetapi dianjurkan.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>Menunjukkan aksi yang berulang.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan langkah berulang.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>loop</code> dan <code>end</code> untuk membungkus baris berulang.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Mengecek status setiap detik.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah label loop menjadi “setiap 3 kali” dan ubah pesannya.</li>
+    <li>Latihan 2: Tambah pesan lain di dalam loop dan pendekkan yang asli.</li>
+    <li>Latihan 3: Ubah nama peran dan jadikan pesannya “cek”.</li>
+    <li>Latihan 4: Ubah label loop menjadi kondisi seperti “hingga selesai”.</li>
+    <li>Latihan 5: Tambahkan pesan mulai/akhir di luar loop.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> bisa di baris yang sama.</li>
+    <li><code>end</code> mengakhiri blok loop.</li>
+    <li>Beberapa pesan bisa berada di dalam loop.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>Menunjukkan dua hal yang terjadi bersamaan.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan tugas paralel.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>par</code> untuk mulai, <code>else</code> untuk cabang paralel lain, <code>end</code> untuk selesai.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Memberi tahu dua layanan sekaligus.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah cabang menjadi “kirim email” dan “kirim SMS”, dan ubah perannya.</li>
+    <li>Latihan 2: Ubah peran dan tambah satu baris di tiap cabang.</li>
+    <li>Latihan 3: Tambahkan cabang ketiga (<code>else</code>) dan satu pesan.</li>
+    <li>Latihan 4: Ubah satu cabang jadi “lakukan pelan” dan tambahkan pesan akhir.</li>
+    <li>Latihan 5: Tambahkan “mulai kerja” sebelum <code>par</code> dan “selesai” setelah <code>end</code>.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li><code>par</code> membuat blok paralel.</li>
+    <li>Setiap cabang memiliki urutan pesan sendiri.</li>
+    <li><code>else</code> berpindah ke cabang paralel lain.</li>
+    <li>Tutup dengan <code>end</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>Contoh ini memakai batang aktivasi untuk menunjukkan kapan sebuah peran sibuk.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan siapa bekerja dan berapa lama.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>activate Role</code> untuk mulai.</li>
+    <li>Gunakan <code>deactivate Role</code> untuk selesai.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Menunjukkan server memproses permintaan.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah peran menjadi <code>Server</code> dan pesan menjadi “processing”.</li>
+    <li>Latihan 2: Tambah satu baris permintaan dan taruh <code>activate</code> setelahnya.</li>
+    <li>Latihan 3: Tambah pesan “halfway” dan ganti dengan teksmu.</li>
+    <li>Latihan 4: Tambah peran lain beserta aktivasi dan pesannya.</li>
+    <li>Latihan 5: Geser awal/akhir aktivasi satu baris ke bawah.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>activate/deactivate dapat muncul sebelum atau sesudah pesan.</li>
+    <li><code>activate</code> dan <code>deactivate</code> harus berpasangan.</li>
+    <li>Pesan dapat dikirim ketika peran aktif.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>Contoh ini menunjukkan cara menambahkan catatan tempel.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menambahkan penjelasan agar jelas.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>note left</code> atau <code>note right</code>.</li>
+    <li>Tutup catatan dengan <code>end note</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Ingatkan “langkah ini bisa gagal”.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah teks catatan menjadi pengingatmu.</li>
+    <li>Latihan 2: Pindahkan catatan ke kanan dan ubah teksnya.</li>
+    <li>Latihan 3: Tambahkan catatan kedua di dekat peran lain.</li>
+    <li>Latihan 4: Buat catatan dua baris.</li>
+    <li>Latihan 5: Pindahkan catatan setelah pesan lain.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Catatan bisa <code>left</code>, <code>right</code>, atau <code>over</code>.</li>
+    <li>Catatan multi-baris menggunakan <code>note</code> dan <code>end note</code>.</li>
+    <li>Catatan tidak mengubah alur pesan.</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>Diagram use case adalah daftar “apa yang bisa dilakukan sistem”.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Mencatat fungsi yang dibutuhkan pengguna secara jelas.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>actor</code> untuk pengguna.</li>
+    <li>Gunakan <code>(UseCase)</code> untuk sebuah fungsi.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Login, mencari, pembayaran, dll.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah pengguna menjadi <code>Teacher</code> dan use case menjadi “create quiz”.</li>
+    <li>Latihan 2: Tambahkan use case kedua.</li>
+    <li>Latihan 3: Ganti nama use case dan aktor.</li>
+    <li>Latihan 4: Tambahkan aktor kedua dan hubungkan ke use case.</li>
+    <li>Latihan 5: Gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Use case ditulis dalam tanda kurung: <code>(Login)</code>.</li>
+    <li>Aktor adalah gambar orang: <code>actor User</code>.</li>
+    <li>Hubungkan aktor ke use case dengan garis.</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>Menunjukkan hubungan include/extend antar use case.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menandai langkah yang dibagi atau opsional.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li><code><<include>></code> berarti “selalu disertakan”.</li>
+    <li><code><<extend>></code> berarti “opsional”.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Login selalu menyertakan validasi; pembayaran bisa memperluas diskon.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah use case dengan contohmu.</li>
+    <li>Latihan 2: Tukar include dan extend.</li>
+    <li>Latihan 3: Tambah use case lain dan include-kan.</li>
+    <li>Latihan 4: Balik arah panah dan perbarui teks.</li>
+    <li>Latihan 5: Ubah teks relasi dengan kata-katamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Sintaks include: <code>(A) .> (B) : <<include>></code>.</li>
+    <li>Sintaks extend: <code>(A) .> (B) : <<extend>></code>.</li>
+    <li>Gunakan panah garis putus-putus.</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>Diagram kelas menjelaskan atribut dan metode.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Mengatur struktur data.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Definisikan kelas dengan <code>class</code>.</li>
+    <li>Letakkan atribut dan metode di dalam kurung kurawal.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Merancang model data program.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah nama kelas (mis. <code>Book</code>).</li>
+    <li>Latihan 2: Tambahkan satu atribut atau metode.</li>
+    <li>Latihan 3: Pendekkan nama field atau terjemahkan.</li>
+    <li>Latihan 4: Tambah kelas kedua dan dua atribut.</li>
+    <li>Latihan 5: Ubah satu metode menjadi tindakanmu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Format kelas: <code>class Name { ... }</code>.</li>
+    <li>Atribut adalah field, metode memakai <code>()</code>.</li>
+    <li>Kelas kosong diperbolehkan.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>Contoh ini menambahkan metode dan tipe hasil.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menjelaskan apa yang bisa dilakukan kelas.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Metode ditulis seperti <code>name(): type</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Menjelaskan API atau logika bisnis.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Tambahkan metode dengan tipe hasil.</li>
+    <li>Latihan 2: Ubah nama metode menjadi tindakanmu.</li>
+    <li>Latihan 3: Ubah tipe hasil menjadi <code>bool</code> atau <code>string</code>.</li>
+    <li>Latihan 4: Tambah metode lain dan buat satu private.</li>
+    <li>Latihan 5: Gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Metode bisa memiliki parameter: <code>name(param): type</code>.</li>
+    <li>Tipe hasil ditulis setelah titik dua.</li>
+    <li>Metode bisa memiliki simbol visibilitas.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>Menunjukkan akses public, private, dan protected.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Memisahkan yang bisa diakses dari luar dan detail internal.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li><code>+</code> public, <code>-</code> private, <code>#</code> protected.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Menyembunyikan detail internal.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Jadikan satu field private.</li>
+    <li>Latihan 2: Tambah field protected.</li>
+    <li>Latihan 3: Jadikan satu metode public.</li>
+    <li>Latihan 4: Tambah metode private.</li>
+    <li>Latihan 5: Ubah nama dengan contohmu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Simbol visibilitas diletakkan sebelum field/metode.</li>
+    <li>Simbol umum: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>Menunjukkan penanda abstract dan static.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Membedakan “harus diimplementasi” dan “alat bersama”.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Abstract: miring atau <code>{abstract}</code>.</li>
+    <li>Static: <code>{static}</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Kelas dasar dan metode utilitas.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Jadikan satu metode static.</li>
+    <li>Latihan 2: Ganti nama kelas dengan contohmu.</li>
+    <li>Latihan 3: Tambahkan metode abstract.</li>
+    <li>Latihan 4: Gunakan penanda abstract yang lain.</li>
+    <li>Latihan 5: Gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> menandakan kelas atau metode abstract.</li>
+    <li><code>{static}</code> menandakan metode static.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>Contoh ini menunjukkan pewarisan.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan kelas induk dan anak.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>--|></code> untuk pewarisan.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Klasifikasi hewan.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti nama kelas dengan contohmu.</li>
+    <li>Latihan 2: Tambah garis pewarisan kedua.</li>
+    <li>Latihan 3: Ganti nama kelas induk.</li>
+    <li>Latihan 4: Tambah kelas anak baru.</li>
+    <li>Latihan 5: Gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> berarti pewarisan.</li>
+    <li>Panah menunjuk ke induk.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>Contoh ini menunjukkan komposisi (kepemilikan kuat).</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan bagian yang harus hidup bersama keseluruhan.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>*--</code> untuk komposisi.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Sebuah rumah selalu memiliki kamar.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan contohmu.</li>
+    <li>Latihan 2: Ubah komposisi jadi agregasi dan bandingkan.</li>
+    <li>Latihan 3: Tambahkan garis komposisi kedua.</li>
+    <li>Latihan 4: Ubah teks label.</li>
+    <li>Latihan 5: Tukar arah dan amati.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> berarti komposisi.</li>
+    <li>Berlian terisi berada di sisi pemilik.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>Contoh ini menunjukkan agregasi (kepemilikan lemah).</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan bagian yang bisa hidup mandiri.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>o--</code> untuk agregasi.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Sebuah kelas dan para siswanya.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan contohmu.</li>
+    <li>Latihan 2: Ubah agregasi menjadi komposisi dan bandingkan.</li>
+    <li>Latihan 3: Tambah garis agregasi kedua.</li>
+    <li>Latihan 4: Ganti dengan skenario lain.</li>
+    <li>Latihan 5: Tukar arah dan tambahkan deskripsi.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> berarti agregasi.</li>
+    <li>Berlian kosong berada di sisi pemilik.</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>Diagram objek menunjukkan “instance kelas”.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menampilkan data pada saat tertentu.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>object</code> untuk mendefinisikan instance.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Menampilkan nilai field dari sebuah objek.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti nama objek dengan contohmu.</li>
+    <li>Latihan 2: Tambahkan objek lain.</li>
+    <li>Latihan 3: Ubah field dengan data milikmu.</li>
+    <li>Latihan 4: Hubungkan dua objek.</li>
+    <li>Latihan 5: Gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Format objek: <code>object name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>Diagram aktivitas menunjukkan langkah-langkah proses.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menjelaskan workflow.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>start</code> dan <code>stop</code>.</li>
+    <li>Aksi ditulis sebagai <code>:action;</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Alur aplikasi, pemrosesan pesanan.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah aksi dengan workflow kamu.</li>
+    <li>Latihan 2: Tambahkan satu aksi.</li>
+    <li>Latihan 3: Pindahkan start/stop.</li>
+    <li>Latihan 4: Tambahkan keputusan.</li>
+    <li>Latihan 5: Gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Alur berjalan dari atas ke bawah.</li>
+    <li>Aksi ditulis sebagai <code>: ... ;</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>Menunjukkan cabang keputusan.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan jalur berbeda dengan jelas.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Pemeriksaan formulir, pembayaran berhasil/gagal.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah kondisi dengan kondisimu.</li>
+    <li>Latihan 2: Tambahkan cabang else kedua.</li>
+    <li>Latihan 3: Ubah teks aksi.</li>
+    <li>Latihan 4: Ubah teks if dengan skenariomu.</li>
+    <li>Latihan 5: Buat prosesmu sendiri.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> memulai cabang.</li>
+    <li><code>else</code> berpindah cabang.</li>
+    <li><code>endif</code> menutup blok.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>Menunjukkan aksi berulang.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menjelaskan loop.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>while</code> dan <code>endwhile</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Mengulang pengecekan status.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah kondisi dengan kondisimu.</li>
+    <li>Latihan 2: Tambahkan aksi di dalam loop.</li>
+    <li>Latihan 3: Gunakan skenario lain.</li>
+    <li>Latihan 4: Ubah while menjadi until (secara konsep).</li>
+    <li>Latihan 5: Tambahkan aksi awal/akhir.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> memulai loop.</li>
+    <li><code>endwhile</code> mengakhiri loop.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>Swimlane mengelompokkan langkah berdasarkan tanggung jawab.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan siapa bertanggung jawab atas setiap langkah.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>|Role|</code> untuk berpindah lajur.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Workflow antar tim.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Tambahkan peran swimlane baru.</li>
+    <li>Latihan 2: Pindahkan aksi ke lajur lain.</li>
+    <li>Latihan 3: Ubah nama lajur dengan peranmu.</li>
+    <li>Latihan 4: Tambahkan aksi lain.</li>
+    <li>Latihan 5: Gunakan prosesmu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Gunakan <code>|Name|</code> untuk ganti lajur.</li>
+    <li>Aksi berada pada lajur saat ini.</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>Diagram komponen menjelaskan modul.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan struktur modul.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Definisikan komponen dengan <code>component</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Lapisan arsitektur sistem.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Tambahkan komponen.</li>
+    <li>Latihan 2: Ubah nama komponen.</li>
+    <li>Latihan 3: Tambahkan koneksi.</li>
+    <li>Latihan 4: Gunakan skenario kamu.</li>
+    <li>Latihan 5: Urutkan ulang komponen.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Komponen menggunakan <code>component</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>Mengelompokkan komponen ke dalam paket.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Mengorganisasi sistem besar.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>package</code> untuk membungkus komponen.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Mengelompokkan berdasarkan fungsi.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Tambahkan paket.</li>
+    <li>Latihan 2: Pindahkan komponen ke paket lain.</li>
+    <li>Latihan 3: Ubah nama paket.</li>
+    <li>Latihan 4: Tambahkan komponen.</li>
+    <li>Latihan 5: Gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Format paket: <code>package Name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>Diagram deployment menunjukkan server dan node.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menjelaskan deployment sistem.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>node</code> untuk mendefinisikan node.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Arsitektur deployment cloud.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Tambahkan node.</li>
+    <li>Latihan 2: Ubah nama node.</li>
+    <li>Latihan 3: Tambahkan koneksi.</li>
+    <li>Latihan 4: Gunakan skenario kamu.</li>
+    <li>Latihan 5: Ubah node menjadi perangkatmu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Node menggunakan <code>node</code>.</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>Diagram state menunjukkan transisi antar status.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menjelaskan perubahan status.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>state</code> untuk mendefinisikan status.</li>
+    <li>Hubungkan status dengan panah.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Alur status pesanan.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Gunakan nama statusmu sendiri.</li>
+    <li>Latihan 2: Tambahkan status lain.</li>
+    <li>Latihan 3: Tambahkan transisi lain.</li>
+    <li>Latihan 4: Gunakan prosesmu.</li>
+    <li>Latihan 5: Ubah nama status.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Status menggunakan <code>state</code>.</li>
+    <li>Transisi menggunakan <code>--> </code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>Status komposit berisi sub‑status.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Mengorganisasi status kompleks.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>state Name { ... }</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Workflow kompleks.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Tambahkan sub‑status.</li>
+    <li>Latihan 2: Gunakan skenario kamu.</li>
+    <li>Latihan 3: Tambahkan transisi.</li>
+    <li>Latihan 4: Ubah nama status komposit.</li>
+    <li>Latihan 5: Gunakan prosesmu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Status komposit menggunakan kurung kurawal.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>Kondisi guard membuat transisi lebih jelas.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan kondisi transisi.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>[condition]</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Kondisi transisi status.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Gunakan kondisimu sendiri.</li>
+    <li>Latihan 2: Tambahkan kondisi guard lain.</li>
+    <li>Latihan 3: Gunakan prosesmu.</li>
+    <li>Latihan 4: Ubah teks transisi.</li>
+    <li>Latihan 5: Gunakan contohmu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Kondisi guard ditulis dalam tanda kurung siku.</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>Diagram timing menunjukkan perubahan sinyal.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menjelaskan sinyal terhadap waktu.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan pengaturan <code>concise</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Perubahan sinyal hardware.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah dengan sinyalmu.</li>
+    <li>Latihan 2: Tambahkan baris sinyal lain.</li>
+    <li>Latihan 3: Ubah nama sinyal.</li>
+    <li>Latihan 4: Gunakan contohmu.</li>
+    <li>Latihan 5: Gunakan skenariomu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Diagram timing dapat memakai <code>concise</code>.</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>Diagram JSON menunjukkan struktur data.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Membuat struktur JSON lebih mudah dibaca.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startjson</code> dan <code>@endjson</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Format respons API.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan JSON kamu.</li>
+    <li>Latihan 2: Tambahkan field.</li>
+    <li>Latihan 3: Ubah nilai data.</li>
+    <li>Latihan 4: Gunakan skenario kamu.</li>
+    <li>Latihan 5: Gunakan data kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>JSON dibungkus dengan <code>@startjson</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>Diagram YAML menunjukkan struktur data.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Membuat struktur YAML lebih mudah dibaca.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startyaml</code> dan <code>@endyaml</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>File konfigurasi.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan YAML kamu.</li>
+    <li>Latihan 2: Tambahkan field.</li>
+    <li>Latihan 3: Ubah isi data.</li>
+    <li>Latihan 4: Gunakan skenario kamu.</li>
+    <li>Latihan 5: Gunakan data kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>YAML dibungkus dengan <code>@startyaml</code>.</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>Diagram EBNF menunjukkan aturan tata bahasa.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan struktur tata bahasa dengan jelas.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startebnf</code> dan <code>@endebnf</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Menjelaskan tata bahasa pemrograman.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan tata bahasa kamu.</li>
+    <li>Latihan 2: Tambahkan aturan lain.</li>
+    <li>Latihan 3: Gunakan contohmu.</li>
+    <li>Latihan 4: Ubah simbol.</li>
+    <li>Latihan 5: Gunakan tata bahasa kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>EBNF menggunakan <code>@startebnf</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Diagram regex menunjukkan ekspresi reguler.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menjelaskan pola regex.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startregex</code> dan <code>@endregex</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Dokumentasi regex.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan regex kamu.</li>
+    <li>Latihan 2: Tambahkan aturan lain.</li>
+    <li>Latihan 3: Gunakan contohmu.</li>
+    <li>Latihan 4: Ubah isinya.</li>
+    <li>Latihan 5: Gunakan tata bahasa kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Regex menggunakan <code>@startregex</code>.</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>Diagram topologi jaringan sederhana.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan koneksi jaringan.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startnwdiag</code> dan <code>@endnwdiag</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Router dan switch.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan perangkatmu.</li>
+    <li>Latihan 2: Tambahkan perangkat.</li>
+    <li>Latihan 3: Ubah koneksi.</li>
+    <li>Latihan 4: Gunakan skenario kamu.</li>
+    <li>Latihan 5: Gunakan contohmu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>nwdiag menggunakan <code>@startnwdiag</code>.</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>Diagram wireframe antarmuka.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Sketsa layar dengan cepat.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startsalt</code> dan <code>@endsalt</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Prototipe layar.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan layar kamu.</li>
+    <li>Latihan 2: Tambahkan tombol.</li>
+    <li>Latihan 3: Ubah teks.</li>
+    <li>Latihan 4: Ubah layout.</li>
+    <li>Latihan 5: Gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Salt menggunakan <code>@startsalt</code>.</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>Diagram arsitektur enterprise.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menjelaskan arsitektur perusahaan.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startarchimate</code> dan <code>@endarchimate</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Arsitektur sistem perusahaan.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan arsitekturmu.</li>
+    <li>Latihan 2: Tambahkan komponen.</li>
+    <li>Latihan 3: Gunakan skenario kamu.</li>
+    <li>Latihan 4: Ubah nama elemen.</li>
+    <li>Latihan 5: Gunakan contohmu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Archimate menggunakan <code>@startarchimate</code>.</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>Diagram alur proses SDL.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menjelaskan proses.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startsdl</code> dan <code>@endsdl</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Alur komunikasi.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan prosesmu.</li>
+    <li>Latihan 2: Tambahkan langkah.</li>
+    <li>Latihan 3: Ubah nama elemen.</li>
+    <li>Latihan 4: Gunakan skenario kamu.</li>
+    <li>Latihan 5: Gunakan contohmu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>SDL menggunakan <code>@startsdl</code>.</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>Diagram Ditaa dengan seni ASCII.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menggambar menggunakan teks.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startditaa</code> dan <code>@endditaa</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Sketsa cepat.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan ASCII art kamu.</li>
+    <li>Latihan 2: Tambahkan blok lain.</li>
+    <li>Latihan 3: Ubah huruf.</li>
+    <li>Latihan 4: Gunakan skenario kamu.</li>
+    <li>Latihan 5: Gunakan contohmu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Ditaa menggunakan <code>@startditaa</code>.</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>Grafik Gantt menunjukkan jadwal proyek.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Merencanakan timeline proyek.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startgantt</code> dan <code>@endgantt</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Kalender proyek.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan rencana kamu.</li>
+    <li>Latihan 2: Tambahkan tugas.</li>
+    <li>Latihan 3: Gunakan contohmu.</li>
+    <li>Latihan 4: Ubah tanggal.</li>
+    <li>Latihan 5: Gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Gantt menggunakan <code>@startgantt</code>.</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>Garis waktu kejadian.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Mengurutkan kejadian dalam waktu.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startchronology</code> dan <code>@endchronology</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Sejarah peristiwa.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ganti dengan kejadianmu.</li>
+    <li>Latihan 2: Tambahkan kejadian lain.</li>
+    <li>Latihan 3: Gunakan contohmu.</li>
+    <li>Latihan 4: Ubah tanggal.</li>
+    <li>Latihan 5: Gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Chronology menggunakan <code>@startchronology</code>.</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>Mind map menunjukkan hirarki ide.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Mengorganisasi ide.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startmindmap</code> dan <code>@endmindmap</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Brainstorming.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Gunakan tema kamu.</li>
+    <li>Latihan 2: Tambahkan cabang.</li>
+    <li>Latihan 3: Gunakan contohmu.</li>
+    <li>Latihan 4: Ubah teks.</li>
+    <li>Latihan 5: Gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>MindMap menggunakan <code>@startmindmap</code>.</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>Diagram Work Breakdown Structure.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Membagi pekerjaan menjadi bagian kecil.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startwbs</code> dan <code>@endwbs</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Pemecahan tugas proyek.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Gunakan tugas kamu.</li>
+    <li>Latihan 2: Tambahkan sub‑tugas.</li>
+    <li>Latihan 3: Gunakan contohmu.</li>
+    <li>Latihan 4: Ubah teks.</li>
+    <li>Latihan 5: Gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>WBS menggunakan <code>@startwbs</code>.</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>Gunakan AsciiMath untuk rumus.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menulis rumus dengan cepat.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>@startmath</code> dan <code>@endmath</code>.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Menampilkan rumus.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Gunakan rumusmu.</li>
+    <li>Latihan 2: Tambahkan rumus lain.</li>
+    <li>Latihan 3: Gunakan contohmu.</li>
+    <li>Latihan 4: Gunakan skenario kamu.</li>
+    <li>Latihan 5: Ubah simbol.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Simbol AsciiMath umum didukung.</li>
+    <li>Bungkus dengan <code>@startmath</code> dan <code>@endmath</code>.</li>
+    <li><code>^</code> berarti pangkat, <code>/</code> berarti pembagian.</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>Diagram ER menjelaskan tabel basis data.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Merancang struktur basis data.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol>
+    <li>Gunakan <code>entity</code> untuk mendefinisikan tabel.</li>
+    <li>Gunakan <code>*</code> untuk menandai kunci utama.</li>
+  </ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Perancangan tabel pengguna.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah nama tabel menjadi <code>Book</code> dan field menjadi <code>title</code>, <code>author</code>.</li>
+    <li>Latihan 2: Tambahkan field dan ubah satu tipe menjadi <code>int</code>.</li>
+    <li>Latihan 3: Ubah field kunci utama dan tipe datanya.</li>
+    <li>Latihan 4: Tambahkan tabel kedua dengan dua field.</li>
+    <li>Latihan 5: Tambahkan garis pemisah dan urutkan field.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li>Garis pemisah <code>--</code> membagi bagian.</li>
+    <li><code>*</code> menandai field kunci utama.</li>
+    <li>Format field: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>Contoh ini menunjukkan relasi antar tabel.</p>
+  <h3>Mengapa digunakan</h3>
+  <ul><li>Menunjukkan satu‑ke‑banyak atau banyak‑ke‑banyak.</li></ul>
+  <h3>Cara menggunakan</h3>
+  <ol><li><code>User ||--o{ Post</code> berarti satu‑ke‑banyak.</li></ol>
+  <h3>Contoh penggunaan</h3>
+  <ul><li>Satu pengguna memiliki banyak post.</li></ul>
+  <h3>Latihan (mudah untuk anak-anak)</h3>
+  <ol>
+    <li>Latihan 1: Ubah <code>User</code> menjadi <code>Student</code> dan <code>Post</code> menjadi <code>Homework</code>, lalu perbarui label.</li>
+    <li>Latihan 2: Ubah satu‑ke‑banyak menjadi satu‑ke‑satu dan perbarui deskripsi.</li>
+    <li>Latihan 3: Tambahkan relasi kedua dan ubah nama tabel.</li>
+    <li>Latihan 4: Balik arah dan sesuaikan nama.</li>
+    <li>Latihan 5: Tetap “satu‑ke‑banyak” dan gunakan skenario kamu.</li>
+  </ol>
+  <h3>Aturan sintaks PlantUML (daftar lengkap)</h3>
+  <ul class="rules">
+    <li><code>||</code> dan <code>o{</code> menunjukkan kardinalitas.</li>
+    <li><code>||--o{</code> biasanya berarti satu‑ke‑banyak.</li>
+    <li>Garis menghubungkan dua tabel.</li>
+  </ul>
+</div>
