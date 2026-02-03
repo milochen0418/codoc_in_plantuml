@@ -1,0 +1,1363 @@
+<h1>예제 튜토리얼 (아이들도 쉬운)</h1>
+<p class="note">
+  이 튜토리얼은 각 예제가 무엇을 그리는지, 왜 유용한지,
+  어떻게 사용하는지, 흔한 사용 사례와 PlantUML 문법 규칙을
+  (완전하고 실용적인 목록으로) 쉽고 간단하게 설명합니다.
+</p>
+
+<h2>목차</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>이 예제는 “A가 B에게 메시지를 보낸다”를 보여 줍니다. 메모 전달과 비슷합니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul>
+    <li>대화의 순서를 간단히 보여 줍니다.</li>
+    <li>“누가 먼저 말하고, 누가 나중에 답하는지” 같은 이야기 설명에 좋습니다.</li>
+  </ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startuml</code>과 <code>@enduml</code>을 적습니다.</li>
+    <li><code>Alice -> Bob: Message</code>로 A가 B에게 말하는 것을 표현합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul>
+    <li>로그인 흐름: 사용자 → 시스템 → 서버.</li>
+    <li>챗봇: 내가 질문 → 봇이 답변.</li>
+  </ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: <code>Alice</code>와 <code>Bob</code>을 좋아하는 이름으로 바꾸고, 문장을 일상 대화로 바꿔 보세요.</li>
+    <li>연습 2: 먼저 <code>participant</code> 한 줄을 추가하고 “먼저 질문, 나중에 답변”으로 바꿔 보세요.</li>
+    <li>연습 3: 메시지를 두 줄로 나누세요: 질문 → 답변, 그리고 한 줄을 줄여 보세요.</li>
+    <li>연습 4: 먼저 말하는 사람을 바꾸고 텍스트를 수정하세요.</li>
+    <li>연습 5: 세 번째 사람을 추가하고 누군가의 이름을 바꿔 보세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>@startuml</code>로 시작하고 <code>@enduml</code>로 끝냅니다.</li>
+    <li>참여자는 <code>participant</code>로 선언하거나 바로 사용할 수 있습니다.</li>
+    <li><code>A -> B</code>는 호출, <code>A --> B</code>는 응답입니다.</li>
+    <li>텍스트는 콜론 뒤에 씁니다: <code>A -> B: Hello</code>.</li>
+    <li>시간은 위에서 아래로 흐릅니다.</li>
+    <li>메시지가 많을수록 대화가 길어집니다.</li>
+    <li>메시지 텍스트는 선택 사항입니다: <code>A -> B</code>도 유효합니다.</li>
+    <li>공백이 있는 이름은 따옴표로 감쌉니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>이 예제는 “요청과 응답”을 보여 줍니다. 질문과 답변처럼요.</p>
+  <h3>왜 사용하나요</h3>
+  <ul>
+    <li>요청과 응답의 단계를 분명히 보여 줍니다.</li>
+  </ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>A -> B</code>는 요청입니다.</li>
+    <li><code>B --> A</code>는 응답입니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul>
+    <li>API 호출: 프론트엔드 → 백엔드 → 데이터 반환.</li>
+  </ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 역할을 <code>Client</code>와 <code>Server</code>로 바꾸고 메시지를 “데이터 요청 / 데이터 반환”으로 바꿔 보세요.</li>
+    <li>연습 2: 요청을 “query”, 응답을 “query result”로 바꿔 보세요.</li>
+    <li>연습 3: 요청‑응답을 한 쌍 더 추가(4줄)하고 두 번째 텍스트를 바꿔 보세요.</li>
+    <li>연습 4: 다른 사람이 응답하도록 하고 텍스트를 조정하세요.</li>
+    <li>연습 5: 요청 전에 “준비” self‑message를 추가하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>-></code>는 메시지 전송입니다.</li>
+    <li><code>--></code>는 보통 응답을 뜻합니다.</li>
+    <li>응답의 내용을 설명하는 텍스트를 추가하세요.</li>
+    <li>요청과 응답은 종종 쌍이지만 꼭 그래야 하는 것은 아닙니다.</li>
+    <li>명확성을 위해 먼저 참여자를 선언해도 됩니다.</li>
+    <li>시간은 위에서 아래로 흐릅니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>“혼잣말”처럼 내부 단계를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul>
+    <li>객체가 내부적으로 작업하는 모습을 보여 줍니다.</li>
+  </ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul>
+    <li>알고리즘 단계, 내부 계산.</li>
+  </ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: <code>Alice</code>를 내 이름(예: <code>Me</code>)으로 바꾸고 메시지를 바꾸세요.</li>
+    <li>연습 2: 행동을 “데이터 읽기”로 바꾸고 <code>Me -> Me: 다시 확인</code>을 추가하세요.</li>
+    <li>연습 3: 메시지를 “생각하기”로 바꾸고 <code>Me -> Me: 핵심 메모</code>를 추가하세요.</li>
+    <li>연습 4: 이름을 <code>Robot</code>으로 바꾸고 <code>Robot -> Robot: 충전</code>을 추가하세요.</li>
+    <li>연습 5: 처음에 <code>Me -> Me: start</code>, 끝에 <code>Me -> Me: done</code>을 추가하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>화살표의 양끝이 같은 참여자일 수 있습니다.</li>
+    <li>기본 형식: <code>Role -> Role: Text</code>.</li>
+    <li>이름은 선언 없이도 사용할 수 있습니다.</li>
+    <li>콜론 뒤의 텍스트는 선택 사항입니다.</li>
+    <li>여러 self‑message는 더 많은 내부 단계를 보여 줍니다.</li>
+    <li><code>activate</code> / <code>deactivate</code>와 함께 사용할 수 있습니다.</li>
+    <li>시간은 위에서 아래로 흐릅니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>이 예제는 사람, 시스템, 데이터베이스 등 역할에 따라 아이콘이 달라짐을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>아이콘으로 역할을 더 빠르게 구분할 수 있습니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>로그인 흐름: User → Web → Logic → Database.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: <code>User</code>를 <code>Student</code>로 바꾸고 메시지를 수정하세요.</li>
+    <li>연습 2: <code>boundary App</code>을 추가하고 화살표를 먼저 App으로 보내세요.</li>
+    <li>연습 3: <code>database DB</code>를 <code>database Books</code>로 바꾸고 메시지를 수정하세요.</li>
+    <li>연습 4: <code>control</code> 역할을 추가하고 한 줄의 상호작용을 넣으세요.</li>
+    <li>연습 5: 참여자 순서를 바꾸고 메시지를 조정하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>역할 타입은 모양만 바꾸고 이름은 바꾸지 않습니다.</li>
+    <li>상호작용에는 <code>-></code>를 사용합니다.</li>
+    <li>선언 형식: <code>actor/boundary/control/database/entity Name</code>.</li>
+    <li>먼저 역할을 선언한 뒤 이름을 사용하세요.</li>
+    <li>선언되지 않은 이름은 일반 참여자입니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>이 예제는 색상과 스타일로 다이어그램을 더 명확하게 만드는 방법을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>중요한 역할을 색으로 강조합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li>스타일을 조정하려면 <code>skinparam</code>을 사용합니다.</li>
+    <li>역할 뒤에 색을 붙입니다: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>“중앙 시스템”을 밝은 색으로 강조.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: <code>Alice</code> 이름을 바꾸고 색을 변경하세요.</li>
+    <li>연습 2: 메시지를 “start”로 바꾸고 다른 역할을 더 어둡게 하세요.</li>
+    <li>연습 3: 세 번째 역할을 추가하고 다른 색을 주세요.</li>
+    <li>연습 4: <code>skinparam sequenceMessageAlign</code>을 바꾸고 한 줄을 수정하세요.</li>
+    <li>연습 5: 스타일 이름(예: <code>#technology</code>)을 쓰고 메시지를 바꾸세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code>은 정렬, 글꼴, 색상 등을 제어합니다.</li>
+    <li>역할에 색 또는 스타일 이름을 줄 수 있습니다.</li>
+    <li>색상은 이름 또는 hex가 될 수 있습니다(예: <code>#AliceBlue</code>).</li>
+    <li>같은 역할을 다시 선언하면 마지막 선언이 적용됩니다.</li>
+    <li>스타일 설정은 메시지 문법을 바꾸지 않습니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>“만약… 아니면…” 같은 선택을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>조건에 따른 서로 다른 가지를 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>alt</code>로 시작, <code>else</code>로 다른 가지, <code>end</code>로 종료합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>결제 성공/실패.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 조건을 “돈 있음 / 돈 없음”으로 바꾸고 메시지를 수정하세요.</li>
+    <li>연습 2: 세 번째 <code>else</code> 가지와 메시지 하나를 추가하세요.</li>
+    <li>연습 3: <code>alt</code> 제목을 내 시나리오로 바꾸세요.</li>
+    <li>연습 4: 각 가지에 한 줄씩 더하고 제목을 바꾸세요.</li>
+    <li>연습 5: “오류 후 재시도” 가지를 추가하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code>이 가지를 시작합니다.</li>
+    <li>여러 <code>else</code> 가지가 있을 수 있습니다.</li>
+    <li><code>end</code>로 닫습니다.</li>
+    <li>각 가지에는 여러 메시지가 들어갈 수 있습니다.</li>
+    <li>조건 텍스트는 선택 사항이지만 권장됩니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>반복되는 행동을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>반복되는 단계를 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>loop</code>와 <code>end</code>로 반복 부분을 감쌉니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>매초 상태를 확인.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 루프 라벨을 “매 3번”으로 바꾸고 메시지를 수정하세요.</li>
+    <li>연습 2: 루프 안에 다른 메시지를 추가하고 원래 메시지를 줄이세요.</li>
+    <li>연습 3: 역할 이름을 바꾸고 메시지를 “확인”으로 바꾸세요.</li>
+    <li>연습 4: 루프 라벨을 “끝날 때까지” 같은 조건으로 바꾸세요.</li>
+    <li>연습 5: 루프 밖에 시작/종료 메시지를 추가하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code>은 같은 줄에 올 수 있습니다.</li>
+    <li><code>end</code>가 loop 블록을 끝냅니다.</li>
+    <li>루프 안에는 여러 메시지가 들어갈 수 있습니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>동시에 일어나는 두 일을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>병렬 작업을 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>par</code>로 시작, 다른 병렬 가지는 <code>else</code>, 종료는 <code>end</code>.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>두 서비스를 동시에 알림.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 가지를 “이메일 보내기”와 “SMS 보내기”로 바꾸고 역할 이름을 수정하세요.</li>
+    <li>연습 2: 역할을 바꾸고 각 가지에 한 줄씩 추가하세요.</li>
+    <li>연습 3: 세 번째 가지(<code>else</code>)와 메시지를 추가하세요.</li>
+    <li>연습 4: 한 가지를 “천천히 진행”으로 바꾸고 마지막 메시지를 추가하세요.</li>
+    <li>연습 5: <code>par</code> 앞에 “작업 시작”, <code>end</code> 뒤에 “완료”를 추가하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>par</code>는 병렬 블록을 만듭니다.</li>
+    <li>각 가지는 자신만의 메시지 흐름을 가질 수 있습니다.</li>
+    <li><code>else</code>는 다른 병렬 가지로 이동합니다.</li>
+    <li><code>end</code>로 닫습니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>이 예제는 역할이 바쁜 시간을 활성화 막대로 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>누가 얼마나 오래 일하는지 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>activate Role</code>로 시작합니다.</li>
+    <li><code>deactivate Role</code>로 끝냅니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>서버가 요청을 처리하는 시간 표시.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 역할을 <code>Server</code>로 바꾸고 메시지를 “processing”으로 변경.</li>
+    <li>연습 2: 요청 한 줄을 추가하고 <code>activate</code>를 바로 뒤에 둡니다.</li>
+    <li>연습 3: “halfway” 메시지를 추가한 뒤 내 텍스트로 바꿉니다.</li>
+    <li>연습 4: 다른 역할과 그 활성화, 메시지를 추가합니다.</li>
+    <li>연습 5: 활성화 시작/끝을 한 줄 아래로 옮기세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>activate/deactivate는 메시지 전후에 올 수 있습니다.</li>
+    <li><code>activate</code>와 <code>deactivate</code>는 쌍으로 사용합니다.</li>
+    <li>역할이 활성화된 동안 메시지를 보낼 수 있습니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>이 예제는 스티커 메모를 추가하는 방법을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>설명을 추가해 이해를 돕습니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>note left</code> 또는 <code>note right</code>를 사용합니다.</li>
+    <li><code>end note</code>로 닫습니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>“이 단계는 실패할 수 있음” 같은 메모.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 메모 내용을 내 메모로 바꿉니다.</li>
+    <li>연습 2: 메모를 오른쪽으로 옮기고 내용을 변경합니다.</li>
+    <li>연습 3: 다른 역할 옆에 두 번째 메모를 추가합니다.</li>
+    <li>연습 4: 메모를 두 줄로 작성합니다.</li>
+    <li>연습 5: 다른 메시지 뒤로 메모를 이동합니다.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>메모는 <code>left</code>, <code>right</code>, <code>over</code>가 될 수 있습니다.</li>
+    <li>여러 줄 메모는 <code>note</code>와 <code>end note</code>를 사용합니다.</li>
+    <li>메모는 메시지 흐름을 바꾸지 않습니다.</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>유스케이스 다이어그램은 “시스템이 할 수 있는 일”의 목록입니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>사용자 기능을 명확히 나열합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li>사용자는 <code>actor</code>로 나타냅니다.</li>
+    <li>기능은 <code>(UseCase)</code>로 나타냅니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>로그인, 검색, 결제 등.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 사용자를 <code>Teacher</code>로 바꾸고 유스케이스를 “create quiz”로 바꿉니다.</li>
+    <li>연습 2: 두 번째 유스케이스를 추가하세요.</li>
+    <li>연습 3: 유스케이스와 액터 이름을 바꾸세요.</li>
+    <li>연습 4: 두 번째 액터를 추가하고 유스케이스에 연결하세요.</li>
+    <li>연습 5: 내 시나리오로 바꿔 보세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>유스케이스는 괄호로 표시: <code>(Login)</code>.</li>
+    <li>액터는 사람 아이콘: <code>actor User</code>.</li>
+    <li>액터와 유스케이스를 선으로 연결합니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>유스케이스 간 include/extend 관계를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>공통 단계나 선택 단계를 표시합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code><<include>></code>는 “항상 포함”입니다.</li>
+    <li><code><<extend>></code>는 “선택”입니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>로그인은 항상 검증을 포함, 결제는 할인으로 확장 가능.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 유스케이스를 내 예로 바꿉니다.</li>
+    <li>연습 2: include와 extend를 바꿔 보세요.</li>
+    <li>연습 3: 다른 유스케이스를 추가하고 include로 연결하세요.</li>
+    <li>연습 4: 화살표 방향을 바꾸고 텍스트를 수정하세요.</li>
+    <li>연습 5: 관계 텍스트를 내 말로 바꿉니다.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>Include 문법: <code>(A) .> (B) : <<include>></code>.</li>
+    <li>Extend 문법: <code>(A) .> (B) : <<extend>></code>.</li>
+    <li>점선 화살표를 사용합니다.</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>클래스 다이어그램은 속성과 메서드를 설명합니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>데이터 구조를 정리합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>class</code>로 클래스를 정의합니다.</li>
+    <li>속성과 메서드를 중괄호 안에 넣습니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>프로그램의 데이터 모델 설계.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 클래스 이름을 바꿉니다(예: <code>Book</code>).</li>
+    <li>연습 2: 속성이나 메서드 하나를 추가하세요.</li>
+    <li>연습 3: 필드 이름을 줄이거나 번역하세요.</li>
+    <li>연습 4: 두 번째 클래스를 추가하고 속성 두 개를 넣으세요.</li>
+    <li>연습 5: 메서드를 내 행동으로 바꿉니다.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>클래스 형식: <code>class Name { ... }</code>.</li>
+    <li>속성은 필드, 메서드는 <code>()</code>를 사용합니다.</li>
+    <li>빈 클래스도 가능합니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>이 예제는 메서드와 반환 타입을 추가합니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>클래스가 할 수 있는 일을 설명합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li>메서드는 <code>name(): type</code> 형태로 씁니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>API 또는 비즈니스 로직 설명.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 반환 타입이 있는 메서드를 추가하세요.</li>
+    <li>연습 2: 메서드 이름을 내 행동으로 바꾸세요.</li>
+    <li>연습 3: 반환 타입을 <code>bool</code> 또는 <code>string</code>으로 바꾸세요.</li>
+    <li>연습 4: 다른 메서드를 추가하고 하나는 private으로 만드세요.</li>
+    <li>연습 5: 내 시나리오를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>메서드는 매개변수를 가질 수 있습니다: <code>name(param): type</code>.</li>
+    <li>반환 타입은 콜론 뒤에 씁니다.</li>
+    <li>메서드는 가시성 기호를 가질 수 있습니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>public, private, protected 접근을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>외부 접근과 내부 세부사항을 구분합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>+</code> public, <code>-</code> private, <code>#</code> protected.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>내부 세부사항을 숨김.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 필드 하나를 private으로 바꾸세요.</li>
+    <li>연습 2: protected 필드를 추가하세요.</li>
+    <li>연습 3: 메서드 하나를 public으로 바꾸세요.</li>
+    <li>연습 4: private 메서드를 추가하세요.</li>
+    <li>연습 5: 내 예로 이름을 바꿔 보세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>가시성 기호는 필드/메서드 앞에 둡니다.</li>
+    <li>보통 기호: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>abstract 및 static 표시를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>“구현 필요”와 “공용 도구”를 구분합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li>Abstract: 기울임꼴 또는 <code>{abstract}</code>.</li>
+    <li>Static: <code>{static}</code>.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>기본 클래스와 유틸리티 메서드.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 메서드 하나를 static으로 만드세요.</li>
+    <li>연습 2: 클래스 이름을 내 예로 바꾸세요.</li>
+    <li>연습 3: abstract 메서드를 추가하세요.</li>
+    <li>연습 4: 다른 abstract 표시 방식을 사용하세요.</li>
+    <li>연습 5: 내 시나리오를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code>는 abstract 클래스/메서드를 뜻합니다.</li>
+    <li><code>{static}</code>은 static 메서드를 뜻합니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>이 예제는 상속을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>부모/자식 클래스를 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>--|></code>로 상속을 표현합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>동물 분류.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 클래스 이름을 내 예로 바꾸세요.</li>
+    <li>연습 2: 상속 라인을 하나 더 추가하세요.</li>
+    <li>연습 3: 부모 클래스 이름을 바꾸세요.</li>
+    <li>연습 4: 새 자식 클래스를 추가하세요.</li>
+    <li>연습 5: 내 시나리오를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code>는 상속을 뜻합니다.</li>
+    <li>화살표는 부모를 가리킵니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>이 예제는 합성(강한 소유)을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>부분이 전체와 함께 존재해야 함을 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>*--</code>로 합성을 표현합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>집은 항상 방을 가짐.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 예로 이름을 바꾸세요.</li>
+    <li>연습 2: 합성을 집계로 바꿔 비교하세요.</li>
+    <li>연습 3: 두 번째 합성 라인을 추가하세요.</li>
+    <li>연습 4: 라벨 텍스트를 변경하세요.</li>
+    <li>연습 5: 방향을 바꾸고 관찰하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code>는 합성을 뜻합니다.</li>
+    <li>채워진 마름모는 소유자 쪽입니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>이 예제는 집계(약한 소유)를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>부분이 독립적으로 존재할 수 있음을 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>o--</code>로 집계를 표현합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>하나의 클래스와 그 학생들.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 예로 이름을 바꾸세요.</li>
+    <li>연습 2: 집계를 합성으로 바꾸고 비교하세요.</li>
+    <li>연습 3: 두 번째 집계 라인을 추가하세요.</li>
+    <li>연습 4: 다른 시나리오로 바꾸세요.</li>
+    <li>연습 5: 방향을 바꾸고 설명을 추가하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code>는 집계를 뜻합니다.</li>
+    <li>빈 마름모는 소유자 쪽입니다.</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>오브젝트 다이어그램은 “클래스 인스턴스”를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>특정 시점의 데이터를 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>object</code>로 인스턴스를 정의합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>객체 필드 값 표시.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 객체 이름을 내 예로 바꾸세요.</li>
+    <li>연습 2: 다른 객체를 추가하세요.</li>
+    <li>연습 3: 필드를 내 데이터로 바꾸세요.</li>
+    <li>연습 4: 두 객체를 연결하세요.</li>
+    <li>연습 5: 내 시나리오로 바꿔 보세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>객체 형식: <code>object name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>활동 다이어그램은 프로세스의 단계를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>워크플로를 설명합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>start</code>와 <code>stop</code>을 사용합니다.</li>
+    <li>액션은 <code>:action;</code>입니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>앱 흐름, 주문 처리.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 액션을 내 워크플로로 바꾸세요.</li>
+    <li>연습 2: 액션 하나를 추가하세요.</li>
+    <li>연습 3: start/stop 위치를 바꾸세요.</li>
+    <li>연습 4: 의사결정을 추가하세요.</li>
+    <li>연습 5: 내 시나리오를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>흐름은 위에서 아래로 진행됩니다.</li>
+    <li>액션은 <code>: ... ;</code> 형식으로 씁니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>결정 분기를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>다른 경로를 명확하게 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>폼 검증, 결제 성공/실패.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 조건을 내 조건으로 바꾸세요.</li>
+    <li>연습 2: 두 번째 else 가지를 추가하세요.</li>
+    <li>연습 3: 액션 텍스트를 바꾸세요.</li>
+    <li>연습 4: if 텍스트를 내 시나리오로 바꾸세요.</li>
+    <li>연습 5: 내 프로세스를 만들어 보세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code>이 분기를 시작합니다.</li>
+    <li><code>else</code>는 다른 분기로 전환합니다.</li>
+    <li><code>endif</code>가 블록을 닫습니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>반복되는 행동을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>루프를 설명합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>while</code>과 <code>endwhile</code>을 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>상태를 반복 확인.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 조건을 내 조건으로 바꾸세요.</li>
+    <li>연습 2: 루프 안에 액션을 추가하세요.</li>
+    <li>연습 3: 다른 시나리오를 사용하세요.</li>
+    <li>연습 4: while을 until로 바꿔 생각해 보세요.</li>
+    <li>연습 5: 시작/종료 액션을 추가하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code>이 루프를 시작합니다.</li>
+    <li><code>endwhile</code>이 루프를 끝냅니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>스윔레인은 책임에 따라 단계를 묶습니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>각 단계의 책임 주체를 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>|Role|</code>로 레인을 바꿉니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>팀 간 워크플로.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 새 스윔레인 역할을 추가하세요.</li>
+    <li>연습 2: 액션을 다른 레인으로 이동하세요.</li>
+    <li>연습 3: 레인 이름을 내 역할로 바꾸세요.</li>
+    <li>연습 4: 다른 액션을 추가하세요.</li>
+    <li>연습 5: 내 프로세스를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>|Name|</code>으로 레인을 바꿉니다.</li>
+    <li>액션은 현재 레인에 속합니다.</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>컴포넌트 다이어그램은 모듈을 설명합니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>모듈 구조를 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>component</code>로 컴포넌트를 정의합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>시스템 아키텍처 레이어.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 컴포넌트를 추가하세요.</li>
+    <li>연습 2: 컴포넌트 이름을 바꾸세요.</li>
+    <li>연습 3: 연결선을 추가하세요.</li>
+    <li>연습 4: 내 시나리오를 사용하세요.</li>
+    <li>연습 5: 컴포넌트 순서를 바꾸세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>컴포넌트는 <code>component</code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>컴포넌트를 패키지로 묶습니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>큰 시스템을 정리합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>package</code>로 컴포넌트를 감쌉니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>기능별 그룹화.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 패키지를 추가하세요.</li>
+    <li>연습 2: 컴포넌트를 다른 패키지로 옮기세요.</li>
+    <li>연습 3: 패키지 이름을 바꾸세요.</li>
+    <li>연습 4: 컴포넌트를 추가하세요.</li>
+    <li>연습 5: 내 시나리오를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>패키지 형식: <code>package Name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>배포 다이어그램은 서버와 노드를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>시스템 배포를 설명합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>node</code>로 노드를 정의합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>클라우드 배포 아키텍처.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 노드를 추가하세요.</li>
+    <li>연습 2: 노드 이름을 바꾸세요.</li>
+    <li>연습 3: 연결을 추가하세요.</li>
+    <li>연습 4: 내 시나리오를 사용하세요.</li>
+    <li>연습 5: 노드를 내 기기로 바꿔 보세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>노드는 <code>node</code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>상태 다이어그램은 상태 전이를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>상태 변화 설명.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>state</code>로 상태를 정의합니다.</li>
+    <li>상태를 화살표로 연결합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>주문 상태 흐름.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 상태 이름을 사용하세요.</li>
+    <li>연습 2: 다른 상태를 추가하세요.</li>
+    <li>연습 3: 다른 전이를 추가하세요.</li>
+    <li>연습 4: 내 프로세스를 사용하세요.</li>
+    <li>연습 5: 상태 이름을 바꾸세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>상태는 <code>state</code>를 사용합니다.</li>
+    <li>전이는 <code>--> </code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>합성 상태는 여러 하위 상태를 포함합니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>복잡한 상태를 정리합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>state Name { ... }</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>복잡한 워크플로.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 하위 상태를 추가하세요.</li>
+    <li>연습 2: 내 시나리오를 사용하세요.</li>
+    <li>연습 3: 전이를 추가하세요.</li>
+    <li>연습 4: 합성 상태 이름을 바꾸세요.</li>
+    <li>연습 5: 내 프로세스를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>합성 상태는 중괄호를 사용합니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>가드 조건은 전이를 더 명확하게 합니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>전이 조건을 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>[condition]</code>을 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>상태 전이 조건.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 조건을 사용하세요.</li>
+    <li>연습 2: 다른 가드 조건을 추가하세요.</li>
+    <li>연습 3: 내 프로세스를 사용하세요.</li>
+    <li>연습 4: 전이 텍스트를 바꾸세요.</li>
+    <li>연습 5: 내 예를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>가드 조건은 대괄호 안에 씁니다.</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>타이밍 다이어그램은 신호 변화를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>신호를 시간 축으로 설명합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>concise</code> 설정을 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>하드웨어 신호 변화.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 신호로 바꿔 보세요.</li>
+    <li>연습 2: 다른 신호 라인을 추가하세요.</li>
+    <li>연습 3: 신호 이름을 바꾸세요.</li>
+    <li>연습 4: 내 예를 사용하세요.</li>
+    <li>연습 5: 내 시나리오를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>타이밍 다이어그램은 <code>concise</code>를 사용할 수 있습니다.</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>JSON 다이어그램은 데이터 구조를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>JSON 구조를 읽기 쉽게 만듭니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startjson</code>과 <code>@endjson</code>을 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>API 응답 형식.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 JSON으로 바꿔 보세요.</li>
+    <li>연습 2: 필드를 하나 추가하세요.</li>
+    <li>연습 3: 데이터 값을 바꾸세요.</li>
+    <li>연습 4: 내 시나리오를 사용하세요.</li>
+    <li>연습 5: 내 데이터를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>JSON은 <code>@startjson</code>으로 감쌉니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>YAML 다이어그램은 데이터 구조를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>YAML 구조를 읽기 쉽게 만듭니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startyaml</code>과 <code>@endyaml</code>을 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>설정 파일.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 YAML로 바꿔 보세요.</li>
+    <li>연습 2: 필드를 하나 추가하세요.</li>
+    <li>연습 3: 데이터 내용을 바꾸세요.</li>
+    <li>연습 4: 내 시나리오를 사용하세요.</li>
+    <li>연습 5: 내 데이터를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>YAML은 <code>@startyaml</code>로 감쌉니다.</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>EBNF 다이어그램은 문법 규칙을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>문법 구조를 명확히 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startebnf</code>와 <code>@endebnf</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>프로그래밍 언어 문법 설명.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 문법으로 바꿔 보세요.</li>
+    <li>연습 2: 다른 규칙을 추가하세요.</li>
+    <li>연습 3: 내 예를 사용하세요.</li>
+    <li>연습 4: 기호를 바꿔 보세요.</li>
+    <li>연습 5: 내 문법을 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>EBNF는 <code>@startebnf</code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Regex 다이어그램은 정규식을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>정규식 패턴을 설명합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startregex</code>와 <code>@endregex</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>정규식 문서.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 regex로 바꿔 보세요.</li>
+    <li>연습 2: 다른 규칙을 추가하세요.</li>
+    <li>연습 3: 내 예를 사용하세요.</li>
+    <li>연습 4: 내용을 바꿔 보세요.</li>
+    <li>연습 5: 내 문법을 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>Regex는 <code>@startregex</code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>간단한 네트워크 토폴로지 다이어그램.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>네트워크 연결을 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startnwdiag</code>와 <code>@endnwdiag</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>라우터와 스위치.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 장비로 바꿔 보세요.</li>
+    <li>연습 2: 장비를 하나 추가하세요.</li>
+    <li>연습 3: 연결을 바꿔 보세요.</li>
+    <li>연습 4: 내 시나리오를 사용하세요.</li>
+    <li>연습 5: 내 예를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>nwdiag는 <code>@startnwdiag</code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>UI 와이어프레임 다이어그램.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>화면을 빠르게 스케치합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startsalt</code>와 <code>@endsalt</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>화면 프로토타입.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 화면으로 바꿔 보세요.</li>
+    <li>연습 2: 버튼을 추가하세요.</li>
+    <li>연습 3: 텍스트를 바꾸세요.</li>
+    <li>연습 4: 레이아웃을 바꾸세요.</li>
+    <li>연습 5: 내 시나리오를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>Salt는 <code>@startsalt</code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>엔터프라이즈 아키텍처 다이어그램.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>기업 시스템 아키텍처를 설명합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startarchimate</code>와 <code>@endarchimate</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>기업 시스템 아키텍처.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 아키텍처로 바꿔 보세요.</li>
+    <li>연습 2: 컴포넌트를 추가하세요.</li>
+    <li>연습 3: 내 시나리오를 사용하세요.</li>
+    <li>연습 4: 요소 이름을 바꾸세요.</li>
+    <li>연습 5: 내 예를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>Archimate는 <code>@startarchimate</code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>SDL 프로세스 흐름 다이어그램.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>프로세스를 설명합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startsdl</code>과 <code>@endsdl</code>을 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>통신 흐름.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 프로세스로 바꿔 보세요.</li>
+    <li>연습 2: 단계를 추가하세요.</li>
+    <li>연습 3: 요소 이름을 바꾸세요.</li>
+    <li>연습 4: 내 시나리오를 사용하세요.</li>
+    <li>연습 5: 내 예를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>SDL은 <code>@startsdl</code>을 사용합니다.</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>ASCII 아트 Ditaa 다이어그램.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>텍스트로 그립니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startditaa</code>와 <code>@endditaa</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>빠른 스케치.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 ASCII 아트로 바꿔 보세요.</li>
+    <li>연습 2: 다른 블록을 추가하세요.</li>
+    <li>연습 3: 글자를 바꿔 보세요.</li>
+    <li>연습 4: 내 시나리오를 사용하세요.</li>
+    <li>연습 5: 내 예를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>Ditaa는 <code>@startditaa</code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>Gantt 차트는 시간에 따른 계획을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>프로젝트 타임라인 계획.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startgantt</code>와 <code>@endgantt</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>프로젝트 일정.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 계획으로 바꿔 보세요.</li>
+    <li>연습 2: 작업을 추가하세요.</li>
+    <li>연습 3: 내 예를 사용하세요.</li>
+    <li>연습 4: 날짜를 바꿔 보세요.</li>
+    <li>연습 5: 내 시나리오를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>Gantt는 <code>@startgantt</code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>사건 타임라인.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>사건을 시간 순서로 정리합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startchronology</code>와 <code>@endchronology</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>사건의 역사.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 사건으로 바꿔 보세요.</li>
+    <li>연습 2: 다른 사건을 추가하세요.</li>
+    <li>연습 3: 내 예를 사용하세요.</li>
+    <li>연습 4: 날짜를 바꿔 보세요.</li>
+    <li>연습 5: 내 시나리오를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>Chronology는 <code>@startchronology</code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>마인드맵은 아이디어의 계층을 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>아이디어를 정리합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startmindmap</code>와 <code>@endmindmap</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>브레인스토밍.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 주제로 바꿔 보세요.</li>
+    <li>연습 2: 가지를 추가하세요.</li>
+    <li>연습 3: 내 예를 사용하세요.</li>
+    <li>연습 4: 텍스트를 바꿔 보세요.</li>
+    <li>연습 5: 내 시나리오를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>MindMap은 <code>@startmindmap</code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>작업 분해 구조 다이어그램.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>작업을 더 작은 부분으로 나눕니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startwbs</code>와 <code>@endwbs</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>프로젝트 작업 분해.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 작업을 사용하세요.</li>
+    <li>연습 2: 하위 작업을 추가하세요.</li>
+    <li>연습 3: 내 예를 사용하세요.</li>
+    <li>연습 4: 텍스트를 바꿔 보세요.</li>
+    <li>연습 5: 내 시나리오를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>WBS는 <code>@startwbs</code>를 사용합니다.</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>AsciiMath로 수식을 표현합니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>수식을 빠르게 작성합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>@startmath</code>와 <code>@endmath</code>를 사용합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>수식 표시.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 내 수식을 사용하세요.</li>
+    <li>연습 2: 수식을 하나 더 추가하세요.</li>
+    <li>연습 3: 내 예를 사용하세요.</li>
+    <li>연습 4: 내 시나리오를 사용하세요.</li>
+    <li>연습 5: 기호를 바꿔 보세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>AsciiMath의 일반 기호는 지원됩니다.</li>
+    <li><code>@startmath</code>와 <code>@endmath</code>로 감쌉니다.</li>
+    <li><code>^</code>는 거듭제곱, <code>/</code>는 나눗셈입니다.</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>ER 다이어그램은 데이터베이스 테이블을 설명합니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>데이터베이스 구조를 설계합니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol>
+    <li><code>entity</code>로 테이블을 정의합니다.</li>
+    <li>기본 키는 <code>*</code>로 표시합니다.</li>
+  </ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>사용자 테이블 설계.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: 테이블 이름을 <code>Book</code>으로 바꾸고 필드를 <code>title</code>, <code>author</code>로 변경하세요.</li>
+    <li>연습 2: 필드를 추가하고 타입 하나를 <code>int</code>로 바꾸세요.</li>
+    <li>연습 3: 기본 키 필드 이름과 타입을 바꾸세요.</li>
+    <li>연습 4: 두 필드가 있는 두 번째 테이블을 추가하세요.</li>
+    <li>연습 5: 구분선을 추가하고 필드 순서를 바꾸세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li>구분선 <code>--</code>는 섹션을 나눕니다.</li>
+    <li><code>*</code>는 기본 키 필드를 뜻합니다.</li>
+    <li>필드 형식: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>이 예제는 테이블 간 관계를 보여 줍니다.</p>
+  <h3>왜 사용하나요</h3>
+  <ul><li>일대다 또는 다대다 관계를 보여 줍니다.</li></ul>
+  <h3>어떻게 사용하나요</h3>
+  <ol><li><code>User ||--o{ Post</code>는 일대다를 의미합니다.</li></ol>
+  <h3>가능한 사용 사례</h3>
+  <ul><li>한 사용자가 여러 게시물을 가짐.</li></ul>
+  <h3>연습(아이들도 쉬운)</h3>
+  <ol>
+    <li>연습 1: <code>User</code>를 <code>Student</code>로, <code>Post</code>를 <code>Homework</code>로 바꾸고 라벨을 수정하세요.</li>
+    <li>연습 2: 일대다를 일대일로 바꾸고 설명을 수정하세요.</li>
+    <li>연습 3: 두 번째 관계를 추가하고 테이블 이름을 바꾸세요.</li>
+    <li>연습 4: 방향을 바꾸고 이름을 조정하세요.</li>
+    <li>연습 5: “일대다”를 유지하고 내 시나리오를 사용하세요.</li>
+  </ol>
+  <h3>PlantUML 문법 규칙(전체 목록)</h3>
+  <ul class="rules">
+    <li><code>||</code>와 <code>o{</code>는 카디널리티를 표시합니다.</li>
+    <li><code>||--o{</code>는 보통 일대다입니다.</li>
+    <li>선은 두 테이블을 연결합니다.</li>
+  </ul>
+</div>
