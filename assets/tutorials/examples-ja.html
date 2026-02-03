@@ -1,0 +1,1363 @@
+<h1>Examples チュートリアル（子どもにもやさしい）</h1>
+<p class="note">
+  このチュートリアルでは、各例が何を描くのか、なぜ役立つのか、使い方、よくある用途、
+  そして PlantUML の構文ルールを、やさしく説明します。
+  （完全で使いやすいリストとして整理しています。）
+</p>
+
+<h2>目次</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>この例は「人Aが人Bへメッセージを送る」を示します。メモを渡すような感じです。</p>
+  <h3>なぜ使うの？</h3>
+  <ul>
+    <li>会話の順番が分かりやすくなります。</li>
+    <li>「誰が最初に話し、次に誰が返事するか」を表すのに最適です。</li>
+  </ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startuml</code> と <code>@enduml</code> を書きます。</li>
+    <li><code>Alice -> Bob: Message</code> で A が B に話していることを示します。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul>
+    <li>ログインの流れ：ユーザー → システム → サーバー。</li>
+    <li>チャットボット：あなたが質問 → ボットが回答。</li>
+  </ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：<code>Alice</code> と <code>Bob</code> を好きな名前に変え、日常会話にします。</li>
+    <li>練習2：最初に <code>participant</code> 行を追加し、「先に質問、後で回答」に変えます。</li>
+    <li>練習3：メッセージを2行にし、片方を短くします。</li>
+    <li>練習4：誰が先に話すかを入れ替え、メッセージも変更します。</li>
+    <li>練習5：3人目を追加して一言言わせ、誰かの名前を変えます。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>@startuml</code> で始め、<code>@enduml</code> で終わります。</li>
+    <li>参加者は <code>participant</code> で宣言しても、直接使ってもOKです。</li>
+    <li><code>A -> B</code> は呼び出し、<code>A --> B</code> は戻りです。</li>
+    <li>テキストはコロンの後：<code>A -> B: Hello</code>。</li>
+    <li>上から下に時間が進みます。</li>
+    <li>複数のメッセージで長い会話を表せます。</li>
+    <li>メッセージの文字は省略可能：<code>A -> B</code> でも有効です。</li>
+    <li>スペースを含む名前は引用符で囲みます。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>この例は「リクエストとレスポンス（質問と答え）」を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul>
+    <li>要求と返答の手順がはっきりします。</li>
+  </ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>A -> B</code> がリクエストです。</li>
+    <li><code>B --> A</code> がレスポンスです。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul>
+    <li>API 呼び出し：フロントエンド → バックエンド → データ返却。</li>
+  </ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：役割を <code>Client</code> と <code>Server</code> にし、「データ取得 / データ返却」にします。</li>
+    <li>練習2：リクエストを「query」、返答を「query result」にします。</li>
+    <li>練習3：もう一組追加して（合計4行）2つの質問を表し、2つ目の文を変えます。</li>
+    <li>練習4：別の人が返答するようにして文を調整します。</li>
+    <li>練習5：リクエスト前に「準備する」の自己メッセージを追加します。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>-></code> はメッセージ送信。</li>
+    <li><code>--></code> は戻りを示すことが多い。</li>
+    <li>返答の内容説明を追加できます。</li>
+    <li>要求と返答はセットが多いですが必須ではありません。</li>
+    <li>見やすさのために先に参加者を宣言できます。</li>
+    <li>時間は上から下へ流れます。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>「自分に話しかける」＝内部の処理を表します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul>
+    <li>オブジェクトが内部で作業していることを示せます。</li>
+  </ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul>
+    <li>アルゴリズムの手順や内部計算。</li>
+  </ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：<code>Alice</code> を自分の名前（例：<code>Me</code>）に変え、今日したいことにします。</li>
+    <li>練習2：「データ読み取り」に変え、<code>Me -> Me: もう一度チェック</code> を追加します。</li>
+    <li>練習3：「考える」に変え、<code>Me -> Me: 重要点を書く</code> を追加します。</li>
+    <li>練習4：名前を <code>Robot</code> にして <code>Robot -> Robot: 充電</code> を追加します。</li>
+    <li>練習5：上に <code>Me -> Me: start</code>、下に <code>Me -> Me: done</code> を追加します。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>矢印の両端が同じ参加者でもOKです。</li>
+    <li>基本形式：<code>Role -> Role: Text</code>。</li>
+    <li>名前は宣言なしでも使えます。</li>
+    <li>コロン後のテキストは省略可能。</li>
+    <li>複数の自己メッセージで内部手順を表せます。</li>
+    <li><code>activate</code> / <code>deactivate</code> と併用できます。</li>
+    <li>時間は上から下へ流れます。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>人・システム・データベースなど、役割によってアイコンが変わる例です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>アイコンで役割がすぐ分かります。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>ログインの流れ：User → Web → Logic → Database。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：<code>User</code> を <code>Student</code> に変え、メッセージを “login homework” にします。</li>
+    <li>練習2：<code>boundary App</code> を追加し、矢印をまず App に向けます。</li>
+    <li>練習3：<code>database DB</code> を <code>database Books</code> に変え、メッセージを変えます。</li>
+    <li>練習4：<code>control</code> 役割を追加し、1本やりとりを増やします。</li>
+    <li>練習5：参加者の順番を並べ替え、メッセージを調整します。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>役割タイプは見た目だけを変え、名前は変えません。</li>
+    <li>やりとりには <code>-></code> を使います。</li>
+    <li>宣言形式：<code>actor/boundary/control/database/entity Name</code>。</li>
+    <li>先に宣言してから名前を使えます。</li>
+    <li>未宣言の名前は通常の参加者になります。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>色やスタイルで見やすくする例です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>重要な役割を色で目立たせられます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>skinparam</code> でスタイルを調整します。</li>
+    <li>役割の後に色を追加：<code>participant Alice #AliceBlue</code>。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>「中核システム」を明るい色で表示。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：<code>Alice</code> を別名にして色を変えます。</li>
+    <li>練習2：メッセージを “start” にし、もう一方を暗い色にします。</li>
+    <li>練習3：3人目を追加して別の色にします。</li>
+    <li>練習4：<code>skinparam sequenceMessageAlign</code> を変えて一行を調整します。</li>
+    <li>練習5：スタイル名（例：<code>#technology</code>）を使い、メッセージを変えます。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> は配置・フォント・色などを制御します。</li>
+    <li>役割には色やスタイル名を付けられます。</li>
+    <li>色は名前や16進で指定できます（例：<code>#AliceBlue</code>）。</li>
+    <li>同じ役割を再宣言した場合、最後のものが有効です。</li>
+    <li>スタイル設定はメッセージ構文を変えません。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>「もし…なら…そうでなければ…」を表します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>条件ごとの分岐を示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>alt</code> で開始、<code>else</code> で別分岐、<code>end</code> で終了。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>支払い成功／失敗。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：「お金がある / ない」に変え、メッセージも変えます。</li>
+    <li>練習2：3つ目の <code>else</code> 分岐とメッセージを追加します。</li>
+    <li>練習3：<code>alt</code> のタイトルを自分のシナリオに変更します。</li>
+    <li>練習4：各分岐に1行追加し、タイトルも変えます。</li>
+    <li>練習5：片方を「失敗したら再試行」にします。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> で分岐開始。</li>
+    <li><code>else</code> は複数使えます。</li>
+    <li><code>end</code> で終了。</li>
+    <li>各分岐に複数メッセージを入れられます。</li>
+    <li>条件テキストは任意ですが推奨です。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>繰り返しを表します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>同じ手順を繰り返すことを示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>loop</code> と <code>end</code> で繰り返しを囲みます。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>毎秒ステータス確認。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：ラベルを「3回ごと」にしてメッセージを変えます。</li>
+    <li>練習2：ループ内に別メッセージを追加し、元の文を短くします。</li>
+    <li>練習3：役割名を変え、メッセージを「チェック中」にします。</li>
+    <li>練習4：ラベルを「完了まで」などの条件に変えます。</li>
+    <li>練習5：ループの外に開始/終了メッセージを追加します。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> は同じ行でもOK。</li>
+    <li><code>end</code> がループ終了。</li>
+    <li>ループ内に複数メッセージを入れられます。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>同時に進む処理を表します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>並行タスクを示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>par</code> で開始、<code>else</code> で並行分岐、<code>end</code> で終了。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>2つのサービスを同時に通知。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：「メール送信」「SMS送信」に変え、役割名を変えます。</li>
+    <li>練習2：役割名を変え、各分岐に1行追加します。</li>
+    <li>練習3：3つ目の分岐（<code>else</code>）を追加します。</li>
+    <li>練習4：片方を「ゆっくり」にして終わりのメッセージを追加します。</li>
+    <li>練習5：<code>par</code> の前に「開始」、後に「完了」を追加します。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>par</code> は並行ブロックを作ります。</li>
+    <li>各分岐は独自のメッセージ順序を持てます。</li>
+    <li><code>else</code> で別の並行分岐に切り替えます。</li>
+    <li><code>end</code> で終了。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>アクティベーションバーで「忙しい時間」を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>誰がどれだけ作業しているか分かります。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>activate Role</code> で開始。</li>
+    <li><code>deactivate Role</code> で終了。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>サーバーがリクエストを処理している様子。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：役割を <code>Server</code> にし、メッセージを “processing” にします。</li>
+    <li>練習2：リクエスト行を追加し、その後に <code>activate</code> を置きます。</li>
+    <li>練習3：「halfway」を追加して自分の文に置き換えます。</li>
+    <li>練習4：別の役割を追加してアクティベーションを付けます。</li>
+    <li>練習5：アクティベーション開始/終了を1行下げます。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>activate/deactivate はメッセージの前後どちらでもOK。</li>
+    <li><code>activate</code> と <code>deactivate</code> はペアで使います。</li>
+    <li>アクティブ中にメッセージを追加できます。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>付箋（ノート）を追加する例です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>補足説明を追加できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>note left</code> または <code>note right</code> を使います。</li>
+    <li><code>end note</code> でノートを閉じます。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>「この手順は失敗するかも」を伝える。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：ノートの文章を自分の注意文に変えます。</li>
+    <li>練習2：右側に移動して文を変えます。</li>
+    <li>練習3：別の役割の横に2つ目のノートを追加。</li>
+    <li>練習4：2行にして2行目に理由を書く。</li>
+    <li>練習5：別のメッセージの後に移動。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>ノートは <code>left</code>, <code>right</code>, <code>over</code> で置けます。</li>
+    <li>複数行ノートは <code>note</code> と <code>end note</code> を使います。</li>
+    <li>ノートはメッセージの流れを変えません。</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>ユースケース図は「システムができること」の一覧です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>ユーザーが必要とする機能を明確にできます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li>ユーザーは <code>actor</code>。</li>
+    <li>機能は <code>(UseCase)</code>。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>ログイン、検索、支払い など。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：ユーザーを <code>Teacher</code> にし、ユースケースを “create quiz” にします。</li>
+    <li>練習2：2つ目のユースケースを追加。</li>
+    <li>練習3：ユースケース名と actor 名を変更。</li>
+    <li>練習4：2人目の actor を追加し、1つと接続。</li>
+    <li>練習5：自分のシナリオに置き換えます。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>ユースケースは括弧で書く：<code>(Login)</code>。</li>
+    <li>actor は棒人間：<code>actor User</code>。</li>
+    <li>actor とユースケースは線でつなげます。</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>ユースケース間の include/extend を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>共通手順やオプション手順を示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code><<include>></code> は「必ず含む」。</li>
+    <li><code><<extend>></code> は「任意」。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>ログインは常に検証を含む、支払いは割引が追加される場合など。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：ユースケース名を自分の例に変更。</li>
+    <li>練習2：include と extend を入れ替える。</li>
+    <li>練習3：別のユースケースを追加して include。</li>
+    <li>練習4：矢印を逆にしてテキストを変更。</li>
+    <li>練習5：関係の文を自分の言葉に変更。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>Include 構文：<code>(A) .> (B) : <<include>></code>。</li>
+    <li>Extend 構文：<code>(A) .> (B) : <<extend>></code>。</li>
+    <li>破線の矢印を使用します。</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>クラス図は属性とメソッドを表します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>データ構造を整理できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>class</code> でクラスを定義。</li>
+    <li>属性・メソッドを波括弧内に書きます。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>プログラムのデータモデル設計。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：クラス名を好きなもの（例：<code>Book</code>）に変更。</li>
+    <li>練習2：属性またはメソッドを1つ追加。</li>
+    <li>練習3：フィールド名を短くする、または翻訳。</li>
+    <li>練習4：2つ目のクラスと属性2つを追加。</li>
+    <li>練習5：メソッドを自分の行動に変更。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>クラス形式：<code>class Name { ... }</code>。</li>
+    <li>属性はフィールド、メソッドは <code>()</code> を使います。</li>
+    <li>空のクラスも有効です。</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>メソッドと戻り値型を追加する例です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>クラスができることを示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li>メソッドは <code>name(): type</code> の形で書きます。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>API やビジネスロジックの説明。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：戻り値付きメソッドを追加。</li>
+    <li>練習2：メソッド名を自分の行動に変更。</li>
+    <li>練習3：戻り値型を <code>bool</code> や <code>string</code> に変更。</li>
+    <li>練習4：別メソッドを追加し、片方を private にする。</li>
+    <li>練習5：自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>メソッドは引数を持てます：<code>name(param): type</code>。</li>
+    <li>戻り値型はコロンの後。</li>
+    <li>可視性記号を付けられます。</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>public / private / protected を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>外部に公開するものを分けられます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>+</code> public、<code>-</code> private、<code>#</code> protected。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>内部詳細を隠す。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：フィールドを1つ private にする。</li>
+    <li>練習2：protected フィールドを追加。</li>
+    <li>練習3：メソッドを public にする。</li>
+    <li>練習4：private メソッドを追加。</li>
+    <li>練習5：自分の例に名前を変更。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>可視性記号はフィールド/メソッドの前。</li>
+    <li>よく使う記号：<code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>。</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>abstract と static のマーカーを示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>「必ず実装」か「共有ツール」かを区別できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li>抽象は斜体か <code>{abstract}</code>。</li>
+    <li>静的は <code>{static}</code>。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>基底クラスやユーティリティメソッド。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：メソッドを1つ static にする。</li>
+    <li>練習2：クラス名を自分の例に変更。</li>
+    <li>練習3：抽象メソッドを追加。</li>
+    <li>練習4：別の抽象マーカーの書き方を使う。</li>
+    <li>練習5：自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> は抽象クラス/メソッド。</li>
+    <li><code>{static}</code> は静的メソッド。</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>継承を示す例です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>親子クラスを表せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li>継承は <code>--|></code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>動物の分類など。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：クラス名を自分の例に変更。</li>
+    <li>練習2：継承線をもう1本追加。</li>
+    <li>練習3：親クラス名を変更。</li>
+    <li>練習4：子クラスを追加。</li>
+    <li>練習5：自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> が継承。</li>
+    <li>矢印は親へ向きます。</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>コンポジション（強い所有）を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>全体と一体で存在する部品を示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li>コンポジションは <code>*--</code>。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>家には必ず部屋がある。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の例に変更。</li>
+    <li>練習2：コンポジションを集約に変えて比較。</li>
+    <li>練習3：コンポジション線をもう1本追加。</li>
+    <li>練習4：関係のラベル文を変更。</li>
+    <li>練習5：向きを入れ替えて確認。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> がコンポジション。</li>
+    <li>黒いひし形は所有側。</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>集約（弱い所有）を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>独立して存在できる部品を示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li>集約は <code>o--</code>。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>クラスとその学生など。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の例に変更。</li>
+    <li>練習2：集約をコンポジションに変えて比較。</li>
+    <li>練習3：集約線をもう1本追加。</li>
+    <li>練習4：別のシナリオ名に変更。</li>
+    <li>練習5：向きを入れ替えて説明を追加。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> が集約。</li>
+    <li>白いひし形は所有側。</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>オブジェクト図は「クラスのインスタンス」を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>ある時点のデータを示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>object</code> でインスタンスを定義。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>オブジェクトのフィールド値を示す。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：オブジェクト名を自分の例に変更。</li>
+    <li>練習2：別のオブジェクトを追加。</li>
+    <li>練習3：フィールドを自分用に変更。</li>
+    <li>練習4：2つのオブジェクトをつなぐ。</li>
+    <li>練習5：自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>オブジェクト形式：<code>object name { ... }</code>。</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>アクティビティ図は手順を表します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>ワークフローを説明できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>start</code> と <code>stop</code> を使います。</li>
+    <li>アクションは <code>:action;</code> と書きます。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>アプリの流れ、注文処理。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：アクションを自分の流れに変える。</li>
+    <li>練習2：アクションを1つ追加。</li>
+    <li>練習3：start/stop の位置を変える。</li>
+    <li>練習4：分岐を追加。</li>
+    <li>練習5：自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>フローは上から下へ進みます。</li>
+    <li>アクションは <code>: ... ;</code> で書きます。</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>分岐を表します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>別の道筋を分かりやすく示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>フォーム確認、支払い成功/失敗。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：条件を自分のものに変更。</li>
+    <li>練習2：2つ目の else 分岐を追加。</li>
+    <li>練習3：アクション文を自分の言葉に。</li>
+    <li>練習4：if の文を自分のシナリオに。</li>
+    <li>練習5：自分のプロセスを作る。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> で分岐開始。</li>
+    <li><code>else</code> で分岐を切り替え。</li>
+    <li><code>endif</code> で終了。</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>繰り返しを示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>ループの説明に使えます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>while</code> と <code>endwhile</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>ステータスを繰り返し確認。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：条件を自分のものに変更。</li>
+    <li>練習2：ループ内にアクションを追加。</li>
+    <li>練習3：別のシナリオを使う。</li>
+    <li>練習4：while を until に置き換える（概念的に）。</li>
+    <li>練習5：開始/終了のアクションを追加。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> でループ開始。</li>
+    <li><code>endwhile</code> でループ終了。</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>責任ごとにレーンを分けます。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>誰の担当かを明確にできます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>|Role|</code> でレーンを切り替えます。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>チーム間のワークフロー。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：新しいレーン役割を追加。</li>
+    <li>練習2：アクションを別レーンに移動。</li>
+    <li>練習3：レーン名を自分の役割に変更。</li>
+    <li>練習4：アクションをもう1つ追加。</li>
+    <li>練習5：自分のプロセスを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>|Name|</code> でレーンを切り替えます。</li>
+    <li>アクションは現在のレーンに属します。</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>コンポーネント図はモジュールを表します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>モジュール構造を示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>component</code> で定義します。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>システムアーキテクチャの層。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：コンポーネントを追加。</li>
+    <li>練習2：コンポーネント名を変更。</li>
+    <li>練習3：接続を追加。</li>
+    <li>練習4：自分のシナリオを使う。</li>
+    <li>練習5：順番を入れ替え。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>コンポーネントは <code>component</code> を使います。</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>コンポーネントをパッケージでまとめます。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>大きなシステムを整理できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>package</code> で囲みます。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>機能ごとのグルーピング。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：パッケージを追加。</li>
+    <li>練習2：コンポーネントを別パッケージへ移動。</li>
+    <li>練習3：パッケージ名を変更。</li>
+    <li>練習4：コンポーネントを追加。</li>
+    <li>練習5：自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>パッケージ形式：<code>package Name { ... }</code>。</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>デプロイ図はサーバーやノードを示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>システムの配置を説明できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>node</code> でノードを定義。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>クラウド配置の構成。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：ノードを追加。</li>
+    <li>練習2：ノード名を変更。</li>
+    <li>練習3：接続を追加。</li>
+    <li>練習4：自分のシナリオを使う。</li>
+    <li>練習5：ノードを自分の端末に置き換え。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>ノードは <code>node</code> を使います。</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>状態遷移を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>状態の変化を説明できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>state</code> で状態を定義。</li>
+    <li>矢印で状態をつなぐ。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>注文ステータスの流れ。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の状態名に変更。</li>
+    <li>練習2：状態を1つ追加。</li>
+    <li>練習3：遷移を1本追加。</li>
+    <li>練習4：自分のプロセスを使う。</li>
+    <li>練習5：状態名を変更。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>状態は <code>state</code> を使います。</li>
+    <li>遷移は <code>--> </code> を使います。</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>複合状態は複数のサブ状態を含みます。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>複雑な状態を整理できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>state Name { ... }</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>複雑なワークフロー。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：サブ状態を追加。</li>
+    <li>練習2：自分のシナリオを使う。</li>
+    <li>練習3：遷移を追加。</li>
+    <li>練習4：複合状態名を変更。</li>
+    <li>練習5：自分のプロセスを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>複合状態は波括弧で書きます。</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>ガード条件で遷移を正確にします。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>遷移の条件を示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>[condition]</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>状態遷移条件。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の条件を使う。</li>
+    <li>練習2：別のガード条件を追加。</li>
+    <li>練習3：自分のプロセスを使う。</li>
+    <li>練習4：遷移文を変更。</li>
+    <li>練習5：自分の例を使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>ガード条件は角括弧内に書きます。</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>タイミング図は信号の変化を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>時間とともに信号が変わる様子を示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>concise</code> 設定を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>ハードウェアの信号変化。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の信号に変える。</li>
+    <li>練習2：別の信号ラインを追加。</li>
+    <li>練習3：信号名を変更。</li>
+    <li>練習4：自分の例を使う。</li>
+    <li>練習5：自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>タイミング図は <code>concise</code> を使えます。</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>JSON 図はデータ構造を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>JSON の構造が読みやすくなります。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startjson</code> と <code>@endjson</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>API レスポンス形式。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の JSON に置き換える。</li>
+    <li>練習2：フィールドを追加。</li>
+    <li>練習3：値を変更。</li>
+    <li>練習4：自分のシナリオを使う。</li>
+    <li>練習5：自分のデータを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>JSON は <code>@startjson</code> で囲みます。</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>YAML 図はデータ構造を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>YAML の構造が読みやすくなります。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startyaml</code> と <code>@endyaml</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>設定ファイル。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の YAML に置き換える。</li>
+    <li>練習2：フィールドを追加。</li>
+    <li>練習3：内容を変更。</li>
+    <li>練習4：自分のシナリオを使う。</li>
+    <li>練習5：自分のデータを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>YAML は <code>@startyaml</code> で囲みます。</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>EBNF 図は文法ルールを示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>文法構造がはっきりします。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startebnf</code> と <code>@endebnf</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>プログラミング言語の文法説明。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の文法に置き換える。</li>
+    <li>練習2：別のルールを追加。</li>
+    <li>練習3：自分の例を使う。</li>
+    <li>練習4：記号を変更。</li>
+    <li>練習5：自分の文法を使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>EBNF は <code>@startebnf</code> を使います。</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Regex 図は正規表現を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>正規表現パターンを説明できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startregex</code> と <code>@endregex</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>正規表現のドキュメント。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の正規表現に置き換える。</li>
+    <li>練習2：別のルールを追加。</li>
+    <li>練習3：自分の例を使う。</li>
+    <li>練習4：内容を変更。</li>
+    <li>練習5：自分の文法を使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>Regex は <code>@startregex</code> を使います。</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>ネットワークのトポロジ図です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>ネットワーク接続を示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startnwdiag</code> と <code>@endnwdiag</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>ルーターやスイッチ。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の機器に置き換える。</li>
+    <li>練習2：機器を追加。</li>
+    <li>練習3：接続を変更。</li>
+    <li>練習4：自分のシナリオを使う。</li>
+    <li>練習5：自分の例を使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>nwdiag は <code>@startnwdiag</code> を使います。</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>UI ワイヤーフレーム図です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>画面を素早くスケッチできます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startsalt</code> と <code>@endsalt</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>画面プロトタイプ。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の画面に置き換える。</li>
+    <li>練習2：ボタンを追加。</li>
+    <li>練習3：文字を変更。</li>
+    <li>練習4：レイアウトを変更。</li>
+    <li>練習5：自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>Salt は <code>@startsalt</code> を使います。</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>エンタープライズアーキテクチャ図です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>企業アーキテクチャを説明できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startarchimate</code> と <code>@endarchimate</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>会社のシステム構成。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分のアーキテクチャに置き換える。</li>
+    <li>練習2：コンポーネントを追加。</li>
+    <li>練習3：自分のシナリオを使う。</li>
+    <li>練習4：名前を変更。</li>
+    <li>練習5：自分の例を使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>Archimate は <code>@startarchimate</code> を使います。</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>SDL フロー図です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>プロセスを説明できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startsdl</code> と <code>@endsdl</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>通信のフロー。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分のプロセスに置き換える。</li>
+    <li>練習2：ステップを追加。</li>
+    <li>練習3：項目名を変更。</li>
+    <li>練習4：自分のシナリオを使う。</li>
+    <li>練習5：自分の例を使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>SDL は <code>@startsdl</code> を使います。</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>ASCII アートで描く Ditaa 図です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>テキストだけで描けます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startditaa</code> と <code>@endditaa</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>素早いスケッチ。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の ASCII アートに置き換える。</li>
+    <li>練習2：別のブロックを追加。</li>
+    <li>練習3：文字を変更。</li>
+    <li>練習4：自分のシナリオを使う。</li>
+    <li>練習5：自分の例を使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>Ditaa は <code>@startditaa</code> を使います。</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>ガント図は時間のスケジュールを示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>プロジェクトの予定を立てる。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startgantt</code> と <code>@endgantt</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>プロジェクトのスケジュール。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分のスケジュールに置き換える。</li>
+    <li>練習2：タスクを追加。</li>
+    <li>練習3：自分の例を使う。</li>
+    <li>練習4：日付を変更。</li>
+    <li>練習5：自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>Gantt は <code>@startgantt</code> を使います。</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>イベントのタイムラインです。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>出来事を時系列に並べられます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startchronology</code> と <code>@endchronology</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>出来事の履歴。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分のイベントに置き換える。</li>
+    <li>練習2：別のイベントを追加。</li>
+    <li>練習3：自分の例を使う。</li>
+    <li>練習4：日付を変更。</li>
+    <li>練習5：自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>Chronology は <code>@startchronology</code> を使います。</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>マインドマップはアイデアの階層を示します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>考えを整理できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startmindmap</code> と <code>@endmindmap</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>ブレインストーミング。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分のテーマを使う。</li>
+    <li>練習2：枝を追加。</li>
+    <li>練習3：自分の例を使う。</li>
+    <li>練習4：文字を変更。</li>
+    <li>練習5：自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>MindMap は <code>@startmindmap</code> を使います。</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>WBS（作業分解構造）図です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>仕事を小さく分けられます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startwbs</code> と <code>@endwbs</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>プロジェクトのタスク分解。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分のタスクを使う。</li>
+    <li>練習2：サブタスクを追加。</li>
+    <li>練習3：自分の例を使う。</li>
+    <li>練習4：文字を変更。</li>
+    <li>練習5：自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>WBS は <code>@startwbs</code> を使います。</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>数式には AsciiMath を使います。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>素早く数式を書けます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>@startmath</code> と <code>@endmath</code> を使います。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>数式の表示。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：自分の式を使う。</li>
+    <li>練習2：式を1つ追加。</li>
+    <li>練習3：自分の例を使う。</li>
+    <li>練習4：自分のシナリオを使う。</li>
+    <li>練習5：記号を変更。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>AsciiMath の一般的な記号に対応。</li>
+    <li><code>@startmath</code> と <code>@endmath</code> で囲む。</li>
+    <li><code>^</code> は累乗、<code>/</code> は割り算。</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>ER 図はデータベースの表を表します。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>データベース構造を設計できます。</li></ul>
+  <h3>使い方</h3>
+  <ol>
+    <li><code>entity</code> でテーブルを定義。</li>
+    <li>主キーは <code>*</code> で示します。</li>
+  </ol>
+  <h3>よくある用途</h3>
+  <ul><li>ユーザーテーブル設計。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：テーブル名を <code>Book</code> にし、フィールドを <code>title</code>, <code>author</code> にする。</li>
+    <li>練習2：フィールドを追加し、型を <code>int</code> に変更。</li>
+    <li>練習3：主キー名と型を変更。</li>
+    <li>練習4：2つ目のテーブルと2つのフィールドを追加。</li>
+    <li>練習5：区切り線を追加し、順番を入れ替える。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li>区切り線 <code>--</code> はセクションを分けます。</li>
+    <li><code>*</code> は主キーを示します。</li>
+    <li>フィールド形式：<code>name: type</code>。</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>テーブル間の関係を示す例です。</p>
+  <h3>なぜ使うの？</h3>
+  <ul><li>1対多や多対多を示せます。</li></ul>
+  <h3>使い方</h3>
+  <ol><li><code>User ||--o{ Post</code> は 1対多 を意味します。</li></ol>
+  <h3>よくある用途</h3>
+  <ul><li>1人のユーザーが多くの投稿を持つ。</li></ul>
+  <h3>練習（子ども向け）</h3>
+  <ol>
+    <li>練習1：<code>User</code> を <code>Student</code>、<code>Post</code> を <code>Homework</code> に変えてラベル更新。</li>
+    <li>練習2：1対多を1対1に変更し説明文も変更。</li>
+    <li>練習3：別のテーブルとの関係を追加して名前変更。</li>
+    <li>練習4：向きを入れ替えて名前を調整。</li>
+    <li>練習5：「1対多」のまま自分のシナリオを使う。</li>
+  </ol>
+  <h3>PlantUML 構文ルール（完全リスト）</h3>
+  <ul class="rules">
+    <li><code>||</code> と <code>o{</code> は多重度を示します。</li>
+    <li><code>||--o{</code> は一般的に 1対多。</li>
+    <li>線は2つのテーブルをつなぎます。</li>
+  </ul>
+</div>
