@@ -11,6 +11,7 @@ class PlantUML:
 
     _DEFAULT_JAR_URL = os.getenv(
         "CODOC_PLANTUML_JAR_URL",
+        #"https://github.com/plantuml/plantuml/releases/download/v1.2026.1/plantuml-1.2026.1.jar",
         "https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar",
     )
 
