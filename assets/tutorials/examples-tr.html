@@ -1,0 +1,1363 @@
+<h1>Örnekler Eğitimi (çocuklar için kolay)</h1>
+<p class="note">
+  Bu eğitim, her örneğin ne çizdiğini, neden yararlı olduğunu,
+  nasıl kullanılacağını, yaygın kullanım senaryolarını ve PlantUML
+  sözdizimi kurallarını (tam ve pratik listeler halinde) basitçe anlatır.
+</p>
+
+<h2>İçindekiler</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>Bu örnek “A kişisi B kişisine mesaj gönderir”i gösterir, not vermek gibi.</p>
+  <h3>Neden kullanılır</h3>
+  <ul>
+    <li>Konuşmanın sırasını basitçe gösterir.</li>
+    <li>“Önce kim konuşur, sonra kim cevap verir” hikâyeleri için idealdir.</li>
+  </ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startuml</code> ve <code>@enduml</code> yazın.</li>
+    <li><code>Alice -> Bob: Message</code> ile A’nın B’ye konuştuğunu gösterin.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul>
+    <li>Giriş akışı: Kullanıcı → Sistem → Sunucu.</li>
+    <li>Chatbot: Sen sor → Bot cevaplar.</li>
+  </ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: <code>Alice</code> ve <code>Bob</code>u sevdiğin isimlerle değiştir, mesajı günlük bir konuşmaya çevir.</li>
+    <li>Alıştırma 2: Önce bir <code>participant</code> satırı ekle, sonra “önce sor, sonra cevapla” yap.</li>
+    <li>Alıştırma 3: Mesajı iki satıra böl: önce soru, sonra cevap ve bir satırı kısalt.</li>
+    <li>Alıştırma 4: İlk konuşanı değiştir ve metni güncelle.</li>
+    <li>Alıştırma 5: Üçüncü bir kişi ekle ve birini yeniden adlandır.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>@startuml</code> ile başla ve <code>@enduml</code> ile bitir.</li>
+    <li>Katılımcılar <code>participant</code> ile tanımlanabilir ya da doğrudan kullanılabilir.</li>
+    <li><code>A -> B</code> çağrı, <code>A --> B</code> dönüş mesajıdır.</li>
+    <li>Metin iki nokta üst üste sonrası yazılır: <code>A -> B: Hello</code>.</li>
+    <li>Zaman yukarıdan aşağı akar.</li>
+    <li>Daha fazla mesaj daha uzun bir konuşma demektir.</li>
+    <li>Mesaj metni isteğe bağlıdır: <code>A -> B</code> geçerlidir.</li>
+    <li>Boşluklu isimler tırnak içinde yazılır.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>Bu örnek “istek ve yanıt”ı gösterir, soru‑cevap gibi.</p>
+  <h3>Neden kullanılır</h3>
+  <ul>
+    <li>İstek ve yanıt adımlarını net gösterir.</li>
+  </ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>A -> B</code> istektir.</li>
+    <li><code>B --> A</code> yanıttır.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul>
+    <li>API çağrısı: Frontend → Backend → Veri döner.</li>
+  </ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Rolleri <code>Client</code> ve <code>Server</code> yap, mesajları “veri iste / veri dön” olarak değiştir.</li>
+    <li>Alıştırma 2: İsteği “query”, yanıtı “query result” yap.</li>
+    <li>Alıştırma 3: Bir istek‑yanıt daha ekle (4 satır) ve ikinci metni değiştir.</li>
+    <li>Alıştırma 4: Yanıtı farklı bir kişi versin ve metni ayarla.</li>
+    <li>Alıştırma 5: İstekten önce bir “hazırlık” self‑message ekle.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>-></code> mesaj gönderir.</li>
+    <li><code>--></code> çoğunlukla dönüşü belirtir.</li>
+    <li>Yanıtın içeriğini açıklamak için metin ekleyin.</li>
+    <li>İstek ve yanıt genelde çifttir ama zorunlu değildir.</li>
+    <li>Dilersen önce katılımcıları tanımla.</li>
+    <li>Zaman yukarıdan aşağı akar.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>“Kendi kendine konuşma”yı gösterir, iç adımı anlatır.</p>
+  <h3>Neden kullanılır</h3>
+  <ul>
+    <li>Bir nesnenin içte çalışmasını gösterir.</li>
+  </ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul>
+    <li>Algoritma adımları, iç hesaplamalar.</li>
+  </ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: <code>Alice</code> yerine adını yaz (örn. <code>Me</code>) ve mesaj metnini değiştir.</li>
+    <li>Alıştırma 2: Eylemi “veri oku” yap ve <code>Me -> Me: tekrar kontrol et</code> ekle.</li>
+    <li>Alıştırma 3: Mesajı “düşün” yap ve <code>Me -> Me: ana noktaları yaz</code> ekle.</li>
+    <li>Alıştırma 4: İsmi <code>Robot</code> yap ve <code>Robot -> Robot: şarj et</code> ekle.</li>
+    <li>Alıştırma 5: Başına <code>Me -> Me: start</code>, sonuna <code>Me -> Me: done</code> ekle.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Okun iki ucu aynı katılımcı olabilir.</li>
+    <li>Temel biçim: <code>Role -> Role: Text</code>.</li>
+    <li>İsimler tanımlanmadan da kullanılabilir.</li>
+    <li>İki nokta üst üste sonrası metin isteğe bağlıdır.</li>
+    <li>Birden çok self‑message daha fazla iç adım gösterir.</li>
+    <li><code>activate</code> / <code>deactivate</code> ile kullanılabilir.</li>
+    <li>Zaman yukarıdan aşağı akar.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>Bu örnek farklı roller için farklı ikonlar gösterir: kişi, sistem, veritabanı gibi.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>İkonlar rolleri hızlı tanımayı sağlar.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Giriş akışı: User → Web → Logic → Database.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: <code>User</code> yerine <code>Student</code> yaz ve mesajı değiştir.</li>
+    <li>Alıştırma 2: <code>boundary App</code> ekle ve oku önce App’e gönder.</li>
+    <li>Alıştırma 3: <code>database DB</code>yi <code>database Books</code> yap ve mesajı değiştir.</li>
+    <li>Alıştırma 4: Bir <code>control</code> rolü ekle ve bir etkileşim satırı yaz.</li>
+    <li>Alıştırma 5: Katılımcıların sırasını değiştir ve mesajları ayarla.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Rol tipi görünümü değiştirir, ismi değiştirmez.</li>
+    <li>Etkileşim için <code>-></code> kullanılır.</li>
+    <li>Tanım biçimi: <code>actor/boundary/control/database/entity Name</code>.</li>
+    <li>Önce rolleri tanımla, sonra isimleri kullan.</li>
+    <li>Tanımlanmayan isimler normal katılımcıdır.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>Bu örnek diyagramı netleştirmek için renk ve stil gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Önemli rolleri renklerle vurgular.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Stilleri ayarlamak için <code>skinparam</code> kullan.</li>
+    <li>Rolün sonuna renk ekle: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>“Merkez sistem”i parlak bir renkle göstermek.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: <code>Alice</code> adını değiştir ve rengi güncelle.</li>
+    <li>Alıştırma 2: Mesajı “start” yap ve diğer rolü koyulaştır.</li>
+    <li>Alıştırma 3: Üçüncü bir rol ekle ve farklı bir renk ver.</li>
+    <li>Alıştırma 4: <code>skinparam sequenceMessageAlign</code> değiştir ve bir satırı güncelle.</li>
+    <li>Alıştırma 5: Bir stil adı kullan (örn. <code>#technology</code>) ve mesajı değiştir.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> hizalama, font, renk vb. kontrol eder.</li>
+    <li>Roller renk veya stil adı alabilir.</li>
+    <li>Renkler isim veya hex olabilir, örn. <code>#AliceBlue</code>.</li>
+    <li>Aynı rol tekrar tanımlanırsa son tanım geçerlidir.</li>
+    <li>Stil ayarları mesaj sözdizimini değiştirmez.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>“Eğer… değilse…”yi gösterir, seçenekler gibi.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Farklı koşullar için farklı dallar gösterir.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>alt</code> ile başla, başka dal için <code>else</code>, bitirmek için <code>end</code>.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Ödeme başarılı/başarısız.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Koşulları “param var / yok” yap ve mesajları değiştir.</li>
+    <li>Alıştırma 2: Üçüncü bir <code>else</code> dalı ekle ve bir mesaj yaz.</li>
+    <li>Alıştırma 3: <code>alt</code> başlığını senaryonla değiştir.</li>
+    <li>Alıştırma 4: Her dala bir satır ekle ve başlıkları değiştir.</li>
+    <li>Alıştırma 5: “Hata sonrası tekrar dene” dalı ekle.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> bir dal başlatır.</li>
+    <li>Birden fazla <code>else</code> dalı olabilir.</li>
+    <li><code>end</code> ile kapatılır.</li>
+    <li>Her dal birden çok mesaj içerebilir.</li>
+    <li>Koşul metni isteğe bağlıdır ama önerilir.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>Tekrarlanan eylemleri gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Tekrarlanan adımları gösterir.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Tekrarlanan satırları <code>loop</code> ve <code>end</code> içine al.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Her saniye durumu kontrol etmek.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Döngü etiketini “her 3 kez” yap ve mesajı değiştir.</li>
+    <li>Alıştırma 2: Döngü içine başka bir mesaj ekle ve ilkini kısalt.</li>
+    <li>Alıştırma 3: Rolleri yeniden adlandır ve mesajı “kontrol” yap.</li>
+    <li>Alıştırma 4: Döngü etiketini “bitene kadar” gibi bir koşul yap.</li>
+    <li>Alıştırma 5: Döngü dışında başlangıç/bitiş mesajları ekle.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> aynı satırda olabilir.</li>
+    <li><code>end</code> loop bloğunu bitirir.</li>
+    <li>Döngü içinde birden çok mesaj olabilir.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>Aynı anda olan iki şeyi gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Paralel görevleri göstermek.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>par</code> ile başla, başka paralel dal için <code>else</code>, bitirmek için <code>end</code>.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>İki servisi aynı anda bilgilendirmek.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Dalları “e‑posta gönder” ve “SMS gönder” yap, rolleri yeniden adlandır.</li>
+    <li>Alıştırma 2: Rolleri değiştir ve her dala bir satır ekle.</li>
+    <li>Alıştırma 3: Üçüncü bir dal (<code>else</code>) ve mesaj ekle.</li>
+    <li>Alıştırma 4: Bir dalı “yavaş yap” olarak değiştir ve son mesaj ekle.</li>
+    <li>Alıştırma 5: <code>par</code> öncesi “işe başla”, <code>end</code> sonrası “bitti” ekle.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>par</code> paralel blok oluşturur.</li>
+    <li>Her dalın kendi mesaj dizisi olabilir.</li>
+    <li><code>else</code> başka paralel dala geçer.</li>
+    <li><code>end</code> ile kapatılır.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>Bu örnek bir rolün ne zaman meşgul olduğunu göstermek için aktivasyon çubukları kullanır.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Kimin ne kadar süre çalıştığını gösterir.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Başlatmak için <code>activate Role</code> kullan.</li>
+    <li>Bitirmek için <code>deactivate Role</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Sunucunun isteği işleme süresini göstermek.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Rolü <code>Server</code> yap ve mesajı “processing” olarak değiştir.</li>
+    <li>Alıştırma 2: Bir istek satırı ekle ve <code>activate</code>i hemen sonra koy.</li>
+    <li>Alıştırma 3: “halfway” mesajı ekle ve kendi metninle değiştir.</li>
+    <li>Alıştırma 4: Başka bir rol ve onun aktivasyonu ile mesajını ekle.</li>
+    <li>Alıştırma 5: Aktivasyonun başlangıç/bitişini bir satır aşağı kaydır.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>activate/deactivate mesajlardan önce ya da sonra olabilir.</li>
+    <li><code>activate</code> ve <code>deactivate</code> çift olmalıdır.</li>
+    <li>Rol aktifken mesajlar gönderilebilir.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>Yapışkan not eklemeyi gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Açıklama ekleyerek netlik sağlar.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>note left</code> veya <code>note right</code> kullan.</li>
+    <li>Notu <code>end note</code> ile kapat.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>“Bu adım başarısız olabilir” gibi notlar.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Not metnini kendi hatırlatıcınla değiştir.</li>
+    <li>Alıştırma 2: Notu sağa taşı ve metni değiştir.</li>
+    <li>Alıştırma 3: Başka bir rolün yanına ikinci bir not ekle.</li>
+    <li>Alıştırma 4: Notu iki satır yap.</li>
+    <li>Alıştırma 5: Notu başka bir mesajdan sonra taşı.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Notlar <code>left</code>, <code>right</code> ya da <code>over</code> olabilir.</li>
+    <li>Çok satırlı notlar <code>note</code> ve <code>end note</code> kullanır.</li>
+    <li>Notlar mesaj akışını değiştirmez.</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>Kullanım durumu diyagramları “sistemin yapabildikleri” listesidir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Kullanıcıya gereken işlevleri net listeler.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Kullanıcı için <code>actor</code> kullan.</li>
+    <li>Bir işlev için <code>(UseCase)</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Giriş, arama, ödeme vb.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kullanıcıyı <code>Teacher</code>, kullanım durumunu “create quiz” yap.</li>
+    <li>Alıştırma 2: İkinci bir kullanım durumu ekle.</li>
+    <li>Alıştırma 3: Kullanım durumu ve aktör adlarını değiştir.</li>
+    <li>Alıştırma 4: İkinci bir aktör ekle ve bir kullanım durumuna bağla.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Kullanım durumları parantez içindedir: <code>(Login)</code>.</li>
+    <li>Aktörler çöp adamdır: <code>actor User</code>.</li>
+    <li>Bir aktörü kullanım durumuna çizgi ile bağla.</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>Kullanım durumları arasında include/extend ilişkisini gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Paylaşılan veya opsiyonel adımları belirtir.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code><<include>></code> “her zaman dahil” demektir.</li>
+    <li><code><<extend>></code> “opsiyonel” demektir.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Giriş her zaman doğrulamayı içerir; ödeme indirimle genişleyebilir.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kullanım durumlarını kendi örneğinle değiştir.</li>
+    <li>Alıştırma 2: Include ve extend’i yer değiştir.</li>
+    <li>Alıştırma 3: Başka bir kullanım durumu ekle ve include yap.</li>
+    <li>Alıştırma 4: Oku ters çevir ve metni güncelle.</li>
+    <li>Alıştırma 5: İlişki metnini kendi kelimelerinle değiştir.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Include sözdizimi: <code>(A) .> (B) : <<include>></code>.</li>
+    <li>Extend sözdizimi: <code>(A) .> (B) : <<extend>></code>.</li>
+    <li>Kesik çizgili oklar kullanılır.</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>Sınıf diyagramları öznitelik ve metotları anlatır.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Veri yapılarını düzenlemek.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>class</code> ile sınıf tanımla.</li>
+    <li>Öznitelik ve metotları süslü parantez içine yaz.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Programın veri modelini tasarlamak.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Sınıf adını değiştir (örn. <code>Book</code>).</li>
+    <li>Alıştırma 2: Bir öznitelik veya metot ekle.</li>
+    <li>Alıştırma 3: Bir alan adını kısalt veya çevir.</li>
+    <li>Alıştırma 4: İkinci bir sınıf ve iki öznitelik ekle.</li>
+    <li>Alıştırma 5: Bir metodu kendi eyleminle değiştir.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Sınıf biçimi: <code>class Name { ... }</code>.</li>
+    <li>Öznitelikler alan, metotlar <code>()</code> kullanır.</li>
+    <li>Boş sınıflar geçerlidir.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>Bu örnek metotlar ve dönüş türleri ekler.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Sınıfın neler yapabileceğini anlatır.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Metotlar <code>name(): type</code> şeklinde yazılır.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>API veya iş mantığını açıklamak.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Dönüş türü olan bir metot ekle.</li>
+    <li>Alıştırma 2: Bir metodu kendi eyleminle yeniden adlandır.</li>
+    <li>Alıştırma 3: Dönüş türünü <code>bool</code> veya <code>string</code> yap.</li>
+    <li>Alıştırma 4: Başka bir metot ekle ve birini private yap.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Metotlar parametre alabilir: <code>name(param): type</code>.</li>
+    <li>Dönüş türü iki nokta üst üste sonrası yazılır.</li>
+    <li>Metotlar görünürlük sembolü alabilir.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>Public, private ve protected erişimi gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Dışarıdan erişilebilen ile iç detayları ayırır.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>+</code> public, <code>-</code> private, <code>#</code> protected.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>İç detayları gizlemek.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Bir alanı private yap.</li>
+    <li>Alıştırma 2: Bir alanı protected yap.</li>
+    <li>Alıştırma 3: Bir metodu public yap.</li>
+    <li>Alıştırma 4: Bir metodu private ekle.</li>
+    <li>Alıştırma 5: Kendi örneğinle yeniden adlandır.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Görünürlük sembolleri alan/metot önüne gelir.</li>
+    <li>Yaygın semboller: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>Abstract ve static işaretlerini gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>“Uygulanacak” olanla “paylaşılan araç”ı ayırır.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Abstract: italik ya da <code>{abstract}</code>.</li>
+    <li>Static: <code>{static}</code>.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Temel sınıflar ve yardımcı metotlar.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Bir metodu static yap.</li>
+    <li>Alıştırma 2: Sınıf adını kendi örneğinle değiştir.</li>
+    <li>Alıştırma 3: Abstract bir metot ekle.</li>
+    <li>Alıştırma 4: Diğer abstract işaretini kullan.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> abstract sınıf ya da metot demektir.</li>
+    <li><code>{static}</code> static metot demektir.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>Bu örnek kalıtımı gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Üst sınıf ve alt sınıfları göstermek.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Kalıtım için <code>--|></code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Hayvan sınıflandırmaları.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Sınıf adlarını kendi örneğinle değiştir.</li>
+    <li>Alıştırma 2: İkinci bir kalıtım çizgisi ekle.</li>
+    <li>Alıştırma 3: Üst sınıf adını değiştir.</li>
+    <li>Alıştırma 4: Yeni bir alt sınıf ekle.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> kalıtımı ifade eder.</li>
+    <li>Ok üst sınıfa bakar.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>Bu örnek kompozisyonu (güçlü sahiplik) gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Parçaların bütüne bağlı yaşadığını gösterir.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Kompozisyon için <code>*--</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Bir evin odaları olması.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi örneğinle yeniden adlandır.</li>
+    <li>Alıştırma 2: Kompozisyonu agregasyona çevir ve karşılaştır.</li>
+    <li>Alıştırma 3: İkinci bir kompozisyon çizgisi ekle.</li>
+    <li>Alıştırma 4: Etiket metnini değiştir.</li>
+    <li>Alıştırma 5: Yönü değiştir ve gözlemle.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> kompozisyonu ifade eder.</li>
+    <li>Dolu elmas sahip tarafındadır.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>Bu örnek agregasyonu (zayıf sahiplik) gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Parçaların bağımsız yaşayabildiğini gösterir.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Agregasyon için <code>o--</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Bir sınıf ve öğrencileri.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi örneğinle yeniden adlandır.</li>
+    <li>Alıştırma 2: Agregasyonu kompozisyona çevir ve karşılaştır.</li>
+    <li>Alıştırma 3: İkinci bir agregasyon çizgisi ekle.</li>
+    <li>Alıştırma 4: Başka bir senaryo kullan.</li>
+    <li>Alıştırma 5: Yönü değiştir ve açıklama ekle.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> agregasyonu ifade eder.</li>
+    <li>Boş elmas sahip tarafındadır.</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>Nesne diyagramları “sınıf örneği”ni gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Belirli bir andaki veriyi gösterir.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Örnek tanımlamak için <code>object</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Bir nesnenin alan değerlerini göstermek.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Nesneyi kendi örneğinle yeniden adlandır.</li>
+    <li>Alıştırma 2: Başka bir nesne ekle.</li>
+    <li>Alıştırma 3: Alanları kendi verinle değiştir.</li>
+    <li>Alıştırma 4: İki nesne bağla.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Nesne biçimi: <code>object name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>Aktivite diyagramları bir sürecin adımlarını gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>İş akışlarını anlatır.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>start</code> ve <code>stop</code> kullan.</li>
+    <li>Eylemler <code>:action;</code> şeklindedir.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Uygulama akışı, sipariş işleme.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Eylemleri kendi iş akışınla değiştir.</li>
+    <li>Alıştırma 2: Bir eylem ekle.</li>
+    <li>Alıştırma 3: Start/stop yerini değiştir.</li>
+    <li>Alıştırma 4: Bir karar ekle.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Akış yukarıdan aşağı gider.</li>
+    <li>Eylemler <code>: ... ;</code> biçiminde yazılır.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>Karar dallarını gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Farklı yolları net gösterir.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Form kontrolü, ödeme başarılı/başarısız.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Koşulu kendi şartınla değiştir.</li>
+    <li>Alıştırma 2: İkinci bir else dalı ekle.</li>
+    <li>Alıştırma 3: Eylem metnini değiştir.</li>
+    <li>Alıştırma 4: if metnini senaryonla değiştir.</li>
+    <li>Alıştırma 5: Kendi sürecini çiz.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> dal başlatır.</li>
+    <li><code>else</code> başka dala geçer.</li>
+    <li><code>endif</code> bloğu kapatır.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>Tekrarlanan eylemleri gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Döngüleri anlatır.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>while</code> ve <code>endwhile</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Bir durumu tekrar kontrol etmek.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Koşulu kendi şartınla değiştir.</li>
+    <li>Alıştırma 2: Döngü içine bir eylem ekle.</li>
+    <li>Alıştırma 3: Başka bir senaryo kullan.</li>
+    <li>Alıştırma 4: while’ı kavramsal olarak until yap.</li>
+    <li>Alıştırma 5: Başlangıç/bitiş eylemleri ekle.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> döngü başlatır.</li>
+    <li><code>endwhile</code> döngüyü bitirir.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>Swimlane’ler sorumluluğa göre adımları gruplar.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Her adımın kime ait olduğunu gösterir.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Şerit değiştirmek için <code>|Role|</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Takımlar arası iş akışı.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Yeni bir swimlane rolü ekle.</li>
+    <li>Alıştırma 2: Bir eylemi başka şeride taşı.</li>
+    <li>Alıştırma 3: Şeritleri kendi rollerinle yeniden adlandır.</li>
+    <li>Alıştırma 4: Başka bir eylem ekle.</li>
+    <li>Alıştırma 5: Kendi sürecini kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>|Name|</code> ile şerit değiştirilir.</li>
+    <li>Eylemler mevcut şeride aittir.</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>Bileşen diyagramları modülleri anlatır.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Modül yapısını göstermek.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>component</code> ile bileşen tanımla.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Sistem mimarisi katmanları.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Bir bileşen ekle.</li>
+    <li>Alıştırma 2: Bileşen adını değiştir.</li>
+    <li>Alıştırma 3: Bir bağlantı ekle.</li>
+    <li>Alıştırma 4: Kendi senaryonu kullan.</li>
+    <li>Alıştırma 5: Bileşenleri yeniden sırala.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Bileşenler <code>component</code> kullanır.</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>Bileşenleri paketler içinde gruplar.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Büyük sistemleri düzenlemek.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Bileşenleri sarmak için <code>package</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>İşlevlere göre gruplamak.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Bir paket ekle.</li>
+    <li>Alıştırma 2: Bir bileşeni başka pakete taşı.</li>
+    <li>Alıştırma 3: Paketin adını değiştir.</li>
+    <li>Alıştırma 4: Bir bileşen ekle.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Paket biçimi: <code>package Name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>Deployment diyagramları sunucu ve düğümleri gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Sistemin dağıtımını anlatır.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Düğüm tanımlamak için <code>node</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Bulut dağıtım mimarisi.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Bir düğüm ekle.</li>
+    <li>Alıştırma 2: Düğüm adını değiştir.</li>
+    <li>Alıştırma 3: Bir bağlantı ekle.</li>
+    <li>Alıştırma 4: Kendi senaryonu kullan.</li>
+    <li>Alıştırma 5: Düğümü cihazınla değiştir.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Düğümler <code>node</code> kullanır.</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>Durum diyagramları durumlar arası geçişleri gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Durum değişimlerini anlatır.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Durum tanımlamak için <code>state</code> kullan.</li>
+    <li>Durumları oklarla bağla.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Sipariş durum akışı.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi durum adlarını kullan.</li>
+    <li>Alıştırma 2: Başka bir durum ekle.</li>
+    <li>Alıştırma 3: Başka bir geçiş ekle.</li>
+    <li>Alıştırma 4: Kendi sürecini kullan.</li>
+    <li>Alıştırma 5: Bir durumu yeniden adlandır.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Durumlar <code>state</code> kullanır.</li>
+    <li>Geçişler <code>--> </code> kullanır.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>Bileşik durumlar içinde alt durumlar barındırır.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Karmaşık durumları düzenler.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>state Name { ... }</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Karmaşık iş akışları.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Bir alt durum ekle.</li>
+    <li>Alıştırma 2: Kendi senaryonu kullan.</li>
+    <li>Alıştırma 3: Bir geçiş ekle.</li>
+    <li>Alıştırma 4: Bileşik durum adını değiştir.</li>
+    <li>Alıştırma 5: Kendi sürecini kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Bileşik durumlar süslü parantez kullanır.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>Koruma koşulları geçişleri daha net yapar.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Geçiş koşullarını gösterir.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>[condition]</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Durum geçiş koşulları.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi koşulunu kullan.</li>
+    <li>Alıştırma 2: Başka bir koruma koşulu ekle.</li>
+    <li>Alıştırma 3: Kendi sürecini kullan.</li>
+    <li>Alıştırma 4: Geçiş metnini değiştir.</li>
+    <li>Alıştırma 5: Kendi örneğini kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Koruma koşulları köşeli parantez içinde yazılır.</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>Zamanlama diyagramları sinyal değişimlerini gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Sinyali zaman içinde anlatır.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>concise</code> ayarlarını kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Donanım sinyal değişimleri.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi sinyalinle değiştir.</li>
+    <li>Alıştırma 2: Başka bir sinyal satırı ekle.</li>
+    <li>Alıştırma 3: Sinyal adlarını değiştir.</li>
+    <li>Alıştırma 4: Kendi örneğini kullan.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Zamanlama diyagramları <code>concise</code> kullanabilir.</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>JSON diyagramları veri yapısını gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>JSON yapısını daha okunur yapmak.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startjson</code> ve <code>@endjson</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>API yanıt formatları.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi JSON’unla değiştir.</li>
+    <li>Alıştırma 2: Bir alan ekle.</li>
+    <li>Alıştırma 3: Veri değerlerini değiştir.</li>
+    <li>Alıştırma 4: Kendi senaryonu kullan.</li>
+    <li>Alıştırma 5: Kendi verini kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>JSON <code>@startjson</code> ile başlar.</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>YAML diyagramları veri yapısını gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>YAML yapısını daha okunur yapmak.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startyaml</code> ve <code>@endyaml</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Yapılandırma dosyaları.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi YAML’ınla değiştir.</li>
+    <li>Alıştırma 2: Bir alan ekle.</li>
+    <li>Alıştırma 3: Veri içeriğini değiştir.</li>
+    <li>Alıştırma 4: Kendi senaryonu kullan.</li>
+    <li>Alıştırma 5: Kendi verini kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>YAML <code>@startyaml</code> ile başlar.</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>EBNF diyagramları gramer kurallarını gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Gramer yapısını net gösterir.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startebnf</code> ve <code>@endebnf</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Programlama dili gramerini anlatmak.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi gramerinle değiştir.</li>
+    <li>Alıştırma 2: Başka bir kural ekle.</li>
+    <li>Alıştırma 3: Kendi örneğini kullan.</li>
+    <li>Alıştırma 4: Sembolleri değiştir.</li>
+    <li>Alıştırma 5: Kendi gramerini kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>EBNF <code>@startebnf</code> kullanır.</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Regex diyagramları düzenli ifadeleri gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Regex desenlerini anlatır.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startregex</code> ve <code>@endregex</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Regex dokümantasyonu.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi regex’inle değiştir.</li>
+    <li>Alıştırma 2: Başka bir kural ekle.</li>
+    <li>Alıştırma 3: Kendi örneğini kullan.</li>
+    <li>Alıştırma 4: İçeriği değiştir.</li>
+    <li>Alıştırma 5: Kendi gramerini kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Regex <code>@startregex</code> kullanır.</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>Basit ağ topolojisi diyagramı.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Ağ bağlantılarını göstermek.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startnwdiag</code> ve <code>@endnwdiag</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Router ve switch.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Cihazları kendi cihazlarınla değiştir.</li>
+    <li>Alıştırma 2: Bir cihaz ekle.</li>
+    <li>Alıştırma 3: Bağlantıları değiştir.</li>
+    <li>Alıştırma 4: Kendi senaryonu kullan.</li>
+    <li>Alıştırma 5: Kendi örneğini kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>nwdiag <code>@startnwdiag</code> kullanır.</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>Arayüz tel‑kafes (wireframe) diyagramı.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Ekranları hızlıca taslaklamak.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startsalt</code> ve <code>@endsalt</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Ekran prototipleri.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi ekranınla değiştir.</li>
+    <li>Alıştırma 2: Bir buton ekle.</li>
+    <li>Alıştırma 3: Metni değiştir.</li>
+    <li>Alıştırma 4: Düzeni değiştir.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Salt <code>@startsalt</code> kullanır.</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>Kurumsal mimari diyagramı.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Kurumsal sistem mimarisini anlatır.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startarchimate</code> ve <code>@endarchimate</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Kurumsal sistem mimarisi.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi mimarinle değiştir.</li>
+    <li>Alıştırma 2: Bir bileşen ekle.</li>
+    <li>Alıştırma 3: Kendi senaryonu kullan.</li>
+    <li>Alıştırma 4: Öğeleri yeniden adlandır.</li>
+    <li>Alıştırma 5: Kendi örneğini kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Archimate <code>@startarchimate</code> kullanır.</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>SDL süreç akışı diyagramı.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Süreçleri anlatır.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startsdl</code> ve <code>@endsdl</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>İletişim akışı.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi sürecinle değiştir.</li>
+    <li>Alıştırma 2: Bir adım ekle.</li>
+    <li>Alıştırma 3: Öğeleri yeniden adlandır.</li>
+    <li>Alıştırma 4: Kendi senaryonu kullan.</li>
+    <li>Alıştırma 5: Kendi örneğini kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>SDL <code>@startsdl</code> kullanır.</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>ASCII sanatlı Ditaa diyagramı.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Metinle çizim yapmak.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startditaa</code> ve <code>@endditaa</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Hızlı taslaklar.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi ASCII sanatınla değiştir.</li>
+    <li>Alıştırma 2: Başka bir blok ekle.</li>
+    <li>Alıştırma 3: Harfleri değiştir.</li>
+    <li>Alıştırma 4: Kendi senaryonu kullan.</li>
+    <li>Alıştırma 5: Kendi örneğini kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Ditaa <code>@startditaa</code> kullanır.</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>Gantt grafiği zaman çizelgesini gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Proje zaman planı yapmak.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startgantt</code> ve <code>@endgantt</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Proje takvimleri.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi planınla değiştir.</li>
+    <li>Alıştırma 2: Bir görev ekle.</li>
+    <li>Alıştırma 3: Kendi örneğini kullan.</li>
+    <li>Alıştırma 4: Tarihleri değiştir.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Gantt <code>@startgantt</code> kullanır.</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>Olay zaman çizelgesi.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Olayları zaman sırasına koymak.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startchronology</code> ve <code>@endchronology</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Olayların tarihi.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi olaylarınla değiştir.</li>
+    <li>Alıştırma 2: Başka bir olay ekle.</li>
+    <li>Alıştırma 3: Kendi örneğini kullan.</li>
+    <li>Alıştırma 4: Tarihleri değiştir.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Chronology <code>@startchronology</code> kullanır.</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>Mind map fikir hiyerarşisini gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Fikirleri düzenlemek.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startmindmap</code> ve <code>@endmindmap</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Beyin fırtınası.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi temanı kullan.</li>
+    <li>Alıştırma 2: Dallar ekle.</li>
+    <li>Alıştırma 3: Kendi örneğini kullan.</li>
+    <li>Alıştırma 4: Metni değiştir.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>MindMap <code>@startmindmap</code> kullanır.</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>İş kırılım yapısı diyagramı.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>İşi küçük parçalara bölmek.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startwbs</code> ve <code>@endwbs</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Proje işlerinin parçalanması.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi görevlerini kullan.</li>
+    <li>Alıştırma 2: Alt görevler ekle.</li>
+    <li>Alıştırma 3: Kendi örneğini kullan.</li>
+    <li>Alıştırma 4: Metni değiştir.</li>
+    <li>Alıştırma 5: Kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>WBS <code>@startwbs</code> kullanır.</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>Formüller için AsciiMath kullanılır.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Formülleri hızlı yazmak.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li><code>@startmath</code> ve <code>@endmath</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Formül göstermek.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Kendi formülünü kullan.</li>
+    <li>Alıştırma 2: Bir formül daha ekle.</li>
+    <li>Alıştırma 3: Kendi örneğini kullan.</li>
+    <li>Alıştırma 4: Kendi senaryonu kullan.</li>
+    <li>Alıştırma 5: Sembolleri değiştir.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>AsciiMath sembolleri desteklenir.</li>
+    <li><code>@startmath</code> ile aç, <code>@endmath</code> ile kapat.</li>
+    <li><code>^</code> üs, <code>/</code> bölme anlamına gelir.</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>ER diyagramları veritabanı tablolarını anlatır.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Veritabanı yapısını tasarlamak.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol>
+    <li>Tablo için <code>entity</code> kullan.</li>
+    <li>Birincil anahtar için <code>*</code> kullan.</li>
+  </ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Kullanıcı tablosu tasarımı.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: Tablo adını <code>Book</code> yap, alanları <code>title</code>, <code>author</code> yap.</li>
+    <li>Alıştırma 2: Bir alan ekle ve bir türü <code>int</code> yap.</li>
+    <li>Alıştırma 3: Birincil anahtar alanını değiştir ve türünü güncelle.</li>
+    <li>Alıştırma 4: İki alanlı ikinci bir tablo ekle.</li>
+    <li>Alıştırma 5: Ayırıcı çizgi ekle ve alanları yeniden sırala.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li>Ayırıcı çizgi <code>--</code> bölümleri ayırır.</li>
+    <li><code>*</code> birincil anahtar alanını gösterir.</li>
+    <li>Alan biçimi: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>Bu örnek tablolar arası ilişkileri gösterir.</p>
+  <h3>Neden kullanılır</h3>
+  <ul><li>Bire‑çok veya çok‑çok ilişkileri gösterir.</li></ul>
+  <h3>Nasıl kullanılır</h3>
+  <ol><li><code>User ||--o{ Post</code> bire‑çok demektir.</li></ol>
+  <h3>Olası kullanım alanları</h3>
+  <ul><li>Bir kullanıcının birçok gönderisi olur.</li></ul>
+  <h3>Alıştırmalar (çocuklar için kolay)</h3>
+  <ol>
+    <li>Alıştırma 1: <code>User</code>ı <code>Student</code>, <code>Post</code>u <code>Homework</code> yap ve etiketi güncelle.</li>
+    <li>Alıştırma 2: Bire‑çoğu bire‑bire yap ve açıklamayı güncelle.</li>
+    <li>Alıştırma 3: İkinci bir ilişki ekle ve tablo adını değiştir.</li>
+    <li>Alıştırma 4: Yönü ters çevir ve adları ayarla.</li>
+    <li>Alıştırma 5: “Bire‑çok” olarak bırak ve kendi senaryonu kullan.</li>
+  </ol>
+  <h3>PlantUML sözdizimi kuralları (tam liste)</h3>
+  <ul class="rules">
+    <li><code>||</code> ve <code>o{</code> kardinaliteyi gösterir.</li>
+    <li><code>||--o{</code> genelde bire‑çok anlamına gelir.</li>
+    <li>Çizgi iki tabloyu bağlar.</li>
+  </ul>
+</div>
