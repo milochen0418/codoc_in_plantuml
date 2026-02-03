@@ -1,0 +1,1363 @@
+<h1>উদাহরণ টিউটোরিয়াল (শিশুদের জন্য সহজ)</h1>
+<p class="note">
+  এই টিউটোরিয়ালে প্রতিটি উদাহরণ কী আঁকে, কেন উপকারী,
+  কীভাবে ব্যবহার করবেন, সাধারণ ব্যবহার এবং PlantUML সিনট্যাক্স নিয়ম
+  (সম্পূর্ণ ও ব্যবহারিক তালিকা আকারে) সহজভাবে ব্যাখ্যা করা হয়েছে।
+</p>
+
+<h2>সূচিপত্র</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>এই উদাহরণে দেখানো হয় “ব্যক্তি A ব্যক্তি B‑কে একটি বার্তা পাঠায়”, যেমন একটি নোট দেওয়া।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul>
+    <li>কথোপকথনের ক্রম সহজভাবে দেখায়।</li>
+    <li>“কে আগে বলল, কে পরে উত্তর দিল” ধরনের গল্পে দারুণ কাজ করে।</li>
+  </ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startuml</code> এবং <code>@enduml</code> লিখুন।</li>
+    <li><code>Alice -> Bob: Message</code> দিয়ে A‑এর B‑কে বলা দেখান।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul>
+    <li>লগইন ফ্লো: ব্যবহারকারী → সিস্টেম → সার্ভার।</li>
+    <li>চ্যাটবট: তুমি জিজ্ঞেস করো → বট উত্তর দেয়।</li>
+  </ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: <code>Alice</code> ও <code>Bob</code>‑কে পছন্দের নামে বদলাও, আর বাক্যটা দৈনন্দিন কথোপকথনে বদলাও।</li>
+    <li>অনুশীলন ২: আগে একটি <code>participant</code> লাইন যোগ করো, তারপর “প্রথমে প্রশ্ন, পরে উত্তর” করো।</li>
+    <li>অনুশীলন ৩: বার্তাটি দুই লাইনে ভাগ করো—প্রশ্ন তারপর উত্তর—এবং একটি লাইন ছোট করো।</li>
+    <li>অনুশীলন ৪: কে আগে বলছে তা বদলাও এবং লেখা পরিবর্তন করো।</li>
+    <li>অনুশীলন ৫: তৃতীয় একজন যোগ করো এবং কারও নাম বদলাও।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>@startuml</code> দিয়ে শুরু এবং <code>@enduml</code> দিয়ে শেষ।</li>
+    <li>অংশগ্রহণকারী <code>participant</code> দিয়ে ঘোষণা করা যায় বা সরাসরি ব্যবহার করা যায়।</li>
+    <li><code>A -> B</code> হলো কল, <code>A --> B</code> হলো রিটার্ন।</li>
+    <li>টেক্সট কোলনের পরে লেখা হয়: <code>A -> B: Hello</code>।</li>
+    <li>সময় উপরে থেকে নিচে যায়।</li>
+    <li>বেশি বার্তা মানে দীর্ঘ কথোপকথন।</li>
+    <li>বার্তার টেক্সট ঐচ্ছিক: <code>A -> B</code> বৈধ।</li>
+    <li>ফাঁকা‑সহ নাম হলে কোটেশনে লিখতে হয়।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>এই উদাহরণে “অনুরোধ ও উত্তর” দেখানো হয়, যেমন প্রশ্ন‑উত্তর।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul>
+    <li>অনুরোধ ও উত্তরের ধাপগুলো স্পষ্ট দেখায়।</li>
+  </ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>A -> B</code> হলো অনুরোধ।</li>
+    <li><code>B --> A</code> হলো উত্তর।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul>
+    <li>API কল: ফ্রন্টএন্ড → ব্যাকএন্ড → ডেটা ফেরত।</li>
+  </ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: ভূমিকা বদলে <code>Client</code> ও <code>Server</code> করো, বার্তা করো “ডেটা চাই / ডেটা দাও”।</li>
+    <li>অনুশীলন ২: অনুরোধকে “query”, উত্তরকে “query result” করো।</li>
+    <li>অনুশীলন ৩: আরেক জোড়া অনুরোধ‑উত্তর যোগ করো (৪ লাইন) এবং দ্বিতীয় টেক্সট বদলাও।</li>
+    <li>অনুশীলন ৪: ভিন্ন কেউ উত্তর দিক এবং টেক্সট মিলিয়ে নাও।</li>
+    <li>অনুশীলন ৫: অনুরোধের আগে “প্রস্তুতি” self‑message যোগ করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>-></code> বার্তা পাঠায়।</li>
+    <li><code>--></code> সাধারণত রিটার্ন বোঝায়।</li>
+    <li>উত্তরের বিষয় বোঝাতে টেক্সট যোগ করুন।</li>
+    <li>অনুরোধ‑উত্তর সাধারণত জোড়ায় থাকে, তবে বাধ্যতামূলক নয়।</li>
+    <li>পরিষ্কার করতে চাইলে আগে অংশগ্রহণকারী ঘোষণা করুন।</li>
+    <li>সময় উপরে থেকে নিচে যায়।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>এটি “নিজের সাথে কথা বলা”, একটি অভ্যন্তরীণ ধাপ দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul>
+    <li>কোনো অবজেক্ট ভিতরে কী করছে তা দেখায়।</li>
+  </ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul>
+    <li>অ্যালগরিদম ধাপ, অভ্যন্তরীণ গণনা।</li>
+  </ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: <code>Alice</code>‑কে নিজের নামে বদলাও (যেমন <code>Me</code>) এবং বার্তা বদলাও।</li>
+    <li>অনুশীলন ২: ক্রিয়াটি “ডেটা পড়ো” করো এবং <code>Me -> Me: আবার যাচাই</code> যোগ করো।</li>
+    <li>অনুশীলন ৩: বার্তাটি “ভাবো” করো এবং <code>Me -> Me: মূল পয়েন্ট লেখো</code> যোগ করো।</li>
+    <li>অনুশীলন ৪: নাম <code>Robot</code> করো এবং <code>Robot -> Robot: চার্জ</code> যোগ করো।</li>
+    <li>অনুশীলন ৫: শুরুতে <code>Me -> Me: start</code> এবং শেষে <code>Me -> Me: done</code> যোগ করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>তীরের দুই প্রান্তে একই অংশগ্রহণকারী হতে পারে।</li>
+    <li>বেসিক ফরম্যাট: <code>Role -> Role: Text</code>।</li>
+    <li>নাম ঘোষণা ছাড়াও ব্যবহার করা যায়।</li>
+    <li>কোলনের পরে টেক্সট ঐচ্ছিক।</li>
+    <li>একাধিক self‑message আরও অভ্যন্তরীণ ধাপ দেখায়।</li>
+    <li><code>activate</code> / <code>deactivate</code> দিয়ে ব্যবহার করা যায়।</li>
+    <li>সময় উপরে থেকে নিচে যায়।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>এই উদাহরণে বিভিন্ন ভূমিকার জন্য বিভিন্ন আইকন দেখানো হয়, যেমন ব্যক্তি, সিস্টেম, ডেটাবেস।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>আইকন দেখে ভূমিকা দ্রুত বোঝা যায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>লগইন ফ্লো: User → Web → Logic → Database.</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: <code>User</code>‑কে <code>Student</code> করো এবং বার্তা বদলাও।</li>
+    <li>অনুশীলন ২: <code>boundary App</code> যোগ করো এবং তীর আগে App‑এ পাঠাও।</li>
+    <li>অনুশীলন ৩: <code>database DB</code>‑কে <code>database Books</code> করো এবং বার্তা বদলাও।</li>
+    <li>অনুশীলন ৪: একটি <code>control</code> ভূমিকা যোগ করো এবং একটি ইন্টার‌্যাকশন লাইন লিখো।</li>
+    <li>অনুশীলন ৫: অংশগ্রহণকারীদের ক্রম বদলাও এবং বার্তা সামঞ্জস্য করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>ভূমিকার ধরন চেহারা বদলায়, নাম নয়।</li>
+    <li>ইন্টার‌্যাকশনের জন্য <code>-></code> ব্যবহার হয়।</li>
+    <li>ঘোষণা ফরম্যাট: <code>actor/boundary/control/database/entity Name</code>।</li>
+    <li>আগে ভূমিকা ঘোষণা করুন, তারপর নাম ব্যবহার করুন।</li>
+    <li>ঘোষণা ছাড়া নাম মানে সাধারণ অংশগ্রহণকারী।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>এই উদাহরণে রং ও স্টাইল দিয়ে ডায়াগ্রামকে আরও পরিষ্কার করা হয়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>গুরুত্বপূর্ণ ভূমিকা রং দিয়ে হাইলাইট হয়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li>স্টাইল ঠিক করতে <code>skinparam</code> ব্যবহার করুন।</li>
+    <li>ভূমিকায় রং যোগ করুন: <code>participant Alice #AliceBlue</code>।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>“কেন্দ্রীয় সিস্টেম”কে উজ্জ্বল রং দিয়ে দেখানো।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: <code>Alice</code> নাম বদলাও এবং রং বদলাও।</li>
+    <li>অনুশীলন ২: বার্তাটি “start” করো এবং অন্য ভূমিকা গাঢ় করো।</li>
+    <li>অনুশীলন ৩: তৃতীয় একটি ভূমিকা যোগ করে আলাদা রং দাও।</li>
+    <li>অনুশীলন ৪: <code>skinparam sequenceMessageAlign</code> বদলাও এবং একটি লাইন সংশোধন করো।</li>
+    <li>অনুশীলন ৫: স্টাইল নাম (যেমন <code>#technology</code>) ব্যবহার করে বার্তা বদলাও।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> অ্যালাইনমেন্ট, ফন্ট, রং ইত্যাদি নিয়ন্ত্রণ করে।</li>
+    <li>ভূমিকায় রং বা স্টাইল নাম দেওয়া যায়।</li>
+    <li>রং নাম বা hex হতে পারে, যেমন <code>#AliceBlue</code>।</li>
+    <li>একই ভূমিকা আবার ঘোষণা করলে শেষটাই কার্যকর হয়।</li>
+    <li>স্টাইল সেটিং বার্তা সিনট্যাক্স বদলায় না।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>“যদি… না হলে…” ধরনের পছন্দ দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>ভিন্ন শর্তে ভিন্ন শাখা দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>alt</code> দিয়ে শুরু, অন্য শাখার জন্য <code>else</code>, শেষ করতে <code>end</code>।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>পেমেন্ট সফল বা ব্যর্থ।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: শর্ত “টাকা আছে / নেই” করো এবং বার্তা বদলাও।</li>
+    <li>অনুশীলন ২: তৃতীয় <code>else</code> শাখা ও একটি বার্তা যোগ করো।</li>
+    <li>অনুশীলন ৩: <code>alt</code> শিরোনাম নিজের দৃশ্য অনুযায়ী বদলাও।</li>
+    <li>অনুশীলন ৪: প্রতিটি শাখায় একটি লাইন যোগ করো এবং শিরোনাম বদলাও।</li>
+    <li>অনুশীলন ৫: “ত্রুটির পর আবার চেষ্টা” শাখা করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> একটি শাখা শুরু করে।</li>
+    <li>একাধিক <code>else</code> শাখা হতে পারে।</li>
+    <li><code>end</code> দিয়ে বন্ধ করতে হয়।</li>
+    <li>প্রতি শাখায় একাধিক বার্তা থাকতে পারে।</li>
+    <li>শর্তের টেক্সট ঐচ্ছিক কিন্তু ভালো।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>পুনরাবৃত্ত কাজ দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>পুনরাবৃত্ত ধাপ দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li>পুনরাবৃত্ত লাইনকে <code>loop</code> ও <code>end</code> দিয়ে ঘিরুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>প্রতি সেকেন্ডে স্ট্যাটাস চেক।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: লুপ লেবেল “প্রতি ৩ বার” করো এবং বার্তা বদলাও।</li>
+    <li>অনুশীলন ২: লুপের ভিতরে আরেকটি বার্তা যোগ করো এবং আগেরটি ছোট করো।</li>
+    <li>অনুশীলন ৩: ভূমিকার নাম বদলাও এবং বার্তাটি “চেক” করো।</li>
+    <li>অনুশীলন ৪: লুপ লেবেল “শেষ না হওয়া পর্যন্ত” ধরনের শর্ত করো।</li>
+    <li>অনুশীলন ৫: লুপের বাইরে শুরু/শেষ বার্তা যোগ করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> একই লাইনে হতে পারে।</li>
+    <li><code>end</code> লুপ ব্লক শেষ করে।</li>
+    <li>লুপের মধ্যে একাধিক বার্তা থাকতে পারে।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>একসাথে হওয়া দুইটি কাজ দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>সমান্তরাল কাজ দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>par</code> দিয়ে শুরু, অন্য সমান্তরাল শাখার জন্য <code>else</code>, শেষ করতে <code>end</code>।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>একসাথে দুইটি সার্ভিসকে জানানো।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: শাখাগুলো “ইমেইল পাঠাও” ও “SMS পাঠাও” করো এবং ভূমিকা বদলাও।</li>
+    <li>অনুশীলন ২: ভূমিকা বদলে প্রতিটি শাখায় একটি লাইন যোগ করো।</li>
+    <li>অনুশীলন ৩: তৃতীয় শাখা (<code>else</code>) ও একটি বার্তা যোগ করো।</li>
+    <li>অনুশীলন ৪: একটি শাখা “ধীরে করো” করে শেষে একটি বার্তা যোগ করো।</li>
+    <li>অনুশীলন ৫: <code>par</code>‑এর আগে “কাজ শুরু”, <code>end</code>‑এর পরে “শেষ” যোগ করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>par</code> সমান্তরাল ব্লক তৈরি করে।</li>
+    <li>প্রতিটি শাখার নিজের বার্তার ধারা থাকতে পারে।</li>
+    <li><code>else</code> অন্য সমান্তরাল শাখায় যায়।</li>
+    <li><code>end</code> দিয়ে বন্ধ করতে হয়।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>এই উদাহরণে অ্যাক্টিভেশন বার দিয়ে কোন ভূমিকা কখন ব্যস্ত তা দেখানো হয়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>কে কতক্ষণ কাজ করছে তা দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li>শুরু করতে <code>activate Role</code> ব্যবহার করুন।</li>
+    <li>শেষ করতে <code>deactivate Role</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>সার্ভার অনুরোধ প্রক্রিয়াকরণ সময় দেখানো।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: ভূমিকা <code>Server</code> করো এবং বার্তা “processing” করো।</li>
+    <li>অনুশীলন ২: একটি অনুরোধ লাইন যোগ করো এবং তার পরেই <code>activate</code> দাও।</li>
+    <li>অনুশীলন ৩: “halfway” বার্তা যোগ করে নিজের টেক্সটে বদলাও।</li>
+    <li>অনুশীলন ৪: আরেক ভূমিকা, তার অ্যাক্টিভেশন ও বার্তা যোগ করো।</li>
+    <li>অনুশীলন ৫: অ্যাক্টিভেশনের শুরু/শেষ এক লাইন নিচে সরাও।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>activate/deactivate বার্তার আগে বা পরে হতে পারে।</li>
+    <li><code>activate</code> এবং <code>deactivate</code> জোড়ায় থাকে।</li>
+    <li>অ্যাক্টিভ অবস্থায় বার্তা পাঠানো যায়।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>এই উদাহরণে স্টিকি নোট যোগ করার পদ্ধতি দেখানো হয়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>পরিষ্কার বোঝাতে ব্যাখ্যা যোগ হয়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>note left</code> বা <code>note right</code> ব্যবহার করুন।</li>
+    <li><code>end note</code> দিয়ে নোট বন্ধ করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>“এই ধাপ ব্যর্থ হতে পারে” এর মতো নোট।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নোটের লেখা নিজের মতো বদলাও।</li>
+    <li>অনুশীলন ২: নোট ডান পাশে সরিয়ে টেক্সট বদলাও।</li>
+    <li>অনুশীলন ৩: অন্য ভূমিকার পাশে দ্বিতীয় নোট যোগ করো।</li>
+    <li>অনুশীলন ৪: নোটকে দুই লাইনে করো।</li>
+    <li>অনুশীলন ৫: নোটকে অন্য বার্তার পরে সরাও।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>নোট <code>left</code>, <code>right</code> বা <code>over</code> হতে পারে।</li>
+    <li>মাল্টি‑লাইন নোটে <code>note</code> ও <code>end note</code> ব্যবহৃত হয়।</li>
+    <li>নোট বার্তা প্রবাহ বদলায় না।</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>ইউস কেস ডায়াগ্রাম হলো “সিস্টেম কী করতে পারে” এর তালিকা।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>ব্যবহারকারীর দরকারি ফাংশনগুলো পরিষ্কারভাবে তালিকাভুক্ত করে।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li>ব্যবহারকারীর জন্য <code>actor</code> ব্যবহার করুন।</li>
+    <li>একটি ফাংশনের জন্য <code>(UseCase)</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>লগইন, সার্চ, পেমেন্ট ইত্যাদি।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: ব্যবহারকারীকে <code>Teacher</code> এবং ইউস কেসকে “create quiz” করো।</li>
+    <li>অনুশীলন ২: দ্বিতীয় ইউস কেস যোগ করো।</li>
+    <li>অনুশীলন ৩: ইউস কেস ও অ্যাক্টর নাম বদলাও।</li>
+    <li>অনুশীলন ৪: দ্বিতীয় অ্যাক্টর যোগ করে ইউস কেসে যুক্ত করো।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>ইউস কেস বন্ধনীর মধ্যে: <code>(Login)</code>।</li>
+    <li>অ্যাক্টর হলো স্টিক ফিগার: <code>actor User</code>।</li>
+    <li>অ্যাক্টরকে ইউস কেসের সাথে লাইন দিয়ে যুক্ত করুন।</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>ইউস কেসের মধ্যে include/extend সম্পর্ক দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>কমন বা ঐচ্ছিক ধাপ বোঝায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code><<include>></code> মানে “সবসময় অন্তর্ভুক্ত”।</li>
+    <li><code><<extend>></code> মানে “ঐচ্ছিক”।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>লগইনে ভ্যালিডেশন সবসময় থাকে; পেমেন্টে ডিসকাউন্ট এক্সটেন্ড হতে পারে।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: ইউস কেসগুলো নিজের উদাহরণে বদলাও।</li>
+    <li>অনুশীলন ২: include এবং extend অদলবদল করো।</li>
+    <li>অনুশীলন ৩: আরেকটি ইউস কেস যোগ করে include করো।</li>
+    <li>অনুশীলন ৪: তীর উল্টো করে টেক্সট আপডেট করো।</li>
+    <li>অনুশীলন ৫: সম্পর্কের টেক্সট নিজের ভাষায় বদলাও।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>Include সিনট্যাক্স: <code>(A) .> (B) : <<include>></code>।</li>
+    <li>Extend সিনট্যাক্স: <code>(A) .> (B) : <<extend>></code>।</li>
+    <li>ড্যাশড তীর ব্যবহার করুন।</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>ক্লাস ডায়াগ্রাম অ্যাট্রিবিউট ও মেথড বোঝায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>ডেটা স্ট্রাকচার সাজাতে সাহায্য করে।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>class</code> দিয়ে ক্লাস ডিফাইন করুন।</li>
+    <li>অ্যাট্রিবিউট ও মেথড কার্লি ব্রেসে লিখুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>প্রোগ্রামের ডেটা মডেল ডিজাইন।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: ক্লাসের নাম বদলাও (যেমন <code>Book</code>)।</li>
+    <li>অনুশীলন ২: একটি অ্যাট্রিবিউট বা মেথড যোগ করো।</li>
+    <li>অনুশীলন ৩: কোনো ফিল্ড নাম ছোট করো বা অনুবাদ করো।</li>
+    <li>অনুশীলন ৪: দ্বিতীয় ক্লাস ও দুটি অ্যাট্রিবিউট যোগ করো।</li>
+    <li>অনুশীলন ৫: একটি মেথড নিজের কাজ দিয়ে বদলাও।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>ক্লাস ফরম্যাট: <code>class Name { ... }</code>।</li>
+    <li>অ্যাট্রিবিউট হলো ফিল্ড, মেথডে <code>()</code> থাকে।</li>
+    <li>খালি ক্লাসও বৈধ।</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>এই উদাহরণে মেথড ও রিটার্ন টাইপ যোগ করা হয়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>ক্লাস কী করতে পারে তা বোঝায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li>মেথড লিখুন <code>name(): type</code> আকারে।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>API বা বিজনেস লজিক বর্ণনা।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: রিটার্ন টাইপসহ একটি মেথড যোগ করো।</li>
+    <li>অনুশীলন ২: একটি মেথড নাম নিজের কাজ অনুযায়ী বদলাও।</li>
+    <li>অনুশীলন ৩: রিটার্ন টাইপকে <code>bool</code> বা <code>string</code> করো।</li>
+    <li>অনুশীলন ৪: আরেকটি মেথড যোগ করো এবং একটিকে private করো।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>মেথডে প্যারামিটার থাকতে পারে: <code>name(param): type</code>।</li>
+    <li>রিটার্ন টাইপ কোলনের পরে লেখা হয়।</li>
+    <li>মেথডে ভিজিবিলিটি চিহ্ন থাকতে পারে।</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>public, private, protected অ্যাক্সেস দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>বাইরের অ্যাক্সেস ও ভিতরের ডিটেইল আলাদা করে।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>+</code> public, <code>-</code> private, <code>#</code> protected।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>ভিতরের ডিটেইল লুকানো।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: একটি ফিল্ড private করো।</li>
+    <li>অনুশীলন ২: একটি protected ফিল্ড যোগ করো।</li>
+    <li>অনুশীলন ৩: একটি মেথড public করো।</li>
+    <li>অনুশীলন ৪: একটি private মেথড যোগ করো।</li>
+    <li>অনুশীলন ৫: নিজের উদাহরণে নাম বদলাও।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>ভিজিবিলিটি চিহ্ন ফিল্ড/মেথডের আগে বসে।</li>
+    <li>সাধারণ চিহ্ন: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>।</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>abstract ও static চিহ্ন দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>“বাস্তবায়ন দরকার” আর “শেয়ার্ড টুল” আলাদা করে।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li>Abstract: ইটালিক বা <code>{abstract}</code>।</li>
+    <li>Static: <code>{static}</code>।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>বেস ক্লাস এবং ইউটিলিটি মেথড।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: একটি মেথড static করো।</li>
+    <li>অনুশীলন ২: ক্লাস নাম নিজের উদাহরণে বদলাও।</li>
+    <li>অনুশীলন ৩: একটি abstract মেথড যোগ করো।</li>
+    <li>অনুশীলন ৪: অন্য abstract চিহ্ন ব্যবহার করো।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> abstract ক্লাস বা মেথড বোঝায়।</li>
+    <li><code>{static}</code> static মেথড বোঝায়।</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>এই উদাহরণে উত্তরাধিকার দেখানো হয়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>প্যারেন্ট ও চাইল্ড ক্লাস দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li>উত্তরাধিকারের জন্য <code>--|></code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>প্রাণীর শ্রেণিবিন্যাস।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: ক্লাস নাম নিজের উদাহরণে বদলাও।</li>
+    <li>অনুশীলন ২: দ্বিতীয় একটি ইনহেরিটেন্স লাইন যোগ করো।</li>
+    <li>অনুশীলন ৩: প্যারেন্ট ক্লাসের নাম বদলাও।</li>
+    <li>অনুশীলন ৪: নতুন চাইল্ড ক্লাস যোগ করো।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> মানে উত্তরাধিকার।</li>
+    <li>তীর প্যারেন্টের দিকে থাকে।</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>এই উদাহরণে কম্পোজিশন (শক্ত মালিকানা) দেখানো হয়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>অংশগুলো যে পুরোটা ছাড়া থাকতে পারে না তা দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li>কম্পোজিশনের জন্য <code>*--</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>একটি বাড়িতে সবসময় ঘর থাকে।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের উদাহরণে নাম বদলাও।</li>
+    <li>অনুশীলন ২: কম্পোজিশনকে অ্যাগ্রিগেশনে বদলে তুলনা করো।</li>
+    <li>অনুশীলন ৩: দ্বিতীয় কম্পোজিশন লাইন যোগ করো।</li>
+    <li>অনুশীলন ৪: লেবেল টেক্সট বদলাও।</li>
+    <li>অনুশীলন ৫: দিক উল্টে পর্যবেক্ষণ করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> মানে কম্পোজিশন।</li>
+    <li>ভর্তি ডায়মন্ড মালিকের পাশে থাকে।</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>এই উদাহরণে অ্যাগ্রিগেশন (দুর্বল মালিকানা) দেখানো হয়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>অংশগুলো স্বাধীনভাবে থাকতে পারে তা দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li>অ্যাগ্রিগেশনের জন্য <code>o--</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>একটি ক্লাস ও তার শিক্ষার্থীরা।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের উদাহরণে নাম বদলাও।</li>
+    <li>অনুশীলন ২: অ্যাগ্রিগেশনকে কম্পোজিশনে বদলে তুলনা করো।</li>
+    <li>অনুশীলন ৩: দ্বিতীয় অ্যাগ্রিগেশন লাইন যোগ করো।</li>
+    <li>অনুশীলন ৪: অন্য দৃশ্য ব্যবহার করো।</li>
+    <li>অনুশীলন ৫: দিক বদলে বর্ণনা যোগ করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> মানে অ্যাগ্রিগেশন।</li>
+    <li>খালি ডায়মন্ড মালিকের পাশে থাকে।</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>অবজেক্ট ডায়াগ্রাম “ক্লাস ইনস্ট্যান্স” দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>নির্দিষ্ট সময়ের ডেটা দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li>ইনস্ট্যান্স লিখতে <code>object</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>অবজেক্টের ফিল্ড ভ্যালু দেখানো।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: অবজেক্ট নাম নিজের উদাহরণে বদলাও।</li>
+    <li>অনুশীলন ২: আরেকটি অবজেক্ট যোগ করো।</li>
+    <li>অনুশীলন ৩: ফিল্ডগুলো নিজের ডেটা দিয়ে বদলাও।</li>
+    <li>অনুশীলন ৪: দুটি অবজেক্ট যুক্ত করো।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>অবজেক্ট ফরম্যাট: <code>object name { ... }</code>।</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>অ্যাক্টিভিটি ডায়াগ্রাম প্রক্রিয়ার ধাপ দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>ওয়ার্কফ্লো বোঝায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>start</code> এবং <code>stop</code> ব্যবহার করুন।</li>
+    <li>অ্যাকশন লেখা হয় <code>:action;</code> আকারে।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>অ্যাপ ফ্লো, অর্ডার প্রসেসিং।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: অ্যাকশনগুলো নিজের ওয়ার্কফ্লো দিয়ে বদলাও।</li>
+    <li>অনুশীলন ২: একটি অ্যাকশন যোগ করো।</li>
+    <li>অনুশীলন ৩: start/stop এর অবস্থান বদলাও।</li>
+    <li>অনুশীলন ৪: একটি সিদ্ধান্ত যোগ করো।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>ফ্লো উপরে থেকে নিচে যায়।</li>
+    <li>অ্যাকশন লেখা হয় <code>: ... ;</code> আকারে।</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>সিদ্ধান্তের শাখা দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>বিভিন্ন পথ পরিষ্কারভাবে দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>ফর্ম যাচাই, পেমেন্ট সফল/ব্যর্থ।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: শর্ত নিজের মতো বদলাও।</li>
+    <li>অনুশীলন ২: দ্বিতীয় else শাখা যোগ করো।</li>
+    <li>অনুশীলন ৩: অ্যাকশন টেক্সট বদলাও।</li>
+    <li>অনুশীলন ৪: if টেক্সট নিজের দৃশ্যে বদলাও।</li>
+    <li>অনুশীলন ৫: নিজের প্রক্রিয়া তৈরি করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> শাখা শুরু করে।</li>
+    <li><code>else</code> অন্য শাখায় যায়।</li>
+    <li><code>endif</code> ব্লক বন্ধ করে।</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>পুনরাবৃত্ত কাজ দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>লুপ বোঝায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>while</code> ও <code>endwhile</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>স্ট্যাটাস বারবার পরীক্ষা।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: শর্ত নিজের মতো বদলাও।</li>
+    <li>অনুশীলন ২: লুপের ভিতরে একটি অ্যাকশন যোগ করো।</li>
+    <li>অনুশীলন ৩: অন্য দৃশ্য ব্যবহার করো।</li>
+    <li>অনুশীলন ৪: while‑কে until ভাবতে পারো (ধারণাগত)।</li>
+    <li>অনুশীলন ৫: শুরু/শেষ অ্যাকশন যোগ করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> লুপ শুরু করে।</li>
+    <li><code>endwhile</code> লুপ শেষ করে।</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>সুইমলেন দায়িত্ব অনুযায়ী ধাপগুলো আলাদা করে।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>প্রতিটি ধাপের দায়িত্ব কার তা দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>|Role|</code> দিয়ে লেন বদলান।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>টিমের মধ্যে ওয়ার্কফ্লো।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নতুন একটি সুইমলেন ভূমিকা যোগ করো।</li>
+    <li>অনুশীলন ২: একটি অ্যাকশন অন্য লেনে সরাও।</li>
+    <li>অনুশীলন ৩: লেনের নাম নিজের ভূমিকার সাথে বদলাও।</li>
+    <li>অনুশীলন ৪: আরেকটি অ্যাকশন যোগ করো।</li>
+    <li>অনুশীলন ৫: নিজের প্রক্রিয়া ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>|Name|</code> দিয়ে লেন বদলায়।</li>
+    <li>অ্যাকশন বর্তমান লেনের অংশ।</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>কম্পোনেন্ট ডায়াগ্রাম মডিউল বর্ণনা করে।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>মডিউল কাঠামো দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>component</code> দিয়ে কম্পোনেন্ট ডিফাইন করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>সিস্টেম আর্কিটেকচার লেয়ার।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: একটি কম্পোনেন্ট যোগ করো।</li>
+    <li>অনুশীলন ২: কম্পোনেন্ট নাম বদলাও।</li>
+    <li>অনুশীলন ৩: একটি সংযোগ যোগ করো।</li>
+    <li>অনুশীলন ৪: নিজের দৃশ্য ব্যবহার করো।</li>
+    <li>অনুশীলন ৫: কম্পোনেন্টগুলো পুনরায় সাজাও।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>কম্পোনেন্টে <code>component</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>কম্পোনেন্টকে প্যাকেজে গ্রুপ করা হয়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>বড় সিস্টেম গুছিয়ে রাখতে সাহায্য করে।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li>কম্পোনেন্ট ঘিরতে <code>package</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>ফাংশন অনুযায়ী গ্রুপ করা।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: একটি প্যাকেজ যোগ করো।</li>
+    <li>অনুশীলন ২: একটি কম্পোনেন্ট অন্য প্যাকেজে সরাও।</li>
+    <li>অনুশীলন ৩: প্যাকেজের নাম বদলাও।</li>
+    <li>অনুশীলন ৪: একটি কম্পোনেন্ট যোগ করো।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>প্যাকেজ ফরম্যাট: <code>package Name { ... }</code>।</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>ডিপ্লয়মেন্ট ডায়াগ্রাম সার্ভার ও নোড দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>সিস্টেম ডিপ্লয়মেন্ট বোঝায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>node</code> দিয়ে নোড নির্ধারণ করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>ক্লাউড ডিপ্লয়মেন্ট আর্কিটেকচার।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: একটি নোড যোগ করো।</li>
+    <li>অনুশীলন ২: নোড নাম বদলাও।</li>
+    <li>অনুশীলন ৩: একটি সংযোগ যোগ করো।</li>
+    <li>অনুশীলন ৪: নিজের দৃশ্য ব্যবহার করো।</li>
+    <li>অনুশীলন ৫: নোডকে নিজের ডিভাইস হিসেবে বদলাও।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>নোডে <code>node</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>স্টেট ডায়াগ্রাম স্টেট বদল দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>স্টেট পরিবর্তন বোঝায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>state</code> দিয়ে স্টেট নির্ধারণ করুন।</li>
+    <li>স্টেটগুলোর মধ্যে তীর দিন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>অর্ডার স্টেট ফ্লো।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের স্টেট নাম ব্যবহার করো।</li>
+    <li>অনুশীলন ২: আরেকটি স্টেট যোগ করো।</li>
+    <li>অনুশীলন ৩: আরেকটি ট্রানজিশন যোগ করো।</li>
+    <li>অনুশীলন ৪: নিজের প্রক্রিয়া ব্যবহার করো।</li>
+    <li>অনুশীলন ৫: একটি স্টেট নাম বদলাও।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>স্টেট লিখতে <code>state</code> ব্যবহার হয়।</li>
+    <li>ট্রানজিশনে <code>--> </code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>কম্পোজিট স্টেটের ভিতরে অনেক সাব‑স্টেট থাকে।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>জটিল স্টেট সংগঠিত করতে সাহায্য করে।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>state Name { ... }</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>জটিল ওয়ার্কফ্লো।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: একটি সাব‑স্টেট যোগ করো।</li>
+    <li>অনুশীলন ২: নিজের দৃশ্য ব্যবহার করো।</li>
+    <li>অনুশীলন ৩: একটি ট্রানজিশন যোগ করো।</li>
+    <li>অনুশীলন ৪: কম্পোজিট স্টেটের নাম বদলাও।</li>
+    <li>অনুশীলন ৫: নিজের প্রক্রিয়া ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>কম্পোজিট স্টেটে কার্লি ব্রেস ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>গার্ড শর্ত ট্রানজিশনকে আরও নির্দিষ্ট করে।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>ট্রানজিশনের শর্ত দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>[condition]</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>স্টেট ট্রানজিশন শর্ত।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের শর্ত ব্যবহার করো।</li>
+    <li>অনুশীলন ২: আরেকটি গার্ড শর্ত যোগ করো।</li>
+    <li>অনুশীলন ৩: নিজের প্রক্রিয়া ব্যবহার করো।</li>
+    <li>অনুশীলন ৪: ট্রানজিশনের টেক্সট বদলাও।</li>
+    <li>অনুশীলন ৫: নিজের উদাহরণ ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>গার্ড শর্ত স্কয়ার ব্র্যাকেটে লেখা হয়।</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>টাইমিং ডায়াগ্রাম সিগন্যাল পরিবর্তন দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>সময়ের সাথে সিগন্যাল বোঝায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>concise</code> সেটিং ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>হার্ডওয়্যার সিগন্যাল পরিবর্তন।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের সিগন্যাল দিয়ে বদলাও।</li>
+    <li>অনুশীলন ২: আরেকটি সিগন্যাল লাইন যোগ করো।</li>
+    <li>অনুশীলন ৩: সিগন্যাল নাম বদলাও।</li>
+    <li>অনুশীলন ৪: নিজের উদাহরণ ব্যবহার করো।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>টাইমিং ডায়াগ্রাম <code>concise</code> ব্যবহার করতে পারে।</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>JSON ডায়াগ্রাম ডেটা কাঠামো দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>JSON কাঠামো পড়তে সহজ করে।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startjson</code> ও <code>@endjson</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>API রেসপন্স ফরম্যাট।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের JSON দিয়ে বদলাও।</li>
+    <li>অনুশীলন ২: একটি ফিল্ড যোগ করো।</li>
+    <li>অনুশীলন ৩: ডেটার মান বদলাও।</li>
+    <li>অনুশীলন ৪: নিজের দৃশ্য ব্যবহার করো।</li>
+    <li>অনুশীলন ৫: নিজের ডেটা ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>JSON <code>@startjson</code> দিয়ে ঘেরা হয়।</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>YAML ডায়াগ্রাম ডেটা কাঠামো দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>YAML কাঠামো পড়তে সহজ করে।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startyaml</code> ও <code>@endyaml</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>কনফিগ ফাইল।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের YAML দিয়ে বদলাও।</li>
+    <li>অনুশীলন ২: একটি ফিল্ড যোগ করো।</li>
+    <li>অনুশীলন ৩: ডেটার বিষয়বস্তু বদলাও।</li>
+    <li>অনুশীলন ৪: নিজের দৃশ্য ব্যবহার করো।</li>
+    <li>অনুশীলন ৫: নিজের ডেটা ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>YAML <code>@startyaml</code> দিয়ে ঘেরা হয়।</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>EBNF ডায়াগ্রাম ব্যাকরণ নিয়ম দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>ব্যাকরণের কাঠামো স্পষ্ট করে।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startebnf</code> ও <code>@endebnf</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>প্রোগ্রামিং ভাষার ব্যাকরণ বর্ণনা।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের ব্যাকরণ দিয়ে বদলাও।</li>
+    <li>অনুশীলন ২: আরেকটি নিয়ম যোগ করো।</li>
+    <li>অনুশীলন ৩: নিজের উদাহরণ ব্যবহার করো।</li>
+    <li>অনুশীলন ৪: প্রতীক বদলাও।</li>
+    <li>অনুশীলন ৫: নিজের ব্যাকরণ ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>EBNF‑এ <code>@startebnf</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Regex ডায়াগ্রাম রেগুলার এক্সপ্রেশন দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>Regex প্যাটার্ন বোঝায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startregex</code> ও <code>@endregex</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>Regex ডকুমেন্টেশন।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের regex দিয়ে বদলাও।</li>
+    <li>অনুশীলন ২: আরেকটি নিয়ম যোগ করো।</li>
+    <li>অনুশীলন ৩: নিজের উদাহরণ ব্যবহার করো।</li>
+    <li>অনুশীলন ৪: কন্টেন্ট বদলাও।</li>
+    <li>অনুশীলন ৫: নিজের ব্যাকরণ ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>Regex‑এ <code>@startregex</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>সহজ নেটওয়ার্ক টপোলজি ডায়াগ্রাম।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>নেটওয়ার্ক সংযোগ দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startnwdiag</code> ও <code>@endnwdiag</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>রাউটার এবং সুইচ।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের ডিভাইস দিয়ে বদলাও।</li>
+    <li>অনুশীলন ২: একটি ডিভাইস যোগ করো।</li>
+    <li>অনুশীলন ৩: সংযোগ বদলাও।</li>
+    <li>অনুশীলন ৪: নিজের দৃশ্য ব্যবহার করো।</li>
+    <li>অনুশীলন ৫: নিজের উদাহরণ ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>nwdiag‑এ <code>@startnwdiag</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>UI ওয়্যারফ্রেম ডায়াগ্রাম।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>স্ক্রিন দ্রুত আঁকা যায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startsalt</code> ও <code>@endsalt</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>স্ক্রিন প্রোটোটাইপ।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের স্ক্রিন দিয়ে বদলাও।</li>
+    <li>অনুশীলন ২: একটি বাটন যোগ করো।</li>
+    <li>অনুশীলন ৩: টেক্সট বদলাও।</li>
+    <li>অনুশীলন ৪: লেআউট বদলাও।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>Salt‑এ <code>@startsalt</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>এন্টারপ্রাইজ আর্কিটেকচার ডায়াগ্রাম।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>এন্টারপ্রাইজ সিস্টেম আর্কিটেকচার বোঝায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startarchimate</code> ও <code>@endarchimate</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>এন্টারপ্রাইজ সিস্টেম আর্কিটেকচার।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের আর্কিটেকচারে বদলাও।</li>
+    <li>অনুশীলন ২: একটি কম্পোনেন্ট যোগ করো।</li>
+    <li>অনুশীলন ৩: নিজের দৃশ্য ব্যবহার করো।</li>
+    <li>অনুশীলন ৪: উপাদানের নাম বদলাও।</li>
+    <li>অনুশীলন ৫: নিজের উদাহরণ ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>Archimate‑এ <code>@startarchimate</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>SDL প্রসেস ফ্লো ডায়াগ্রাম।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>প্রক্রিয়া বোঝায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startsdl</code> ও <code>@endsdl</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>যোগাযোগ ফ্লো।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের প্রক্রিয়া দিয়ে বদলাও।</li>
+    <li>অনুশীলন ২: একটি ধাপ যোগ করো।</li>
+    <li>অনুশীলন ৩: উপাদানের নাম বদলাও।</li>
+    <li>অনুশীলন ৪: নিজের দৃশ্য ব্যবহার করো।</li>
+    <li>অনুশীলন ৫: নিজের উদাহরণ ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>SDL‑এ <code>@startsdl</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>ASCII আর্টসহ Ditaa ডায়াগ্রাম।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>টেক্সট দিয়ে আঁকা যায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startditaa</code> ও <code>@endditaa</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>দ্রুত স্কেচ।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের ASCII আর্ট দিয়ে বদলাও।</li>
+    <li>অনুশীলন ২: আরেকটি ব্লক যোগ করো।</li>
+    <li>অনুশীলন ৩: অক্ষর বদলাও।</li>
+    <li>অনুশীলন ৪: নিজের দৃশ্য ব্যবহার করো।</li>
+    <li>অনুশীলন ৫: নিজের উদাহরণ ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>Ditaa‑তে <code>@startditaa</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>Gantt চার্ট সময় অনুযায়ী পরিকল্পনা দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>প্রকল্পের টাইমলাইন পরিকল্পনা করা।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startgantt</code> ও <code>@endgantt</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>প্রকল্প ক্যালেন্ডার।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের পরিকল্পনা দিয়ে বদলাও।</li>
+    <li>অনুশীলন ২: একটি কাজ যোগ করো।</li>
+    <li>অনুশীলন ৩: নিজের উদাহরণ ব্যবহার করো।</li>
+    <li>অনুশীলন ৪: তারিখ বদলাও।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>Gantt‑এ <code>@startgantt</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>ঘটনার টাইমলাইন।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>ঘটনাকে সময়ক্রমে সাজায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startchronology</code> ও <code>@endchronology</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>ইভেন্টের ইতিহাস।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের ঘটনায় বদলাও।</li>
+    <li>অনুশীলন ২: আরেকটি ঘটনা যোগ করো।</li>
+    <li>অনুশীলন ৩: নিজের উদাহরণ ব্যবহার করো।</li>
+    <li>অনুশীলন ৪: তারিখ বদলাও।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>Chronology‑তে <code>@startchronology</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>মাইন্ডম্যাপ আইডিয়ার স্তর দেখায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>আইডিয়া সংগঠিত করা।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startmindmap</code> ও <code>@endmindmap</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>ব্রেইনস্টর্মিং।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের বিষয় ব্যবহার করো।</li>
+    <li>অনুশীলন ২: শাখা যোগ করো।</li>
+    <li>অনুশীলন ৩: নিজের উদাহরণ ব্যবহার করো।</li>
+    <li>অনুশীলন ৪: টেক্সট বদলাও।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>MindMap‑এ <code>@startmindmap</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>ওয়ার্ক ব্রেকডাউন স্ট্রাকচার ডায়াগ্রাম।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>কাজকে ছোট অংশে ভাগ করে।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startwbs</code> ও <code>@endwbs</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>প্রকল্প কাজ ভাগ করা।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের কাজ ব্যবহার করো।</li>
+    <li>অনুশীলন ২: সাব‑টাস্ক যোগ করো।</li>
+    <li>অনুশীলন ৩: নিজের উদাহরণ ব্যবহার করো।</li>
+    <li>অনুশীলন ৪: টেক্সট বদলাও।</li>
+    <li>অনুশীলন ৫: নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>WBS‑এ <code>@startwbs</code> ব্যবহার হয়।</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>AsciiMath দিয়ে সূত্র লিখুন।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>সূত্র দ্রুত লেখা যায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li><code>@startmath</code> ও <code>@endmath</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>সূত্র দেখানো।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: নিজের সূত্র ব্যবহার করো।</li>
+    <li>অনুশীলন ২: আরেকটি সূত্র যোগ করো।</li>
+    <li>অনুশীলন ৩: নিজের উদাহরণ ব্যবহার করো।</li>
+    <li>অনুশীলন ৪: নিজের দৃশ্য ব্যবহার করো।</li>
+    <li>অনুশীলন ৫: প্রতীক বদলাও।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>AsciiMath‑এর সাধারণ প্রতীক সমর্থিত।</li>
+    <li><code>@startmath</code> ও <code>@endmath</code> দিয়ে ঘিরুন।</li>
+    <li><code>^</code> মানে ঘাত, <code>/</code> মানে ভাগ।</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>ER ডায়াগ্রাম ডেটাবেস টেবিল বোঝায়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>ডেটাবেস কাঠামো ডিজাইন।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol>
+    <li>টেবিল নির্ধারণে <code>entity</code> ব্যবহার করুন।</li>
+    <li>প্রাইমারি কী দেখাতে <code>*</code> ব্যবহার করুন।</li>
+  </ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>ইউজার টেবিল ডিজাইন।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: টেবিলকে <code>Book</code> করো এবং ফিল্ডকে <code>title</code>, <code>author</code> করো।</li>
+    <li>অনুশীলন ২: একটি ফিল্ড যোগ করে টাইপ <code>int</code> করো।</li>
+    <li>অনুশীলন ৩: প্রাইমারি কী ফিল্ডের নাম ও টাইপ বদলাও।</li>
+    <li>অনুশীলন ৪: দুটি ফিল্ডসহ দ্বিতীয় টেবিল যোগ করো।</li>
+    <li>অনুশীলন ৫: বিভাজক লাইন যোগ করে ফিল্ড সাজাও।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li>বিভাজক লাইন <code>--</code> সেকশন ভাগ করে।</li>
+    <li><code>*</code> প্রাইমারি কী ফিল্ড বোঝায়।</li>
+    <li>ফিল্ড ফরম্যাট: <code>name: type</code>।</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>এই উদাহরণে টেবিলের মধ্যে সম্পর্ক দেখানো হয়।</p>
+  <h3>কেন ব্যবহার করবেন</h3>
+  <ul><li>এক‑থেকে‑অনেক বা অনেক‑থেকে‑অনেক দেখায়।</li></ul>
+  <h3>কীভাবে ব্যবহার করবেন</h3>
+  <ol><li><code>User ||--o{ Post</code> মানে এক‑থেকে‑অনেক।</li></ol>
+  <h3>সম্ভাব্য ব্যবহার</h3>
+  <ul><li>একজন ইউজারের অনেক পোস্ট থাকে।</li></ul>
+  <h3>অনুশীলন (শিশুদের জন্য সহজ)</h3>
+  <ol>
+    <li>অনুশীলন ১: <code>User</code>‑কে <code>Student</code> এবং <code>Post</code>‑কে <code>Homework</code> করো, তারপর লেবেল আপডেট করো।</li>
+    <li>অনুশীলন ২: এক‑থেকে‑অনেককে এক‑থেকে‑এক করো এবং বর্ণনা আপডেট করো।</li>
+    <li>অনুশীলন ৩: দ্বিতীয় সম্পর্ক যোগ করো এবং টেবিলের নাম বদলাও।</li>
+    <li>অনুশীলন ৪: দিক উল্টো করে নাম সামঞ্জস্য করো।</li>
+    <li>অনুশীলন ৫: “এক‑থেকে‑অনেক” রেখে নিজের দৃশ্য ব্যবহার করো।</li>
+  </ol>
+  <h3>PlantUML সিনট্যাক্স নিয়ম (সম্পূর্ণ তালিকা)</h3>
+  <ul class="rules">
+    <li><code>||</code> ও <code>o{</code> কার্ডিনালিটি দেখায়।</li>
+    <li><code>||--o{</code> সাধারণত এক‑থেকে‑অনেক বোঝায়।</li>
+    <li>লাইন দুটি টেবিলকে যুক্ত করে।</li>
+  </ul>
+</div>
