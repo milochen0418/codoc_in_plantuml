@@ -15,7 +15,17 @@
     .rules li { margin-bottom: 6px; }
     .top-bar { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 0 0 16px 0; padding: 12px; background: #0b1220; border: 1px solid #1f2937; border-radius: 10px; }
     .lang-label { font-weight: 600; }
-    .lang-select { background: #111827; color: #e5e7eb; border: 1px solid #374151; border-radius: 8px; padding: 6px 10px; }
+    .lang-menu { position: relative; }
+    .lang-trigger { display: inline-flex; align-items: center; gap: 8px; background: #111827; color: #e5e7eb; border: 1px solid #374151; border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+    .lang-trigger:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }
+    .lang-trigger-caret { font-size: 12px; color: #9ca3af; }
+    .lang-panel { position: absolute; top: calc(100% + 8px); left: 0; min-width: 260px; max-width: 520px; background: #0b1220; border: 1px solid #1f2937; border-radius: 10px; padding: 10px; box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35); z-index: 20; }
+    .lang-menu.rtl .lang-panel { right: 0; left: auto; }
+    .lang-grid { display: grid; grid-template-columns: repeat(3, minmax(120px, 1fr)); gap: 8px; max-height: 260px; overflow: auto; }
+    .lang-option { background: #111827; color: #e5e7eb; border: 1px solid #374151; border-radius: 8px; padding: 8px 10px; cursor: pointer; text-align: left; }
+    .lang-option:hover { border-color: #60a5fa; }
+    .lang-option[aria-selected="true"] { background: #1f2937; border-color: #60a5fa; }
+    .lang-option:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }
     .lang-note { font-size: 12px; color: #9ca3af; }
     .tutorial-root.loading { opacity: 0.7; }
   </style>
@@ -23,41 +33,53 @@
 <body>
   <div class="top-bar">
     <span class="lang-label">Language</span>
-    <select id="lang-select" class="lang-select" aria-label="Select language">
-      <option value="zh-Hant">繁體中文</option>
-      <option value="zh-Hans">简体中文</option>
-      <option value="en">English</option>
-      <option value="es">Español</option>
-      <option value="ar">العربية</option>
-      <option value="fr">Français</option>
-      <option value="hi">हिन्दी</option>
-      <option value="pt">Português</option>
-      <option value="de">Deutsch</option>
-      <option value="ja">日本語</option>
-      <option value="ru">Русский</option>
-      <option value="it">Italiano</option>
-      <option value="tr">Türkçe</option>
-      <option value="id">Bahasa Indonesia</option>
-      <option value="vi">Tiếng Việt</option>
-      <option value="ko">한국어</option>
-      <option value="bn">বাংলা</option>
-      <option value="ur">اردو</option>
-      <option value="fa">فارسی</option>
-      <option value="th">ไทย</option>
-      <option value="fil">Filipino</option>
-      <option value="sw">Kiswahili</option>
-      <option value="ta">தமிழ்</option>
-      <option value="te">తెలుగు</option>
-      <option value="mr">मराठी</option>
-      <option value="pa">ਪੰਜਾਬੀ</option>
-    </select>
+    <div class="lang-menu" id="lang-menu">
+      <button id="lang-trigger" class="lang-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+        <span id="lang-trigger-label" class="lang-trigger-label">繁體中文</span>
+        <span class="lang-trigger-caret" aria-hidden="true">▾</span>
+      </button>
+      <div id="lang-panel" class="lang-panel" role="listbox" aria-label="Select language" hidden>
+        <div class="lang-grid">
+          <button class="lang-option" type="button" role="option" data-lang="zh-Hant">繁體中文</button>
+          <button class="lang-option" type="button" role="option" data-lang="zh-Hans">简体中文</button>
+          <button class="lang-option" type="button" role="option" data-lang="en">English</button>
+          <button class="lang-option" type="button" role="option" data-lang="es">Español</button>
+          <button class="lang-option" type="button" role="option" data-lang="ar">العربية</button>
+          <button class="lang-option" type="button" role="option" data-lang="fr">Français</button>
+          <button class="lang-option" type="button" role="option" data-lang="hi">हिन्दी</button>
+          <button class="lang-option" type="button" role="option" data-lang="pt">Português</button>
+          <button class="lang-option" type="button" role="option" data-lang="de">Deutsch</button>
+          <button class="lang-option" type="button" role="option" data-lang="ja">日本語</button>
+          <button class="lang-option" type="button" role="option" data-lang="ru">Русский</button>
+          <button class="lang-option" type="button" role="option" data-lang="it">Italiano</button>
+          <button class="lang-option" type="button" role="option" data-lang="tr">Türkçe</button>
+          <button class="lang-option" type="button" role="option" data-lang="id">Bahasa Indonesia</button>
+          <button class="lang-option" type="button" role="option" data-lang="vi">Tiếng Việt</button>
+          <button class="lang-option" type="button" role="option" data-lang="ko">한국어</button>
+          <button class="lang-option" type="button" role="option" data-lang="bn">বাংলা</button>
+          <button class="lang-option" type="button" role="option" data-lang="ur">اردو</button>
+          <button class="lang-option" type="button" role="option" data-lang="fa">فارسی</button>
+          <button class="lang-option" type="button" role="option" data-lang="th">ไทย</button>
+          <button class="lang-option" type="button" role="option" data-lang="fil">Filipino</button>
+          <button class="lang-option" type="button" role="option" data-lang="sw">Kiswahili</button>
+          <button class="lang-option" type="button" role="option" data-lang="ta">தமிழ்</button>
+          <button class="lang-option" type="button" role="option" data-lang="te">తెలుగు</button>
+          <button class="lang-option" type="button" role="option" data-lang="mr">मराठी</button>
+          <button class="lang-option" type="button" role="option" data-lang="pa">ਪੰਜਾਬੀ</button>
+        </div>
+      </div>
+    </div>
     <span class="lang-note" id="lang-note">切換語言可立即顯示對應版本。</span>
   </div>
 
   <div id="tutorial-root" class="tutorial-root" aria-live="polite"></div>
 
   <script>
-    const langSelect = document.getElementById("lang-select");
+    const langMenu = document.getElementById("lang-menu");
+    const langTrigger = document.getElementById("lang-trigger");
+    const langTriggerLabel = document.getElementById("lang-trigger-label");
+    const langPanel = document.getElementById("lang-panel");
+    const langOptions = Array.from(document.querySelectorAll(".lang-option"));
     const langNote = document.getElementById("lang-note");
     const tutorialRoot = document.getElementById("tutorial-root");
 
@@ -178,6 +200,30 @@
     };
 
     const rtlLanguages = new Set(["ar", "ur", "fa"]);
+    const languageLabels = Object.fromEntries(
+      langOptions.map((option) => [option.dataset.lang, option.textContent.trim()])
+    );
+
+    function toggleMenu(forceState) {
+      const willOpen = typeof forceState === "boolean" ? forceState : langPanel.hidden;
+      langPanel.hidden = !willOpen;
+      langTrigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      if (willOpen) {
+        const grid = langPanel.querySelector(".lang-grid");
+        if (grid) {
+          grid.scrollTop = 0;
+        }
+      }
+    }
+
+    function setSelectedLanguage(lang) {
+      const resolvedLang = languageFiles[lang] ? lang : "en";
+      langTriggerLabel.textContent = languageLabels[resolvedLang] || languageLabels.en || resolvedLang;
+      langOptions.forEach((option) => {
+        option.setAttribute("aria-selected", option.dataset.lang === resolvedLang ? "true" : "false");
+      });
+      return resolvedLang;
+    }
 
     function updateNote(lang) {
       langNote.textContent = notes[lang] || notes.en;
@@ -192,7 +238,9 @@
     }
 
     function updateDirection(lang) {
-      document.documentElement.dir = rtlLanguages.has(lang) ? "rtl" : "ltr";
+      const isRtl = rtlLanguages.has(lang);
+      document.documentElement.dir = isRtl ? "rtl" : "ltr";
+      langMenu.classList.toggle("rtl", isRtl);
     }
 
     async function loadLanguage(lang) {
@@ -224,13 +272,33 @@
     }
 
     const savedLang = localStorage.getItem("tutorial-lang") || "zh-Hant";
-    langSelect.value = savedLang;
+    setSelectedLanguage(savedLang);
     loadLanguage(savedLang);
 
-    langSelect.addEventListener("change", (event) => {
-      const lang = event.target.value;
-      localStorage.setItem("tutorial-lang", lang);
-      loadLanguage(lang);
+    langTrigger.addEventListener("click", () => {
+      toggleMenu();
+    });
+
+    langOptions.forEach((option) => {
+      option.addEventListener("click", () => {
+        const lang = option.dataset.lang;
+        localStorage.setItem("tutorial-lang", lang);
+        setSelectedLanguage(lang);
+        loadLanguage(lang);
+        toggleMenu(false);
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!langMenu.contains(event.target)) {
+        toggleMenu(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        toggleMenu(false);
+      }
     });
 
     window.addEventListener("hashchange", scrollToHash);
@@ -253,7 +321,16 @@
     .rules li { margin-bottom: 6px; }
     .top-bar { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 0 0 16px 0; padding: 12px; background: #0b1220; border: 1px solid #1f2937; border-radius: 10px; }
     .lang-label { font-weight: 600; }
-    .lang-select { background: #111827; color: #e5e7eb; border: 1px solid #374151; border-radius: 8px; padding: 6px 10px; }
+    .lang-menu { position: relative; }
+    .lang-trigger { display: inline-flex; align-items: center; gap: 8px; background: #111827; color: #e5e7eb; border: 1px solid #374151; border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+    .lang-trigger:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }
+    .lang-trigger-caret { font-size: 12px; color: #9ca3af; }
+    .lang-panel { position: absolute; top: calc(100% + 8px); left: 0; min-width: 260px; max-width: 520px; background: #0b1220; border: 1px solid #1f2937; border-radius: 10px; padding: 10px; box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35); z-index: 20; }
+    .lang-grid { display: grid; grid-template-columns: repeat(3, minmax(120px, 1fr)); gap: 8px; max-height: 260px; overflow: auto; }
+    .lang-option { background: #111827; color: #e5e7eb; border: 1px solid #374151; border-radius: 8px; padding: 8px 10px; cursor: pointer; text-align: left; }
+    .lang-option:hover { border-color: #60a5fa; }
+    .lang-option[aria-selected="true"] { background: #1f2937; border-color: #60a5fa; }
+    .lang-option:focus-visible { outline: 2px solid #60a5fa; outline-offset: 2px; }
     .lang-note { font-size: 12px; color: #9ca3af; }
     .lang-content { display: none; }
     .lang-content.active { display: block; }
@@ -262,12 +339,20 @@
 <body>
   <div class="top-bar">
     <span class="lang-label">Language</span>
-    <select id="lang-select" class="lang-select" aria-label="Select language">
-      <option value="zh-Hant">繁體中文</option>
-      <option value="zh-Hans">简体中文</option>
-      <option value="en">English</option>
-      <option value="es">Español</option>
-    </select>
+    <div class="lang-menu" id="lang-menu">
+      <button id="lang-trigger" class="lang-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+        <span id="lang-trigger-label" class="lang-trigger-label">繁體中文</span>
+        <span class="lang-trigger-caret" aria-hidden="true">▾</span>
+      </button>
+      <div id="lang-panel" class="lang-panel" role="listbox" aria-label="Select language" hidden>
+        <div class="lang-grid">
+          <button class="lang-option" type="button" role="option" data-lang="zh-Hant">繁體中文</button>
+          <button class="lang-option" type="button" role="option" data-lang="zh-Hans">简体中文</button>
+          <button class="lang-option" type="button" role="option" data-lang="en">English</button>
+          <button class="lang-option" type="button" role="option" data-lang="es">Español</button>
+        </div>
+      </div>
+    </div>
     <span class="lang-note" id="lang-note">切換語言可立即顯示對應版本。</span>
   </div>
 
@@ -1675,9 +1760,29 @@
 
   </div>
   <script>
-    const langSelect = document.getElementById("lang-select");
+    const langMenu = document.getElementById("lang-menu");
+    const langTrigger = document.getElementById("lang-trigger");
+    const langTriggerLabel = document.getElementById("lang-trigger-label");
+    const langPanel = document.getElementById("lang-panel");
+    const langOptions = Array.from(document.querySelectorAll(".lang-option"));
     const langNote = document.getElementById("lang-note");
     const contentBlocks = Array.from(document.querySelectorAll(".lang-content"));
+
+    const languageLabels = Object.fromEntries(
+      langOptions.map((option) => [option.dataset.lang, option.textContent.trim()])
+    );
+
+    function toggleMenu(forceState) {
+      const willOpen = typeof forceState === "boolean" ? forceState : langPanel.hidden;
+      langPanel.hidden = !willOpen;
+      langTrigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      if (willOpen) {
+        const grid = langPanel.querySelector(".lang-grid");
+        if (grid) {
+          grid.scrollTop = 0;
+        }
+      }
+    }
 
     function updateNote(lang) {
       const notes = {
@@ -1690,21 +1795,44 @@
     }
 
     function setLanguage(lang) {
-      document.documentElement.lang = lang;
-      updateNote(lang);
+      const resolvedLang = languageLabels[lang] ? lang : "en";
+      document.documentElement.lang = resolvedLang;
+      updateNote(resolvedLang);
       contentBlocks.forEach((block) => {
-        block.classList.toggle("active", block.dataset.lang === lang);
+        block.classList.toggle("active", block.dataset.lang === resolvedLang);
+      });
+      langTriggerLabel.textContent = languageLabels[resolvedLang] || languageLabels.en || resolvedLang;
+      langOptions.forEach((option) => {
+        option.setAttribute("aria-selected", option.dataset.lang === resolvedLang ? "true" : "false");
       });
     }
 
     const savedLang = localStorage.getItem("tutorial-lang") || "zh-Hant";
-    langSelect.value = savedLang;
     setLanguage(savedLang);
 
-    langSelect.addEventListener("change", (event) => {
-      const lang = event.target.value;
-      localStorage.setItem("tutorial-lang", lang);
-      setLanguage(lang);
+    langTrigger.addEventListener("click", () => {
+      toggleMenu();
+    });
+
+    langOptions.forEach((option) => {
+      option.addEventListener("click", () => {
+        const lang = option.dataset.lang;
+        localStorage.setItem("tutorial-lang", lang);
+        setLanguage(lang);
+        toggleMenu(false);
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!langMenu.contains(event.target)) {
+        toggleMenu(false);
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        toggleMenu(false);
+      }
     });
   </script>
 </body>
