@@ -13,14 +13,16 @@
     .section { padding: 12px 0; }
     .note { background: #1f2937; padding: 12px; border-radius: 8px; border: 1px solid #374151; }
     .rules li { margin-bottom: 6px; }
-    .lang-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 0 0 16px 0; padding: 12px; background: #0f172a; border: 1px solid #1f2937; border-radius: 10px; }
+    .top-bar { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 0 0 16px 0; padding: 12px; background: #0b1220; border: 1px solid #1f2937; border-radius: 10px; }
     .lang-label { font-weight: 600; }
     .lang-select { background: #111827; color: #e5e7eb; border: 1px solid #374151; border-radius: 8px; padding: 6px 10px; }
     .lang-note { font-size: 12px; color: #9ca3af; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
   </style>
 </head>
 <body>
-  <div class="lang-bar">
+  <div class="top-bar">
     <span class="lang-label">Language</span>
     <select id="lang-select" class="lang-select" aria-label="Select language">
       <option value="zh-Hant">繁體中文</option>
@@ -28,10 +30,11 @@
       <option value="en">English</option>
       <option value="es">Español</option>
     </select>
-    <span class="lang-note" id="lang-note">切換語言後會自動翻譯內容，可能需要幾秒。</span>
+    <span class="lang-note" id="lang-note">切換語言可立即顯示對應版本。</span>
   </div>
 
   <div id="tutorial-root">
+  <div class="lang-content active" data-lang="zh-Hant">
   <h1>Examples 教學（給小朋友也看得懂）</h1>
   <p class="note">
     這份教學會用簡單的方式說明：每個範例在畫什麼、為什麼要用、如何使用、常見用途，
@@ -1417,100 +1420,53 @@
     </ul>
   </div>
 
+  <div class="lang-content" data-lang="zh-Hans">
+    <h1>Examples 教学（给小朋友也看得懂）</h1>
+    <p class="note">此语言版本正在补全中，请先参考繁体中文内容。</p>
+  </div>
+
+  <div class="lang-content" data-lang="en">
+    <h1>Examples Tutorial (Kid-Friendly)</h1>
+    <p class="note">This language version is being completed. Please refer to Traditional Chinese for now.</p>
+  </div>
+
+  <div class="lang-content" data-lang="es">
+    <h1>Tutorial de Examples (Apto para niños)</h1>
+    <p class="note">Esta versión de idioma está en preparación. Por ahora, consulta la versión en chino tradicional.</p>
+  </div>
+
   </div>
   <script>
     const langSelect = document.getElementById("lang-select");
     const langNote = document.getElementById("lang-note");
-    const root = document.getElementById("tutorial-root");
-    const excludedTags = new Set(["CODE", "PRE", "SCRIPT", "STYLE", "TEXTAREA", "KBD", "SAMP"]);
-    const originalTextMap = new WeakMap();
-
-    function collectTextNodes(node, nodes) {
-      if (!node) return;
-      if (node.nodeType === Node.ELEMENT_NODE) {
-        if (excludedTags.has(node.tagName)) return;
-        for (const child of node.childNodes) {
-          collectTextNodes(child, nodes);
-        }
-        return;
-      }
-      if (node.nodeType === Node.TEXT_NODE) {
-        const text = node.nodeValue;
-        if (!text || !text.trim()) return;
-        if (!originalTextMap.has(node)) {
-          originalTextMap.set(node, text);
-        }
-        nodes.push(node);
-      }
-    }
-
-    function restoreOriginal() {
-      const nodes = [];
-      collectTextNodes(root, nodes);
-      nodes.forEach((node) => {
-        const original = originalTextMap.get(node);
-        if (original !== undefined) {
-          node.nodeValue = original;
-        }
-      });
-    }
-
-    async function translateBatch(texts, targetLang) {
-      const query = texts.join("\n");
-      const url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" +
-        encodeURIComponent(targetLang) + "&dt=t&q=" + encodeURIComponent(query);
-      const response = await fetch(url);
-      const data = await response.json();
-      const translated = data[0].map((entry) => entry[0]).join("");
-      return translated.split("\n");
-    }
-
-    async function applyTranslation(targetLang) {
-      const nodes = [];
-      collectTextNodes(root, nodes);
-      const texts = nodes.map((node) => originalTextMap.get(node) || node.nodeValue);
-      const batchSize = 40;
-      const translatedTexts = [];
-      for (let i = 0; i < texts.length; i += batchSize) {
-        const batch = texts.slice(i, i + batchSize);
-        const translatedBatch = await translateBatch(batch, targetLang);
-        translatedTexts.push(...translatedBatch);
-      }
-      nodes.forEach((node, index) => {
-        if (translatedTexts[index]) {
-          node.nodeValue = translatedTexts[index];
-        }
-      });
-    }
+    const contentBlocks = Array.from(document.querySelectorAll(".lang-content"));
 
     function updateNote(lang) {
       const notes = {
-        "zh-Hant": "切換語言後會自動翻譯內容，可能需要幾秒。",
-        "zh-Hans": "切换语言后会自动翻译内容，可能需要几秒。",
-        "en": "Switching languages auto-translates content and may take a few seconds.",
-        "es": "Al cambiar el idioma, el contenido se traduce automáticamente y puede tardar unos segundos."
+        "zh-Hant": "切換語言可立即顯示對應版本。",
+        "zh-Hans": "切换语言可立即显示对应版本。",
+        "en": "Switching languages shows the selected version instantly.",
+        "es": "Cambiar el idioma muestra la versión seleccionada al instante."
       };
       langNote.textContent = notes[lang] || notes["en"];
     }
 
-    async function setLanguage(lang) {
+    function setLanguage(lang) {
       document.documentElement.lang = lang;
       updateNote(lang);
-      if (lang === "zh-Hant") {
-        restoreOriginal();
-        return;
-      }
-      await applyTranslation(lang);
+      contentBlocks.forEach((block) => {
+        block.classList.toggle("active", block.dataset.lang === lang);
+      });
     }
 
     const savedLang = localStorage.getItem("tutorial-lang") || "zh-Hant";
     langSelect.value = savedLang;
     setLanguage(savedLang);
 
-    langSelect.addEventListener("change", async (event) => {
+    langSelect.addEventListener("change", (event) => {
       const lang = event.target.value;
       localStorage.setItem("tutorial-lang", lang);
-      await setLanguage(lang);
+      setLanguage(lang);
     });
   </script>
 </body>
