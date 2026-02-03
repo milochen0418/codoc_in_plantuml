@@ -1,0 +1,1363 @@
+<h1>Examples Tutorial (Easy for Kids)</h1>
+<p class="note">
+  This tutorial explains, in a simple way, what each example draws, why it is useful,
+  how to use it, common use cases, and the related PlantUML syntax rules
+  (collected into complete, usable lists).
+</p>
+
+<h2>Table of Contents</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>This example shows “Person A sends one message to Person B,” like passing a note.</p>
+  <h3>Why use it</h3>
+  <ul>
+    <li>Shows the order of a conversation so it’s easy to understand.</li>
+    <li>Great for “who speaks first, who replies next” stories.</li>
+  </ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Write <code>@startuml</code> and <code>@enduml</code>.</li>
+    <li>Use <code>Alice -> Bob: Message</code> to show A talking to B.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul>
+    <li>Login flow: User → System → Server.</li>
+    <li>Chatbot: You ask → Bot replies.</li>
+  </ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Change <code>Alice</code> and <code>Bob</code> to your favorite names, and change the message to a daily conversation.</li>
+    <li>Practice 2: Add a <code>participant</code> line first, then change the message to “ask first, then answer.”</li>
+    <li>Practice 3: Change the message into two lines: first ask, then answer, and shorten one line.</li>
+    <li>Practice 4: Swap who speaks first, then change the message text.</li>
+    <li>Practice 5: Add a third person who also says one line, then rename one person.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Start with <code>@startuml</code> and end with <code>@enduml</code>.</li>
+    <li>Participants can be declared with <code>participant</code> or used directly.</li>
+    <li><code>A -> B</code> is a call, <code>A --> B</code> is a return.</li>
+    <li>Put text after a colon: <code>A -> B: Hello</code>.</li>
+    <li>Top-to-bottom shows time order.</li>
+    <li>Multiple message lines show a longer conversation.</li>
+    <li>Message text can be omitted: <code>A -> B</code> is valid.</li>
+    <li>Names with spaces should be in quotes.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>This example shows “request and response,” like a question and answer.</p>
+  <h3>Why use it</h3>
+  <ul>
+    <li>Clearly shows the request and the reply steps.</li>
+  </ul>
+  <h3>How to use</h3>
+  <ol>
+    <li><code>A -> B</code> is the request.</li>
+    <li><code>B --> A</code> is the response.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul>
+    <li>API call: Frontend → Backend → Return data.</li>
+  </ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Change roles to <code>Client</code> and <code>Server</code>, and messages to “get data / return data.”</li>
+    <li>Practice 2: Change the request to “query,” and the reply to “query result.”</li>
+    <li>Practice 3: Add another request and reply (four lines total) to show two questions, and change the second text.</li>
+    <li>Practice 4: Make a different person reply, and adjust the text.</li>
+    <li>Practice 5: Add a “preparing” self-message before the request, then make the request more specific.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li><code>-></code> sends a message.</li>
+    <li><code>--></code> commonly indicates a return.</li>
+    <li>Add text to describe the reply content.</li>
+    <li>Requests and replies often come in pairs but are not required.</li>
+    <li>Declare participants first if you want clarity.</li>
+    <li>Time flows from top to bottom.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>This is “talking to yourself,” which shows an internal step.</p>
+  <h3>Why use it</h3>
+  <ul>
+    <li>Shows an object doing internal work without others.</li>
+  </ul>
+  <h3>How to use</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul>
+    <li>Algorithm steps, internal calculations.</li>
+  </ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Change <code>Alice</code> to your name (e.g., <code>Me</code>) and change the message to something you want to do today.</li>
+    <li>Practice 2: Change the action to “read data,” then add <code>Me -> Me: check again</code>.</li>
+    <li>Practice 3: Change the message to “think,” then add <code>Me -> Me: write key points</code>.</li>
+    <li>Practice 4: Change the name to <code>Robot</code>, then add <code>Robot -> Robot: charge</code>.</li>
+    <li>Practice 5: Add <code>Me -> Me: start</code> at the top and <code>Me -> Me: done</code> at the end.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Both ends of the arrow can be the same participant.</li>
+    <li>Basic format: <code>Role -> Role: Text</code>.</li>
+    <li>Names can be used without prior declaration.</li>
+    <li>Text after the colon is optional.</li>
+    <li>Multiple self-messages show multiple internal steps.</li>
+    <li>Can pair with <code>activate</code> / <code>deactivate</code>.</li>
+    <li>Time flows from top to bottom.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>This example shows different icons for different roles, like person, system, database.</p>
+  <h3>Why use it</h3>
+  <ul><li>Icons help readers recognize roles faster.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Login flow: User → Web → Logic → Database.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Rename <code>User</code> to <code>Student</code> and change the message to “login homework.”</li>
+    <li>Practice 2: Add <code>boundary App</code>, then route the arrow to App first.</li>
+    <li>Practice 3: Rename <code>database DB</code> to <code>database Books</code> and change the message.</li>
+    <li>Practice 4: Add a <code>control</code> role and one interaction line.</li>
+    <li>Practice 5: Reorder participants and adjust messages accordingly.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Role type changes appearance but not name.</li>
+    <li>Use <code>-></code> for interactions.</li>
+    <li>Declaration format: <code>actor/boundary/control/database/entity Name</code>.</li>
+    <li>Declare roles first, then use their names.</li>
+    <li>Undeclared names are normal participants.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>This example shows colors and styles to make the diagram clearer.</p>
+  <h3>Why use it</h3>
+  <ul><li>Highlight important roles with color.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>skinparam</code> to adjust styles.</li>
+    <li>Add a color after a role: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Show the “core system” in a bright color.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Rename <code>Alice</code> and change the color to another one.</li>
+    <li>Practice 2: Change the message to “start,” and make the other role darker.</li>
+    <li>Practice 3: Add a third role and assign a different color.</li>
+    <li>Practice 4: Change <code>skinparam sequenceMessageAlign</code> and adjust a message line.</li>
+    <li>Practice 5: Use a style name (like <code>#technology</code>) for one role and change the message.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> controls alignment, font, colors, etc.</li>
+    <li>Roles can be followed by a color or style name.</li>
+    <li>Colors can be names or hex, like <code>#AliceBlue</code>.</li>
+    <li>If the same role is declared again, the last one wins.</li>
+    <li>Style settings do not change message syntax.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>This example shows “if…else…,” like multiple choices.</p>
+  <h3>Why use it</h3>
+  <ul><li>Show different branches for different conditions.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>alt</code> to start, <code>else</code> for another branch, and <code>end</code> to finish.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Payment success or failure.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Change the conditions to “have money / no money,” and change the messages.</li>
+    <li>Practice 2: Add a third <code>else</code> branch and add a message.</li>
+    <li>Practice 3: Change the <code>alt</code> title to your scenario, then edit messages.</li>
+    <li>Practice 4: Add a line in each branch and change the titles.</li>
+    <li>Practice 5: Make one branch “try again after failure,” and make the other branch a different ending.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> starts a branch.</li>
+    <li>There can be multiple <code>else</code> branches.</li>
+    <li>Finish with <code>end</code>.</li>
+    <li>Each branch can contain multiple messages.</li>
+    <li>Condition text is optional but recommended.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>This example shows repeating actions.</p>
+  <h3>Why use it</h3>
+  <ul><li>Show repeated steps.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>loop</code> and <code>end</code> to wrap repeated lines.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Check status every second.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Change the loop label to “every 3 times,” and change the message.</li>
+    <li>Practice 2: Add another message inside the loop, then shorten the original.</li>
+    <li>Practice 3: Rename the roles and change the message to “checking.”</li>
+    <li>Practice 4: Change the loop label to a condition like “until done,” and update messages.</li>
+    <li>Practice 5: Add start/end messages outside the loop and customize them.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> can be on the same line.</li>
+    <li><code>end</code> ends the loop block.</li>
+    <li>Multiple messages can go inside the loop.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>This example shows two things happening at the same time.</p>
+  <h3>Why use it</h3>
+  <ul><li>Show parallel tasks.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>par</code> to start, <code>else</code> for another parallel branch, and <code>end</code> to finish.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Notify two services at the same time.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Change branches to “send email” and “send SMS,” and rename roles.</li>
+    <li>Practice 2: Rename roles and add another line in each branch.</li>
+    <li>Practice 3: Add a third branch (another <code>else</code>) and write one message, then shorten a line.</li>
+    <li>Practice 4: Change one branch to “do slowly,” add an end message, and update the other branch text.</li>
+    <li>Practice 5: Add a “start task” message before <code>par</code> and a “done” message after <code>end</code>.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li><code>par</code> creates a parallel block.</li>
+    <li>Each branch can have its own message sequence.</li>
+    <li><code>else</code> switches to another parallel branch.</li>
+    <li>Finish with <code>end</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>This example uses activation bars to show when a role is busy.</p>
+  <h3>Why use it</h3>
+  <ul><li>Show who is doing work and for how long.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>activate Role</code> to start.</li>
+    <li>Use <code>deactivate Role</code> to end.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Show the server handling a request.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Change the role to <code>Server</code> and the message to “processing.”</li>
+    <li>Practice 2: Add a request line, then put <code>activate</code> after the request.</li>
+    <li>Practice 3: Add a mid-progress message like “halfway,” then replace it with your own text.</li>
+    <li>Practice 4: Add another role with its own activation and message.</li>
+    <li>Practice 5: Move the activation start/end down one line and adjust a message.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>You can place activate/deactivate before or after messages.</li>
+    <li><code>activate</code> and <code>deactivate</code> should be paired.</li>
+    <li>Messages can be inserted while a role is active.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>This example shows how to add sticky-note annotations.</p>
+  <h3>Why use it</h3>
+  <ul><li>Add explanations for clarity.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>note left</code> or <code>note right</code>.</li>
+    <li>End a note with <code>end note</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Remind “this step might fail.”</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Change note text to your own reminder.</li>
+    <li>Practice 2: Move the note to the right and change the text.</li>
+    <li>Practice 3: Add a second note next to another role.</li>
+    <li>Practice 4: Make the note two lines, with a reason on line two.</li>
+    <li>Practice 5: Move the note to after another message.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Notes can be placed <code>left</code>, <code>right</code>, or <code>over</code>.</li>
+    <li>Multi-line notes use <code>note</code> and <code>end note</code>.</li>
+    <li>Notes do not change message flow.</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>Use case diagrams are a list of “what the system can do.”</p>
+  <h3>Why use it</h3>
+  <ul><li>Clearly list the functions a user needs.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>actor</code> for the user.</li>
+    <li>Use <code>(UseCase)</code> for a function.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Login, search, payment, etc.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Rename the user to <code>Teacher</code>, and change the use case to “create quiz.”</li>
+    <li>Practice 2: Add a second use case to show another function.</li>
+    <li>Practice 3: Rename the use case and the actor.</li>
+    <li>Practice 4: Add a second actor and connect them to one use case.</li>
+    <li>Practice 5: Replace the use case with your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Use cases are written in parentheses: <code>(Login)</code>.</li>
+    <li>Actors are written as stick figures: <code>actor User</code>.</li>
+    <li>Connect an actor to a use case with a line.</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>Shows inclusion or extension between use cases.</p>
+  <h3>Why use it</h3>
+  <ul><li>Mark shared steps or optional flows.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code><<include>></code> for “always included.”</li>
+    <li>Use <code><<extend>></code> for “optional.”</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Login always includes validation; payment may extend discount.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Rename the use cases to your own example.</li>
+    <li>Practice 2: Swap include and extend.</li>
+    <li>Practice 3: Add another use case and include it.</li>
+    <li>Practice 4: Reverse the arrow and update the text.</li>
+    <li>Practice 5: Change the relationship text to your own wording.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Include syntax: <code>(A) .> (B) : <<include>></code>.</li>
+    <li>Extend syntax: <code>(A) .> (B) : <<extend>></code>.</li>
+    <li>Use dashed arrows.</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>Class diagrams describe attributes and methods.</p>
+  <h3>Why use it</h3>
+  <ul><li>Organize data structures.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>class</code> to define a class.</li>
+    <li>Put attributes and methods inside braces.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Design your program’s data model.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Rename the class to something you like, such as <code>Book</code>.</li>
+    <li>Practice 2: Add one attribute or method.</li>
+    <li>Practice 3: Shorten a field name or translate it.</li>
+    <li>Practice 4: Add a second class and two attributes.</li>
+    <li>Practice 5: Change a method to your own action.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Class format: <code>class Name { ... }</code>.</li>
+    <li>Attributes are fields, methods use <code>()</code>.</li>
+    <li>Empty classes are allowed.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>This example adds methods and return types.</p>
+  <h3>Why use it</h3>
+  <ul><li>Describe what a class can do.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Methods are written as <code>name(): type</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Describe APIs or business logic.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Add a method with a return type.</li>
+    <li>Practice 2: Rename a method to your own action.</li>
+    <li>Practice 3: Change the return type to <code>bool</code> or <code>string</code>.</li>
+    <li>Practice 4: Add another method and make one private.</li>
+    <li>Practice 5: Use your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Methods can have parameters: <code>name(param): type</code>.</li>
+    <li>Return type uses a colon.</li>
+    <li>Methods can have visibility symbols.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>This example shows public, private, and protected access.</p>
+  <h3>Why use it</h3>
+  <ul><li>Separate what outsiders can access.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li><code>+</code> public, <code>-</code> private, <code>#</code> protected.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Hide internal details.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Make one field private.</li>
+    <li>Practice 2: Add a protected field.</li>
+    <li>Practice 3: Make a method public.</li>
+    <li>Practice 4: Add a private method.</li>
+    <li>Practice 5: Rename to your own example.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Visibility symbols go before fields/methods.</li>
+    <li>Common symbols: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>This example shows abstract and static markers.</p>
+  <h3>Why use it</h3>
+  <ul><li>Differentiate “must implement” vs “shared tools.”</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Abstract uses italic or <code>{abstract}</code>.</li>
+    <li>Static uses <code>{static}</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Base classes and utility methods.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Make one method static.</li>
+    <li>Practice 2: Rename the class to your own example.</li>
+    <li>Practice 3: Add an abstract method.</li>
+    <li>Practice 4: Use the other abstract marker style.</li>
+    <li>Practice 5: Use your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> marks abstract class or method.</li>
+    <li><code>{static}</code> marks static method.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>This example shows inheritance.</p>
+  <h3>Why use it</h3>
+  <ul><li>Show parent and child classes.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>--|></code> for inheritance.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Animal classification.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Rename classes to your example.</li>
+    <li>Practice 2: Add a second inheritance line.</li>
+    <li>Practice 3: Rename the parent class.</li>
+    <li>Practice 4: Add a new child class.</li>
+    <li>Practice 5: Use your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> means inheritance.</li>
+    <li>The arrow points to the parent.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>This example shows composition (strong ownership).</p>
+  <h3>Why use it</h3>
+  <ul><li>Show parts that must exist with the whole.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>*--</code> for composition.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>A house always has rooms.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Rename to your own example.</li>
+    <li>Practice 2: Change composition to aggregation and compare.</li>
+    <li>Practice 3: Add a second composition line.</li>
+    <li>Practice 4: Change the relationship label text.</li>
+    <li>Practice 5: Swap the direction and observe.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> means composition.</li>
+    <li>The filled diamond is on the owner side.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>This example shows aggregation (weak ownership).</p>
+  <h3>Why use it</h3>
+  <ul><li>Show parts that can exist independently.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>o--</code> for aggregation.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>A class and its students.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Rename to your own example.</li>
+    <li>Practice 2: Change aggregation to composition and compare.</li>
+    <li>Practice 3: Add a second aggregation line.</li>
+    <li>Practice 4: Rename to another scenario.</li>
+    <li>Practice 5: Swap the direction and add a description.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> means aggregation.</li>
+    <li>The open diamond is on the owner side.</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>Object diagrams show a “class instance.”</p>
+  <h3>Why use it</h3>
+  <ul><li>Show data at a specific moment.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>object</code> to define an instance.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Show field values of an object.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Rename the object to your own example.</li>
+    <li>Practice 2: Add another object.</li>
+    <li>Practice 3: Change fields to your own.</li>
+    <li>Practice 4: Link two objects.</li>
+    <li>Practice 5: Use your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Object format: <code>object name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>Activity diagrams show steps in a process.</p>
+  <h3>Why use it</h3>
+  <ul><li>Describe workflows.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>start</code> and <code>stop</code>.</li>
+    <li>Actions use <code>:action;</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Application flow, order processing.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Change actions to your own workflow.</li>
+    <li>Practice 2: Add one action.</li>
+    <li>Practice 3: Move start/stop positions.</li>
+    <li>Practice 4: Add a decision.</li>
+    <li>Practice 5: Use your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Flow goes top to bottom.</li>
+    <li>Actions are written as <code>: ... ;</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>Shows decision branches.</p>
+  <h3>Why use it</h3>
+  <ul><li>Clearly show different paths.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Form checks, payment success/failure.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Change the condition to your own.</li>
+    <li>Practice 2: Add a second else branch.</li>
+    <li>Practice 3: Change action text to your own words.</li>
+    <li>Practice 4: Change the if text to your scenario.</li>
+    <li>Practice 5: Make your own process.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> starts a branch.</li>
+    <li><code>else</code> switches branch.</li>
+    <li><code>endif</code> ends the block.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>Shows repeating actions.</p>
+  <h3>Why use it</h3>
+  <ul><li>Describe loops.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>while</code> and <code>endwhile</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Repeat checking a status.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Change the condition to your own.</li>
+    <li>Practice 2: Add an action inside the loop.</li>
+    <li>Practice 3: Use a different scenario.</li>
+    <li>Practice 4: Change while to until (conceptually).</li>
+    <li>Practice 5: Add start/end actions.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> starts a loop.</li>
+    <li><code>endwhile</code> ends the loop.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>Swimlanes group steps by responsibility.</p>
+  <h3>Why use it</h3>
+  <ul><li>Show who owns each step.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>|Role|</code> to switch lanes.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Cross-team workflows.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Add a new swimlane role.</li>
+    <li>Practice 2: Move an action to another lane.</li>
+    <li>Practice 3: Rename lanes to your own roles.</li>
+    <li>Practice 4: Add another action.</li>
+    <li>Practice 5: Use your own process.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Use <code>|Name|</code> to change lanes.</li>
+    <li>Actions belong to the current lane.</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>Component diagrams describe modules.</p>
+  <h3>Why use it</h3>
+  <ul><li>Show module structure.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>component</code> to define a component.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>System architecture layers.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Add a component.</li>
+    <li>Practice 2: Rename a component.</li>
+    <li>Practice 3: Add a connection.</li>
+    <li>Practice 4: Use your own scenario.</li>
+    <li>Practice 5: Reorder components.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Components use <code>component</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>Group components inside packages.</p>
+  <h3>Why use it</h3>
+  <ul><li>Organize large systems.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>package</code> to wrap components.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Group by feature.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Add a package.</li>
+    <li>Practice 2: Move a component into another package.</li>
+    <li>Practice 3: Rename the package.</li>
+    <li>Practice 4: Add a component.</li>
+    <li>Practice 5: Use your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Package format: <code>package Name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>Deployment diagrams show servers and nodes.</p>
+  <h3>Why use it</h3>
+  <ul><li>Describe system deployment.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>node</code> to define a node.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Cloud deployment architecture.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Add a node.</li>
+    <li>Practice 2: Rename a node.</li>
+    <li>Practice 3: Add a connection.</li>
+    <li>Practice 4: Use your own scenario.</li>
+    <li>Practice 5: Change node to your own device.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Nodes use <code>node</code>.</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>State diagrams show transitions between states.</p>
+  <h3>Why use it</h3>
+  <ul><li>Describe state changes.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>state</code> to define states.</li>
+    <li>Connect states with arrows.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Order status flow.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Use your own state names.</li>
+    <li>Practice 2: Add another state.</li>
+    <li>Practice 3: Add another transition.</li>
+    <li>Practice 4: Use your own process.</li>
+    <li>Practice 5: Rename a state.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>States use <code>state</code>.</li>
+    <li>Transitions use <code>--> </code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>Composite states contain multiple substates.</p>
+  <h3>Why use it</h3>
+  <ul><li>Organize complex states.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>state Name { ... }</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Complex workflows.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Add a substate.</li>
+    <li>Practice 2: Use your own scenario.</li>
+    <li>Practice 3: Add a transition.</li>
+    <li>Practice 4: Rename the composite state.</li>
+    <li>Practice 5: Use your own process.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Composite states use braces.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>Guard conditions make transitions precise.</p>
+  <h3>Why use it</h3>
+  <ul><li>Mark conditions for transitions.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>[condition]</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>State transition conditions.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Use your own condition.</li>
+    <li>Practice 2: Add another guard condition.</li>
+    <li>Practice 3: Use your own process.</li>
+    <li>Practice 4: Change transition text.</li>
+    <li>Practice 5: Use your own example.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Guard conditions go in brackets.</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>Timing diagrams show signal changes.</p>
+  <h3>Why use it</h3>
+  <ul><li>Describe signal over time.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>concise</code> settings.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Hardware signal changes.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Change to your own signal.</li>
+    <li>Practice 2: Add another signal line.</li>
+    <li>Practice 3: Rename signals.</li>
+    <li>Practice 4: Use your own example.</li>
+    <li>Practice 5: Use your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Timing diagrams can use <code>concise</code>.</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>JSON diagrams show data structure.</p>
+  <h3>Why use it</h3>
+  <ul><li>Make JSON structure easier to read.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startjson</code> and <code>@endjson</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>API response formats.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Replace with your own JSON.</li>
+    <li>Practice 2: Add a field.</li>
+    <li>Practice 3: Change the data values.</li>
+    <li>Practice 4: Use your own scenario.</li>
+    <li>Practice 5: Use your own data.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>JSON must be wrapped with <code>@startjson</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>YAML diagrams show data structure.</p>
+  <h3>Why use it</h3>
+  <ul><li>Make YAML structure easier to read.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startyaml</code> and <code>@endyaml</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Configuration files.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Replace with your own YAML.</li>
+    <li>Practice 2: Add a field.</li>
+    <li>Practice 3: Change data content.</li>
+    <li>Practice 4: Use your own scenario.</li>
+    <li>Practice 5: Use your own data.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>YAML must be wrapped with <code>@startyaml</code>.</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>EBNF diagrams show grammar rules.</p>
+  <h3>Why use it</h3>
+  <ul><li>Clearly show grammar structure.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startebnf</code> and <code>@endebnf</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Describe programming language grammar.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Replace with your own grammar.</li>
+    <li>Practice 2: Add another rule.</li>
+    <li>Practice 3: Use your own example.</li>
+    <li>Practice 4: Change symbols.</li>
+    <li>Practice 5: Use your own grammar.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>EBNF uses <code>@startebnf</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Regex diagrams show regular expressions.</p>
+  <h3>Why use it</h3>
+  <ul><li>Describe regex patterns.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startregex</code> and <code>@endregex</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Regex documentation.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Replace with your own regex.</li>
+    <li>Practice 2: Add another rule.</li>
+    <li>Practice 3: Use your own example.</li>
+    <li>Practice 4: Change the content.</li>
+    <li>Practice 5: Use your own grammar.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Regex uses <code>@startregex</code>.</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>Network topology diagram.</p>
+  <h3>Why use it</h3>
+  <ul><li>Show network connections.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startnwdiag</code> and <code>@endnwdiag</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Routers and switches.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Replace with your own devices.</li>
+    <li>Practice 2: Add a device.</li>
+    <li>Practice 3: Change the connections.</li>
+    <li>Practice 4: Use your own scenario.</li>
+    <li>Practice 5: Use your own example.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>nwdiag uses <code>@startnwdiag</code>.</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>UI wireframe diagram.</p>
+  <h3>Why use it</h3>
+  <ul><li>Sketch screens quickly.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startsalt</code> and <code>@endsalt</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Screen prototypes.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Replace with your own screen.</li>
+    <li>Practice 2: Add a button.</li>
+    <li>Practice 3: Change the text.</li>
+    <li>Practice 4: Change layout.</li>
+    <li>Practice 5: Use your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Salt uses <code>@startsalt</code>.</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>Enterprise architecture diagram.</p>
+  <h3>Why use it</h3>
+  <ul><li>Describe enterprise architecture.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startarchimate</code> and <code>@endarchimate</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Company system architecture.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Replace with your own architecture.</li>
+    <li>Practice 2: Add a component.</li>
+    <li>Practice 3: Use your own scenario.</li>
+    <li>Practice 4: Rename items.</li>
+    <li>Practice 5: Use your own example.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Archimate uses <code>@startarchimate</code>.</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>SDL flow diagram.</p>
+  <h3>Why use it</h3>
+  <ul><li>Describe processes.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startsdl</code> and <code>@endsdl</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Communication flow.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Replace with your own process.</li>
+    <li>Practice 2: Add a step.</li>
+    <li>Practice 3: Rename items.</li>
+    <li>Practice 4: Use your own scenario.</li>
+    <li>Practice 5: Use your own example.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>SDL uses <code>@startsdl</code>.</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>Ditaa diagram using ASCII art.</p>
+  <h3>Why use it</h3>
+  <ul><li>Draw using text.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startditaa</code> and <code>@endditaa</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Quick sketches.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Replace with your own ASCII art.</li>
+    <li>Practice 2: Add another block.</li>
+    <li>Practice 3: Change letters.</li>
+    <li>Practice 4: Use your own scenario.</li>
+    <li>Practice 5: Use your own example.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Ditaa uses <code>@startditaa</code>.</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>Gantt chart shows schedule over time.</p>
+  <h3>Why use it</h3>
+  <ul><li>Plan a project timeline.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startgantt</code> and <code>@endgantt</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Project schedules.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Replace with your own schedule.</li>
+    <li>Practice 2: Add a task.</li>
+    <li>Practice 3: Use your own example.</li>
+    <li>Practice 4: Change dates.</li>
+    <li>Practice 5: Use your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Gantt uses <code>@startgantt</code>.</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>Timeline of events.</p>
+  <h3>Why use it</h3>
+  <ul><li>Organize events in order.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startchronology</code> and <code>@endchronology</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Event history.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Replace with your own events.</li>
+    <li>Practice 2: Add another event.</li>
+    <li>Practice 3: Use your own example.</li>
+    <li>Practice 4: Change dates.</li>
+    <li>Practice 5: Use your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Chronology uses <code>@startchronology</code>.</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>Mind maps show idea hierarchy.</p>
+  <h3>Why use it</h3>
+  <ul><li>Organize ideas.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startmindmap</code> and <code>@endmindmap</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Brainstorming.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Use your own topic.</li>
+    <li>Practice 2: Add branches.</li>
+    <li>Practice 3: Use your own example.</li>
+    <li>Practice 4: Change text.</li>
+    <li>Practice 5: Use your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>MindMap uses <code>@startmindmap</code>.</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>Work Breakdown Structure diagram.</p>
+  <h3>Why use it</h3>
+  <ul><li>Break tasks into smaller parts.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startwbs</code> and <code>@endwbs</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Project task breakdown.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Use your own tasks.</li>
+    <li>Practice 2: Add subtasks.</li>
+    <li>Practice 3: Use your own example.</li>
+    <li>Practice 4: Change text.</li>
+    <li>Practice 5: Use your own scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>WBS uses <code>@startwbs</code>.</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>Use AsciiMath for formulas.</p>
+  <h3>Why use it</h3>
+  <ul><li>Write formulas quickly.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>@startmath</code> and <code>@endmath</code>.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>Display formulas.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Use your own formula.</li>
+    <li>Practice 2: Add a formula.</li>
+    <li>Practice 3: Use your own example.</li>
+    <li>Practice 4: Use your own scenario.</li>
+    <li>Practice 5: Change symbols.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>AsciiMath common symbols are supported.</li>
+    <li>Wrap with <code>@startmath</code> and <code>@endmath</code>.</li>
+    <li><code>^</code> means power, <code>/</code> means division.</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>ER diagrams describe database tables.</p>
+  <h3>Why use it</h3>
+  <ul><li>Design database structure.</li></ul>
+  <h3>How to use</h3>
+  <ol>
+    <li>Use <code>entity</code> to define a table.</li>
+    <li>Use <code>*</code> to mark primary key.</li>
+  </ol>
+  <h3>Possible use cases</h3>
+  <ul><li>User table design.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Rename the table to <code>Book</code>, and fields to <code>title</code>, <code>author</code>.</li>
+    <li>Practice 2: Add a field, and change one type to <code>int</code>.</li>
+    <li>Practice 3: Rename the primary key field and change its type.</li>
+    <li>Practice 4: Add a second table with two fields.</li>
+    <li>Practice 5: Add a separator line and reorder fields.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li>Separator line <code>--</code> splits sections.</li>
+    <li><code>*</code> marks a primary key field.</li>
+    <li>Field format: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>This example shows relationships between tables.</p>
+  <h3>Why use it</h3>
+  <ul><li>Show one-to-many or many-to-many.</li></ul>
+  <h3>How to use</h3>
+  <ol><li><code>User ||--o{ Post</code> means one-to-many.</li></ol>
+  <h3>Possible use cases</h3>
+  <ul><li>One user has many posts.</li></ul>
+  <h3>Practice (easy for kids)</h3>
+  <ol>
+    <li>Practice 1: Rename <code>User</code> to <code>Student</code> and <code>Post</code> to <code>Homework</code>, then update the label.</li>
+    <li>Practice 2: Change one-to-many to one-to-one and update the description.</li>
+    <li>Practice 3: Add a second relationship to another table and rename it.</li>
+    <li>Practice 4: Swap the direction and adjust names.</li>
+    <li>Practice 5: Change to “one-to-many” and use your scenario.</li>
+  </ol>
+  <h3>PlantUML syntax rules (complete list)</h3>
+  <ul class="rules">
+    <li><code>||</code> and <code>o{</code> show cardinality.</li>
+    <li><code>||--o{</code> commonly means one-to-many.</li>
+    <li>The line connects two tables.</li>
+  </ul>
+</div>

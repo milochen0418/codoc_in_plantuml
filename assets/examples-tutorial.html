@@ -17,6 +17,127 @@
     .lang-label { font-weight: 600; }
     .lang-select { background: #111827; color: #e5e7eb; border: 1px solid #374151; border-radius: 8px; padding: 6px 10px; }
     .lang-note { font-size: 12px; color: #9ca3af; }
+    .tutorial-root.loading { opacity: 0.7; }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <span class="lang-label">Language</span>
+    <select id="lang-select" class="lang-select" aria-label="Select language">
+      <option value="zh-Hant">繁體中文</option>
+      <option value="zh-Hans">简体中文</option>
+      <option value="en">English</option>
+      <option value="es">Español</option>
+    </select>
+    <span class="lang-note" id="lang-note">切換語言可立即顯示對應版本。</span>
+  </div>
+
+  <div id="tutorial-root" class="tutorial-root" aria-live="polite"></div>
+
+  <script>
+    const langSelect = document.getElementById("lang-select");
+    const langNote = document.getElementById("lang-note");
+    const tutorialRoot = document.getElementById("tutorial-root");
+
+    const languageFiles = {
+      "zh-Hant": "tutorials/examples-zh-hant.html",
+      "zh-Hans": "tutorials/examples-zh-hans.html",
+      "en": "tutorials/examples-en.html",
+      "es": "tutorials/examples-es.html"
+    };
+
+    const notes = {
+      "zh-Hant": "切換語言可立即顯示對應版本。",
+      "zh-Hans": "切换语言可立即显示对应版本。",
+      "en": "Switching languages shows the selected version instantly.",
+      "es": "Cambiar el idioma muestra la versión seleccionada al instante."
+    };
+
+    const loadingMessages = {
+      "zh-Hant": "載入中…",
+      "zh-Hans": "加载中…",
+      "en": "Loading…",
+      "es": "Cargando…"
+    };
+
+    const errorMessages = {
+      "zh-Hant": "載入失敗，請稍後再試。",
+      "zh-Hans": "加载失败，请稍后再试。",
+      "en": "Failed to load. Please try again.",
+      "es": "No se pudo cargar. Inténtalo de nuevo."
+    };
+
+    function updateNote(lang) {
+      langNote.textContent = notes[lang] || notes.en;
+    }
+
+    function scrollToHash() {
+      if (!location.hash) return;
+      const target = tutorialRoot.querySelector(location.hash);
+      if (target) {
+        target.scrollIntoView({ block: "start" });
+      }
+    }
+
+    async function loadLanguage(lang) {
+      const resolvedLang = languageFiles[lang] ? lang : "en";
+      const filePath = languageFiles[resolvedLang];
+
+      document.documentElement.lang = resolvedLang;
+      updateNote(resolvedLang);
+
+      tutorialRoot.classList.add("loading");
+      tutorialRoot.setAttribute("aria-busy", "true");
+      tutorialRoot.innerHTML = `<p class="note">${loadingMessages[resolvedLang] || loadingMessages.en}</p>`;
+
+      try {
+        const response = await fetch(filePath, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        const html = await response.text();
+        tutorialRoot.innerHTML = html;
+        scrollToHash();
+      } catch (error) {
+        tutorialRoot.innerHTML = `<p class="note">${errorMessages[resolvedLang] || errorMessages.en}</p>`;
+      } finally {
+        tutorialRoot.classList.remove("loading");
+        tutorialRoot.setAttribute("aria-busy", "false");
+      }
+    }
+
+    const savedLang = localStorage.getItem("tutorial-lang") || "zh-Hant";
+    langSelect.value = savedLang;
+    loadLanguage(savedLang);
+
+    langSelect.addEventListener("change", (event) => {
+      const lang = event.target.value;
+      localStorage.setItem("tutorial-lang", lang);
+      loadLanguage(lang);
+    });
+
+    window.addEventListener("hashchange", scrollToHash);
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Examples 教學</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif; line-height: 1.6; margin: 24px; color: #e5e7eb; background: #111827; }
+    h1 { margin-bottom: 8px; }
+    h2 { margin-top: 32px; border-bottom: 1px solid #374151; padding-bottom: 6px; }
+    h3 { margin-top: 16px; }
+    .toc a { display: block; color: #93c5fd; text-decoration: none; margin: 4px 0; }
+    .section { padding: 12px 0; }
+    .note { background: #1f2937; padding: 12px; border-radius: 8px; border: 1px solid #374151; }
+    .rules li { margin-bottom: 6px; }
+    .top-bar { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 0 0 16px 0; padding: 12px; background: #0b1220; border: 1px solid #1f2937; border-radius: 10px; }
+    .lang-label { font-weight: 600; }
+    .lang-select { background: #111827; color: #e5e7eb; border: 1px solid #374151; border-radius: 8px; padding: 6px 10px; }
+    .lang-note { font-size: 12px; color: #9ca3af; }
     .lang-content { display: none; }
     .lang-content.active { display: block; }
   </style>

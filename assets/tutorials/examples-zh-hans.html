@@ -1,0 +1,1373 @@
+<h1>Examples 教学（小学生也看得懂）</h1>
+<p class="note">
+  这份教学用最简单的方式说明：每个范例在画什么、为什么要用、如何使用、常见用途，
+  以及对应的 PlantUML 语法规则（整理成完整可用清单）。
+</p>
+
+<h2>目录</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>这个范例告诉你“角色 A 对角色 B 说一句话”。就像两个人互相传纸条。</p>
+  <h3>为什么要用</h3>
+  <ul>
+    <li>把系统里的对话顺序画出来，老师或同学一看就懂。</li>
+    <li>适合讲“谁先说、谁再回”的故事。</li>
+  </ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>先写 <code>@startuml</code> 和 <code>@enduml</code>。</li>
+    <li>用 <code>Alice -> Bob: 消息</code> 表示 A 对 B 说话。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul>
+    <li>登录流程：用户 → 系统 → 服务器。</li>
+    <li>聊天机器人：你问 → 机器人回。</li>
+  </ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把 <code>Alice</code>、<code>Bob</code> 改成你喜欢的角色名字，再把消息改成一句日常对话。</li>
+    <li>练习二：先新增一行 <code>participant</code> 声明角色，再把原本的消息改成“先问、再回”的内容。</li>
+    <li>练习三：把消息改成两行，第一行问问题，第二行请对方回答，再把其中一行换成更短的文字。</li>
+    <li>练习四：把对话顺序换一下（谁先说换成另一个人），再改消息内容。</li>
+    <li>练习五：加一个第三个角色，让他也说一句话，再把其中一个角色改名。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>以 <code>@startuml</code> 开头、<code>@enduml</code> 结尾。</li>
+    <li>角色可以写 <code>participant</code> 或直接用名字。</li>
+    <li><code>A -> B</code> 是同步消息，<code>A --> B</code> 是回传。</li>
+    <li>文字写在冒号后面：<code>A -> B: Hello</code>。</li>
+    <li>顺序由上到下表示时间。</li>
+    <li>可以连续多行消息，表示多段对话。</li>
+    <li>消息文字可省略：<code>A -> B</code> 也合法。</li>
+    <li>角色名称可包含空格，需用引号包起来。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>这个范例示范“请求与回应”。像你问问题，对方回答。</p>
+  <h3>为什么要用</h3>
+  <ul>
+    <li>清楚表达“发问”和“回复”两个步骤。</li>
+  </ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li><code>A -> B</code> 表示请求。</li>
+    <li><code>B --> A</code> 表示回应。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul>
+    <li>API 调用：前端 → 后端 → 回传资料。</li>
+  </ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把角色改成 <code>Client</code> 与 <code>Server</code>，再把消息改成“要资料 / 传资料”。</li>
+    <li>练习二：先把请求消息改成“查询”，再把回复消息改成“查询结果”。</li>
+    <li>练习三：加一个新的请求和回复（共四行），表示连续问两次，再把第二次的文字改成不同内容。</li>
+    <li>练习四：把回复改成另一个人回，并调整消息文字。</li>
+    <li>练习五：在请求前加一行“准备中”的自我消息，再把请求文字改得更明确。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li><code>-></code> 用于发出消息。</li>
+    <li><code>--></code> 常用于回传消息。</li>
+    <li>可加上文字描述回传内容。</li>
+    <li>请求与回应通常成对出现，但不是硬性规定。</li>
+    <li>可在消息前先声明角色，让名称更清楚。</li>
+    <li>消息顺序由上到下代表时间先后。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>这是“自己跟自己说话”，代表自己在做内部步骤。</p>
+  <h3>为什么要用</h3>
+  <ul>
+    <li>显示对象自己进行处理，不需要别人帮忙。</li>
+  </ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul>
+    <li>算法步骤、内部计算。</li>
+  </ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：先把 <code>Alice</code> 改成你喜欢的名字（例如 <code>Me</code>），再把消息改成你今天想做的事。</li>
+    <li>练习二：先把第一行的动作改成 <code>先读资料</code>，再加一行 <code>Me -> Me: 再检查</code>。</li>
+    <li>练习三：先把消息改成 <code>想一想</code>，再加一行 <code>Me -> Me: 记下重点</code>。</li>
+    <li>练习四：先把名字改成 <code>Robot</code>，再加一行 <code>Robot -> Robot: 充电</code>。</li>
+    <li>练习五：先新增一行 <code>Me -> Me: 开始</code> 放在最上面，再在最后加一行 <code>Me -> Me: 完成</code>。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>箭头左右两边可以是同一个角色。</li>
+    <li>基本格式：<code>角色 -> 角色: 文字</code>。</li>
+    <li>角色名字可直接使用，不一定要先声明。</li>
+    <li>消息文字写在冒号后面，没有文字也可以。</li>
+    <li>同一个角色可连续写多行，表示多个内部步骤。</li>
+    <li>可搭配 <code>activate</code> / <code>deactivate</code> 显示忙碌时间。</li>
+    <li>顺序由上到下表示时间先后。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>这个范例让不同角色用不同图示出现，比如“人、系统、数据库”。</p>
+  <h3>为什么要用</h3>
+  <ul><li>用图示区分角色，读图更快。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>actor</code>、<code>boundary</code>、<code>control</code>、<code>database</code>、<code>entity</code>。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>登录流程：用户 → 网页 → 逻辑 → 数据库。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把 <code>User</code> 改成 <code>Student</code>，再把消息改成“登录作业”。</li>
+    <li>练习二：先加一个 <code>boundary App</code>，再把箭头改成先到 App。</li>
+    <li>练习三：把 <code>database DB</code> 改成 <code>database Books</code>，再改消息内容。</li>
+    <li>练习四：新增一个 <code>control</code> 角色，并加一条互动消息。</li>
+    <li>练习五：把角色顺序调整，再让消息也跟着改顺序。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>角色类型会改变外观但名字不变。</li>
+    <li>同样可以使用 <code>-></code> 画互动。</li>
+    <li>角色声明格式：<code>actor/ boundary/ control/ database/ entity 名称</code>。</li>
+    <li>角色可以先声明，再在消息中直接使用名字。</li>
+    <li>未声明的名字会被当作一般角色。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>这个范例示范“上色与样式”，让图更漂亮、重点更清楚。</p>
+  <h3>为什么要用</h3>
+  <ul><li>用颜色标示重要角色。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>skinparam</code> 调整样式。</li>
+    <li>在角色后面加颜色：<code>participant Alice #AliceBlue</code>。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>把“核心系统”用亮色表示。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把 <code>Alice</code> 改成你喜欢的名字，再换成另一种颜色。</li>
+    <li>练习二：先把消息改成“开始”，再把另一个角色改成深色。</li>
+    <li>练习三：新增第三个角色，并替它指定不同颜色。</li>
+    <li>练习四：调整 <code>skinparam sequenceMessageAlign</code> 的值，再换一条消息。</li>
+    <li>练习五：把一位角色换成样式名称（如 <code>#technology</code>），再改消息内容。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> 可调整对齐、字体、颜色等。</li>
+    <li>角色后可接颜色或样式名称。</li>
+    <li>颜色可用色名或色码，例如 <code>#AliceBlue</code>。</li>
+    <li>同一角色若重复声明，以最后一次为准。</li>
+    <li>样式设置不影响消息语法。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>这个范例表示“如果…不然…”，像选择题。</p>
+  <h3>为什么要用</h3>
+  <ul><li>画出不同情况的分支行为。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>alt</code> 开始，<code>else</code> 切换分支，<code>end</code> 结束。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>付款成功或失败的流程。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把条件改成“有钱 / 没钱”，再改两边的消息文字。</li>
+    <li>练习二：先新增第三个 <code>else</code> 分支，再补一行消息。</li>
+    <li>练习三：把 <code>alt</code> 的标题改成你自己的情境，再改消息内容。</li>
+    <li>练习四：在每个分支各加一行消息，让步骤更清楚，再把分支标题改成你自己的情境。</li>
+    <li>练习五：把其中一个分支改成“失败后再试一次”的对话，再把另一个分支改成不同结局。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li><code>alt 条件</code> 开始分支。</li>
+    <li>可有多个 <code>else</code>。</li>
+    <li>最后以 <code>end</code> 结束。</li>
+    <li>每个分支内都可以放多行消息。</li>
+    <li>条件文字可省略，但建议写清楚。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>这个范例表示“重复做事情”。</p>
+  <h3>为什么要用</h3>
+  <ul><li>展示多次重复的动作。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>loop</code> 与 <code>end</code> 包住重复内容。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>每秒检查一次状态。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把 <code>loop</code> 的文字改成“每 3 次”，再改消息内容。</li>
+    <li>练习二：在循环内加一行新消息，表示两个动作，再把原本的消息改短。</li>
+    <li>练习三：把角色名称改掉，再把消息改成“检查中”。</li>
+    <li>练习四：把循环标题改成条件式，例如“只要还没完成”，再把消息内容改掉。</li>
+    <li>练习五：在循环外加一行开始与结束的消息，再把开始或结束改成你自己的句子。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li><code>loop 次数/条件</code> 可写在同一行。</li>
+    <li><code>end</code> 结束循环区块。</li>
+    <li>循环内可有多行消息。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>这个范例表示“同时做两件事”。</p>
+  <h3>为什么要用</h3>
+  <ul><li>显示并行工作。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>par</code> 开始，<code>else</code> 切换并行分支，<code>end</code> 结束。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>同时通知两个服务。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把两个分支的消息改成“发信”和“发短信”，再把角色名字改成你喜欢的。</li>
+    <li>练习二：先把角色改名，再把每个分支多加一行消息。</li>
+    <li>练习三：新增第三个并行分支（再加一个 <code>else</code>），并写一行消息，再把其中一行改短。</li>
+    <li>练习四：把其中一个分支改成“慢慢做”，并加一行结束消息，再改另一分支文字。</li>
+    <li>练习五：先在 <code>par</code> 前加一行“开始任务”，再在 <code>end</code> 后加一行“完成”。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li><code>par</code> 代表并行区块。</li>
+    <li>每个分支可有自己的消息序列。</li>
+    <li><code>else</code> 用来切换到另一个并行分支。</li>
+    <li>最后以 <code>end</code> 结束并行区块。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>这个范例用“激活条”表示某个角色正在忙碌。</p>
+  <h3>为什么要用</h3>
+  <ul><li>表达谁在执行工作，以及工作持续多久。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>activate 角色</code> 开始。</li>
+    <li>用 <code>deactivate 角色</code> 结束。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>显示系统正在处理请求。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把角色改成 <code>Server</code>，再把消息改成“处理中”。</li>
+    <li>练习二：先加一条请求消息，再把 <code>activate</code> 放在请求后。</li>
+    <li>练习三：在忙碌期间加一行消息，表示“完成一半”，再把这行改成你自己的文字。</li>
+    <li>练习四：新增另一个角色，让它也有一段忙碌时间，再加一条它的消息。</li>
+    <li>练习五：把忙碌开始与结束的位置往下移一行，观察差异，再调整其中一条消息。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>可在消息前后加入 activate/deactivate。</li>
+    <li><code>activate 角色</code> 与 <code>deactivate 角色</code> 要成对。</li>
+    <li>可在忙碌期间插入多行消息。</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>这个范例示范在图上加小纸条说明。</p>
+  <h3>为什么要用</h3>
+  <ul><li>补充解释，让看的人更清楚。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>note left</code> 或 <code>note right</code>。</li>
+    <li>用 <code>end note</code> 结束注解。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>提醒“此步骤可能失败”。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把注解文字改成你自己的提醒句。</li>
+    <li>练习二：把注解位置改成 <code>note right</code>，再改文字。</li>
+    <li>练习三：新增第二个注解，写在另一个角色旁边。</li>
+    <li>练习四：把注解内容改成两行，第二行说明原因。</li>
+    <li>练习五：把注解移到另一段消息之后。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>注解可放在 <code>left</code> / <code>right</code> / <code>over</code>。</li>
+    <li>多行注解可用 <code>note</code> 与 <code>end note</code> 包起来。</li>
+    <li>注解不影响消息流程。</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>用例图是“系统能做的事”清单。</p>
+  <h3>为什么要用</h3>
+  <ul><li>清楚列出使用者会用到哪些功能。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>actor</code> 代表使用者。</li>
+    <li>用 <code>(UseCase)</code> 代表功能。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>登录、查询、付款等功能列表。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把使用者改成 <code>Teacher</code>，再把用例改成“出题”。</li>
+    <li>练习二：新增第二个用例，表示另一个功能。</li>
+    <li>练习三：把用例改名，再把 actor 改名。</li>
+    <li>练习四：新增第二个 actor，并连到其中一个用例。</li>
+    <li>练习五：把用例改成你自己的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>用例用圆括号表示：<code>(Login)</code>。</li>
+    <li>actor 用小人表示：<code>actor User</code>。</li>
+    <li>actor 与用例用线连接。</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>表示功能之间的包含或延伸。</p>
+  <h3>为什么要用</h3>
+  <ul><li>标示共用流程或可选流程。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code><<include>></code> 表示一定会做。</li>
+    <li>用 <code><<extend>></code> 表示可选。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>登录一定包含验证，付款可能延伸折扣。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把用例名称改成你自己的例子。</li>
+    <li>练习二：把 include 改成 extend 或相反。</li>
+    <li>练习三：新增一个用例并加入 include。</li>
+    <li>练习四：把箭头方向调整，再改文字。</li>
+    <li>练习五：把关系文字改成你自己的说法。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>关系写法：<code>(A) .> (B) : <<include>></code>。</li>
+    <li>延伸写法：<code>(A) .> (B) : <<extend>></code>。</li>
+    <li>箭头用虚线。</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>类图用来描述对象的属性和方法。</p>
+  <h3>为什么要用</h3>
+  <ul><li>整理数据结构。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>class</code> 定义类。</li>
+    <li>属性与方法写在花括号内。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>设计程序的数据模型。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把类名改成你喜欢的，例如 <code>Book</code>。</li>
+    <li>练习二：新增一个属性或方法。</li>
+    <li>练习三：把属性名改短或改成中文。</li>
+    <li>练习四：新增第二个类，并在里面加两个属性。</li>
+    <li>练习五：把方法改成你自己的动作。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>类写法：<code>class Name { ... }</code>。</li>
+    <li>属性用字段表示，方法用 <code>()</code>。</li>
+    <li>可空白不写内容。</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>这个范例加入方法与回传类型。</p>
+  <h3>为什么要用</h3>
+  <ul><li>描述类能做的事情。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>方法用 <code>name(): type</code> 表示。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>描述 API 或业务逻辑。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：新增一个方法，并给它回传类型。</li>
+    <li>练习二：把方法名称改成你自己的动作。</li>
+    <li>练习三：把回传类型改成 <code>bool</code> 或 <code>string</code>。</li>
+    <li>练习四：再加一个方法，并把其中一个改成私有。</li>
+    <li>练习五：把方法改成你自己的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>方法可加参数：<code>name(param): type</code>。</li>
+    <li>回传类型用冒号。</li>
+    <li>方法可有可见性符号。</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>这个范例示范公开、私有等权限。</p>
+  <h3>为什么要用</h3>
+  <ul><li>分清哪些资料可被外部使用。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li><code>+</code> 公开、<code>-</code> 私有、<code>#</code> 保护。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>把内部细节藏起来。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把其中一个属性改成私有。</li>
+    <li>练习二：新增一个保护层级的属性。</li>
+    <li>练习三：把方法改成公开。</li>
+    <li>练习四：新增一个私有方法。</li>
+    <li>练习五：用你自己的例子改名。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>可见性符号放在属性/方法前。</li>
+    <li>常见：<code>+</code>、<code>-</code>、<code>#</code>、<code>~</code>。</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>这个范例示范抽象与静态标示。</p>
+  <h3>为什么要用</h3>
+  <ul><li>区分“一定要实现”与“共用工具”。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>抽象用斜体或 <code>{abstract}</code>。</li>
+    <li>静态用 <code>{static}</code>。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>基底类与工具方法。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把其中一个方法改成静态。</li>
+    <li>练习二：把类名改成你自己的例子。</li>
+    <li>练习三：新增一个抽象方法。</li>
+    <li>练习四：把抽象标示改成另一种方式。</li>
+    <li>练习五：用你自己的情境改名。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> 可标示抽象类或方法。</li>
+    <li><code>{static}</code> 标示静态方法。</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>这个范例示范继承关系。</p>
+  <h3>为什么要用</h3>
+  <ul><li>表示“子类”与“父类”。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>--|></code> 表示继承。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>动物继承分类。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把类名改成你自己的例子。</li>
+    <li>练习二：新增第二条继承关系。</li>
+    <li>练习三：把父类改成另一个名字。</li>
+    <li>练习四：加入一个新子类。</li>
+    <li>练习五：把关系改成你自己的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> 表示继承。</li>
+    <li>箭头指向父类。</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>这个范例示范组合关系（强拥有）。</p>
+  <h3>为什么要用</h3>
+  <ul><li>表示“部分一定跟着整体存在”。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>*--</code> 表示组合。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>房子一定有房间。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把类改成你自己的例子。</li>
+    <li>练习二：把组合改成聚合再看看差异。</li>
+    <li>练习三：新增第二个组合关系。</li>
+    <li>练习四：把关系文字改成你自己的说法。</li>
+    <li>练习五：把方向改一下看看。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> 表示组合。</li>
+    <li>星形在拥有者端。</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>这个范例示范聚合关系（弱拥有）。</p>
+  <h3>为什么要用</h3>
+  <ul><li>表示“部分可独立存在”。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>o--</code> 表示聚合。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>班级与学生。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把例子改成你自己的。</li>
+    <li>练习二：把聚合改成组合再看看差异。</li>
+    <li>练习三：新增第二条聚合关系。</li>
+    <li>练习四：把名称改成另一个情境。</li>
+    <li>练习五：改方向并写一句说明。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> 表示聚合。</li>
+    <li>空心菱形在拥有者端。</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>对象图表示“类的实例”。</p>
+  <h3>为什么要用</h3>
+  <ul><li>展示某一时间点的数据。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>object</code> 定义实例。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>显示特定对象的字段值。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把对象名称改成你自己的例子。</li>
+    <li>练习二：新增另一个对象。</li>
+    <li>练习三：把字段改成你自己的。</li>
+    <li>练习四：连接两个对象。</li>
+    <li>练习五：改成你自己的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>对象写法：<code>object name { ... }</code>。</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>活动图表示流程的步骤。</p>
+  <h3>为什么要用</h3>
+  <ul><li>描述工作流程。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>start</code> 与 <code>stop</code>。</li>
+    <li>动作用 <code>:动作;</code>。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>申请流程、订单流程。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把动作改成你自己的流程。</li>
+    <li>练习二：新增一个动作。</li>
+    <li>练习三：改 start/stop 位置。</li>
+    <li>练习四：加入一个判断。</li>
+    <li>练习五：改成你自己的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>流程由上到下。</li>
+    <li>动作用 <code>: ... ;</code> 表示。</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>表示条件判断流程。</p>
+  <h3>为什么要用</h3>
+  <ul><li>清楚表示分支流程。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>if</code>、<code>then</code>、<code>else</code>、<code>endif</code>。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>表单检查、付款成功/失败。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把条件改成你自己的。</li>
+    <li>练习二：新增第二个 else 分支。</li>
+    <li>练习三：把动作改成你自己的文字。</li>
+    <li>练习四：把 if 的文字改成你自己的情境。</li>
+    <li>练习五：改成你自己的流程。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li><code>if (条件) then (标题)</code> 开始分支。</li>
+    <li><code>else</code> 切换分支。</li>
+    <li><code>endif</code> 结束。</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>表示重复执行。</p>
+  <h3>为什么要用</h3>
+  <ul><li>描述循环。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>while</code> 与 <code>endwhile</code>。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>重复检查状态。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的条件。</li>
+    <li>练习二：在循环内新增一个动作。</li>
+    <li>练习三：改成另一个情境。</li>
+    <li>练习四：把 while 改成 until（概念上）。</li>
+    <li>练习五：加入开始/结束动作。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li><code>while (条件)</code> 开始循环。</li>
+    <li><code>endwhile</code> 结束循环。</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>泳道用来分组不同负责人。</p>
+  <h3>为什么要用</h3>
+  <ul><li>清楚表示谁负责哪一步。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>|角色|</code> 表示泳道。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>跨部门流程。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：新增一个泳道角色。</li>
+    <li>练习二：把动作移到不同泳道。</li>
+    <li>练习三：改成你自己的角色名称。</li>
+    <li>练习四：新增一个动作。</li>
+    <li>练习五：改成你自己的流程。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>用 <code>|Name|</code> 切换泳道。</li>
+    <li>动作会属于当前泳道。</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>组件图用来描述系统模块。</p>
+  <h3>为什么要用</h3>
+  <ul><li>画出模块关系。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>component</code> 定义组件。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>系统架构分层。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：新增一个组件。</li>
+    <li>练习二：把组件改名。</li>
+    <li>练习三：新增连接。</li>
+    <li>练习四：改成你自己的情境。</li>
+    <li>练习五：改组件顺序。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>组件用 <code>component</code> 表示。</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>把组件分组在包里。</p>
+  <h3>为什么要用</h3>
+  <ul><li>整理大型系统。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>package</code> 包住组件。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>按功能分组。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：新增一个 package。</li>
+    <li>练习二：把组件移到不同 package。</li>
+    <li>练习三：改成你自己的名称。</li>
+    <li>练习四：新增一个组件。</li>
+    <li>练习五：改成你自己的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>包写法：<code>package Name { ... }</code>。</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>部署图表示服务器与节点。</p>
+  <h3>为什么要用</h3>
+  <ul><li>描述系统部署。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>node</code> 定义节点。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>云端部署架构。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：新增一个节点。</li>
+    <li>练习二：把节点改名。</li>
+    <li>练习三：新增连接。</li>
+    <li>练习四：改成你自己的情境。</li>
+    <li>练习五：把节点改成你自己的设备。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>节点用 <code>node</code>。</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>状态图表示状态转换。</p>
+  <h3>为什么要用</h3>
+  <ul><li>描述状态变化。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>state</code> 定义状态。</li>
+    <li>用箭头连接状态。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>订单状态流程。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的状态。</li>
+    <li>练习二：新增一个状态。</li>
+    <li>练习三：新增一条转换。</li>
+    <li>练习四：改成你自己的流程。</li>
+    <li>练习五：改状态名称。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>状态用 <code>state</code>。</li>
+    <li>转换用 <code>--> </code>。</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>复合状态可以包住多个子状态。</p>
+  <h3>为什么要用</h3>
+  <ul><li>整理复杂状态。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>state Name { ... }</code>。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>复杂的工作流程。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：新增一个子状态。</li>
+    <li>练习二：改成你自己的情境。</li>
+    <li>练习三：新增转换。</li>
+    <li>练习四：改名字。</li>
+    <li>练习五：改成你自己的流程。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>复合状态用大括号包住。</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>守卫条件让转换更精准。</p>
+  <h3>为什么要用</h3>
+  <ul><li>标示转换的条件。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>[条件]</code> 标示。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>状态转换条件。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的条件。</li>
+    <li>练习二：新增一条守卫条件。</li>
+    <li>练习三：改成你自己的流程。</li>
+    <li>练习四：改转换文字。</li>
+    <li>练习五：改成你自己的例子。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>守卫条件写在方括号内。</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>时间图表示信号变化。</p>
+  <h3>为什么要用</h3>
+  <ul><li>描述时间序列。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>concise</code> 设置。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>硬件信号变化。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的信号。</li>
+    <li>练习二：新增一条信号。</li>
+    <li>练习三：改名称。</li>
+    <li>练习四：改成你自己的例子。</li>
+    <li>练习五：改成你自己的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>时间图可用 <code>concise</code>。</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>JSON 图用来显示数据结构。</p>
+  <h3>为什么要用</h3>
+  <ul><li>让 JSON 结构更直观。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startjson</code> 与 <code>@endjson</code>。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>API 回传格式。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的 JSON。</li>
+    <li>练习二：新增字段。</li>
+    <li>练习三：改数据内容。</li>
+    <li>练习四：改成你自己的情境。</li>
+    <li>练习五：改成你自己的数据。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>JSON 需要用 <code>@startjson</code> 包起来。</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>YAML 图用来显示数据结构。</p>
+  <h3>为什么要用</h3>
+  <ul><li>让 YAML 结构更直观。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startyaml</code> 与 <code>@endyaml</code>。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>配置文件格式。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的 YAML。</li>
+    <li>练习二：新增字段。</li>
+    <li>练习三：改数据内容。</li>
+    <li>练习四：改成你自己的情境。</li>
+    <li>练习五：改成你自己的数据。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>YAML 需要用 <code>@startyaml</code> 包起来。</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>用 EBNF 表示语法规则。</p>
+  <h3>为什么要用</h3>
+  <ul><li>清楚呈现语法结构。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startebnf</code> 与 <code>@endebnf</code>。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>描述程序语言语法。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的语法。</li>
+    <li>练习二：新增一条规则。</li>
+    <li>练习三：改成你自己的例子。</li>
+    <li>练习四：改符号。</li>
+    <li>练习五：改成你自己的语法。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>EBNF 用 <code>@startebnf</code>。</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>用 Regex 表示规则。</p>
+  <h3>为什么要用</h3>
+  <ul><li>描述正则表达式。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startregex</code> 与 <code>@endregex</code>。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>正则表达式说明。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的 regex。</li>
+    <li>练习二：新增一条规则。</li>
+    <li>练习三：改成你自己的例子。</li>
+    <li>练习四：改内容。</li>
+    <li>练习五：改成你自己的语法。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>Regex 用 <code>@startregex</code>。</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>网络拓扑图。</p>
+  <h3>为什么要用</h3>
+  <ul><li>表示网络连接。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startnwdiag</code> 与 <code>@endnwdiag</code>。
+    </li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>路由与交换机。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的网络设备。</li>
+    <li>练习二：新增一台设备。</li>
+    <li>练习三：改连接。</li>
+    <li>练习四：改成你自己的情境。</li>
+    <li>练习五：改成你自己的例子。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>nwdiag 用 <code>@startnwdiag</code>。</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>UI 线框图。</p>
+  <h3>为什么要用</h3>
+  <ul><li>快速草拟画面。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startsalt</code> 与 <code>@endsalt</code>。
+    </li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>画面原型设计。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的画面。</li>
+    <li>练习二：新增一个按钮。</li>
+    <li>练习三：改成你自己的字。</li>
+    <li>练习四：改布局。</li>
+    <li>练习五：改成你自己的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>Salt 用 <code>@startsalt</code>。</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>企业架构图。</p>
+  <h3>为什么要用</h3>
+  <ul><li>描述企业架构。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startarchimate</code> 与 <code>@endarchimate</code>。
+    </li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>公司系统架构。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的架构。</li>
+    <li>练习二：新增一个组件。</li>
+    <li>练习三：改成你自己的情境。</li>
+    <li>练习四：改名字。</li>
+    <li>练习五：改成你自己的例子。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>Archimate 用 <code>@startarchimate</code>。</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>SDL 流程图。</p>
+  <h3>为什么要用</h3>
+  <ul><li>描述流程。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startsdl</code> 与 <code>@endsdl</code>。
+    </li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>通信流程。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的流程。</li>
+    <li>练习二：新增一个步骤。</li>
+    <li>练习三：改名称。</li>
+    <li>练习四：改成你自己的情境。</li>
+    <li>练习五：改成你自己的例子。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>SDL 用 <code>@startsdl</code>。</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>Ditaa 图示范 ASCII 图。</p>
+  <h3>为什么要用</h3>
+  <ul><li>用文字画图。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startditaa</code> 与 <code>@endditaa</code>。
+    </li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>快速画草图。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的图案。</li>
+    <li>练习二：新增一个区块。</li>
+    <li>练习三：改字。</li>
+    <li>练习四：改成你自己的情境。</li>
+    <li>练习五：改成你自己的例子。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>Ditaa 用 <code>@startditaa</code>。</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>甘特图表示时间安排。</p>
+  <h3>为什么要用</h3>
+  <ul><li>规划项目。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startgantt</code> 与 <code>@endgantt</code>。
+    </li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>项目时程。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的时间表。</li>
+    <li>练习二：新增一个任务。</li>
+    <li>练习三：改成你自己的例子。</li>
+    <li>练习四：改时间。</li>
+    <li>练习五：改成你自己的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>甘特图用 <code>@startgantt</code>。
+    </li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>时间轴事件。</p>
+  <h3>为什么要用</h3>
+  <ul><li>整理事件顺序。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startchronology</code> 与 <code>@endchronology</code>。
+    </li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>事件回顾。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的事件。</li>
+    <li>练习二：新增事件。</li>
+    <li>练习三：改成你自己的例子。</li>
+    <li>练习四：改日期。</li>
+    <li>练习五：改成你自己的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>Chronology 用 <code>@startchronology</code>。</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>思维导图表示想法层级。</p>
+  <h3>为什么要用</h3>
+  <ul><li>整理想法。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startmindmap</code> 与 <code>@endmindmap</code>。
+    </li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>头脑风暴。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的主题。</li>
+    <li>练习二：新增分支。</li>
+    <li>练习三：改成你自己的例子。</li>
+    <li>练习四：改文字。</li>
+    <li>练习五：改成你自己的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>MindMap 用 <code>@startmindmap</code>。</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>工作分解结构。</p>
+  <h3>为什么要用</h3>
+  <ul><li>分解任务。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startwbs</code> 与 <code>@endwbs</code>。
+    </li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>项目分工。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的任务。</li>
+    <li>练习二：新增子任务。</li>
+    <li>练习三：改成你自己的例子。</li>
+    <li>练习四：改文字。</li>
+    <li>练习五：改成你自己的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>WBS 用 <code>@startwbs</code>。</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>用 AsciiMath 表示数学公式。</p>
+  <h3>为什么要用</h3>
+  <ul><li>快速写数学公式。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>@startmath</code> 与 <code>@endmath</code>。
+    </li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>公式展示。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：改成你自己的公式。</li>
+    <li>练习二：新增一个公式。</li>
+    <li>练习三：改成你自己的例子。</li>
+    <li>练习四：改成你自己的情境。</li>
+    <li>练习五：改符号。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>支持 AsciiMath 常见符号。</li>
+    <li>用 <code>@startmath</code> 与 <code>@endmath</code> 包住。</li>
+    <li><code>^</code> 表示次方，<code>/</code> 表示分数。</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>ER 图用来描述数据表。</p>
+  <h3>为什么要用</h3>
+  <ul><li>设计数据库结构。</li></ul>
+  <h3>怎么用</h3>
+  <ol>
+    <li>用 <code>entity</code> 定义表。</li>
+    <li>用 <code>*</code> 标记主键。</li>
+  </ol>
+  <h3>可能的用法</h3>
+  <ul><li>用户数据表设计。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把表名改成 <code>Book</code>，并改字段成 <code>title</code>、<code>author</code>。</li>
+    <li>练习二：新增一个字段，并把其中一个字段改成 <code>int</code>。</li>
+    <li>练习三：把主键字段改成你喜欢的名字，再改类型。</li>
+    <li>练习四：新增第二个表，并为它加两个字段。</li>
+    <li>练习五：在表内加一条分隔线，再调整字段顺序。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li>分隔线 <code>--</code> 可分属性区。</li>
+    <li><code>*</code> 表示主键字段。</li>
+    <li>字段格式：<code>名称: 类型</code>。</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>这个范例表示“数据表之间的关系”。</p>
+  <h3>为什么要用</h3>
+  <ul><li>表示一对多或多对多。</li></ul>
+  <h3>怎么用</h3>
+  <ol><li><code>User ||--o{ Post</code> 表示一对多。</li></ol>
+  <h3>可能的用法</h3>
+  <ul><li>一个用户有多篇帖子。</li></ul>
+  <h3>修改练习（12 岁也懂）</h3>
+  <ol>
+    <li>练习一：把 <code>User</code> 改成 <code>Student</code>，把 <code>Post</code> 改成 <code>Homework</code>，再改关系文字。</li>
+    <li>练习二：把一对多改成一对一，并改文字说明。</li>
+    <li>练习三：新增第二条关系，连到另一个表，再把表名改成你自己的例子。</li>
+    <li>练习四：把关系方向换一下，再调整名称。</li>
+    <li>练习五：把关系改成“一对多”，再改成你的情境。</li>
+  </ol>
+  <h3>PlantUML 语法规则（完整清单）</h3>
+  <ul class="rules">
+    <li><code>||</code> 与 <code>o{</code> 表示基数。</li>
+    <li><code>||--o{</code> 常用来表示一对多。</li>
+    <li>连线两端代表两个数据表。</li>
+  </ul>
+</div>
