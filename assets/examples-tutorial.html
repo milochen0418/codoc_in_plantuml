@@ -31,6 +31,18 @@
       <option value="ar">العربية</option>
       <option value="fr">Français</option>
       <option value="hi">हिन्दी</option>
+      <option value="pt">Português</option>
+      <option value="de">Deutsch</option>
+      <option value="ja">日本語</option>
+      <option value="ru">Русский</option>
+      <option value="it">Italiano</option>
+      <option value="tr">Türkçe</option>
+      <option value="id">Bahasa Indonesia</option>
+      <option value="vi">Tiếng Việt</option>
+      <option value="ko">한국어</option>
+      <option value="bn">বাংলা</option>
+      <option value="ur">اردو</option>
+      <option value="fa">فارسی</option>
     </select>
     <span class="lang-note" id="lang-note">切換語言可立即顯示對應版本。</span>
   </div>
@@ -49,7 +61,19 @@
       "es": "tutorials/examples-es.html",
       "ar": "tutorials/examples-ar.html",
       "fr": "tutorials/examples-fr.html",
-      "hi": "tutorials/examples-hi.html"
+      "hi": "tutorials/examples-hi.html",
+      "pt": "tutorials/examples-pt.html",
+      "de": "tutorials/examples-en.html",
+      "ja": "tutorials/examples-en.html",
+      "ru": "tutorials/examples-en.html",
+      "it": "tutorials/examples-en.html",
+      "tr": "tutorials/examples-en.html",
+      "id": "tutorials/examples-en.html",
+      "vi": "tutorials/examples-en.html",
+      "ko": "tutorials/examples-en.html",
+      "bn": "tutorials/examples-en.html",
+      "ur": "tutorials/examples-en.html",
+      "fa": "tutorials/examples-en.html"
     };
 
     const notes = {
@@ -59,7 +83,19 @@
       "es": "Cambiar el idioma muestra la versión seleccionada al instante.",
       "ar": "يؤدي تبديل اللغة إلى عرض النسخة المحددة فورًا.",
       "fr": "Changer la langue affiche immédiatement la version sélectionnée.",
-      "hi": "भाषा बदलने पर चुना गया संस्करण तुरंत दिखता है।"
+      "hi": "भाषा बदलने पर चुना गया संस्करण तुरंत दिखता है।",
+      "pt": "Trocar o idioma mostra a versão selecionada imediatamente.",
+      "de": "Ein Sprachwechsel zeigt die gewählte Version sofort an.",
+      "ja": "言語を切り替えると選択したバージョンがすぐに表示されます。",
+      "ru": "Смена языка сразу показывает выбранную версию.",
+      "it": "Cambiare lingua mostra subito la versione selezionata.",
+      "tr": "Dili değiştirmek seçili sürümü anında gösterir.",
+      "id": "Mengganti bahasa langsung menampilkan versi yang dipilih.",
+      "vi": "Đổi ngôn ngữ sẽ hiển thị phiên bản đã chọn ngay lập tức.",
+      "ko": "언어를 바꾸면 선택한 버전이 즉시 표시됩니다.",
+      "bn": "ভাষা বদলালে নির্বাচিত সংস্করণটি সঙ্গে সঙ্গে দেখা যায়।",
+      "ur": "زبان تبدیل کرنے سے منتخب کردہ ورژن فوراً نظر آتا ہے۔",
+      "fa": "با تغییر زبان، نسخهٔ انتخاب‌شده فوراً نمایش داده می‌شود."
     };
 
     const loadingMessages = {
@@ -69,7 +105,19 @@
       "es": "Cargando…",
       "ar": "جارٍ التحميل…",
       "fr": "Chargement…",
-      "hi": "लोड हो रहा है…"
+      "hi": "लोड हो रहा है…",
+      "pt": "Carregando…",
+      "de": "Wird geladen…",
+      "ja": "読み込み中…",
+      "ru": "Загрузка…",
+      "it": "Caricamento…",
+      "tr": "Yükleniyor…",
+      "id": "Memuat…",
+      "vi": "Đang tải…",
+      "ko": "로드 중…",
+      "bn": "লোড হচ্ছে…",
+      "ur": "لوڈ ہو رہا ہے…",
+      "fa": "در حال بارگذاری…"
     };
 
     const errorMessages = {
@@ -79,10 +127,22 @@
       "es": "No se pudo cargar. Inténtalo de nuevo.",
       "ar": "فشل التحميل. الرجاء المحاولة مرة أخرى.",
       "fr": "Échec du chargement. Veuillez réessayer.",
-      "hi": "लोड नहीं हो सका। कृपया फिर से प्रयास करें।"
+      "hi": "लोड नहीं हो सका। कृपया फिर से प्रयास करें।",
+      "pt": "Falha ao carregar. Tente novamente.",
+      "de": "Laden fehlgeschlagen. Bitte erneut versuchen.",
+      "ja": "読み込みに失敗しました。もう一度お試しください。",
+      "ru": "Не удалось загрузить. Попробуйте ещё раз.",
+      "it": "Caricamento non riuscito. Riprova.",
+      "tr": "Yükleme başarısız oldu. Lütfen tekrar deneyin.",
+      "id": "Gagal memuat. Silakan coba lagi.",
+      "vi": "Tải không thành công. Vui lòng thử lại.",
+      "ko": "로드에 실패했습니다. 다시 시도해 주세요.",
+      "bn": "লোড ব্যর্থ হয়েছে। দয়া করে আবার চেষ্টা করুন।",
+      "ur": "لوڈ نہیں ہو سکا۔ براہِ کرم دوبارہ کوشش کریں۔",
+      "fa": "بارگذاری ناموفق بود. لطفاً دوباره تلاش کنید."
     };
 
-    const rtlLanguages = new Set(["ar"]);
+    const rtlLanguages = new Set(["ar", "ur", "fa"]);
 
     function updateNote(lang) {
       langNote.textContent = notes[lang] || notes.en;
