@@ -1,0 +1,1363 @@
+<h1>Hướng dẫn Ví dụ (dễ cho trẻ em)</h1>
+<p class="note">
+  Hướng dẫn này giải thích đơn giản mỗi ví dụ vẽ gì, vì sao hữu ích,
+  cách dùng, các trường hợp sử dụng phổ biến và quy tắc cú pháp PlantUML
+  (được tổng hợp thành các danh sách đầy đủ và thực tế).
+</p>
+
+<h2>Mục lục</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>Ví dụ này cho thấy “Người A gửi tin nhắn cho người B”, như đưa một mẩu giấy.</p>
+  <h3>Tại sao dùng</h3>
+  <ul>
+    <li>Hiển thị thứ tự cuộc trò chuyện một cách đơn giản.</li>
+    <li>Tốt cho chuyện “ai nói trước, ai trả lời sau”.</li>
+  </ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Viết <code>@startuml</code> và <code>@enduml</code>.</li>
+    <li>Dùng <code>Alice -> Bob: Message</code> để thể hiện A nói với B.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul>
+    <li>Luồng đăng nhập: User → Hệ thống → Server.</li>
+    <li>Chatbot: Bạn hỏi → Bot trả lời.</li>
+  </ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi <code>Alice</code> và <code>Bob</code> thành tên thích, đổi câu thành cuộc trò chuyện hằng ngày.</li>
+    <li>Bài 2: Thêm một dòng <code>participant</code> trước, rồi đổi thành “hỏi trước, trả lời sau”.</li>
+    <li>Bài 3: Tách tin nhắn thành hai dòng: câu hỏi rồi câu trả lời, và rút ngắn một dòng.</li>
+    <li>Bài 4: Đổi người nói trước và sửa lại nội dung.</li>
+    <li>Bài 5: Thêm người thứ ba và đổi tên một người.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Bắt đầu bằng <code>@startuml</code> và kết thúc bằng <code>@enduml</code>.</li>
+    <li>Người tham gia có thể khai báo bằng <code>participant</code> hoặc dùng trực tiếp.</li>
+    <li><code>A -> B</code> là gọi, <code>A --> B</code> là trả về.</li>
+    <li>Văn bản đặt sau dấu hai chấm: <code>A -> B: Hello</code>.</li>
+    <li>Thời gian chảy từ trên xuống dưới.</li>
+    <li>Nhiều tin nhắn hơn nghĩa là cuộc trò chuyện dài hơn.</li>
+    <li>Văn bản tin nhắn là tùy chọn: <code>A -> B</code> vẫn hợp lệ.</li>
+    <li>Tên có khoảng trắng phải đặt trong dấu ngoặc kép.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>Ví dụ này cho thấy “yêu cầu và phản hồi”, như hỏi‑đáp.</p>
+  <h3>Tại sao dùng</h3>
+  <ul>
+    <li>Hiển thị rõ các bước yêu cầu và phản hồi.</li>
+  </ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li><code>A -> B</code> là yêu cầu.</li>
+    <li><code>B --> A</code> là phản hồi.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul>
+    <li>Gọi API: Frontend → Backend → Trả dữ liệu.</li>
+  </ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi vai thành <code>Client</code> và <code>Server</code>, đổi thông điệp thành “lấy dữ liệu / trả dữ liệu”.</li>
+    <li>Bài 2: Đổi yêu cầu thành “query” và phản hồi thành “query result”.</li>
+    <li>Bài 3: Thêm một cặp yêu cầu‑phản hồi nữa (4 dòng) và đổi nội dung thứ hai.</li>
+    <li>Bài 4: Cho một người khác trả lời và điều chỉnh văn bản.</li>
+    <li>Bài 5: Thêm self‑message “chuẩn bị” trước yêu cầu.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li><code>-></code> gửi thông điệp.</li>
+    <li><code>--></code> thường chỉ trả về.</li>
+    <li>Thêm văn bản để mô tả nội dung phản hồi.</li>
+    <li>Yêu cầu và phản hồi thường đi theo cặp nhưng không bắt buộc.</li>
+    <li>Khai báo người tham gia trước nếu muốn rõ ràng.</li>
+    <li>Thời gian chảy từ trên xuống dưới.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>Đây là “nói chuyện với chính mình”, thể hiện bước nội bộ.</p>
+  <h3>Tại sao dùng</h3>
+  <ul>
+    <li>Cho thấy một đối tượng đang xử lý bên trong.</li>
+  </ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul>
+    <li>Các bước thuật toán, tính toán nội bộ.</li>
+  </ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi <code>Alice</code> thành tên của bạn (ví dụ <code>Me</code>) và đổi nội dung.</li>
+    <li>Bài 2: Đổi hành động thành “đọc dữ liệu” và thêm <code>Me -> Me: kiểm tra lại</code>.</li>
+    <li>Bài 3: Đổi thông điệp thành “suy nghĩ” và thêm <code>Me -> Me: ghi ý chính</code>.</li>
+    <li>Bài 4: Đổi tên thành <code>Robot</code> và thêm <code>Robot -> Robot: sạc lại</code>.</li>
+    <li>Bài 5: Thêm <code>Me -> Me: start</code> ở đầu và <code>Me -> Me: done</code> ở cuối.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Hai đầu mũi tên có thể là cùng một người tham gia.</li>
+    <li>Định dạng cơ bản: <code>Role -> Role: Text</code>.</li>
+    <li>Có thể dùng tên mà không cần khai báo.</li>
+    <li>Văn bản sau dấu hai chấm là tùy chọn.</li>
+    <li>Nhiều self‑message thể hiện nhiều bước nội bộ.</li>
+    <li>Có thể dùng với <code>activate</code> / <code>deactivate</code>.</li>
+    <li>Thời gian chảy từ trên xuống dưới.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>Ví dụ này cho thấy biểu tượng khác nhau cho vai trò khác nhau, như người, hệ thống, cơ sở dữ liệu.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Biểu tượng giúp nhận biết vai trò nhanh hơn.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Luồng đăng nhập: User → Web → Logic → Database.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi <code>User</code> thành <code>Student</code> và đổi thông điệp.</li>
+    <li>Bài 2: Thêm <code>boundary App</code> và chuyển mũi tên tới App trước.</li>
+    <li>Bài 3: Đổi <code>database DB</code> thành <code>database Books</code> và đổi thông điệp.</li>
+    <li>Bài 4: Thêm vai trò <code>control</code> và một dòng tương tác.</li>
+    <li>Bài 5: Sắp xếp lại người tham gia và chỉnh thông điệp.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Loại vai trò thay đổi hình dạng chứ không đổi tên.</li>
+    <li>Dùng <code>-></code> cho tương tác.</li>
+    <li>Định dạng khai báo: <code>actor/boundary/control/database/entity Name</code>.</li>
+    <li>Khai báo vai trò trước rồi dùng tên.</li>
+    <li>Tên không khai báo là người tham gia thường.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>Ví dụ này dùng màu và kiểu để làm sơ đồ rõ hơn.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Làm nổi bật vai trò quan trọng bằng màu sắc.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>skinparam</code> để điều chỉnh kiểu.</li>
+    <li>Thêm màu sau vai trò: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Hiển thị “hệ thống trung tâm” bằng màu nổi bật.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi tên <code>Alice</code> và đổi màu.</li>
+    <li>Bài 2: Đổi thông điệp thành “start” và làm tối vai trò còn lại.</li>
+    <li>Bài 3: Thêm vai trò thứ ba và một màu khác.</li>
+    <li>Bài 4: Đổi <code>skinparam sequenceMessageAlign</code> và sửa một dòng.</li>
+    <li>Bài 5: Dùng tên kiểu (ví dụ <code>#technology</code>) và đổi thông điệp.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> điều khiển căn chỉnh, font, màu, v.v.</li>
+    <li>Vai trò có thể có màu hoặc tên kiểu.</li>
+    <li>Màu có thể là tên hoặc hex, ví dụ <code>#AliceBlue</code>.</li>
+    <li>Nếu vai trò được khai báo lại, lần cuối cùng sẽ có hiệu lực.</li>
+    <li>Thiết lập kiểu không đổi cú pháp thông điệp.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>Hiển thị “nếu… nếu không…”, như các lựa chọn.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Cho thấy các nhánh khác nhau cho các điều kiện khác nhau.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>alt</code> để bắt đầu, <code>else</code> cho nhánh khác, <code>end</code> để kết thúc.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Thanh toán thành công hoặc thất bại.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi điều kiện thành “có tiền / không có tiền” và đổi thông điệp.</li>
+    <li>Bài 2: Thêm nhánh <code>else</code> thứ ba và một thông điệp.</li>
+    <li>Bài 3: Đổi tiêu đề <code>alt</code> theo kịch bản của bạn.</li>
+    <li>Bài 4: Thêm một dòng vào mỗi nhánh và đổi tiêu đề.</li>
+    <li>Bài 5: Tạo nhánh “thử lại sau lỗi”.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> bắt đầu một nhánh.</li>
+    <li>Có thể có nhiều nhánh <code>else</code>.</li>
+    <li>Đóng bằng <code>end</code>.</li>
+    <li>Mỗi nhánh có thể chứa nhiều thông điệp.</li>
+    <li>Văn bản điều kiện là tùy chọn nhưng nên có.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>Hiển thị hành động lặp lại.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Hiển thị các bước lặp lại.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>loop</code> và <code>end</code> để bao các dòng lặp.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Kiểm tra trạng thái mỗi giây.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi nhãn loop thành “mỗi 3 lần” và đổi thông điệp.</li>
+    <li>Bài 2: Thêm một thông điệp khác trong loop và rút ngắn cái cũ.</li>
+    <li>Bài 3: Đổi tên vai trò và đổi thông điệp thành “kiểm tra”.</li>
+    <li>Bài 4: Đổi nhãn loop thành điều kiện như “đến khi xong”.</li>
+    <li>Bài 5: Thêm thông điệp bắt đầu/kết thúc ngoài loop.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> có thể ở cùng dòng.</li>
+    <li><code>end</code> kết thúc khối loop.</li>
+    <li>Nhiều thông điệp có thể nằm trong loop.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>Hiển thị hai việc xảy ra cùng lúc.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Cho thấy các nhiệm vụ song song.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>par</code> để bắt đầu, <code>else</code> cho nhánh song song khác, <code>end</code> để kết thúc.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Thông báo cho hai dịch vụ cùng lúc.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi nhánh thành “gửi email” và “gửi SMS”, và đổi tên vai trò.</li>
+    <li>Bài 2: Đổi vai trò và thêm một dòng trong mỗi nhánh.</li>
+    <li>Bài 3: Thêm nhánh thứ ba (<code>else</code>) và một thông điệp.</li>
+    <li>Bài 4: Đổi một nhánh thành “làm chậm” và thêm thông điệp cuối.</li>
+    <li>Bài 5: Thêm “bắt đầu làm việc” trước <code>par</code> và “xong” sau <code>end</code>.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li><code>par</code> tạo khối song song.</li>
+    <li>Mỗi nhánh có thể có chuỗi thông điệp riêng.</li>
+    <li><code>else</code> chuyển sang nhánh song song khác.</li>
+    <li>Đóng bằng <code>end</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>Ví dụ này dùng thanh kích hoạt để cho biết khi nào một vai trò đang bận.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Cho thấy ai đang làm việc và trong bao lâu.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>activate Role</code> để bắt đầu.</li>
+    <li>Dùng <code>deactivate Role</code> để kết thúc.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Cho thấy server đang xử lý yêu cầu.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi vai thành <code>Server</code> và thông điệp thành “processing”.</li>
+    <li>Bài 2: Thêm một dòng yêu cầu và đặt <code>activate</code> ngay sau.</li>
+    <li>Bài 3: Thêm thông điệp “halfway” và thay bằng văn bản của bạn.</li>
+    <li>Bài 4: Thêm vai trò khác với kích hoạt và thông điệp của nó.</li>
+    <li>Bài 5: Dời bắt đầu/kết thúc kích hoạt xuống một dòng.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>activate/deactivate có thể trước hoặc sau thông điệp.</li>
+    <li><code>activate</code> và <code>deactivate</code> phải đi đôi.</li>
+    <li>Có thể gửi thông điệp khi vai trò đang hoạt động.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>Ví dụ này cho thấy cách thêm ghi chú dán.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Thêm giải thích để rõ ràng.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>note left</code> hoặc <code>note right</code>.</li>
+    <li>Đóng ghi chú bằng <code>end note</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Nhắc “bước này có thể lỗi”.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi nội dung ghi chú theo lời nhắc của bạn.</li>
+    <li>Bài 2: Chuyển ghi chú sang phải và đổi nội dung.</li>
+    <li>Bài 3: Thêm ghi chú thứ hai gần vai trò khác.</li>
+    <li>Bài 4: Tạo ghi chú hai dòng.</li>
+    <li>Bài 5: Di chuyển ghi chú sau một thông điệp khác.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Ghi chú có thể là <code>left</code>, <code>right</code> hoặc <code>over</code>.</li>
+    <li>Ghi chú nhiều dòng dùng <code>note</code> và <code>end note</code>.</li>
+    <li>Ghi chú không thay đổi luồng thông điệp.</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>Use case là danh sách “những việc hệ thống có thể làm”.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Liệt kê rõ các chức năng cần cho người dùng.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>actor</code> cho người dùng.</li>
+    <li>Dùng <code>(UseCase)</code> cho một chức năng.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Đăng nhập, tìm kiếm, thanh toán, v.v.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi người dùng thành <code>Teacher</code> và use case thành “create quiz”.</li>
+    <li>Bài 2: Thêm use case thứ hai.</li>
+    <li>Bài 3: Đổi tên use case và actor.</li>
+    <li>Bài 4: Thêm actor thứ hai và nối vào use case.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Use case đặt trong ngoặc: <code>(Login)</code>.</li>
+    <li>Actor là hình người: <code>actor User</code>.</li>
+    <li>Nối actor với use case bằng đường thẳng.</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>Cho thấy quan hệ include/extend giữa các use case.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Chỉ ra bước dùng chung hoặc tùy chọn.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li><code><<include>></code> là “luôn bao gồm”.</li>
+    <li><code><<extend>></code> là “tùy chọn”.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Đăng nhập luôn có xác thực; thanh toán có thể mở rộng giảm giá.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi use case theo ví dụ của bạn.</li>
+    <li>Bài 2: Hoán đổi include và extend.</li>
+    <li>Bài 3: Thêm use case khác và include nó.</li>
+    <li>Bài 4: Đảo chiều mũi tên và cập nhật văn bản.</li>
+    <li>Bài 5: Đổi văn bản quan hệ bằng lời của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Cú pháp include: <code>(A) .> (B) : <<include>></code>.</li>
+    <li>Cú pháp extend: <code>(A) .> (B) : <<extend>></code>.</li>
+    <li>Dùng mũi tên nét đứt.</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>Sơ đồ lớp mô tả thuộc tính và phương thức.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Tổ chức cấu trúc dữ liệu.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Định nghĩa lớp bằng <code>class</code>.</li>
+    <li>Đặt thuộc tính và phương thức trong dấu ngoặc nhọn.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Thiết kế mô hình dữ liệu của chương trình.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi tên lớp (ví dụ <code>Book</code>).</li>
+    <li>Bài 2: Thêm một thuộc tính hoặc phương thức.</li>
+    <li>Bài 3: Rút ngắn tên trường hoặc dịch sang tiếng Việt.</li>
+    <li>Bài 4: Thêm lớp thứ hai và hai thuộc tính.</li>
+    <li>Bài 5: Đổi một phương thức thành hành động của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Định dạng lớp: <code>class Name { ... }</code>.</li>
+    <li>Thuộc tính là trường, phương thức dùng <code>()</code>.</li>
+    <li>Lớp trống được phép.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>Ví dụ này thêm phương thức và kiểu trả về.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Mô tả lớp có thể làm gì.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Phương thức viết dạng <code>name(): type</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Mô tả API hoặc logic nghiệp vụ.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thêm một phương thức có kiểu trả về.</li>
+    <li>Bài 2: Đổi tên một phương thức theo hành động của bạn.</li>
+    <li>Bài 3: Đổi kiểu trả về thành <code>bool</code> hoặc <code>string</code>.</li>
+    <li>Bài 4: Thêm một phương thức khác và đặt một cái thành private.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Phương thức có thể có tham số: <code>name(param): type</code>.</li>
+    <li>Kiểu trả về sau dấu hai chấm.</li>
+    <li>Phương thức có thể có ký hiệu hiển thị.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>Hiển thị public, private và protected.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Phân tách phần truy cập từ bên ngoài và chi tiết nội bộ.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li><code>+</code> public, <code>-</code> private, <code>#</code> protected.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Ẩn chi tiết bên trong.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đặt một trường thành private.</li>
+    <li>Bài 2: Thêm trường protected.</li>
+    <li>Bài 3: Đặt một phương thức thành public.</li>
+    <li>Bài 4: Thêm một phương thức private.</li>
+    <li>Bài 5: Đổi tên theo ví dụ của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Ký hiệu hiển thị đặt trước trường/phương thức.</li>
+    <li>Ký hiệu phổ biến: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>Hiển thị đánh dấu abstract và static.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Phân biệt “cần triển khai” và “dùng chung”.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Abstract: in nghiêng hoặc <code>{abstract}</code>.</li>
+    <li>Static: <code>{static}</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Lớp cơ sở và phương thức tiện ích.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đặt một phương thức thành static.</li>
+    <li>Bài 2: Đổi tên lớp theo ví dụ của bạn.</li>
+    <li>Bài 3: Thêm một phương thức abstract.</li>
+    <li>Bài 4: Dùng kiểu đánh dấu abstract khác.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> chỉ lớp hoặc phương thức abstract.</li>
+    <li><code>{static}</code> chỉ phương thức static.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>Ví dụ này cho thấy kế thừa.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Hiển thị lớp cha và lớp con.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>--|></code> cho kế thừa.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Phân loại động vật.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi tên lớp theo ví dụ của bạn.</li>
+    <li>Bài 2: Thêm một đường kế thừa nữa.</li>
+    <li>Bài 3: Đổi tên lớp cha.</li>
+    <li>Bài 4: Thêm lớp con mới.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> nghĩa là kế thừa.</li>
+    <li>Mũi tên chỉ tới lớp cha.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>Ví dụ này cho thấy hợp thành (sở hữu mạnh).</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Cho thấy các phần phải tồn tại cùng tổng thể.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>*--</code> cho hợp thành.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Một ngôi nhà luôn có phòng.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi theo ví dụ của bạn.</li>
+    <li>Bài 2: Đổi hợp thành thành kết tập và so sánh.</li>
+    <li>Bài 3: Thêm một đường hợp thành nữa.</li>
+    <li>Bài 4: Đổi текст nhãn.</li>
+    <li>Bài 5: Đổi hướng và quan sát.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> nghĩa là hợp thành.</li>
+    <li>Hình thoi đặc nằm ở phía chủ sở hữu.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>Ví dụ này cho thấy kết tập (sở hữu yếu).</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Cho thấy các phần có thể tồn tại độc lập.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>o--</code> cho kết tập.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Một lớp và các học sinh của nó.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi theo ví dụ của bạn.</li>
+    <li>Bài 2: Đổi kết tập thành hợp thành và so sánh.</li>
+    <li>Bài 3: Thêm một đường kết tập nữa.</li>
+    <li>Bài 4: Đổi sang kịch bản khác.</li>
+    <li>Bài 5: Đổi hướng và thêm mô tả.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> nghĩa là kết tập.</li>
+    <li>Hình thoi rỗng nằm ở phía chủ sở hữu.</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>Sơ đồ đối tượng cho thấy “một thể hiện của lớp”.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Cho thấy dữ liệu tại một thời điểm.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>object</code> để định nghĩa một thể hiện.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Hiển thị giá trị trường của một đối tượng.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi tên đối tượng theo ví dụ của bạn.</li>
+    <li>Bài 2: Thêm một đối tượng khác.</li>
+    <li>Bài 3: Đổi các trường theo dữ liệu của bạn.</li>
+    <li>Bài 4: Liên kết hai đối tượng.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Định dạng đối tượng: <code>object name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>Sơ đồ hoạt động cho thấy các bước của một quy trình.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Mô tả workflow.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>start</code> và <code>stop</code>.</li>
+    <li>Hành động là <code>:action;</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Luồng ứng dụng, xử lý đơn hàng.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi hành động theo workflow của bạn.</li>
+    <li>Bài 2: Thêm một hành động.</li>
+    <li>Bài 3: Di chuyển start/stop.</li>
+    <li>Bài 4: Thêm một quyết định.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Luồng đi từ trên xuống dưới.</li>
+    <li>Hành động viết dạng <code>: ... ;</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>Hiển thị các nhánh quyết định.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Hiển thị rõ các đường đi khác nhau.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Kiểm tra biểu mẫu, thanh toán thành công/thất bại.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi điều kiện theo điều kiện của bạn.</li>
+    <li>Bài 2: Thêm nhánh else thứ hai.</li>
+    <li>Bài 3: Đổi văn bản hành động.</li>
+    <li>Bài 4: Đổi nội dung if theo kịch bản của bạn.</li>
+    <li>Bài 5: Tạo quy trình của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> bắt đầu nhánh.</li>
+    <li><code>else</code> chuyển nhánh.</li>
+    <li><code>endif</code> đóng khối.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>Hiển thị các hành động lặp lại.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Mô tả vòng lặp.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>while</code> và <code>endwhile</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Lặp kiểm tra trạng thái.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi điều kiện theo điều kiện của bạn.</li>
+    <li>Bài 2: Thêm hành động trong vòng lặp.</li>
+    <li>Bài 3: Dùng kịch bản khác.</li>
+    <li>Bài 4: Đổi while thành until (về ý nghĩa).</li>
+    <li>Bài 5: Thêm hành động bắt đầu/kết thúc.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> bắt đầu vòng lặp.</li>
+    <li><code>endwhile</code> kết thúc vòng lặp.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>Swimlane nhóm các bước theo trách nhiệm.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Cho biết ai chịu trách nhiệm cho từng bước.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>|Role|</code> để đổi làn.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Workflow giữa các nhóm.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thêm một vai trò swimlane mới.</li>
+    <li>Bài 2: Chuyển một hành động sang làn khác.</li>
+    <li>Bài 3: Đổi tên làn theo vai trò của bạn.</li>
+    <li>Bài 4: Thêm một hành động khác.</li>
+    <li>Bài 5: Dùng quy trình của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Dùng <code>|Name|</code> để đổi làn.</li>
+    <li>Hành động thuộc làn hiện tại.</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>Sơ đồ thành phần mô tả các mô-đun.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Hiển thị cấu trúc mô-đun.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Định nghĩa thành phần bằng <code>component</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Các lớp kiến trúc hệ thống.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thêm một thành phần.</li>
+    <li>Bài 2: Đổi tên thành phần.</li>
+    <li>Bài 3: Thêm một kết nối.</li>
+    <li>Bài 4: Dùng kịch bản của bạn.</li>
+    <li>Bài 5: Sắp xếp lại các thành phần.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Thành phần dùng <code>component</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>Nhóm các thành phần vào gói.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Tổ chức hệ thống lớn.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>package</code> để bao các thành phần.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Nhóm theo chức năng.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thêm một gói.</li>
+    <li>Bài 2: Chuyển một thành phần sang gói khác.</li>
+    <li>Bài 3: Đổi tên gói.</li>
+    <li>Bài 4: Thêm một thành phần.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Định dạng gói: <code>package Name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>Sơ đồ triển khai hiển thị server và node.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Mô tả triển khai hệ thống.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>node</code> để định nghĩa node.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Kiến trúc triển khai trên cloud.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thêm một node.</li>
+    <li>Bài 2: Đổi tên node.</li>
+    <li>Bài 3: Thêm một kết nối.</li>
+    <li>Bài 4: Dùng kịch bản của bạn.</li>
+    <li>Bài 5: Đổi node thành thiết bị của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Node dùng <code>node</code>.</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>Sơ đồ trạng thái hiển thị các chuyển trạng thái.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Mô tả thay đổi trạng thái.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>state</code> để định nghĩa trạng thái.</li>
+    <li>Nối các trạng thái bằng mũi tên.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Luồng trạng thái đơn hàng.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Dùng tên trạng thái của bạn.</li>
+    <li>Bài 2: Thêm một trạng thái khác.</li>
+    <li>Bài 3: Thêm một chuyển trạng thái khác.</li>
+    <li>Bài 4: Dùng quy trình của bạn.</li>
+    <li>Bài 5: Đổi tên một trạng thái.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Trạng thái dùng <code>state</code>.</li>
+    <li>Chuyển trạng thái dùng <code>--> </code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>Trạng thái tổng hợp chứa nhiều trạng thái con.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Tổ chức các trạng thái phức tạp.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>state Name { ... }</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Workflow phức tạp.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thêm một trạng thái con.</li>
+    <li>Bài 2: Dùng kịch bản của bạn.</li>
+    <li>Bài 3: Thêm một chuyển trạng thái.</li>
+    <li>Bài 4: Đổi tên trạng thái tổng hợp.</li>
+    <li>Bài 5: Dùng quy trình của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Trạng thái tổng hợp dùng dấu ngoặc nhọn.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>Điều kiện guard làm chuyển trạng thái rõ ràng hơn.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Hiển thị điều kiện chuyển trạng thái.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>[condition]</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Điều kiện chuyển trạng thái.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Dùng điều kiện của bạn.</li>
+    <li>Bài 2: Thêm một điều kiện guard khác.</li>
+    <li>Bài 3: Dùng quy trình của bạn.</li>
+    <li>Bài 4: Đổi văn bản chuyển trạng thái.</li>
+    <li>Bài 5: Dùng ví dụ của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Điều kiện guard đặt trong ngoặc vuông.</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>Sơ đồ timing hiển thị thay đổi tín hiệu.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Mô tả tín hiệu theo thời gian.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng thiết lập <code>concise</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Thay đổi tín hiệu phần cứng.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi bằng tín hiệu của bạn.</li>
+    <li>Bài 2: Thêm một dòng tín hiệu khác.</li>
+    <li>Bài 3: Đổi tên tín hiệu.</li>
+    <li>Bài 4: Dùng ví dụ của bạn.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Sơ đồ timing có thể dùng <code>concise</code>.</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>Sơ đồ JSON hiển thị cấu trúc dữ liệu.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Làm cấu trúc JSON dễ đọc hơn.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startjson</code> và <code>@endjson</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Định dạng phản hồi API.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thay bằng JSON của bạn.</li>
+    <li>Bài 2: Thêm một trường.</li>
+    <li>Bài 3: Đổi giá trị dữ liệu.</li>
+    <li>Bài 4: Dùng kịch bản của bạn.</li>
+    <li>Bài 5: Dùng dữ liệu của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>JSON được bao bởi <code>@startjson</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>Sơ đồ YAML hiển thị cấu trúc dữ liệu.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Làm cấu trúc YAML dễ đọc hơn.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startyaml</code> và <code>@endyaml</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Tệp cấu hình.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thay bằng YAML của bạn.</li>
+    <li>Bài 2: Thêm một trường.</li>
+    <li>Bài 3: Đổi nội dung dữ liệu.</li>
+    <li>Bài 4: Dùng kịch bản của bạn.</li>
+    <li>Bài 5: Dùng dữ liệu của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>YAML được bao bởi <code>@startyaml</code>.</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>Sơ đồ EBNF hiển thị quy tắc ngữ pháp.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Cho thấy cấu trúc ngữ pháp rõ ràng.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startebnf</code> và <code>@endebnf</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Mô tả ngữ pháp ngôn ngữ lập trình.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thay bằng ngữ pháp của bạn.</li>
+    <li>Bài 2: Thêm một quy tắc khác.</li>
+    <li>Bài 3: Dùng ví dụ của bạn.</li>
+    <li>Bài 4: Đổi ký hiệu.</li>
+    <li>Bài 5: Dùng ngữ pháp của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>EBNF dùng <code>@startebnf</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Sơ đồ Regex hiển thị biểu thức chính quy.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Mô tả các mẫu regex.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startregex</code> và <code>@endregex</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Tài liệu regex.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thay bằng regex của bạn.</li>
+    <li>Bài 2: Thêm một quy tắc khác.</li>
+    <li>Bài 3: Dùng ví dụ của bạn.</li>
+    <li>Bài 4: Đổi nội dung.</li>
+    <li>Bài 5: Dùng ngữ pháp của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Regex dùng <code>@startregex</code>.</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>Sơ đồ mạng đơn giản.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Hiển thị kết nối mạng.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startnwdiag</code> và <code>@endnwdiag</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Router và switch.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi thiết bị theo của bạn.</li>
+    <li>Bài 2: Thêm một thiết bị.</li>
+    <li>Bài 3: Đổi kết nối.</li>
+    <li>Bài 4: Dùng kịch bản của bạn.</li>
+    <li>Bài 5: Dùng ví dụ của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>nwdiag dùng <code>@startnwdiag</code>.</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>Sơ đồ wireframe giao diện.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Phác thảo màn hình nhanh.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startsalt</code> và <code>@endsalt</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Nguyên mẫu giao diện.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thay bằng màn hình của bạn.</li>
+    <li>Bài 2: Thêm nút.</li>
+    <li>Bài 3: Đổi văn bản.</li>
+    <li>Bài 4: Đổi bố cục.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Salt dùng <code>@startsalt</code>.</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>Sơ đồ kiến trúc doanh nghiệp.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Mô tả kiến trúc doanh nghiệp.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startarchimate</code> và <code>@endarchimate</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Kiến trúc hệ thống doanh nghiệp.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thay bằng kiến trúc của bạn.</li>
+    <li>Bài 2: Thêm một thành phần.</li>
+    <li>Bài 3: Dùng kịch bản của bạn.</li>
+    <li>Bài 4: Đổi tên các phần tử.</li>
+    <li>Bài 5: Dùng ví dụ của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Archimate dùng <code>@startarchimate</code>.</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>Sơ đồ luồng quy trình SDL.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Mô tả quy trình.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startsdl</code> và <code>@endsdl</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Luồng giao tiếp.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thay bằng quy trình của bạn.</li>
+    <li>Bài 2: Thêm một bước.</li>
+    <li>Bài 3: Đổi tên các phần tử.</li>
+    <li>Bài 4: Dùng kịch bản của bạn.</li>
+    <li>Bài 5: Dùng ví dụ của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>SDL dùng <code>@startsdl</code>.</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>Sơ đồ Ditaa với ASCII art.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Vẽ bằng chữ.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startditaa</code> và <code>@endditaa</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Phác thảo nhanh.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thay bằng ASCII art của bạn.</li>
+    <li>Bài 2: Thêm một khối khác.</li>
+    <li>Bài 3: Đổi chữ.</li>
+    <li>Bài 4: Dùng kịch bản của bạn.</li>
+    <li>Bài 5: Dùng ví dụ của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Ditaa dùng <code>@startditaa</code>.</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>Biểu đồ Gantt hiển thị tiến độ theo thời gian.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Lập kế hoạch timeline dự án.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startgantt</code> và <code>@endgantt</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Lịch dự án.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thay bằng kế hoạch của bạn.</li>
+    <li>Bài 2: Thêm một nhiệm vụ.</li>
+    <li>Bài 3: Dùng ví dụ của bạn.</li>
+    <li>Bài 4: Đổi ngày tháng.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Gantt dùng <code>@startgantt</code>.</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>Dòng thời gian các sự kiện.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Sắp xếp sự kiện theo thời gian.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startchronology</code> và <code>@endchronology</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Lịch sử sự kiện.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Thay bằng sự kiện của bạn.</li>
+    <li>Bài 2: Thêm một sự kiện khác.</li>
+    <li>Bài 3: Dùng ví dụ của bạn.</li>
+    <li>Bài 4: Đổi ngày tháng.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Chronology dùng <code>@startchronology</code>.</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>Mind map hiển thị thứ bậc ý tưởng.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Tổ chức ý tưởng.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startmindmap</code> và <code>@endmindmap</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Brainstorming.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Dùng chủ đề của bạn.</li>
+    <li>Bài 2: Thêm nhánh.</li>
+    <li>Bài 3: Dùng ví dụ của bạn.</li>
+    <li>Bài 4: Đổi văn bản.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>MindMap dùng <code>@startmindmap</code>.</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>Sơ đồ Work Breakdown Structure.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Chia công việc thành phần nhỏ.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startwbs</code> và <code>@endwbs</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Phân rã công việc dự án.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Dùng nhiệm vụ của bạn.</li>
+    <li>Bài 2: Thêm nhiệm vụ con.</li>
+    <li>Bài 3: Dùng ví dụ của bạn.</li>
+    <li>Bài 4: Đổi văn bản.</li>
+    <li>Bài 5: Dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>WBS dùng <code>@startwbs</code>.</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>Dùng AsciiMath cho công thức.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Viết công thức nhanh.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>@startmath</code> và <code>@endmath</code>.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Hiển thị công thức.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Dùng công thức của bạn.</li>
+    <li>Bài 2: Thêm một công thức nữa.</li>
+    <li>Bài 3: Dùng ví dụ của bạn.</li>
+    <li>Bài 4: Dùng kịch bản của bạn.</li>
+    <li>Bài 5: Đổi ký hiệu.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Các ký hiệu AsciiMath phổ biến được hỗ trợ.</li>
+    <li>Bao bằng <code>@startmath</code> và <code>@endmath</code>.</li>
+    <li><code>^</code> là lũy thừa, <code>/</code> là chia.</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>Sơ đồ ER mô tả bảng cơ sở dữ liệu.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Thiết kế cấu trúc cơ sở dữ liệu.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol>
+    <li>Dùng <code>entity</code> để định nghĩa bảng.</li>
+    <li>Dùng <code>*</code> để chỉ khóa chính.</li>
+  </ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Thiết kế bảng người dùng.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi tên bảng thành <code>Book</code> và trường thành <code>title</code>, <code>author</code>.</li>
+    <li>Bài 2: Thêm trường và đổi một kiểu thành <code>int</code>.</li>
+    <li>Bài 3: Đổi trường khóa chính và cập nhật kiểu.</li>
+    <li>Bài 4: Thêm bảng thứ hai với hai trường.</li>
+    <li>Bài 5: Thêm đường phân cách và sắp xếp lại trường.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li>Đường phân cách <code>--</code> chia các phần.</li>
+    <li><code>*</code> chỉ trường khóa chính.</li>
+    <li>Định dạng trường: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>Ví dụนี้ hiển thị quan hệ giữa các bảng.</p>
+  <h3>Tại sao dùng</h3>
+  <ul><li>Hiển thị một‑nhiều hoặc nhiều‑nhiều.</li></ul>
+  <h3>Cách dùng</h3>
+  <ol><li><code>User ||--o{ Post</code> nghĩa là một‑nhiều.</li></ol>
+  <h3>Trường hợp dùng</h3>
+  <ul><li>Một người dùng có nhiều bài viết.</li></ul>
+  <h3>Bài tập (dễ cho trẻ em)</h3>
+  <ol>
+    <li>Bài 1: Đổi <code>User</code> thành <code>Student</code> và <code>Post</code> thành <code>Homework</code>, rồi cập nhật nhãn.</li>
+    <li>Bài 2: Đổi một‑nhiều thành một‑một và cập nhật mô tả.</li>
+    <li>Bài 3: Thêm quan hệ thứ hai và đổi tên bảng.</li>
+    <li>Bài 4: Đảo hướng và chỉnh tên.</li>
+    <li>Bài 5: Giữ “một‑nhiều” và dùng kịch bản của bạn.</li>
+  </ol>
+  <h3>Quy tắc cú pháp PlantUML (danh sách đầy đủ)</h3>
+  <ul class="rules">
+    <li><code>||</code> và <code>o{</code> hiển thị lực lượng.</li>
+    <li><code>||--o{</code> thường là một‑nhiều.</li>
+    <li>Đường nối liên kết hai bảng.</li>
+  </ul>
+</div>
