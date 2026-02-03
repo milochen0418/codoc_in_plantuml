@@ -1,0 +1,1363 @@
+<h1>Examples ट्यूटोरियल (बच्चों के लिए आसान)</h1>
+<p class="note">
+  यह ट्यूटोरियल सरल भाषा में बताता है कि हर उदाहरण क्या बनाता है, यह क्यों उपयोगी है,
+  इसे कैसे इस्तेमाल करें, सामान्य उपयोग कहाँ है, और संबंधित PlantUML सिंटैक्स नियम
+  (पूरी और उपयोगी सूचियों के रूप में)।
+</p>
+
+<h2>विषय सूची</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>यह उदाहरण दिखाता है “व्यक्ति A, व्यक्ति B को एक संदेश भेजता है”, जैसे नोट पास करना।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul>
+    <li>बातचीत का क्रम साफ़ दिखता है।</li>
+    <li>“कौन पहले बोलता है, कौन बाद में जवाब देता है” जैसे उदाहरणों के लिए अच्छा।</li>
+  </ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startuml</code> और <code>@enduml</code> लिखें।</li>
+    <li><code>Alice -> Bob: Message</code> से दिखाएँ कि A, B से बात कर रहा है।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul>
+    <li>लॉगिन फ्लो: उपयोगकर्ता → सिस्टम → सर्वर।</li>
+    <li>चैटबॉट: आप पूछते हैं → बॉट जवाब देता है।</li>
+  </ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: <code>Alice</code> और <code>Bob</code> को अपने पसंदीदा नामों से बदलें और संदेश बदलें।</li>
+    <li>अभ्यास 2: पहले <code>participant</code> लाइन जोड़ें, फिर संदेश को “पहले पूछो, फिर जवाब दो” करें।</li>
+    <li>अभ्यास 3: संदेश को दो लाइनों में बदलें (प्रश्न/उत्तर) और एक लाइन छोटी करें।</li>
+    <li>अभ्यास 4: कौन पहले बोलता है बदलें और संदेश टेक्स्ट बदलें।</li>
+    <li>अभ्यास 5: एक तीसरा व्यक्ति जोड़ें और किसी एक का नाम बदलें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>@startuml</code> से शुरू करें और <code>@enduml</code> पर खत्म करें।</li>
+    <li>पार्टिसिपेंट <code>participant</code> से घोषित या सीधे नाम से लिखे जा सकते हैं।</li>
+    <li><code>A -> B</code> कॉल है, <code>A --> B</code> रिटर्न है।</li>
+    <li>टेक्स्ट कॉलन के बाद लिखें: <code>A -> B: Hello</code>.</li>
+    <li>समय ऊपर से नीचे चलता है।</li>
+    <li>कई संदेश लंबी बातचीत दिखाते हैं।</li>
+    <li>संदेश का टेक्स्ट हटाया जा सकता है: <code>A -> B</code> वैध है।</li>
+    <li>स्पेस वाले नामों को कोट्स में लिखें।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>यह उदाहरण “अनुरोध और उत्तर” दिखाता है, जैसे प्रश्न और जवाब।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul>
+    <li>अनुरोध और उत्तर के चरण साफ़ दिखते हैं।</li>
+  </ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>A -> B</code> अनुरोध है।</li>
+    <li><code>B --> A</code> उत्तर है।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul>
+    <li>API कॉल: फ्रंटएंड → बैकएंड → डेटा लौटाता है।</li>
+  </ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: रोल्स को <code>Client</code> और <code>Server</code> करें, संदेश “डेटा लो / डेटा दो” करें।</li>
+    <li>अभ्यास 2: अनुरोध “query” और उत्तर “result” करें।</li>
+    <li>अभ्यास 3: एक और अनुरोध/उत्तर जोड़ें (कुल चार लाइनें) और दूसरे टेक्स्ट को बदलें।</li>
+    <li>अभ्यास 4: किसी और से जवाब दिलवाएँ और टेक्स्ट समायोजित करें।</li>
+    <li>अभ्यास 5: अनुरोध से पहले “तैयारी” वाला self-message जोड़ें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>-></code> संदेश भेजने के लिए।</li>
+    <li><code>--></code> अक्सर रिटर्न संदेश दिखाता है।</li>
+    <li>उत्तर के टेक्स्ट का वर्णन जोड़ सकते हैं।</li>
+    <li>अनुरोध/उत्तर आमतौर पर जोड़े में होते हैं, लेकिन जरूरी नहीं।</li>
+    <li>स्पष्टता के लिए पार्टिसिपेंट पहले घोषित कर सकते हैं।</li>
+    <li>समय ऊपर से नीचे चलता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>यह “खुद से बात” दिखाता है, यानी अंदर का कदम।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul>
+    <li>दिखाता है कि ऑब्जेक्ट अंदरूनी काम कर रहा है।</li>
+  </ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul>
+    <li>एल्गोरिदम के चरण, अंदरूनी गणना।</li>
+  </ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: <code>Alice</code> को अपने नाम से बदलें और संदेश बदलें।</li>
+    <li>अभ्यास 2: एक्शन “डेटा पढ़ो” करें और <code>Me -> Me: फिर जांचो</code> जोड़ें।</li>
+    <li>अभ्यास 3: संदेश “सोचो” करें और <code>Me -> Me: मुख्य बातें लिखो</code> जोड़ें।</li>
+    <li>अभ्यास 4: नाम <code>Robot</code> करें और <code>Robot -> Robot: चार्ज</code> जोड़ें।</li>
+    <li>अभ्यास 5: ऊपर <code>Me -> Me: start</code> और अंत में <code>Me -> Me: done</code> जोड़ें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>तीर के दोनों सिरे एक ही पार्टिसिपेंट हो सकते हैं।</li>
+    <li>बेसिक फ़ॉर्मेट: <code>Role -> Role: Text</code>.</li>
+    <li>नाम बिना घोषणा के उपयोग हो सकते हैं।</li>
+    <li>कॉलन के बाद टेक्स्ट वैकल्पिक है।</li>
+    <li>कई self-messages कई आंतरिक चरण दिखाते हैं।</li>
+    <li><code>activate</code> / <code>deactivate</code> के साथ उपयोग कर सकते हैं।</li>
+    <li>समय ऊपर से नीचे चलता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>यह उदाहरण अलग-अलग रोल्स के लिए अलग आइकॉन दिखाता है (व्यक्ति, सिस्टम, डेटाबेस)।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>आइकॉन से रोल्स जल्दी समझ आते हैं।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code> इस्तेमाल करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>लॉगिन फ्लो: User → Web → Logic → Database.</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: <code>User</code> को <code>Student</code> करें और संदेश बदलें।</li>
+    <li>अभ्यास 2: <code>boundary App</code> जोड़ें और तीर पहले App पर ले जाएँ।</li>
+    <li>अभ्यास 3: <code>database DB</code> को <code>database Books</code> करें और संदेश बदलें।</li>
+    <li>अभ्यास 4: एक <code>control</code> रोल और एक इंटरैक्शन लाइन जोड़ें।</li>
+    <li>अभ्यास 5: रोल्स का क्रम बदलें और संदेश समायोजित करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>रोल टाइप केवल रूप बदलता है, नाम नहीं।</li>
+    <li>इंटरैक्शन के लिए <code>-></code> उपयोग करें।</li>
+    <li>डिक्लेरेशन फ़ॉर्मेट: <code>actor/boundary/control/database/entity Name</code>.</li>
+    <li>रोल्स पहले घोषित करें, फिर नाम उपयोग करें।</li>
+    <li>बिना घोषणा के नाम सामान्य पार्टिसिपेंट हैं।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>यह उदाहरण रंग और स्टाइल दिखाता है ताकि डायग्राम साफ़ दिखे।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>महत्वपूर्ण रोल्स को रंग से हाईलाइट करें।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li>स्टाइल बदलने के लिए <code>skinparam</code> उपयोग करें।</li>
+    <li>रोल के बाद रंग जोड़ें: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>“मुख्य सिस्टम” को चमकीले रंग में दिखाना।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: <code>Alice</code> और रंग बदलें।</li>
+    <li>अभ्यास 2: संदेश “start” करें और दूसरे रोल को गहरा रंग दें।</li>
+    <li>अभ्यास 3: तीसरा रोल जोड़ें और अलग रंग दें।</li>
+    <li>अभ्यास 4: <code>skinparam sequenceMessageAlign</code> बदलें और संदेश बदलें।</li>
+    <li>अभ्यास 5: स्टाइल नाम (जैसे <code>#technology</code>) दें और संदेश बदलें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> अलाइनमेंट, फ़ॉन्ट, रंग आदि नियंत्रित करता है।</li>
+    <li>रोल के बाद रंग या स्टाइल नाम आ सकता है।</li>
+    <li>रंग नाम या हेक्स हो सकता है, जैसे <code>#AliceBlue</code>.</li>
+    <li>उसी रोल की आखिरी घोषणा मान्य होगी।</li>
+    <li>स्टाइल सेटिंग्स संदेश सिंटैक्स नहीं बदलतीं।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>यह उदाहरण “यदि… वरना…” दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>अलग-अलग स्थितियों के लिए शाखाएँ दिखाता है।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>alt</code> से शुरू करें, <code>else</code> से दूसरी शाखा, और <code>end</code> से खत्म करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>पेमेंट सफल/विफल।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: शर्तें “पैसे हैं / पैसे नहीं” करें और संदेश बदलें।</li>
+    <li>अभ्यास 2: तीसरी <code>else</code> शाखा जोड़ें और संदेश लिखें।</li>
+    <li>अभ्यास 3: <code>alt</code> शीर्षक को अपने परिदृश्य से बदलें।</li>
+    <li>अभ्यास 4: हर शाखा में एक लाइन जोड़ें और शीर्षक बदलें।</li>
+    <li>अभ्यास 5: एक शाखा “फिर से कोशिश” करें और दूसरी का अंत बदलें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> शाखा शुरू करता है।</li>
+    <li>कई <code>else</code> हो सकते हैं।</li>
+    <li><code>end</code> से समाप्त करें।</li>
+    <li>हर शाखा में कई संदेश हो सकते हैं।</li>
+    <li>शर्त का टेक्स्ट वैकल्पिक है लेकिन सुझाया जाता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>यह उदाहरण दोहराव दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>बार-बार होने वाले कदम दिखते हैं।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li>दोहराव को <code>loop</code> और <code>end</code> से घेरें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>हर सेकंड स्थिति जाँचना।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: loop शीर्षक “हर 3 बार” करें और संदेश बदलें।</li>
+    <li>अभ्यास 2: loop के अंदर एक संदेश जोड़ें और मूल संदेश छोटा करें।</li>
+    <li>अभ्यास 3: रोल नाम बदलें और संदेश “चेकिंग” करें।</li>
+    <li>अभ्यास 4: loop शीर्षक को “जब तक पूरा न हो” जैसी शर्त में बदलें।</li>
+    <li>अभ्यास 5: loop के बाहर शुरुआत/समाप्ति संदेश जोड़ें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> एक ही लाइन में हो सकता है।</li>
+    <li><code>end</code> loop ब्लॉक खत्म करता है।</li>
+    <li>loop के अंदर कई संदेश हो सकते हैं।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>यह उदाहरण एक साथ दो काम दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>पैरेलल काम दिखाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>par</code> से शुरू करें, <code>else</code> से दूसरी शाखा, <code>end</code> से खत्म करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>दो सेवाओं को साथ में नोटिफ़ाई करना।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: शाखाएँ “ईमेल भेजो” और “SMS भेजो” करें और रोल नाम बदलें।</li>
+    <li>अभ्यास 2: रोल नाम बदलें और हर शाखा में एक लाइन जोड़ें।</li>
+    <li>अभ्यास 3: तीसरी शाखा (<code>else</code>) जोड़ें और एक लाइन लिखें।</li>
+    <li>अभ्यास 4: एक शाखा “धीरे करो” करें और दूसरी शाखा बदलें।</li>
+    <li>अभ्यास 5: <code>par</code> से पहले “कार्य शुरू” और बाद में “समाप्त” जोड़ें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>par</code> पैरेलल ब्लॉक बनाता है।</li>
+    <li>हर शाखा का अपना संदेश क्रम होता है।</li>
+    <li><code>else</code> दूसरी पैरेलल शाखा पर जाता है।</li>
+    <li><code>end</code> से समाप्त करें।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>यह उदाहरण activation bars दिखाता है कि रोल कब व्यस्त है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>कौन काम कर रहा है और कितनी देर तक।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>activate Role</code> से शुरू करें।</li>
+    <li><code>deactivate Role</code> से समाप्त करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>सर्वर का अनुरोध प्रोसेस करना।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: रोल को <code>Server</code> करें और संदेश “processing” करें।</li>
+    <li>अभ्यास 2: एक अनुरोध लाइन जोड़ें और उसके बाद <code>activate</code> रखें।</li>
+    <li>अभ्यास 3: “halfway” संदेश जोड़ें और उसे अपने टेक्स्ट से बदलें।</li>
+    <li>अभ्यास 4: एक और रोल जोड़ें और उसका activation दिखाएँ।</li>
+    <li>अभ्यास 5: activation की शुरुआत/अंत एक लाइन नीचे करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>activate/deactivate संदेशों से पहले या बाद में आ सकते हैं।</li>
+    <li><code>activate</code> और <code>deactivate</code> जोड़ी में होते हैं।</li>
+    <li>activation के दौरान संदेश जोड़े जा सकते हैं।</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>यह उदाहरण नोट्स जोड़ना दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>अतिरिक्त समझाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>note left</code> या <code>note right</code> उपयोग करें।</li>
+    <li><code>end note</code> से नोट खत्म करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>“यह चरण असफल हो सकता है” जैसी सूचना।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: नोट टेक्स्ट बदलें।</li>
+    <li>अभ्यास 2: नोट को दाईं ओर ले जाएँ और टेक्स्ट बदलें।</li>
+    <li>अभ्यास 3: दूसरा नोट जोड़ें।</li>
+    <li>अभ्यास 4: नोट को दो लाइनों में करें।</li>
+    <li>अभ्यास 5: नोट को किसी दूसरे संदेश के बाद रखें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>नोट्स <code>left</code>, <code>right</code> या <code>over</code> हो सकते हैं।</li>
+    <li>मल्टी-लाइन नोट्स में <code>note</code> और <code>end note</code> उपयोग करें।</li>
+    <li>नोट्स संदेश फ्लो नहीं बदलते।</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>Use case डायग्राम “सिस्टम क्या कर सकता है” की सूची है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>उपयोगकर्ता की जरूरतों को स्पष्ट दिखाता है।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li>उपयोगकर्ता के लिए <code>actor</code>।</li>
+    <li>फंक्शन के लिए <code>(UseCase)</code>।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>लॉगिन, खोज, भुगतान आदि।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: उपयोगकर्ता को <code>Teacher</code> और केस को “quiz बनाना” करें।</li>
+    <li>अभ्यास 2: दूसरा use case जोड़ें।</li>
+    <li>अभ्यास 3: use case और actor का नाम बदलें।</li>
+    <li>अभ्यास 4: दूसरा actor जोड़ें और एक केस से जोड़ें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य इस्तेमाल करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Use case कोष्ठकों में: <code>(Login)</code>.</li>
+    <li>Actor स्टिक फिगर से: <code>actor User</code>.</li>
+    <li>Actor और use case को लाइन से जोड़ें।</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>Use cases के बीच include/extend दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>साझा या वैकल्पिक चरण दिखाना।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code><<include>></code> “हमेशा शामिल” के लिए।</li>
+    <li><code><<extend>></code> “वैकल्पिक” के लिए।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>लॉगिन में हमेशा वैलिडेशन; भुगतान में डिस्काउंट हो सकता है।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: केस के नाम अपने उदाहरण से बदलें।</li>
+    <li>अभ्यास 2: include और extend अदल-बदल करें।</li>
+    <li>अभ्यास 3: एक और केस जोड़ें और include करें।</li>
+    <li>अभ्यास 4: तीर उल्टा करें और टेक्स्ट बदलें।</li>
+    <li>अभ्यास 5: रिलेशन टेक्स्ट अपने शब्दों में लिखें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Include: <code>(A) .> (B) : <<include>></code>.</li>
+    <li>Extend: <code>(A) .> (B) : <<extend>></code>.</li>
+    <li>डैश्ड तीर उपयोग करें।</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>Class डायग्राम attributes और methods बताता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>डेटा स्ट्रक्चर व्यवस्थित करें।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>class</code> से क्लास परिभाषित करें।</li>
+    <li>attributes/methods को braces में लिखें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>प्रोग्राम का डेटा मॉडल डिजाइन करना।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: क्लास नाम बदलें, जैसे <code>Book</code>।</li>
+    <li>अभ्यास 2: एक attribute या method जोड़ें।</li>
+    <li>अभ्यास 3: फ़ील्ड नाम छोटा करें या अनुवाद करें।</li>
+    <li>अभ्यास 4: दूसरी क्लास और दो attributes जोड़ें।</li>
+    <li>अभ्यास 5: method को अपने action से बदलें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>क्लास फ़ॉर्मेट: <code>class Name { ... }</code>.</li>
+    <li>Attributes फ़ील्ड हैं; methods में <code>()</code> होता है।</li>
+    <li>खाली क्लास भी मान्य है।</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>यह उदाहरण methods और return types जोड़ता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>क्लास क्या कर सकती है, यह दिखता है।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li>Methods ऐसे लिखें: <code>name(): type</code>.</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>API या बिज़नेस लॉजिक का वर्णन।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: return type के साथ method जोड़ें।</li>
+    <li>अभ्यास 2: method का नाम अपने action से बदलें।</li>
+    <li>अभ्यास 3: return type <code>bool</code> या <code>string</code> करें।</li>
+    <li>अभ्यास 4: एक और method जोड़ें और एक को private करें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य इस्तेमाल करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Methods में parameters हो सकते हैं: <code>name(param): type</code>.</li>
+    <li>Return type कॉलन के बाद होता है।</li>
+    <li>Methods में visibility symbols हो सकते हैं।</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>यह उदाहरण public, private, protected एक्सेस दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>क्या बाहरी रूप से उपलब्ध है, यह अलग करें।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>+</code> public, <code>-</code> private, <code>#</code> protected।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>आंतरिक विवरण छुपाना।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: एक attribute को private करें।</li>
+    <li>अभ्यास 2: एक protected attribute जोड़ें।</li>
+    <li>अभ्यास 3: एक method को public करें।</li>
+    <li>अभ्यास 4: एक private method जोड़ें।</li>
+    <li>अभ्यास 5: नाम अपने उदाहरण से बदलें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Visibility symbols फ़ील्ड/मेथड से पहले आते हैं।</li>
+    <li>सामान्य symbols: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>यह उदाहरण abstract और static markers दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>“ज़रूरी लागू करना” और “शेयर टूल” में फर्क।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li>Abstract के लिए italic या <code>{abstract}</code>.</li>
+    <li>Static के लिए <code>{static}</code>.</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>बेस क्लास और यूटिलिटी मेथड्स।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: एक method को static करें।</li>
+    <li>अभ्यास 2: क्लास का नाम बदलें।</li>
+    <li>अभ्यास 3: एक abstract method जोड़ें।</li>
+    <li>अभ्यास 4: abstract का दूसरा तरीका इस्तेमाल करें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य इस्तेमाल करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> abstract class या method दिखाता है।</li>
+    <li><code>{static}</code> static method दिखाता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>यह उदाहरण inheritance दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>parent और child class दिखाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li>Inheritance के लिए <code>--|></code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>जानवरों का वर्गीकरण।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: क्लास नाम अपने उदाहरण से बदलें।</li>
+    <li>अभ्यास 2: दूसरी inheritance लाइन जोड़ें।</li>
+    <li>अभ्यास 3: parent क्लास नाम बदलें।</li>
+    <li>अभ्यास 4: नया child क्लास जोड़ें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य इस्तेमाल करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> inheritance दर्शाता है।</li>
+    <li>तीर parent की ओर होता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>यह उदाहरण composition (strong ownership) दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>जिन हिस्सों का पूरा के साथ होना जरूरी है।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li>Composition के लिए <code>*--</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>घर में कमरे होते हैं।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: नाम अपने उदाहरण से बदलें।</li>
+    <li>अभ्यास 2: composition को aggregation में बदलकर तुलना करें।</li>
+    <li>अभ्यास 3: दूसरी composition लाइन जोड़ें।</li>
+    <li>अभ्यास 4: रिलेशन टेक्स्ट बदलें।</li>
+    <li>अभ्यास 5: दिशा बदलें और देखें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> composition है।</li>
+    <li>भरा हुआ हीरा मालिक वाली तरफ होता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>यह उदाहरण aggregation (weak ownership) दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>हिस्से स्वतंत्र रह सकते हैं।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li>Aggregation के लिए <code>o--</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>कक्षा और उसके छात्र।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: नाम अपने उदाहरण से बदलें।</li>
+    <li>अभ्यास 2: aggregation को composition में बदलकर तुलना करें।</li>
+    <li>अभ्यास 3: दूसरी aggregation लाइन जोड़ें।</li>
+    <li>अभ्यास 4: किसी दूसरे परिदृश्य से नाम बदलें।</li>
+    <li>अभ्यास 5: दिशा बदलें और विवरण जोड़ें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> aggregation है।</li>
+    <li>खाली हीरा मालिक वाली तरफ होता है।</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>Object डायग्राम “क्लास की instance” दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>किसी समय का डेटा दिखाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li>instance के लिए <code>object</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>किसी object के field values दिखाना।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: object का नाम अपने उदाहरण से बदलें।</li>
+    <li>अभ्यास 2: दूसरा object जोड़ें।</li>
+    <li>अभ्यास 3: fields अपने अनुसार बदलें।</li>
+    <li>अभ्यास 4: दो objects को जोड़ें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य इस्तेमाल करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Object फ़ॉर्मेट: <code>object name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>Activity डायग्राम प्रक्रिया के चरण दिखाते हैं।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>वर्कफ़्लो बताने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>start</code> और <code>stop</code> उपयोग करें।</li>
+    <li>Actions को <code>:action;</code> लिखें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>आवेदन फ्लो, ऑर्डर प्रोसेसिंग।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: actions को अपने फ्लो से बदलें।</li>
+    <li>अभ्यास 2: एक action जोड़ें।</li>
+    <li>अभ्यास 3: start/stop की स्थिति बदलें।</li>
+    <li>अभ्यास 4: एक decision जोड़ें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य इस्तेमाल करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>फ्लो ऊपर से नीचे जाता है।</li>
+    <li>Actions को <code>: ... ;</code> लिखा जाता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>निर्णय शाखाएँ दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>अलग रास्ते साफ़ दिखाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>फॉर्म जांच, भुगतान सफल/विफल।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: शर्त को अपनी शर्त से बदलें।</li>
+    <li>अभ्यास 2: दूसरा else जोड़ें।</li>
+    <li>अभ्यास 3: action टेक्स्ट बदलें।</li>
+    <li>अभ्यास 4: if टेक्स्ट बदलें।</li>
+    <li>अभ्यास 5: अपना प्रोसेस बनाएं।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> शाखा शुरू करता है।</li>
+    <li><code>else</code> शाखा बदलता है।</li>
+    <li><code>endif</code> ब्लॉक खत्म करता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>दोहराव दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>लूप दिखाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>while</code> और <code>endwhile</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>स्थिति बार-बार जांचना।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: शर्त को अपनी शर्त से बदलें।</li>
+    <li>अभ्यास 2: लूप के अंदर एक action जोड़ें।</li>
+    <li>अभ्यास 3: दूसरा परिदृश्य उपयोग करें।</li>
+    <li>अभ्यास 4: while को until (conceptually) बदलें।</li>
+    <li>अभ्यास 5: शुरुआत/समाप्ति actions जोड़ें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> लूप शुरू करता है।</li>
+    <li><code>endwhile</code> लूप खत्म करता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>Swimlanes जिम्मेदारी के अनुसार समूह बनाते हैं।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>कौन-सा कदम किसका है, यह दिखाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>|Role|</code> से lane बदलें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>टीमों के बीच वर्कफ़्लो।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: नया swimlane role जोड़ें।</li>
+    <li>अभ्यास 2: एक action दूसरे lane में ले जाएँ।</li>
+    <li>अभ्यास 3: lanes के नाम बदलें।</li>
+    <li>अभ्यास 4: एक और action जोड़ें।</li>
+    <li>अभ्यास 5: अपना प्रोसेस उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>|Name|</code> से lane बदला जाता है।</li>
+    <li>Actions current lane के होते हैं।</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>Component डायग्राम मॉड्यूल्स दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>मॉड्यूल संरचना दिखाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>component</code> से component परिभाषित करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>सिस्टम आर्किटेक्चर लेयर्स।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: एक component जोड़ें।</li>
+    <li>अभ्यास 2: component का नाम बदलें।</li>
+    <li>अभ्यास 3: एक connection जोड़ें।</li>
+    <li>अभ्यास 4: अपना परिदृश्य उपयोग करें।</li>
+    <li>अभ्यास 5: components का क्रम बदलें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Components में <code>component</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>Components को packages में समूहित करें।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>बड़े सिस्टम को व्यवस्थित करना।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>package</code> से components को घेरें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>फीचर के अनुसार समूह।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: एक package जोड़ें।</li>
+    <li>अभ्यास 2: component को दूसरे package में ले जाएँ।</li>
+    <li>अभ्यास 3: package का नाम बदलें।</li>
+    <li>अभ्यास 4: एक component जोड़ें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Package फ़ॉर्मेट: <code>package Name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>Deployment डायग्राम सर्वर और nodes दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>सिस्टम deployment बताने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>node</code> से node परिभाषित करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>क्लाउड deployment आर्किटेक्चर।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: एक node जोड़ें।</li>
+    <li>अभ्यास 2: node का नाम बदलें।</li>
+    <li>अभ्यास 3: एक connection जोड़ें।</li>
+    <li>अभ्यास 4: अपना परिदृश्य उपयोग करें।</li>
+    <li>अभ्यास 5: node को अपने device से बदलें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Nodes में <code>node</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>State डायग्राम states के बीच transitions दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>स्टेट बदलाव दिखाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>state</code> से स्टेट परिभाषित करें।</li>
+    <li>States को तीर से जोड़ें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>ऑर्डर स्टेट फ्लो।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपने स्टेट नाम उपयोग करें।</li>
+    <li>अभ्यास 2: एक और स्टेट जोड़ें।</li>
+    <li>अभ्यास 3: एक और transition जोड़ें।</li>
+    <li>अभ्यास 4: अपना प्रोसेस उपयोग करें।</li>
+    <li>अभ्यास 5: किसी स्टेट का नाम बदलें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>States में <code>state</code> उपयोग होता है।</li>
+    <li>Transitions में <code>--> </code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>Composite states में कई sub-states होते हैं।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>जटिल states को व्यवस्थित करने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>state Name { ... }</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>जटिल workflows।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: एक sub-state जोड़ें।</li>
+    <li>अभ्यास 2: अपना परिदृश्य उपयोग करें।</li>
+    <li>अभ्यास 3: एक transition जोड़ें।</li>
+    <li>अभ्यास 4: composite state का नाम बदलें।</li>
+    <li>अभ्यास 5: अपना प्रोसेस उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Composite states को braces में लिखा जाता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>Guard conditions transitions को सटीक बनाते हैं।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>Transitions की शर्तें दिखाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>[condition]</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>State transition conditions।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपनी शर्त उपयोग करें।</li>
+    <li>अभ्यास 2: एक और guard condition जोड़ें।</li>
+    <li>अभ्यास 3: अपना प्रोसेस उपयोग करें।</li>
+    <li>अभ्यास 4: transition टेक्स्ट बदलें।</li>
+    <li>अभ्यास 5: अपना उदाहरण उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Guard conditions को brackets में लिखें।</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>Timing डायग्राम signal changes दिखाते हैं।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>समय के साथ signal दिखाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>concise</code> सेटिंग्स उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>हार्डवेयर signal बदलाव।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपना signal उपयोग करें।</li>
+    <li>अभ्यास 2: एक और signal जोड़ें।</li>
+    <li>अभ्यास 3: signal के नाम बदलें।</li>
+    <li>अभ्यास 4: अपना उदाहरण उपयोग करें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Timing डायग्राम में <code>concise</code> इस्तेमाल हो सकता है।</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>JSON डायग्राम data structure दिखाते हैं।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>JSON संरचना पढ़ने में आसान बनती है।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startjson</code> और <code>@endjson</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>API response formats।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपना JSON बदलें।</li>
+    <li>अभ्यास 2: एक field जोड़ें।</li>
+    <li>अभ्यास 3: data values बदलें।</li>
+    <li>अभ्यास 4: अपना परिदृश्य उपयोग करें।</li>
+    <li>अभ्यास 5: अपना data उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>JSON को <code>@startjson</code> से घेरना जरूरी है।</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>YAML डायग्राम data structure दिखाते हैं।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>YAML संरचना पढ़ने में आसान बनती है।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startyaml</code> और <code>@endyaml</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>Config files।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपना YAML बदलें।</li>
+    <li>अभ्यास 2: एक field जोड़ें।</li>
+    <li>अभ्यास 3: data content बदलें।</li>
+    <li>अभ्यास 4: अपना परिदृश्य उपयोग करें।</li>
+    <li>अभ्यास 5: अपना data उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>YAML को <code>@startyaml</code> से घेरना जरूरी है।</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>EBNF डायग्राम grammar rules दिखाते हैं।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>Grammar संरचना स्पष्ट दिखती है।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startebnf</code> और <code>@endebnf</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>Programming भाषा का grammar समझाना।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपना grammar बदलें।</li>
+    <li>अभ्यास 2: एक और rule जोड़ें।</li>
+    <li>अभ्यास 3: अपना उदाहरण उपयोग करें।</li>
+    <li>अभ्यास 4: symbols बदलें।</li>
+    <li>अभ्यास 5: अपना grammar उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>EBNF में <code>@startebnf</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Regex डायग्राम regular expressions दिखाते हैं।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>Regex पैटर्न समझाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startregex</code> और <code>@endregex</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>Regex डॉक्यूमेंटेशन।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपना regex बदलें।</li>
+    <li>अभ्यास 2: एक और rule जोड़ें।</li>
+    <li>अभ्यास 3: अपना उदाहरण उपयोग करें।</li>
+    <li>अभ्यास 4: content बदलें।</li>
+    <li>अभ्यास 5: अपना grammar उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Regex में <code>@startregex</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>Network topology डायग्राम।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>नेटवर्क कनेक्शन दिखाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startnwdiag</code> और <code>@endnwdiag</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>Routers और switches।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपने devices से बदलें।</li>
+    <li>अभ्यास 2: एक device जोड़ें।</li>
+    <li>अभ्यास 3: connections बदलें।</li>
+    <li>अभ्यास 4: अपना परिदृश्य उपयोग करें।</li>
+    <li>अभ्यास 5: अपना उदाहरण उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>nwdiag में <code>@startnwdiag</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>UI wireframe डायग्राम।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>स्क्रीन जल्दी स्केच करने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startsalt</code> और <code>@endsalt</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>स्क्रीन प्रोटोटाइप्स।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपनी स्क्रीन से बदलें।</li>
+    <li>अभ्यास 2: एक बटन जोड़ें।</li>
+    <li>अभ्यास 3: टेक्स्ट बदलें।</li>
+    <li>अभ्यास 4: लेआउट बदलें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Salt में <code>@startsalt</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>Enterprise architecture डायग्राम।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>एंटरप्राइज आर्किटेक्चर बताने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startarchimate</code> और <code>@endarchimate</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>कंपनी सिस्टम आर्किटेक्चर।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपनी आर्किटेक्चर से बदलें।</li>
+    <li>अभ्यास 2: एक component जोड़ें।</li>
+    <li>अभ्यास 3: अपना परिदृश्य उपयोग करें।</li>
+    <li>अभ्यास 4: नाम बदलें।</li>
+    <li>अभ्यास 5: अपना उदाहरण उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Archimate में <code>@startarchimate</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>SDL flow डायग्राम।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>प्रक्रिया बताने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startsdl</code> और <code>@endsdl</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>कम्युनिकेशन फ्लो।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपने प्रोसेस से बदलें।</li>
+    <li>अभ्यास 2: एक स्टेप जोड़ें।</li>
+    <li>अभ्यास 3: नाम बदलें।</li>
+    <li>अभ्यास 4: अपना परिदृश्य उपयोग करें।</li>
+    <li>अभ्यास 5: अपना उदाहरण उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>SDL में <code>@startsdl</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>Ditaa ASCII art डायग्राम।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>टेक्स्ट से ड्रॉ करने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startditaa</code> और <code>@endditaa</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>त्वरित स्केच।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपना ASCII art रखें।</li>
+    <li>अभ्यास 2: एक और ब्लॉक जोड़ें।</li>
+    <li>अभ्यास 3: अक्षर बदलें।</li>
+    <li>अभ्यास 4: अपना परिदृश्य उपयोग करें।</li>
+    <li>अभ्यास 5: अपना उदाहरण उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Ditaa में <code>@startditaa</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>Gantt चार्ट समय-सारणी दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>प्रोजेक्ट टाइमलाइन प्लान करने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startgantt</code> और <code>@endgantt</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>प्रोजेक्ट शेड्यूल।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपनी समय-सारणी से बदलें।</li>
+    <li>अभ्यास 2: एक task जोड़ें।</li>
+    <li>अभ्यास 3: अपना उदाहरण उपयोग करें।</li>
+    <li>अभ्यास 4: तारीखें बदलें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Gantt में <code>@startgantt</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>Events की टाइमलाइन।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>घटनाओं को समय क्रम में रखने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startchronology</code> और <code>@endchronology</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>घटनाओं का इतिहास।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपनी घटनाएँ रखें।</li>
+    <li>अभ्यास 2: एक और घटना जोड़ें।</li>
+    <li>अभ्यास 3: अपना उदाहरण उपयोग करें।</li>
+    <li>अभ्यास 4: तारीखें बदलें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Chronology में <code>@startchronology</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>MindMap विचारों की पदानुक्रम दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>विचार व्यवस्थित करने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startmindmap</code> और <code>@endmindmap</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>ब्रेनस्टॉर्मिंग।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपना विषय रखें।</li>
+    <li>अभ्यास 2: शाखाएँ जोड़ें।</li>
+    <li>अभ्यास 3: अपना उदाहरण उपयोग करें।</li>
+    <li>अभ्यास 4: टेक्स्ट बदलें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>MindMap में <code>@startmindmap</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>Work Breakdown Structure।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>काम को छोटे हिस्सों में बाँटने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startwbs</code> और <code>@endwbs</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>प्रोजेक्ट टास्क ब्रेकडाउन।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपने टास्क रखें।</li>
+    <li>अभ्यास 2: उप-टास्क जोड़ें।</li>
+    <li>अभ्यास 3: अपना उदाहरण उपयोग करें।</li>
+    <li>अभ्यास 4: टेक्स्ट बदलें।</li>
+    <li>अभ्यास 5: अपना परिदृश्य उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>WBS में <code>@startwbs</code> उपयोग होता है।</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>फॉर्मूला लिखने के लिए AsciiMath उपयोग करें।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>फॉर्मूला जल्दी लिखने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>@startmath</code> और <code>@endmath</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>फॉर्मूला दिखाना।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: अपना फॉर्मूला उपयोग करें।</li>
+    <li>अभ्यास 2: एक फॉर्मूला जोड़ें।</li>
+    <li>अभ्यास 3: अपना उदाहरण उपयोग करें।</li>
+    <li>अभ्यास 4: अपना परिदृश्य उपयोग करें।</li>
+    <li>अभ्यास 5: symbols बदलें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>AsciiMath के सामान्य symbols समर्थित हैं।</li>
+    <li><code>@startmath</code> और <code>@endmath</code> से घेरें।</li>
+    <li><code>^</code> power, <code>/</code> division को दर्शाता है।</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>ER डायग्राम डेटाबेस तालिकाएँ दिखाते हैं।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>डेटाबेस संरचना डिजाइन करने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol>
+    <li><code>entity</code> से टेबल परिभाषित करें।</li>
+    <li>Primary key के लिए <code>*</code> उपयोग करें।</li>
+  </ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>यूज़र टेबल डिजाइन।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: टेबल को <code>Book</code> और फ़ील्ड्स को <code>title</code>, <code>author</code> करें।</li>
+    <li>अभ्यास 2: एक field जोड़ें और एक type को <code>int</code> करें।</li>
+    <li>अभ्यास 3: primary key का नाम बदलें और type बदलें।</li>
+    <li>अभ्यास 4: दूसरी टेबल और दो फ़ील्ड्स जोड़ें।</li>
+    <li>अभ्यास 5: separator line जोड़ें और फ़ील्ड्स का क्रम बदलें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li>Separator line <code>--</code> सेक्शन अलग करता है।</li>
+    <li><code>*</code> primary key field दिखाता है।</li>
+    <li>Field फ़ॉर्मेट: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>यह उदाहरण तालिकाओं के बीच संबंध दिखाता है।</p>
+  <h3>क्यों इस्तेमाल करें</h3>
+  <ul><li>One-to-many या many-to-many दिखाने के लिए।</li></ul>
+  <h3>कैसे इस्तेमाल करें</h3>
+  <ol><li><code>User ||--o{ Post</code> का अर्थ one-to-many है।</li></ol>
+  <h3>संभावित उपयोग</h3>
+  <ul><li>एक user की कई posts।</li></ul>
+  <h3>अभ्यास (बच्चों के लिए आसान)</h3>
+  <ol>
+    <li>अभ्यास 1: <code>User</code> को <code>Student</code> और <code>Post</code> को <code>Homework</code> करें।</li>
+    <li>अभ्यास 2: one-to-many को one-to-one करें और विवरण बदलें।</li>
+    <li>अभ्यास 3: दूसरी relation जोड़ें और नाम बदलें।</li>
+    <li>अभ्यास 4: दिशा बदलें और नाम समायोजित करें।</li>
+    <li>अभ्यास 5: “one-to-many” रखें और अपना परिदृश्य उपयोग करें।</li>
+  </ol>
+  <h3>PlantUML सिंटैक्स नियम (पूरी सूची)</h3>
+  <ul class="rules">
+    <li><code>||</code> और <code>o{</code> cardinality दिखाते हैं।</li>
+    <li><code>||--o{</code> अक्सर one-to-many होता है।</li>
+    <li>लाइन दो तालिकाओं को जोड़ती है।</li>
+  </ul>
+</div>

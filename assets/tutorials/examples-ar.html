@@ -1,0 +1,1363 @@
+<h1>دليل Examples (سهل للأطفال)</h1>
+<p class="note">
+  يشرح هذا الدليل ببساطة: ماذا يرسم كل مثال، ولماذا هو مفيد، وكيف تستخدمه،
+  وأين يُستخدم عادةً، بالإضافة إلى قواعد صياغة PlantUML
+  (مجمّعة في قوائم كاملة قابلة للاستخدام).
+</p>
+
+<h2>جدول المحتويات</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>هذا المثال يوضح “الشخص A يرسل رسالة واحدة إلى الشخص B”، مثل تمرير ورقة.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul>
+    <li>يعرض ترتيب الحوار بوضوح.</li>
+    <li>ممتاز لقصص “من يتحدث أولًا ومن يرد بعد ذلك”.</li>
+  </ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>اكتب <code>@startuml</code> و <code>@enduml</code>.</li>
+    <li>استخدم <code>Alice -> Bob: Message</code> لإظهار أن A يتحدث إلى B.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul>
+    <li>تدفق تسجيل الدخول: المستخدم → النظام → الخادم.</li>
+    <li>روبوت الدردشة: أنت تسأل → الروبوت يجيب.</li>
+  </ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر <code>Alice</code> و <code>Bob</code> إلى أسماء تحبها، ثم غيّر الرسالة إلى حوار يومي.</li>
+    <li>تمرين 2: أضف سطر <code>participant</code> أولًا، ثم غيّر الرسالة إلى “اسأل أولًا ثم أجب”.</li>
+    <li>تمرين 3: حوّل الرسالة إلى سطرين: سؤال ثم جواب، ثم اختصر أحد السطرين.</li>
+    <li>تمرين 4: بدّل من يتحدث أولًا، ثم عدّل نص الرسالة.</li>
+    <li>تمرين 5: أضف شخصًا ثالثًا برسالة واحدة، ثم غيّر اسم أحد الأشخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>ابدأ بـ <code>@startuml</code> وأنهِ بـ <code>@enduml</code>.</li>
+    <li>يمكن تعريف المشاركين بـ <code>participant</code> أو استخدام الأسماء مباشرة.</li>
+    <li><code>A -> B</code> رسالة استدعاء، و <code>A --> B</code> رسالة عودة.</li>
+    <li>ضع النص بعد النقطتين: <code>A -> B: Hello</code>.</li>
+    <li>الزمن من الأعلى إلى الأسفل.</li>
+    <li>عدة رسائل تمثل حوارًا أطول.</li>
+    <li>يمكن حذف نص الرسالة: <code>A -> B</code> صالح.</li>
+    <li>الأسماء التي تحتوي على فراغات تُكتب بين علامتي اقتباس.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>هذا المثال يوضح “طلب واستجابة”، مثل سؤال وجواب.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul>
+    <li>يوضح خطوات الطلب والرد بوضوح.</li>
+  </ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li><code>A -> B</code> هو الطلب.</li>
+    <li><code>B --> A</code> هو الاستجابة.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul>
+    <li>استدعاء API: الواجهة → الخلفية → إرجاع البيانات.</li>
+  </ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر الأدوار إلى <code>Client</code> و <code>Server</code>، والرسائل إلى “احصل على البيانات / أعد البيانات”.</li>
+    <li>تمرين 2: غيّر الطلب إلى “استعلام”، والرد إلى “نتيجة الاستعلام”.</li>
+    <li>تمرين 3: أضف طلبًا وردًا آخرين (أربعة أسطر) لعرض سؤالين، ثم عدّل نص السؤال الثاني.</li>
+    <li>تمرين 4: اجعل شخصًا آخر يرد، وعدّل النص.</li>
+    <li>تمرين 5: أضف رسالة ذاتية “جارٍ التحضير” قبل الطلب، ثم اجعل الطلب أكثر تحديدًا.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li><code>-></code> لإرسال الرسالة.</li>
+    <li><code>--></code> غالبًا للرسالة الراجعة.</li>
+    <li>يمكن إضافة نص لوصف محتوى الرد.</li>
+    <li>الطلبات والردود تأتي عادةً في أزواج لكنها ليست إلزامية.</li>
+    <li>يمكن تعريف المشاركين أولًا لزيادة الوضوح.</li>
+    <li>الزمن من الأعلى إلى الأسفل.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>هذا يعني “حديث الذات”، أي خطوة داخلية.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul>
+    <li>يبين أن الكائن ينفذ عملًا داخليًا دون الآخرين.</li>
+  </ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul>
+    <li>خطوات خوارزمية، حسابات داخلية.</li>
+  </ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر <code>Alice</code> إلى اسمك (مثل <code>Me</code>)، وعدّل الرسالة إلى شيء تريد فعله اليوم.</li>
+    <li>تمرين 2: غيّر الفعل إلى “اقرأ البيانات”، ثم أضف <code>Me -> Me: تحقق مرة أخرى</code>.</li>
+    <li>تمرين 3: غيّر الرسالة إلى “فكّر”، ثم أضف <code>Me -> Me: اكتب النقاط المهمة</code>.</li>
+    <li>تمرين 4: غيّر الاسم إلى <code>Robot</code> ثم أضف <code>Robot -> Robot: اشحن</code>.</li>
+    <li>تمرين 5: أضف <code>Me -> Me: ابدأ</code> في الأعلى و <code>Me -> Me: انتهى</code> في النهاية.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>يمكن أن يكون طرفا السهم نفس المشارك.</li>
+    <li>الصيغة الأساسية: <code>Role -> Role: Text</code>.</li>
+    <li>يمكن استخدام الأسماء دون تعريف مسبق.</li>
+    <li>النص بعد النقطتين اختياري.</li>
+    <li>عدة رسائل ذاتية تعني عدة خطوات داخلية.</li>
+    <li>يمكن دمجه مع <code>activate</code> / <code>deactivate</code>.</li>
+    <li>الزمن من الأعلى إلى الأسفل.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>هذا المثال يوضح أيقونات مختلفة للأدوار (شخص، نظام، قاعدة بيانات).</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>الأيقونات تساعد على التعرف على الأدوار بسرعة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>actor</code> و <code>boundary</code> و <code>control</code> و <code>database</code> و <code>entity</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تسجيل الدخول: المستخدم → الويب → المنطق → قاعدة البيانات.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر <code>User</code> إلى <code>Student</code> ورسالة “تسجيل الدخول للواجب”.</li>
+    <li>تمرين 2: أضف <code>boundary App</code> واجعل السهم يذهب إلى App أولًا.</li>
+    <li>تمرين 3: غيّر <code>database DB</code> إلى <code>database Books</code> وعدّل الرسالة.</li>
+    <li>تمرين 4: أضف دور <code>control</code> وسطر تفاعل واحد.</li>
+    <li>تمرين 5: أعد ترتيب المشاركين وعدّل الرسائل تبعًا لذلك.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>نوع الدور يغيّر الشكل فقط وليس الاسم.</li>
+    <li>يمكن استخدام <code>-></code> للتفاعل.</li>
+    <li>صيغة التعريف: <code>actor/boundary/control/database/entity Name</code>.</li>
+    <li>عرّف الأدوار أولًا ثم استخدم الأسماء.</li>
+    <li>الأسماء غير المعرّفة تعتبر مشاركين عاديين.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>هذا المثال يوضح الألوان والأنماط لجعل الرسم أوضح.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>تمييز الأدوار المهمة بالألوان.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>skinparam</code> لتعديل الأنماط.</li>
+    <li>أضف لونًا بعد الدور: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>إظهار “النظام الأساسي” بلون بارز.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر <code>Alice</code> واللون إلى لون آخر.</li>
+    <li>تمرين 2: غيّر الرسالة إلى “ابدأ” واجعل الدور الآخر أغمق.</li>
+    <li>تمرين 3: أضف دورًا ثالثًا بلون مختلف.</li>
+    <li>تمرين 4: غيّر <code>skinparam sequenceMessageAlign</code> وعدّل رسالة.</li>
+    <li>تمرين 5: استخدم اسم نمط (مثل <code>#technology</code>) ثم عدّل الرسالة.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> يتحكم بالمحاذاة والخط والألوان.</li>
+    <li>يمكن وضع لون أو نمط بعد الدور.</li>
+    <li>الألوان يمكن أن تكون أسماء أو قيم Hex مثل <code>#AliceBlue</code>.</li>
+    <li>آخر تعريف لنفس الدور هو المعتمد.</li>
+    <li>الأنماط لا تغيّر صياغة الرسائل.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>هذا المثال يوضح “إذا… وإلا…”.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض فروع مختلفة حسب الشروط.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>alt</code> للبداية، <code>else</code> لفرع آخر، و <code>end</code> للإنهاء.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>نجاح أو فشل الدفع.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر الشروط إلى “مع مال / بلا مال” وعدّل الرسائل.</li>
+    <li>تمرين 2: أضف فرع <code>else</code> ثالثًا وسطر رسالة.</li>
+    <li>تمرين 3: غيّر عنوان <code>alt</code> إلى سيناريو من اختيارك وعدّل الرسائل.</li>
+    <li>تمرين 4: أضف سطرًا في كل فرع وعدّل العناوين.</li>
+    <li>تمرين 5: اجعل فرعًا “حاول مرة أخرى بعد الفشل” وفرعًا بنهاية مختلفة.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> تبدأ الفرع.</li>
+    <li>يمكن وجود عدة فروع <code>else</code>.</li>
+    <li>الإنهاء بـ <code>end</code>.</li>
+    <li>كل فرع يمكن أن يحتوي عدة رسائل.</li>
+    <li>نص الشرط اختياري لكن يُنصح به.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>هذا المثال يوضح التكرار.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض خطوات متكررة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>loop</code> و <code>end</code> لإحاطة التكرار.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>التحقق من الحالة كل ثانية.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر عنوان الحلقة إلى “كل 3 مرات” وعدّل الرسالة.</li>
+    <li>تمرين 2: أضف رسالة داخل الحلقة ثم اختصر الرسالة الأصلية.</li>
+    <li>تمرين 3: غيّر أسماء الأدوار والرسالة إلى “جارٍ الفحص”.</li>
+    <li>تمرين 4: غيّر عنوان الحلقة إلى شرط مثل “حتى الانتهاء” وعدّل الرسائل.</li>
+    <li>تمرين 5: أضف رسائل بدء/انتهاء خارج الحلقة وخصّصها.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> يمكن أن تكون في نفس السطر.</li>
+    <li><code>end</code> تنهي كتلة الحلقة.</li>
+    <li>يمكن وضع عدة رسائل داخل الحلقة.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>هذا المثال يوضح تنفيذ أمرين في وقت واحد.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض المهام المتوازية.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>par</code> للبداية، <code>else</code> لفرع متوازٍ آخر، و <code>end</code> للإنهاء.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>إخطار خدمتين في الوقت نفسه.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر الفروع إلى “إرسال بريد” و“إرسال SMS” وغيّر الأدوار.</li>
+    <li>تمرين 2: غيّر الأدوار وأضف سطرًا في كل فرع.</li>
+    <li>تمرين 3: أضف فرعًا ثالثًا (سطر <code>else</code> جديد) واكتب رسالة ثم اختصر أحد الأسطر.</li>
+    <li>تمرين 4: غيّر أحد الفروع إلى “ببطء” وأضف رسالة نهاية وعدّل الفرع الآخر.</li>
+    <li>تمرين 5: أضف رسالة “ابدأ المهمة” قبل <code>par</code> ورسالة “تم” بعد <code>end</code>.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li><code>par</code> تنشئ كتلة متوازية.</li>
+    <li>لكل فرع تسلسل رسائل خاص به.</li>
+    <li><code>else</code> ينتقل إلى فرع متوازٍ آخر.</li>
+    <li>الإنهاء بـ <code>end</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>هذا المثال يستخدم أشرطة التفعيل لإظهار انشغال الدور.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض من يعمل ومدة العمل.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>activate Role</code> للبدء.</li>
+    <li>استخدم <code>deactivate Role</code> للإنهاء.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>إظهار الخادم أثناء معالجة الطلب.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر الدور إلى <code>Server</code> والرسالة إلى “جارٍ المعالجة”.</li>
+    <li>تمرين 2: أضف سطر طلب ثم ضع <code>activate</code> بعده.</li>
+    <li>تمرين 3: أضف رسالة “في المنتصف” ثم استبدلها بنصك.</li>
+    <li>تمرين 4: أضف دورًا آخر بتفعيل ورسالة خاصة به.</li>
+    <li>تمرين 5: حرّك بداية/نهاية التفعيل سطرًا واحدًا لأسفل وعدّل رسالة.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>يمكن وضع activate/deactivate قبل أو بعد الرسائل.</li>
+    <li><code>activate</code> و <code>deactivate</code> يجب أن يكونا متلازمين.</li>
+    <li>يمكن إدراج رسائل أثناء تفعيل الدور.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>هذا المثال يوضح إضافة ملاحظات.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>إضافة شرح لزيادة الوضوح.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>note left</code> أو <code>note right</code>.</li>
+    <li>اختم الملاحظة بـ <code>end note</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تذكير “قد تفشل هذه الخطوة”.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر نص الملاحظة إلى تذكيرك.</li>
+    <li>تمرين 2: انقل الملاحظة إلى اليمين وعدّل النص.</li>
+    <li>تمرين 3: أضف ملاحظة ثانية قرب دور آخر.</li>
+    <li>تمرين 4: اجعل الملاحظة سطرين وأضف سببًا في السطر الثاني.</li>
+    <li>تمرين 5: انقل الملاحظة بعد رسالة أخرى.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>يمكن وضع الملاحظات <code>left</code> أو <code>right</code> أو <code>over</code>.</li>
+    <li>الملاحظات متعددة الأسطر تستخدم <code>note</code> و <code>end note</code>.</li>
+    <li>الملاحظات لا تغيّر تدفق الرسائل.</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>مخططات حالات الاستخدام هي قائمة “ما الذي يمكن للنظام فعله”.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>توضّح وظائف المستخدم بوضوح.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>actor</code> للمستخدم.</li>
+    <li>استخدم <code>(UseCase)</code> للوظيفة.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تسجيل الدخول، البحث، الدفع… إلخ.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر المستخدم إلى <code>Teacher</code> وغير الحالة إلى “إنشاء اختبار”.</li>
+    <li>تمرين 2: أضف حالة استخدام ثانية.</li>
+    <li>تمرين 3: غيّر أسماء الحالة والفاعل.</li>
+    <li>تمرين 4: أضف فاعلًا ثانيًا ووصلْه بإحدى الحالات.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>حالة الاستخدام تُكتب بين قوسين: <code>(Login)</code>.</li>
+    <li>الفاعل يُكتب كشخص عصا: <code>actor User</code>.</li>
+    <li>صِل الفاعل بحالة الاستخدام بخط.</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>يوضح الاحتواء أو الامتداد بين حالات الاستخدام.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>تمييز الخطوات المشتركة أو الاختيارية.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code><<include>></code> لـ “يشمل دائمًا”.</li>
+    <li>استخدم <code><<extend>></code> لـ “اختياري”.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تسجيل الدخول يشمل التحقق دائمًا؛ والدفع قد يمتد لخصم.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر أسماء الحالات إلى مثالك.</li>
+    <li>تمرين 2: بدّل بين include و extend.</li>
+    <li>تمرين 3: أضف حالة استخدام أخرى وضمّنها.</li>
+    <li>تمرين 4: اعكس السهم وعدّل النص.</li>
+    <li>تمرين 5: غيّر نص العلاقة إلى صياغتك.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>صيغة include: <code>(A) .> (B) : <<include>></code>.</li>
+    <li>صيغة extend: <code>(A) .> (B) : <<extend>></code>.</li>
+    <li>استخدم سهامًا متقطعة.</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>مخططات الأصناف تصف السمات والأساليب.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>تنظيم هياكل البيانات.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>class</code> لتعريف صنف.</li>
+    <li>ضع السمات والأساليب داخل الأقواس المعقوفة.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تصميم نموذج بيانات البرنامج.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر اسم الصنف إلى شيء تحبه مثل <code>Book</code>.</li>
+    <li>تمرين 2: أضف سمة أو أسلوبًا واحدًا.</li>
+    <li>تمرين 3: اختصر اسم الحقل أو ترجمه.</li>
+    <li>تمرين 4: أضف صنفًا ثانيًا مع سمتين.</li>
+    <li>تمرين 5: غيّر أسلوبًا إلى فعل من اختيارك.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>صيغة الصنف: <code>class Name { ... }</code>.</li>
+    <li>السمات حقول، والأساليب تستخدم <code>()</code>.</li>
+    <li>يمكن ترك الصنف فارغًا.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>هذا المثال يضيف أساليب وأنواع الإرجاع.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>وصف ما يمكن للصنف فعله.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>تُكتب الأساليب كالتالي: <code>name(): type</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>وصف واجهات API أو منطق الأعمال.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: أضف أسلوبًا مع نوع إرجاع.</li>
+    <li>تمرين 2: غيّر اسم أسلوب إلى فعل من اختيارك.</li>
+    <li>تمرين 3: غيّر نوع الإرجاع إلى <code>bool</code> أو <code>string</code>.</li>
+    <li>تمرين 4: أضف أسلوبًا آخر واجعل أحدهما خاصًا.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>يمكن للأسلوب أن يحتوي معاملات: <code>name(param): type</code>.</li>
+    <li>نوع الإرجاع بعد النقطتين.</li>
+    <li>يمكن إضافة رموز رؤية للأساليب.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>هذا المثال يوضح الوصول العام والخاص والمحمي.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>فصل ما يمكن للآخرين الوصول إليه.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li><code>+</code> عام، <code>-</code> خاص، <code>#</code> محمي.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>إخفاء التفاصيل الداخلية.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: اجعل حقلًا واحدًا خاصًا.</li>
+    <li>تمرين 2: أضف حقلًا محميًا.</li>
+    <li>تمرين 3: اجعل أسلوبًا عامًا.</li>
+    <li>تمرين 4: أضف أسلوبًا خاصًا.</li>
+    <li>تمرين 5: غيّر الأسماء إلى مثالك.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>رموز الرؤية تسبق الحقول والأساليب.</li>
+    <li>الرموز الشائعة: <code>+</code> و <code>-</code> و <code>#</code> و <code>~</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>هذا المثال يوضح العلامات المجردة والثابتة.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>تمييز “يجب التنفيذ” عن “أدوات مشتركة”.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>المجرد بخط مائل أو <code>{abstract}</code>.</li>
+    <li>الثابت بـ <code>{static}</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>أصناف أساسية وأساليب مساعدة.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: اجعل أحد الأساليب ثابتًا.</li>
+    <li>تمرين 2: غيّر اسم الصنف إلى مثال من اختيارك.</li>
+    <li>تمرين 3: أضف أسلوبًا مجردًا.</li>
+    <li>تمرين 4: استخدم أسلوب العلامة المجردة الأخرى.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> تحدد صنفًا أو أسلوبًا مجردًا.</li>
+    <li><code>{static}</code> تحدد أسلوبًا ثابتًا.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>هذا المثال يوضح الوراثة.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض الصنف الأب والابن.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>--|></code> للوراثة.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تصنيف الحيوانات.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر أسماء الأصناف إلى مثالك.</li>
+    <li>تمرين 2: أضف علاقة وراثة ثانية.</li>
+    <li>تمرين 3: غيّر اسم الصنف الأب.</li>
+    <li>تمرين 4: أضف صنف ابن جديدًا.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> تعني وراثة.</li>
+    <li>السهم يشير إلى الأب.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>هذا المثال يوضح التركيب (ملكية قوية).</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض الأجزاء التي يجب أن توجد مع الكل.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>*--</code> للتركيب.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>المنزل له غرف دائمًا.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر الأسماء إلى مثالك.</li>
+    <li>تمرين 2: غيّر التركيب إلى تجميع وقارن.</li>
+    <li>تمرين 3: أضف خط تركيب ثانيًا.</li>
+    <li>تمرين 4: غيّر نص العلاقة.</li>
+    <li>تمرين 5: غيّر الاتجاه ولاحظ الفرق.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> تعني تركيبًا.</li>
+    <li>المعين المعبأ على جهة المالك.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>هذا المثال يوضح التجميع (ملكية ضعيفة).</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض أجزاء يمكن أن توجد مستقلة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>o--</code> للتجميع.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>صف دراسي وطلابه.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر الأسماء إلى مثالك.</li>
+    <li>تمرين 2: غيّر التجميع إلى تركيب وقارن.</li>
+    <li>تمرين 3: أضف خط تجميع ثانيًا.</li>
+    <li>تمرين 4: غيّر الأسماء إلى سيناريو آخر.</li>
+    <li>تمرين 5: غيّر الاتجاه وأضف وصفًا.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> تعني تجميعًا.</li>
+    <li>المعين الفارغ على جهة المالك.</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>مخططات الكائنات تعرض “مثيلًا لصنف”.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض البيانات في لحظة محددة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>object</code> لتعريف مثيل.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>عرض قيم الحقول لكائن.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر اسم الكائن إلى مثالك.</li>
+    <li>تمرين 2: أضف كائنًا آخر.</li>
+    <li>تمرين 3: غيّر الحقول إلى حقولك.</li>
+    <li>تمرين 4: اربط كائنين.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>صيغة الكائن: <code>object name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>مخططات الأنشطة تعرض خطوات العملية.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>وصف سير العمل.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>start</code> و <code>stop</code>.</li>
+    <li>الأنشطة تُكتب كالتالي <code>:action;</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تدفق الطلبات، معالجة الطلبات.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر الأنشطة إلى سير عملك.</li>
+    <li>تمرين 2: أضف نشاطًا واحدًا.</li>
+    <li>تمرين 3: حرّك مواقع start/stop.</li>
+    <li>تمرين 4: أضف قرارًا.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>التدفق من الأعلى إلى الأسفل.</li>
+    <li>الأنشطة تُكتب كـ <code>: ... ;</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>يوضح مسارات القرار.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض مسارات مختلفة بوضوح.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>if</code> و <code>then</code> و <code>else</code> و <code>endif</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تحقق النماذج، نجاح/فشل الدفع.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر الشرط إلى شرطك.</li>
+    <li>تمرين 2: أضف فرع else ثانٍ.</li>
+    <li>تمرين 3: غيّر نص النشاط إلى كلماتك.</li>
+    <li>تمرين 4: غيّر نص if إلى سيناريوك.</li>
+    <li>تمرين 5: اصنع عملية خاصة بك.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> يبدأ الفرع.</li>
+    <li><code>else</code> يبدّل الفرع.</li>
+    <li><code>endif</code> ينهي الكتلة.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>يوضح التكرار.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>وصف الحلقات.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>while</code> و <code>endwhile</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تكرار فحص الحالة.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر الشرط إلى شرطك.</li>
+    <li>تمرين 2: أضف نشاطًا داخل الحلقة.</li>
+    <li>تمرين 3: استخدم سيناريو آخر.</li>
+    <li>تمرين 4: غيّر while إلى until (مفاهيميًا).</li>
+    <li>تمرين 5: أضف أنشطة بداية/نهاية.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> تبدأ الحلقة.</li>
+    <li><code>endwhile</code> تنهي الحلقة.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>الممرات تقسم الخطوات حسب المسؤول.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>إظهار من المسؤول عن كل خطوة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>|Role|</code> للتبديل بين الممرات.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>سير عمل بين فرق متعددة.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: أضف دور ممر جديدًا.</li>
+    <li>تمرين 2: انقل نشاطًا إلى ممر آخر.</li>
+    <li>تمرين 3: غيّر أسماء الممرات إلى أدوارك.</li>
+    <li>تمرين 4: أضف نشاطًا آخر.</li>
+    <li>تمرين 5: استخدم عمليتك الخاصة.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>استخدم <code>|Name|</code> لتغيير الممر.</li>
+    <li>الأنشطة تنتمي للممر الحالي.</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>مخططات المكونات تصف الوحدات.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض بنية الوحدات.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>component</code> لتعريف مكوّن.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>طبقات بنية النظام.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: أضف مكوّنًا.</li>
+    <li>تمرين 2: غيّر اسم مكوّن.</li>
+    <li>تمرين 3: أضف اتصالًا.</li>
+    <li>تمرين 4: استخدم سيناريوك الخاص.</li>
+    <li>تمرين 5: أعد ترتيب المكونات.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>المكونات تستخدم <code>component</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>تجميع المكونات داخل حزم.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>تنظيم الأنظمة الكبيرة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>package</code> لتغليف المكونات.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>التجميع حسب الميزة.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: أضف حزمة.</li>
+    <li>تمرين 2: انقل مكوّنًا إلى حزمة أخرى.</li>
+    <li>تمرين 3: غيّر اسم الحزمة.</li>
+    <li>تمرين 4: أضف مكوّنًا.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>صيغة الحزمة: <code>package Name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>مخططات النشر تعرض الخوادم والعُقد.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>وصف نشر النظام.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>node</code> لتعريف عقدة.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>بنية نشر سحابية.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: أضف عقدة.</li>
+    <li>تمرين 2: غيّر اسم العقدة.</li>
+    <li>تمرين 3: أضف اتصالًا.</li>
+    <li>تمرين 4: استخدم سيناريوك الخاص.</li>
+    <li>تمرين 5: غيّر العقدة إلى جهازك.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>العُقد تستخدم <code>node</code>.</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>مخططات الحالة تعرض الانتقالات بين الحالات.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>وصف تغيّر الحالات.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>state</code> لتعريف حالة.</li>
+    <li>صل الحالات بأسهم.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تدفق حالة الطلب.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استخدم أسماء حالاتك.</li>
+    <li>تمرين 2: أضف حالة أخرى.</li>
+    <li>تمرين 3: أضف انتقالًا آخر.</li>
+    <li>تمرين 4: استخدم عمليتك الخاصة.</li>
+    <li>تمرين 5: غيّر اسم حالة.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>الحالات تُكتب بـ <code>state</code>.</li>
+    <li>الانتقالات تُكتب بـ <code>--> </code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>الحالات المركبة تحتوي حالات فرعية متعددة.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>تنظيم الحالات المعقدة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>state Name { ... }</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>سير عمل معقد.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: أضف حالة فرعية.</li>
+    <li>تمرين 2: استخدم سيناريوك الخاص.</li>
+    <li>تمرين 3: أضف انتقالًا.</li>
+    <li>تمرين 4: غيّر اسم الحالة المركبة.</li>
+    <li>تمرين 5: استخدم عمليتك الخاصة.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>الحالات المركبة تُكتب بأقواس معقوفة.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>شروط الحراسة تجعل الانتقالات دقيقة.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>وضع شروط للانتقال.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>[condition]</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>شروط انتقال الحالة.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استخدم شرطك الخاص.</li>
+    <li>تمرين 2: أضف شرط حراسة آخر.</li>
+    <li>تمرين 3: استخدم عمليتك الخاصة.</li>
+    <li>تمرين 4: غيّر نص الانتقال.</li>
+    <li>تمرين 5: استخدم مثالك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>توضع الشروط بين أقواس مربعة.</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>مخططات التوقيت تعرض تغيّر الإشارة.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>وصف الإشارة عبر الزمن.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم إعدادات <code>concise</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تغيّر إشارات الأجهزة.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر إلى إشارتك الخاصة.</li>
+    <li>تمرين 2: أضف إشارة أخرى.</li>
+    <li>تمرين 3: غيّر أسماء الإشارات.</li>
+    <li>تمرين 4: استخدم مثالك الخاص.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>مخططات التوقيت يمكن أن تستخدم <code>concise</code>.</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>مخططات JSON تعرض بنية البيانات.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>تجعل بنية JSON أسهل قراءة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startjson</code> و <code>@endjson</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>صيغة استجابة API.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استبدل بـ JSON خاص بك.</li>
+    <li>تمرين 2: أضف حقلًا.</li>
+    <li>تمرين 3: عدّل قيم البيانات.</li>
+    <li>تمرين 4: استخدم سيناريوك الخاص.</li>
+    <li>تمرين 5: استخدم بياناتك الخاصة.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>يجب إحاطة JSON بـ <code>@startjson</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>مخططات YAML تعرض بنية البيانات.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>تجعل بنية YAML أسهل قراءة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startyaml</code> و <code>@endyaml</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>ملفات الإعداد.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استبدل بـ YAML خاص بك.</li>
+    <li>تمرين 2: أضف حقلًا.</li>
+    <li>تمرين 3: عدّل البيانات.</li>
+    <li>تمرين 4: استخدم سيناريوك الخاص.</li>
+    <li>تمرين 5: استخدم بياناتك الخاصة.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>يجب إحاطة YAML بـ <code>@startyaml</code>.</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>مخططات EBNF تعرض قواعد النحو.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض بنية القواعد بوضوح.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startebnf</code> و <code>@endebnf</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>وصف نحو لغات البرمجة.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استبدل بقواعدك الخاصة.</li>
+    <li>تمرين 2: أضف قاعدة أخرى.</li>
+    <li>تمرين 3: استخدم مثالك الخاص.</li>
+    <li>تمرين 4: غيّر الرموز.</li>
+    <li>تمرين 5: استخدم نحوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>EBNF يستخدم <code>@startebnf</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>مخططات Regex تعرض التعابير النمطية.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>وصف أنماط regex.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startregex</code> و <code>@endregex</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>توثيق regex.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استبدل بـ regex خاص بك.</li>
+    <li>تمرين 2: أضف قاعدة أخرى.</li>
+    <li>تمرين 3: استخدم مثالك الخاص.</li>
+    <li>تمرين 4: غيّر المحتوى.</li>
+    <li>تمرين 5: استخدم نحوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>Regex يستخدم <code>@startregex</code>.</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>مخطط طوبولوجيا الشبكة.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض اتصالات الشبكة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startnwdiag</code> و <code>@endnwdiag</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>الموجّهات والمبدّلات.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استبدل بأجهزتك.</li>
+    <li>تمرين 2: أضف جهازًا.</li>
+    <li>تمرين 3: غيّر الاتصالات.</li>
+    <li>تمرين 4: استخدم سيناريوك الخاص.</li>
+    <li>تمرين 5: استخدم مثالك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>nwdiag يستخدم <code>@startnwdiag</code>.</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>مخطط واجهة المستخدم (Wireframe).</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>رسم الشاشات بسرعة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startsalt</code> و <code>@endsalt</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>نماذج أولية للشاشات.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استبدل بشاشتك.</li>
+    <li>تمرين 2: أضف زرًا.</li>
+    <li>تمرين 3: غيّر النص.</li>
+    <li>تمرين 4: غيّر التخطيط.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>Salt يستخدم <code>@startsalt</code>.</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>مخطط بنية المؤسسة.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>وصف بنية المؤسسة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startarchimate</code> و <code>@endarchimate</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>بنية أنظمة الشركة.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استبدل ببنيتك الخاصة.</li>
+    <li>تمرين 2: أضف مكوّنًا.</li>
+    <li>تمرين 3: استخدم سيناريوك الخاص.</li>
+    <li>تمرين 4: غيّر الأسماء.</li>
+    <li>تمرين 5: استخدم مثالك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>Archimate يستخدم <code>@startarchimate</code>.</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>مخطط تدفق SDL.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>وصف العمليات.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startsdl</code> و <code>@endsdl</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تدفق الاتصال.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استبدل بعمليتك الخاصة.</li>
+    <li>تمرين 2: أضف خطوة.</li>
+    <li>تمرين 3: غيّر الأسماء.</li>
+    <li>تمرين 4: استخدم سيناريوك الخاص.</li>
+    <li>تمرين 5: استخدم مثالك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>SDL يستخدم <code>@startsdl</code>.</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>مخطط Ditaa باستخدام فن ASCII.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>الرسم باستخدام النص.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startditaa</code> و <code>@endditaa</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>رسومات سريعة.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استبدل برسمة ASCII خاصة بك.</li>
+    <li>تمرين 2: أضف كتلة أخرى.</li>
+    <li>تمرين 3: غيّر الحروف.</li>
+    <li>تمرين 4: استخدم سيناريوك الخاص.</li>
+    <li>تمرين 5: استخدم مثالك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>Ditaa يستخدم <code>@startditaa</code>.</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>مخطط Gantt يعرض الجدول الزمني.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>تخطيط جدول المشروع.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startgantt</code> و <code>@endgantt</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>جداول المشاريع.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استبدل بجدولك الخاص.</li>
+    <li>تمرين 2: أضف مهمة.</li>
+    <li>تمرين 3: استخدم مثالك الخاص.</li>
+    <li>تمرين 4: غيّر التواريخ.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>Gantt يستخدم <code>@startgantt</code>.</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>خط زمني للأحداث.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>ترتيب الأحداث حسب الزمن.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startchronology</code> و <code>@endchronology</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>سجل الأحداث.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استبدل بأحداثك.</li>
+    <li>تمرين 2: أضف حدثًا آخر.</li>
+    <li>تمرين 3: استخدم مثالك الخاص.</li>
+    <li>تمرين 4: غيّر التواريخ.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>Chronology يستخدم <code>@startchronology</code>.</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>الخرائط الذهنية تعرض تراتبية الأفكار.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>تنظيم الأفكار.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startmindmap</code> و <code>@endmindmap</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>العصف الذهني.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استخدم موضوعك.</li>
+    <li>تمرين 2: أضف فروعًا.</li>
+    <li>تمرين 3: استخدم مثالك الخاص.</li>
+    <li>تمرين 4: غيّر النص.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>MindMap يستخدم <code>@startmindmap</code>.</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>هيكل تقسيم العمل.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>تقسيم المهام إلى أجزاء أصغر.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startwbs</code> و <code>@endwbs</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تقسيم مهام المشروع.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استخدم مهامك الخاصة.</li>
+    <li>تمرين 2: أضف مهامًا فرعية.</li>
+    <li>تمرين 3: استخدم مثالك الخاص.</li>
+    <li>تمرين 4: غيّر النص.</li>
+    <li>تمرين 5: استخدم سيناريوك الخاص.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>WBS يستخدم <code>@startwbs</code>.</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>استخدم AsciiMath للمعادلات.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>كتابة المعادلات بسرعة.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>@startmath</code> و <code>@endmath</code>.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>عرض المعادلات.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: استخدم معادلتك الخاصة.</li>
+    <li>تمرين 2: أضف معادلة.</li>
+    <li>تمرين 3: استخدم مثالك الخاص.</li>
+    <li>تمرين 4: استخدم سيناريوك الخاص.</li>
+    <li>تمرين 5: غيّر الرموز.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>يدعم رموز AsciiMath الشائعة.</li>
+    <li>أحطها بـ <code>@startmath</code> و <code>@endmath</code>.</li>
+    <li><code>^</code> للأس، و <code>/</code> للقسمة.</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>مخططات ER تصف جداول قاعدة البيانات.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>تصميم بنية قاعدة البيانات.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol>
+    <li>استخدم <code>entity</code> لتعريف جدول.</li>
+    <li>استخدم <code>*</code> لتحديد المفتاح الأساسي.</li>
+  </ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>تصميم جدول المستخدمين.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر اسم الجدول إلى <code>Book</code> والحقول إلى <code>title</code> و <code>author</code>.</li>
+    <li>تمرين 2: أضف حقلًا وعدّل نوعًا إلى <code>int</code>.</li>
+    <li>تمرين 3: غيّر اسم المفتاح الأساسي وعدّل نوعه.</li>
+    <li>تمرين 4: أضف جدولًا ثانيًا بحقلين.</li>
+    <li>تمرين 5: أضف خطًا فاصلًا وأعد ترتيب الحقول.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li>خط الفاصل <code>--</code> يقسم الأقسام.</li>
+    <li><code>*</code> يحدد حقل المفتاح الأساسي.</li>
+    <li>صيغة الحقل: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>هذا المثال يوضح العلاقات بين الجداول.</p>
+  <h3>لماذا نستخدمه</h3>
+  <ul><li>عرض علاقة واحد-إلى-متعدد أو متعدد-إلى-متعدد.</li></ul>
+  <h3>كيفية الاستخدام</h3>
+  <ol><li><code>User ||--o{ Post</code> تعني واحد-إلى-متعدد.</li></ol>
+  <h3>استخدامات ممكنة</h3>
+  <ul><li>مستخدم واحد لديه منشورات متعددة.</li></ul>
+  <h3>تمارين (سهلة للأطفال)</h3>
+  <ol>
+    <li>تمرين 1: غيّر <code>User</code> إلى <code>Student</code> و <code>Post</code> إلى <code>Homework</code> وعدّل الوصف.</li>
+    <li>تمرين 2: غيّر واحد-إلى-متعدد إلى واحد-إلى-واحد وعدّل الشرح.</li>
+    <li>تمرين 3: أضف علاقة ثانية بجدول آخر وغيّر الاسم.</li>
+    <li>تمرين 4: بدّل الاتجاه وعدّل الأسماء.</li>
+    <li>تمرين 5: غيّر إلى “واحد-إلى-متعدد” واستخدم سيناريوك.</li>
+  </ol>
+  <h3>قواعد PlantUML (قائمة كاملة)</h3>
+  <ul class="rules">
+    <li><code>||</code> و <code>o{</code> يعبران عن الكاردينالية.</li>
+    <li><code>||--o{</code> غالبًا تعني واحد-إلى-متعدد.</li>
+    <li>الخط يربط جدولين.</li>
+  </ul>
+</div>

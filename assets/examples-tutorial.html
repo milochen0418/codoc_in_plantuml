@@ -28,6 +28,9 @@
       <option value="zh-Hans">简体中文</option>
       <option value="en">English</option>
       <option value="es">Español</option>
+      <option value="ar">العربية</option>
+      <option value="fr">Français</option>
+      <option value="hi">हिन्दी</option>
     </select>
     <span class="lang-note" id="lang-note">切換語言可立即顯示對應版本。</span>
   </div>
@@ -43,29 +46,43 @@
       "zh-Hant": "tutorials/examples-zh-hant.html",
       "zh-Hans": "tutorials/examples-zh-hans.html",
       "en": "tutorials/examples-en.html",
-      "es": "tutorials/examples-es.html"
+      "es": "tutorials/examples-es.html",
+      "ar": "tutorials/examples-ar.html",
+      "fr": "tutorials/examples-fr.html",
+      "hi": "tutorials/examples-hi.html"
     };
 
     const notes = {
       "zh-Hant": "切換語言可立即顯示對應版本。",
       "zh-Hans": "切换语言可立即显示对应版本。",
       "en": "Switching languages shows the selected version instantly.",
-      "es": "Cambiar el idioma muestra la versión seleccionada al instante."
+      "es": "Cambiar el idioma muestra la versión seleccionada al instante.",
+      "ar": "يؤدي تبديل اللغة إلى عرض النسخة المحددة فورًا.",
+      "fr": "Changer la langue affiche immédiatement la version sélectionnée.",
+      "hi": "भाषा बदलने पर चुना गया संस्करण तुरंत दिखता है।"
     };
 
     const loadingMessages = {
       "zh-Hant": "載入中…",
       "zh-Hans": "加载中…",
       "en": "Loading…",
-      "es": "Cargando…"
+      "es": "Cargando…",
+      "ar": "جارٍ التحميل…",
+      "fr": "Chargement…",
+      "hi": "लोड हो रहा है…"
     };
 
     const errorMessages = {
       "zh-Hant": "載入失敗，請稍後再試。",
       "zh-Hans": "加载失败，请稍后再试。",
       "en": "Failed to load. Please try again.",
-      "es": "No se pudo cargar. Inténtalo de nuevo."
+      "es": "No se pudo cargar. Inténtalo de nuevo.",
+      "ar": "فشل التحميل. الرجاء المحاولة مرة أخرى.",
+      "fr": "Échec du chargement. Veuillez réessayer.",
+      "hi": "लोड नहीं हो सका। कृपया फिर से प्रयास करें।"
     };
+
+    const rtlLanguages = new Set(["ar"]);
 
     function updateNote(lang) {
       langNote.textContent = notes[lang] || notes.en;
@@ -79,11 +96,16 @@
       }
     }
 
+    function updateDirection(lang) {
+      document.documentElement.dir = rtlLanguages.has(lang) ? "rtl" : "ltr";
+    }
+
     async function loadLanguage(lang) {
       const resolvedLang = languageFiles[lang] ? lang : "en";
       const filePath = languageFiles[resolvedLang];
 
       document.documentElement.lang = resolvedLang;
+      updateDirection(resolvedLang);
       updateNote(resolvedLang);
 
       tutorialRoot.classList.add("loading");
