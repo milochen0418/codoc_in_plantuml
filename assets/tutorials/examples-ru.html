@@ -1,0 +1,1363 @@
+<h1>Учебник по примерам (простым языком)</h1>
+<p class="note">
+  Этот учебник простыми словами объясняет, что рисует каждый пример, зачем он нужен,
+  как его использовать, типичные сценарии и правила синтаксиса PlantUML
+  (собранные в полные и удобные списки).
+</p>
+
+<h2>Оглавление</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>Этот пример показывает «Человек A отправляет одно сообщение человеку B», как передать записку.</p>
+  <h3>Зачем использовать</h3>
+  <ul>
+    <li>Показывает порядок разговора, чтобы было легко понять.</li>
+    <li>Отлично подходит для историй «кто говорит первым, кто отвечает следующим».</li>
+  </ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Напишите <code>@startuml</code> и <code>@enduml</code>.</li>
+    <li>Используйте <code>Alice -> Bob: Message</code>, чтобы показать, что A говорит с B.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul>
+    <li>Поток входа: Пользователь → Система → Сервер.</li>
+    <li>Чат‑бот: Вы спрашиваете → Бот отвечает.</li>
+  </ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Поменяйте <code>Alice</code> и <code>Bob</code> на любимые имена и сделайте сообщение про обычный разговор.</li>
+    <li>Практика 2: Сначала добавьте строку <code>participant</code>, затем измените сообщение на «сначала спросить, потом ответить».</li>
+    <li>Практика 3: Сделайте сообщение в две строки: сначала вопрос, затем ответ, и укоротите одну строку.</li>
+    <li>Практика 4: Поменяйте, кто говорит первым, и измените текст сообщения.</li>
+    <li>Практика 5: Добавьте третьего человека, который тоже скажет одну строку, и переименуйте одного участника.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Начинайте с <code>@startuml</code> и заканчивайте <code>@enduml</code>.</li>
+    <li>Участников можно объявлять через <code>participant</code> или использовать напрямую.</li>
+    <li><code>A -> B</code> — вызов, <code>A --> B</code> — возврат.</li>
+    <li>Текст после двоеточия: <code>A -> B: Hello</code>.</li>
+    <li>Сверху вниз показывается порядок времени.</li>
+    <li>Несколько строк сообщений показывают более длинный разговор.</li>
+    <li>Текст сообщения можно опустить: <code>A -> B</code> корректно.</li>
+    <li>Имена с пробелами должны быть в кавычках.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>Этот пример показывает «запрос и ответ», как вопрос и ответ.</p>
+  <h3>Зачем использовать</h3>
+  <ul>
+    <li>Четко показывает шаги запроса и ответа.</li>
+  </ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li><code>A -> B</code> — это запрос.</li>
+    <li><code>B --> A</code> — это ответ.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul>
+    <li>Вызов API: Frontend → Backend → Возврат данных.</li>
+  </ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Поменяйте роли на <code>Client</code> и <code>Server</code>, а сообщения на «получить данные / вернуть данные».</li>
+    <li>Практика 2: Поменяйте запрос на «query», а ответ на «query result».</li>
+    <li>Практика 3: Добавьте еще один запрос и ответ (итого 4 строки) и измените второй текст.</li>
+    <li>Практика 4: Пусть отвечает другой участник, и поправьте текст.</li>
+    <li>Практика 5: Добавьте «подготовку» как self‑message перед запросом.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>-></code> отправляет сообщение.</li>
+    <li><code>--></code> обычно означает возврат.</li>
+    <li>Можно добавить текст, описывающий ответ.</li>
+    <li>Запросы и ответы часто идут парой, но не обязательно.</li>
+    <li>Для ясности можно заранее объявить участников.</li>
+    <li>Время идет сверху вниз.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>Это «разговор с самим собой», показывающий внутренний шаг.</p>
+  <h3>Зачем использовать</h3>
+  <ul>
+    <li>Показывает, что объект делает внутреннюю работу.</li>
+  </ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul>
+    <li>Шаги алгоритма, внутренние вычисления.</li>
+  </ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Поменяйте <code>Alice</code> на свое имя (например, <code>Me</code>) и измените сообщение.</li>
+    <li>Практика 2: Измените действие на «читать данные» и добавьте <code>Me -> Me: проверить еще раз</code>.</li>
+    <li>Практика 3: Поменяйте сообщение на «думать» и добавьте <code>Me -> Me: записать главное</code>.</li>
+    <li>Практика 4: Поменяйте имя на <code>Robot</code> и добавьте <code>Robot -> Robot: зарядка</code>.</li>
+    <li>Практика 5: Добавьте сверху <code>Me -> Me: start</code> и снизу <code>Me -> Me: done</code>.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Оба конца стрелки могут быть у одного участника.</li>
+    <li>Базовый формат: <code>Role -> Role: Text</code>.</li>
+    <li>Имена можно использовать без предварительного объявления.</li>
+    <li>Текст после двоеточия необязателен.</li>
+    <li>Несколько self‑сообщений показывают несколько внутренних шагов.</li>
+    <li>Можно сочетать с <code>activate</code> / <code>deactivate</code>.</li>
+    <li>Время идет сверху вниз.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>Этот пример показывает разные иконки для разных ролей: человек, система, база данных.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Иконки помогают быстрее распознавать роли.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Поток входа: User → Web → Logic → Database.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Переименуйте <code>User</code> в <code>Student</code> и измените сообщение.</li>
+    <li>Практика 2: Добавьте <code>boundary App</code> и направьте стрелку сначала к App.</li>
+    <li>Практика 3: Переименуйте <code>database DB</code> в <code>database Books</code> и измените сообщение.</li>
+    <li>Практика 4: Добавьте роль <code>control</code> и одну линию взаимодействия.</li>
+    <li>Практика 5: Поменяйте порядок участников и скорректируйте сообщения.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Тип роли меняет внешний вид, но не имя.</li>
+    <li>Используйте <code>-></code> для взаимодействий.</li>
+    <li>Формат объявления: <code>actor/boundary/control/database/entity Name</code>.</li>
+    <li>Сначала объявите роли, потом используйте имена.</li>
+    <li>Необъявленные имена — обычные участники.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>Этот пример показывает цвета и стили, чтобы диаграмма была понятнее.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Выделяйте важные роли цветом.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>skinparam</code> для настройки стилей.</li>
+    <li>Добавляйте цвет после роли: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Показать «ядро системы» ярким цветом.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Переименуйте <code>Alice</code> и поменяйте цвет.</li>
+    <li>Практика 2: Поменяйте сообщение на «start» и сделайте другую роль темнее.</li>
+    <li>Практика 3: Добавьте третью роль и назначьте другой цвет.</li>
+    <li>Практика 4: Измените <code>skinparam sequenceMessageAlign</code> и поправьте строку.</li>
+    <li>Практика 5: Используйте имя стиля (например, <code>#technology</code>) и измените сообщение.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> управляет выравниванием, шрифтами, цветами и т. д.</li>
+    <li>Роли могут иметь цвет или имя стиля.</li>
+    <li>Цвета могут быть именами или hex, например <code>#AliceBlue</code>.</li>
+    <li>Если роль объявить снова, действует последнее объявление.</li>
+    <li>Настройки стиля не меняют синтаксис сообщений.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>Показывает «если… иначе…» — варианты выбора.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показать разные ветки для разных условий.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>alt</code> для старта, <code>else</code> для другой ветки и <code>end</code> для завершения.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Оплата успешна или неуспешна.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Измените условия на «есть деньги / нет денег» и поменяйте сообщения.</li>
+    <li>Практика 2: Добавьте третью ветку <code>else</code> и сообщение.</li>
+    <li>Практика 3: Измените заголовок <code>alt</code> на свой сценарий.</li>
+    <li>Практика 4: Добавьте по строке в каждую ветку и измените заголовки.</li>
+    <li>Практика 5: Сделайте одну ветку «повторить после ошибки».</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> начинает ветку.</li>
+    <li>Возможны несколько веток <code>else</code>.</li>
+    <li>Завершайте <code>end</code>.</li>
+    <li>Каждая ветка может содержать несколько сообщений.</li>
+    <li>Текст условия необязателен, но рекомендуется.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>Показывает повторяющиеся действия.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показать повтор шагов.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>loop</code> и <code>end</code>, чтобы обрамить повторяемые строки.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Проверять статус каждую секунду.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Поменяйте метку цикла на «каждые 3 раза» и измените сообщение.</li>
+    <li>Практика 2: Добавьте еще одно сообщение внутри цикла и укоротите оригинал.</li>
+    <li>Практика 3: Переименуйте роли и измените сообщение на «проверка».</li>
+    <li>Практика 4: Поменяйте метку на условие вроде «пока не готово».</li>
+    <li>Практика 5: Добавьте сообщения начала/конца вне цикла.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> может быть в одной строке.</li>
+    <li><code>end</code> завершает блок цикла.</li>
+    <li>Внутри цикла может быть несколько сообщений.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>Показывает две вещи, происходящие одновременно.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показывать параллельные задачи.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>par</code> для старта, <code>else</code> для другой параллельной ветки и <code>end</code> для завершения.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Уведомить два сервиса одновременно.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Поменяйте ветки на «отправить email» и «отправить SMS» и переименуйте роли.</li>
+    <li>Практика 2: Переименуйте роли и добавьте по строке в каждую ветку.</li>
+    <li>Практика 3: Добавьте третью ветку (еще один <code>else</code>) и сообщение.</li>
+    <li>Практика 4: Одну ветку сделайте «медленно», добавьте сообщение завершения.</li>
+    <li>Практика 5: Добавьте «начать задачу» до <code>par</code> и «готово» после <code>end</code>.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>par</code> создает параллельный блок.</li>
+    <li>Каждая ветка имеет свою последовательность сообщений.</li>
+    <li><code>else</code> переключает на другую параллельную ветку.</li>
+    <li>Завершайте <code>end</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>Показывает, когда роль занята, с помощью полос активации.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показать, кто работает и как долго.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>activate Role</code> для начала.</li>
+    <li>Используйте <code>deactivate Role</code> для окончания.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Показать, как сервер обрабатывает запрос.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Поменяйте роль на <code>Server</code> и сообщение на “processing”.</li>
+    <li>Практика 2: Добавьте строку запроса и поставьте <code>activate</code> после нее.</li>
+    <li>Практика 3: Добавьте сообщение «halfway» и замените его своим текстом.</li>
+    <li>Практика 4: Добавьте другую роль с активацией и сообщением.</li>
+    <li>Практика 5: Сдвиньте начало/конец активации на строку ниже.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>activate/deactivate могут быть до или после сообщений.</li>
+    <li><code>activate</code> и <code>deactivate</code> идут парой.</li>
+    <li>Сообщения можно вставлять, пока роль активна.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>Показывает, как добавлять заметки.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Добавлять пояснения.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>note left</code> или <code>note right</code>.</li>
+    <li>Завершайте заметку <code>end note</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Напоминание «этот шаг может не сработать».</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Измените текст заметки.</li>
+    <li>Практика 2: Переместите заметку вправо и измените текст.</li>
+    <li>Практика 3: Добавьте вторую заметку рядом с другой ролью.</li>
+    <li>Практика 4: Сделайте заметку из двух строк.</li>
+    <li>Практика 5: Переместите заметку после другого сообщения.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Заметки могут быть <code>left</code>, <code>right</code> или <code>over</code>.</li>
+    <li>Многострочные заметки используют <code>note</code> и <code>end note</code>.</li>
+    <li>Заметки не меняют поток сообщений.</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>Диаграмма вариантов использования — это список «что может система».</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Четко перечислить функции, нужные пользователю.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Пользователь — это <code>actor</code>.</li>
+    <li>Функция — это <code>(UseCase)</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Вход, поиск, оплата и т. д.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Переименуйте пользователя в <code>Teacher</code> и use case в «create quiz».</li>
+    <li>Практика 2: Добавьте второй use case.</li>
+    <li>Практика 3: Переименуйте use case и actor.</li>
+    <li>Практика 4: Добавьте второго actor и соедините с одним use case.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Use case пишется в скобках: <code>(Login)</code>.</li>
+    <li>Actor — это «человечек»: <code>actor User</code>.</li>
+    <li>Соединяйте actor и use case линией.</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>Показывает include/extend между use cases.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Отмечать общие или опциональные шаги.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li><code><<include>></code> — «всегда включается».</li>
+    <li><code><<extend>></code> — «опционально».</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Вход всегда включает проверку; оплата может расширяться скидкой.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Переименуйте use cases под свой пример.</li>
+    <li>Практика 2: Поменяйте include и extend местами.</li>
+    <li>Практика 3: Добавьте другой use case и включите его.</li>
+    <li>Практика 4: Разверните стрелку и измените текст.</li>
+    <li>Практика 5: Измените текст связи на свои слова.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Include: <code>(A) .> (B) : <<include>></code>.</li>
+    <li>Extend: <code>(A) .> (B) : <<extend>></code>.</li>
+    <li>Используйте пунктирные стрелки.</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>Диаграммы классов описывают атрибуты и методы.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Организовать структуры данных.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Определите класс с <code>class</code>.</li>
+    <li>Атрибуты и методы пишите в фигурных скобках.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Проектирование модели данных программы.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Переименуйте класс, например в <code>Book</code>.</li>
+    <li>Практика 2: Добавьте один атрибут или метод.</li>
+    <li>Практика 3: Укоротите имя поля или переведите его.</li>
+    <li>Практика 4: Добавьте второй класс и два атрибута.</li>
+    <li>Практика 5: Поменяйте метод на своё действие.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Формат класса: <code>class Name { ... }</code>.</li>
+    <li>Атрибуты — поля, методы используют <code>()</code>.</li>
+    <li>Пустые классы допустимы.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>Этот пример добавляет методы и типы возвращаемых значений.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Описать, что может класс.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Методы пишутся как <code>name(): type</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Описание API или бизнес‑логики.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Добавьте метод с типом возврата.</li>
+    <li>Практика 2: Переименуйте метод под своё действие.</li>
+    <li>Практика 3: Измените тип на <code>bool</code> или <code>string</code>.</li>
+    <li>Практика 4: Добавьте ещё метод и сделайте один private.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Методы могут иметь параметры: <code>name(param): type</code>.</li>
+    <li>Тип возврата указывается после двоеточия.</li>
+    <li>Можно использовать символы видимости.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>Показывает public, private и protected доступ.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Отделить то, что доступно извне.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li><code>+</code> public, <code>-</code> private, <code>#</code> protected.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Скрывать внутренние детали.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Сделайте одно поле private.</li>
+    <li>Практика 2: Добавьте protected‑поле.</li>
+    <li>Практика 3: Сделайте метод public.</li>
+    <li>Практика 4: Добавьте private‑метод.</li>
+    <li>Практика 5: Переименуйте под свой пример.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Символы видимости идут перед полями/методами.</li>
+    <li>Частые символы: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>Показывает абстрактные и статические маркеры.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Различать «нужно реализовать» и «общие инструменты».</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Абстрактный — курсив или <code>{abstract}</code>.</li>
+    <li>Статический — <code>{static}</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Базовые классы и утилитарные методы.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Сделайте один метод static.</li>
+    <li>Практика 2: Переименуйте класс под свой пример.</li>
+    <li>Практика 3: Добавьте abstract‑метод.</li>
+    <li>Практика 4: Используйте другой стиль маркера abstract.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> отмечает абстрактный класс/метод.</li>
+    <li><code>{static}</code> отмечает статический метод.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>Показывает наследование.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показать родительский и дочерний классы.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Для наследования используйте <code>--|></code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Классификация животных.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Переименуйте классы под свой пример.</li>
+    <li>Практика 2: Добавьте вторую линию наследования.</li>
+    <li>Практика 3: Переименуйте родительский класс.</li>
+    <li>Практика 4: Добавьте новый дочерний класс.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> означает наследование.</li>
+    <li>Стрелка указывает на родителя.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>Показывает композицию (сильное владение).</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показать части, которые обязательно существуют вместе с целым.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Композиция — <code>*--</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Дом всегда имеет комнаты.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Переименуйте под свой пример.</li>
+    <li>Практика 2: Замените композицию на агрегацию и сравните.</li>
+    <li>Практика 3: Добавьте вторую линию композиции.</li>
+    <li>Практика 4: Измените текст подписи связи.</li>
+    <li>Практика 5: Поменяйте направление и посмотрите результат.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> означает композицию.</li>
+    <li>Закрашенный ромб находится со стороны владельца.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>Показывает агрегацию (слабое владение).</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показать части, которые могут существовать отдельно.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Агрегация — <code>o--</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Класс и его ученики.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Переименуйте под свой пример.</li>
+    <li>Практика 2: Замените агрегацию на композицию и сравните.</li>
+    <li>Практика 3: Добавьте вторую линию агрегации.</li>
+    <li>Практика 4: Переименуйте под другой сценарий.</li>
+    <li>Практика 5: Поменяйте направление и добавьте описание.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> означает агрегацию.</li>
+    <li>Пустой ромб находится со стороны владельца.</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>Диаграммы объектов показывают «экземпляр класса».</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показать данные в конкретный момент.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>object</code> для определения экземпляра.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Показ значений полей объекта.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Переименуйте объект под свой пример.</li>
+    <li>Практика 2: Добавьте ещё один объект.</li>
+    <li>Практика 3: Измените поля под свои.</li>
+    <li>Практика 4: Соедините два объекта.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Формат объекта: <code>object name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>Диаграммы активности показывают шаги процесса.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Описывать рабочие потоки.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>start</code> и <code>stop</code>.</li>
+    <li>Действия пишутся как <code>:action;</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Поток приложения, обработка заказов.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Замените действия на свой поток.</li>
+    <li>Практика 2: Добавьте одно действие.</li>
+    <li>Практика 3: Переместите start/stop.</li>
+    <li>Практика 4: Добавьте ветвление.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Поток идет сверху вниз.</li>
+    <li>Действия пишутся как <code>: ... ;</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>Показывает ветвления решения.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Ясно показывать разные пути.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Проверки формы, успех/ошибка оплаты.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Измените условие под свое.</li>
+    <li>Практика 2: Добавьте вторую ветку else.</li>
+    <li>Практика 3: Измените текст действий.</li>
+    <li>Практика 4: Измените текст if под свой сценарий.</li>
+    <li>Практика 5: Создайте свой процесс.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> начинает ветку.</li>
+    <li><code>else</code> переключает ветку.</li>
+    <li><code>endif</code> завершает блок.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>Показывает повторяющиеся действия.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Описывать циклы.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>while</code> и <code>endwhile</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Повторно проверять статус.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Измените условие под свое.</li>
+    <li>Практика 2: Добавьте действие внутри цикла.</li>
+    <li>Практика 3: Используйте другой сценарий.</li>
+    <li>Практика 4: Замените while на until (концептуально).</li>
+    <li>Практика 5: Добавьте действия начала/конца.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> запускает цикл.</li>
+    <li><code>endwhile</code> завершает цикл.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>Swimlanes группируют шаги по ответственности.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показывает, кто отвечает за каждый шаг.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>|Role|</code> для смены дорожек.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Процессы между командами.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Добавьте новую роль swimlane.</li>
+    <li>Практика 2: Переместите действие в другую дорожку.</li>
+    <li>Практика 3: Переименуйте дорожки под свои роли.</li>
+    <li>Практика 4: Добавьте ещё одно действие.</li>
+    <li>Практика 5: Используйте свой процесс.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>|Name|</code> переключает дорожку.</li>
+    <li>Действия относятся к текущей дорожке.</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>Компонентные диаграммы описывают модули.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показать структуру модулей.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Определяйте компонент через <code>component</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Слои архитектуры системы.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Добавьте компонент.</li>
+    <li>Практика 2: Переименуйте компонент.</li>
+    <li>Практика 3: Добавьте соединение.</li>
+    <li>Практика 4: Используйте свой сценарий.</li>
+    <li>Практика 5: Переставьте компоненты.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Компоненты используют <code>component</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>Группируйте компоненты в пакеты.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Организовать большие системы.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>package</code> для обрамления компонентов.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Группировка по функциям.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Добавьте пакет.</li>
+    <li>Практика 2: Переместите компонент в другой пакет.</li>
+    <li>Практика 3: Переименуйте пакет.</li>
+    <li>Практика 4: Добавьте компонент.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Формат пакета: <code>package Name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>Диаграммы развертывания показывают серверы и узлы.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Описать развертывание системы.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Определяйте узлы через <code>node</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Архитектура развертывания в облаке.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Добавьте узел.</li>
+    <li>Практика 2: Переименуйте узел.</li>
+    <li>Практика 3: Добавьте соединение.</li>
+    <li>Практика 4: Используйте свой сценарий.</li>
+    <li>Практика 5: Замените узел на свое устройство.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Узлы используют <code>node</code>.</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>Диаграммы состояний показывают переходы между состояниями.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Описывать изменения состояния.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>state</code> для определения состояний.</li>
+    <li>Соединяйте состояния стрелками.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Поток статусов заказа.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Используйте свои названия состояний.</li>
+    <li>Практика 2: Добавьте ещё одно состояние.</li>
+    <li>Практика 3: Добавьте ещё один переход.</li>
+    <li>Практика 4: Используйте свой процесс.</li>
+    <li>Практика 5: Переименуйте состояние.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Состояния используют <code>state</code>.</li>
+    <li>Переходы используют <code>--> </code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>Составные состояния включают несколько под‑состояний.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Организовать сложные состояния.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>state Name { ... }</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Сложные рабочие процессы.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Добавьте под‑состояние.</li>
+    <li>Практика 2: Используйте свой сценарий.</li>
+    <li>Практика 3: Добавьте переход.</li>
+    <li>Практика 4: Переименуйте составное состояние.</li>
+    <li>Практика 5: Используйте свой процесс.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Составные состояния пишутся в фигурных скобках.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>Guard‑условия делают переходы точными.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показывать условия переходов.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>[condition]</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Условия перехода состояния.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Используйте своё условие.</li>
+    <li>Практика 2: Добавьте ещё одно guard‑условие.</li>
+    <li>Практика 3: Используйте свой процесс.</li>
+    <li>Практика 4: Измените текст перехода.</li>
+    <li>Практика 5: Используйте свой пример.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Guard‑условия пишутся в квадратных скобках.</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>Диаграммы времени показывают изменения сигналов.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Описывать сигнал во времени.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте настройки <code>concise</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Изменения сигналов в аппаратуре.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Поменяйте на свой сигнал.</li>
+    <li>Практика 2: Добавьте ещё одну линию сигнала.</li>
+    <li>Практика 3: Переименуйте сигналы.</li>
+    <li>Практика 4: Используйте свой пример.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>В timing‑диаграммах можно использовать <code>concise</code>.</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>JSON‑диаграммы показывают структуру данных.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Сделать структуру JSON легче для чтения.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startjson</code> и <code>@endjson</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Форматы ответов API.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Замените на свой JSON.</li>
+    <li>Практика 2: Добавьте поле.</li>
+    <li>Практика 3: Измените значения.</li>
+    <li>Практика 4: Используйте свой сценарий.</li>
+    <li>Практика 5: Используйте свои данные.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>JSON должен быть обрамлен <code>@startjson</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>YAML‑диаграммы показывают структуру данных.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Сделать YAML‑структуру легче для чтения.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startyaml</code> и <code>@endyaml</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Файлы конфигурации.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Замените на свой YAML.</li>
+    <li>Практика 2: Добавьте поле.</li>
+    <li>Практика 3: Измените содержимое данных.</li>
+    <li>Практика 4: Используйте свой сценарий.</li>
+    <li>Практика 5: Используйте свои данные.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>YAML должен быть обрамлен <code>@startyaml</code>.</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>EBNF‑диаграммы показывают правила грамматики.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Ясно показать структуру грамматики.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startebnf</code> и <code>@endebnf</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Описание грамматики языка программирования.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Замените на свою грамматику.</li>
+    <li>Практика 2: Добавьте ещё одно правило.</li>
+    <li>Практика 3: Используйте свой пример.</li>
+    <li>Практика 4: Измените символы.</li>
+    <li>Практика 5: Используйте свою грамматику.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>EBNF использует <code>@startebnf</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Regex‑диаграммы показывают регулярные выражения.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Описывать шаблоны регулярных выражений.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startregex</code> и <code>@endregex</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Документация регулярных выражений.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Замените на своё regex.</li>
+    <li>Практика 2: Добавьте ещё одно правило.</li>
+    <li>Практика 3: Используйте свой пример.</li>
+    <li>Практика 4: Измените содержимое.</li>
+    <li>Практика 5: Используйте свою грамматику.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Regex использует <code>@startregex</code>.</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>Диаграмма топологии сети.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показать сетевые соединения.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startnwdiag</code> и <code>@endnwdiag</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Маршрутизаторы и коммутаторы.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Замените на свои устройства.</li>
+    <li>Практика 2: Добавьте устройство.</li>
+    <li>Практика 3: Измените соединения.</li>
+    <li>Практика 4: Используйте свой сценарий.</li>
+    <li>Практика 5: Используйте свой пример.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>nwdiag использует <code>@startnwdiag</code>.</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>Диаграмма UI‑вайрфрейма.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Быстро набросать экран.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startsalt</code> и <code>@endsalt</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Прототипы экранов.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Замените на свой экран.</li>
+    <li>Практика 2: Добавьте кнопку.</li>
+    <li>Практика 3: Измените текст.</li>
+    <li>Практика 4: Измените макет.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Salt использует <code>@startsalt</code>.</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>Диаграмма корпоративной архитектуры.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Описать корпоративную архитектуру.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startarchimate</code> и <code>@endarchimate</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Архитектура систем компании.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Замените на свою архитектуру.</li>
+    <li>Практика 2: Добавьте компонент.</li>
+    <li>Практика 3: Используйте свой сценарий.</li>
+    <li>Практика 4: Переименуйте элементы.</li>
+    <li>Практика 5: Используйте свой пример.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Archimate использует <code>@startarchimate</code>.</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>SDL‑диаграмма потока.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Описывать процессы.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startsdl</code> и <code>@endsdl</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Коммуникационный поток.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Замените на свой процесс.</li>
+    <li>Практика 2: Добавьте шаг.</li>
+    <li>Практика 3: Переименуйте элементы.</li>
+    <li>Практика 4: Используйте свой сценарий.</li>
+    <li>Практика 5: Используйте свой пример.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>SDL использует <code>@startsdl</code>.</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>Диаграмма Ditaa с ASCII‑артом.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Рисовать с помощью текста.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startditaa</code> и <code>@endditaa</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Быстрые наброски.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Замените на свой ASCII‑арт.</li>
+    <li>Практика 2: Добавьте ещё один блок.</li>
+    <li>Практика 3: Измените символы.</li>
+    <li>Практика 4: Используйте свой сценарий.</li>
+    <li>Практика 5: Используйте свой пример.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Ditaa использует <code>@startditaa</code>.</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>Диаграмма Ганта показывает расписание во времени.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Планировать временную шкалу проекта.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startgantt</code> и <code>@endgantt</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Расписания проектов.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Замените на своё расписание.</li>
+    <li>Практика 2: Добавьте задачу.</li>
+    <li>Практика 3: Используйте свой пример.</li>
+    <li>Практика 4: Измените даты.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Gantt использует <code>@startgantt</code>.</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>Хронология событий.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Упорядочить события по времени.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startchronology</code> и <code>@endchronology</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>История событий.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Замените на свои события.</li>
+    <li>Практика 2: Добавьте ещё одно событие.</li>
+    <li>Практика 3: Используйте свой пример.</li>
+    <li>Практика 4: Измените даты.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Chronology использует <code>@startchronology</code>.</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>Майнд‑карта показывает иерархию идей.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Организовать идеи.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startmindmap</code> и <code>@endmindmap</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Мозговой штурм.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Используйте свою тему.</li>
+    <li>Практика 2: Добавьте ветки.</li>
+    <li>Практика 3: Используйте свой пример.</li>
+    <li>Практика 4: Измените текст.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>MindMap использует <code>@startmindmap</code>.</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>Диаграмма декомпозиции работ.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Разбить работу на части.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startwbs</code> и <code>@endwbs</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Декомпозиция задач проекта.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Используйте свои задачи.</li>
+    <li>Практика 2: Добавьте подзадачи.</li>
+    <li>Практика 3: Используйте свой пример.</li>
+    <li>Практика 4: Измените текст.</li>
+    <li>Практика 5: Используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>WBS использует <code>@startwbs</code>.</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>Используйте AsciiMath для формул.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Быстро писать формулы.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>@startmath</code> и <code>@endmath</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Показ формул.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Используйте свою формулу.</li>
+    <li>Практика 2: Добавьте формулу.</li>
+    <li>Практика 3: Используйте свой пример.</li>
+    <li>Практика 4: Используйте свой сценарий.</li>
+    <li>Практика 5: Измените символы.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Поддерживаются основные символы AsciiMath.</li>
+    <li>Обрамляйте <code>@startmath</code> и <code>@endmath</code>.</li>
+    <li><code>^</code> означает степень, <code>/</code> — деление.</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>ER‑диаграммы описывают таблицы базы данных.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Проектировать структуру базы данных.</li></ul>
+  <h3>Как использовать</h3>
+  <ol>
+    <li>Используйте <code>entity</code> для определения таблицы.</li>
+    <li>Пометьте первичный ключ символом <code>*</code>.</li>
+  </ol>
+  <h3>Возможные применения</h3>
+  <ul><li>Проектирование таблицы пользователей.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Переименуйте таблицу в <code>Book</code> и поля в <code>title</code>, <code>author</code>.</li>
+    <li>Практика 2: Добавьте поле и измените тип на <code>int</code>.</li>
+    <li>Практика 3: Переименуйте поле первичного ключа и измените тип.</li>
+    <li>Практика 4: Добавьте вторую таблицу с двумя полями.</li>
+    <li>Практика 5: Добавьте разделительную линию и поменяйте порядок полей.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li>Разделительная линия <code>--</code> делит секции.</li>
+    <li><code>*</code> помечает поле первичного ключа.</li>
+    <li>Формат поля: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>Этот пример показывает отношения между таблицами.</p>
+  <h3>Зачем использовать</h3>
+  <ul><li>Показывать один‑ко‑многим или многие‑ко‑многим.</li></ul>
+  <h3>Как использовать</h3>
+  <ol><li><code>User ||--o{ Post</code> означает один‑ко‑многим.</li></ol>
+  <h3>Возможные применения</h3>
+  <ul><li>У одного пользователя много постов.</li></ul>
+  <h3>Практика (простая для детей)</h3>
+  <ol>
+    <li>Практика 1: Переименуйте <code>User</code> в <code>Student</code> и <code>Post</code> в <code>Homework</code>, затем обновите подпись.</li>
+    <li>Практика 2: Измените один‑ко‑многим на один‑к‑одному и обновите описание.</li>
+    <li>Практика 3: Добавьте вторую связь и переименуйте таблицу.</li>
+    <li>Практика 4: Поменяйте направление и имена.</li>
+    <li>Практика 5: Оставьте «один‑ко‑многим» и используйте свой сценарий.</li>
+  </ol>
+  <h3>Правила синтаксиса PlantUML (полный список)</h3>
+  <ul class="rules">
+    <li><code>||</code> и <code>o{</code> показывают кратность.</li>
+    <li><code>||--o{</code> обычно означает один‑ко‑многим.</li>
+    <li>Линия соединяет две таблицы.</li>
+  </ul>
+</div>
