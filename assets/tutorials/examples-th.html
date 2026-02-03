@@ -1,0 +1,1363 @@
+<h1>Examples Tutorial (ง่ายสำหรับเด็ก)</h1>
+<p class="note">
+  บทเรียนนี้อธิบายแบบง่ายว่าแต่ละตัวอย่างวาดอะไร ทำไมมีประโยชน์
+  ใช้อย่างไร ตัวอย่างการใช้งานทั่วไป และกฎไวยากรณ์ของ PlantUML
+  (รวบรวมเป็นรายการที่ครบถ้วนและใช้งานได้)
+</p>
+
+<h2>สารบัญ</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>ตัวอย่างนี้แสดงว่า “คน A ส่งข้อความหนึ่งไปให้คน B” เหมือนส่งกระดาษโน้ต</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul>
+    <li>แสดงลำดับการสนทนาให้เข้าใจง่าย</li>
+    <li>เหมาะกับเรื่องเล่าแบบ “ใครพูดก่อน ใครตอบต่อ”</li>
+  </ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>เขียน <code>@startuml</code> และ <code>@enduml</code></li>
+    <li>ใช้ <code>Alice -> Bob: Message</code> เพื่อแสดงว่า A พูดกับ B</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul>
+    <li>ขั้นตอนล็อกอิน: User → System → Server</li>
+    <li>แชตบอต: คุณถาม → บอตตอบ</li>
+  </ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยน <code>Alice</code> และ <code>Bob</code> เป็นชื่อที่ชอบ แล้วเปลี่ยนข้อความเป็นบทสนทนาประจำวัน</li>
+    <li>แบบฝึกหัด 2: เพิ่มบรรทัด <code>participant</code> ก่อน แล้วเปลี่ยนข้อความเป็น “ถามก่อน แล้วค่อยตอบ”</li>
+    <li>แบบฝึกหัด 3: แยกข้อความเป็นสองบรรทัด: ถามก่อน แล้วตอบ และย่อหนึ่งบรรทัดให้สั้นลง</li>
+    <li>แบบฝึกหัด 4: สลับคนที่พูดก่อน แล้วเปลี่ยนข้อความ</li>
+    <li>แบบฝึกหัด 5: เพิ่มคนที่สามให้พูดหนึ่งบรรทัด แล้วเปลี่ยนชื่อหนึ่งคน</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>เริ่มด้วย <code>@startuml</code> และจบด้วย <code>@enduml</code></li>
+    <li>ผู้ร่วมสนทนาสามารถประกาศด้วย <code>participant</code> หรือใช้งานตรง ๆ ได้</li>
+    <li><code>A -> B</code> คือการส่งข้อความ, <code>A --> B</code> คือการตอบกลับ</li>
+    <li>ใส่ข้อความหลังโคลอน: <code>A -> B: Hello</code></li>
+    <li>เวลาจะแสดงจากบนลงล่าง</li>
+    <li>หลายบรรทัดข้อความคือบทสนทนาที่ยาวขึ้น</li>
+    <li>ข้อความสามารถละได้: <code>A -> B</code> ใช้ได้</li>
+    <li>ชื่อที่มีช่องว่างควรใส่เครื่องหมายคำพูด</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>ตัวอย่างนี้แสดง “คำขอและคำตอบ” เหมือนถาม‑ตอบ</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul>
+    <li>เห็นขั้นตอนคำขอและคำตอบชัดเจน</li>
+  </ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li><code>A -> B</code> คือคำขอ</li>
+    <li><code>B --> A</code> คือคำตอบ</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul>
+    <li>เรียก API: Frontend → Backend → ส่งข้อมูลกลับ</li>
+  </ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนบทบาทเป็น <code>Client</code> และ <code>Server</code> แล้วเปลี่ยนข้อความเป็น “ขอข้อมูล / ส่งข้อมูลกลับ”</li>
+    <li>แบบฝึกหัด 2: เปลี่ยนคำขอเป็น “query” และคำตอบเป็น “query result”</li>
+    <li>แบบฝึกหัด 3: เพิ่มคำขอ/คำตอบอีกชุด (รวม 4 บรรทัด) แล้วเปลี่ยนข้อความบรรทัดที่สอง</li>
+    <li>แบบฝึกหัด 4: ให้คนอื่นเป็นผู้ตอบ แล้วปรับข้อความ</li>
+    <li>แบบฝึกหัด 5: เพิ่ม self-message “เตรียมตัว” ก่อนคำขอ แล้วทำคำขอให้เฉพาะเจาะจงขึ้น</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li><code>-></code> ใช้ส่งข้อความ</li>
+    <li><code>--></code> มักใช้แสดงการตอบกลับ</li>
+    <li>เพิ่มข้อความเพื่ออธิบายเนื้อหาคำตอบ</li>
+    <li>คำขอและคำตอบมักมาเป็นคู่ แต่ไม่จำเป็นเสมอไป</li>
+    <li>ประกาศผู้ร่วมสนทนาก่อนจะช่วยให้ชัดเจน</li>
+    <li>เวลาจะไหลจากบนลงล่าง</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>นี่คือ “คุยกับตัวเอง” ซึ่งแสดงขั้นตอนภายใน</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul>
+    <li>แสดงการทำงานภายในของวัตถุโดยไม่ต้องมีคนอื่น</li>
+  </ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul>
+    <li>ขั้นตอนอัลกอริทึม การคำนวณภายใน</li>
+  </ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยน <code>Alice</code> เป็นชื่อคุณ (เช่น <code>Me</code>) และเปลี่ยนข้อความเป็นสิ่งที่อยากทำวันนี้</li>
+    <li>แบบฝึกหัด 2: เปลี่ยนการกระทำเป็น “อ่านข้อมูล” แล้วเพิ่ม <code>Me -> Me: ตรวจอีกครั้ง</code></li>
+    <li>แบบฝึกหัด 3: เปลี่ยนข้อความเป็น “คิด” แล้วเพิ่ม <code>Me -> Me: เขียนประเด็นสำคัญ</code></li>
+    <li>แบบฝึกหัด 4: เปลี่ยนชื่อเป็น <code>Robot</code> แล้วเพิ่ม <code>Robot -> Robot: ชาร์จ</code></li>
+    <li>แบบฝึกหัด 5: เพิ่ม <code>Me -> Me: start</code> ไว้ด้านบน และ <code>Me -> Me: done</code> ไว้ด้านล่าง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>ปลายทั้งสองของลูกศรอาจเป็นคนเดียวกันได้</li>
+    <li>รูปแบบพื้นฐาน: <code>Role -> Role: Text</code></li>
+    <li>สามารถใช้ชื่อได้โดยไม่ต้องประกาศก่อน</li>
+    <li>ข้อความหลังโคลอนเป็นตัวเลือก</li>
+    <li>หลาย self-message แสดงหลายขั้นตอนภายใน</li>
+    <li>สามารถใช้คู่กับ <code>activate</code> / <code>deactivate</code></li>
+    <li>เวลาจะไหลจากบนลงล่าง</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>ตัวอย่างนี้แสดงไอคอนต่าง ๆ สำหรับบทบาทต่างกัน เช่น คน ระบบ ฐานข้อมูล</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>ไอคอนช่วยให้จำบทบาทได้เร็ว</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ขั้นตอนล็อกอิน: User → Web → Logic → Database</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยน <code>User</code> เป็น <code>Student</code> และเปลี่ยนข้อความเป็น “ล็อกอินการบ้าน”</li>
+    <li>แบบฝึกหัด 2: เพิ่ม <code>boundary App</code> แล้วให้ลูกศรไปที่ App ก่อน</li>
+    <li>แบบฝึกหัด 3: เปลี่ยน <code>database DB</code> เป็น <code>database Books</code> และเปลี่ยนข้อความ</li>
+    <li>แบบฝึกหัด 4: เพิ่มบทบาท <code>control</code> แล้วเขียนเส้นการโต้ตอบหนึ่งบรรทัด</li>
+    <li>แบบฝึกหัด 5: สลับลำดับผู้ร่วมสนทนา แล้วปรับข้อความตาม</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>ชนิดบทบาทเปลี่ยนรูปร่าง ไม่เปลี่ยนชื่อ</li>
+    <li>การโต้ตอบใช้ <code>-></code></li>
+    <li>รูปแบบประกาศ: <code>actor/boundary/control/database/entity Name</code></li>
+    <li>ประกาศบทบาทก่อน แล้วค่อยใช้ชื่อ</li>
+    <li>ชื่อที่ไม่ประกาศจะเป็นผู้ร่วมสนทนาทั่วไป</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>ตัวอย่างนี้ใช้สีและสไตล์เพื่อให้แผนภาพชัดเจนขึ้น</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>เน้นบทบาทสำคัญด้วยสีได้</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>skinparam</code> เพื่อปรับสไตล์</li>
+    <li>ใส่สีหลังบทบาท: <code>participant Alice #AliceBlue</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>เน้น “ระบบหลัก” ด้วยสีสว่าง</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนชื่อ <code>Alice</code> และเปลี่ยนสีเป็นสีอื่น</li>
+    <li>แบบฝึกหัด 2: เปลี่ยนข้อความเป็น “เริ่มต้น” และทำอีกบทบาทให้เข้มขึ้น</li>
+    <li>แบบฝึกหัด 3: เพิ่มบทบาทที่สามและกำหนดสีต่างกัน</li>
+    <li>แบบฝึกหัด 4: เปลี่ยน <code>skinparam sequenceMessageAlign</code> แล้วปรับข้อความหนึ่งบรรทัด</li>
+    <li>แบบฝึกหัด 5: ใช้ชื่อสไตล์ (เช่น <code>#technology</code>) กับหนึ่งบทบาท และเปลี่ยนข้อความ</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> ควบคุมการจัดแนว ฟอนต์ สี ฯลฯ</li>
+    <li>บทบาทสามารถตามด้วยสีหรือชื่อสไตล์ได้</li>
+    <li>สีสามารถเป็นชื่อหรือค่า hex เช่น <code>#AliceBlue</code></li>
+    <li>ถ้าประกาศบทบาทเดียวกันซ้ำ จะใช้ค่าล่าสุด</li>
+    <li>การตั้งค่าสไตล์ไม่เปลี่ยนไวยากรณ์ของข้อความ</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>ตัวอย่างนี้แสดง “ถ้า...อย่างอื่น...” เหมือนการเลือกหลายทาง</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดงกิ่งก้านต่าง ๆ ตามเงื่อนไขต่างกัน</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>alt</code> เพื่อเริ่ม, <code>else</code> สำหรับกิ่งอื่น และ <code>end</code> เพื่อจบ</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>การชำระเงินสำเร็จหรือไม่สำเร็จ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเงื่อนไขเป็น “มีเงิน / ไม่มีเงิน” แล้วเปลี่ยนข้อความ</li>
+    <li>แบบฝึกหัด 2: เพิ่มกิ่ง <code>else</code> ที่สาม และเขียนข้อความหนึ่งบรรทัด</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนชื่อหัวข้อ <code>alt</code> เป็นสถานการณ์ของคุณ แล้วแก้ไขข้อความ</li>
+    <li>แบบฝึกหัด 4: เพิ่มหนึ่งบรรทัดในแต่ละกิ่ง และเปลี่ยนชื่อหัวข้อ</li>
+    <li>แบบฝึกหัด 5: ทำหนึ่งกิ่งเป็น “ลองใหม่หลังล้มเหลว” และอีกกิ่งเป็นตอนจบที่ต่างกัน</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> เริ่มกิ่งหนึ่ง</li>
+    <li>สามารถมีหลายกิ่ง <code>else</code></li>
+    <li>จบด้วย <code>end</code></li>
+    <li>แต่ละกิ่งมีหลายข้อความได้</li>
+    <li>ข้อความเงื่อนไขเป็นตัวเลือก แต่แนะนำให้ใส่</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>ตัวอย่างนี้แสดงการทำงานซ้ำ ๆ</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดงขั้นตอนที่ต้องทำซ้ำ</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ครอบบรรทัดที่ซ้ำด้วย <code>loop</code> และ <code>end</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ตรวจสถานะทุก ๆ วินาที</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนป้าย loop เป็น “ทุก 3 ครั้ง” แล้วเปลี่ยนข้อความ</li>
+    <li>แบบฝึกหัด 2: เพิ่มอีกหนึ่งข้อความใน loop แล้วทำให้ข้อความเดิมสั้นลง</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนชื่อบทบาทและเปลี่ยนข้อความเป็น “กำลังตรวจ”</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนป้าย loop เป็นเงื่อนไขเช่น “จนกว่าจะเสร็จ” แล้วปรับข้อความ</li>
+    <li>แบบฝึกหัด 5: เพิ่มข้อความเริ่ม/จบไว้ก่อนและหลัง loop</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> สามารถอยู่บรรทัดเดียวกันได้</li>
+    <li><code>end</code> จบ block ของ loop</li>
+    <li>หลายข้อความอยู่ใน loop ได้</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>ตัวอย่างนี้แสดงสองอย่างเกิดพร้อมกัน</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดงงานที่ทำคู่ขนาน</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>par</code> เพื่อเริ่ม, <code>else</code> สำหรับกิ่งคู่ขนานอื่น และ <code>end</code> เพื่อจบ</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>แจ้งสองบริการพร้อมกัน</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนกิ่งเป็น “ส่งอีเมล” และ “ส่ง SMS” แล้วเปลี่ยนชื่อบทบาท</li>
+    <li>แบบฝึกหัด 2: เปลี่ยนบทบาทและเพิ่มอีกหนึ่งบรรทัดในแต่ละกิ่ง</li>
+    <li>แบบฝึกหัด 3: เพิ่มกิ่งที่สาม (<code>else</code>) และเขียนข้อความหนึ่งบรรทัด แล้วทำให้หนึ่งบรรทัดสั้นลง</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนกิ่งหนึ่งเป็น “ทำช้า ๆ” เพิ่มข้อความจบ แล้วปรับข้อความกิ่งอื่น</li>
+    <li>แบบฝึกหัด 5: เพิ่มข้อความ “เริ่มงาน” ก่อน <code>par</code> และ “เสร็จแล้ว” หลัง <code>end</code></li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li><code>par</code> สร้าง block แบบคู่ขนาน</li>
+    <li>แต่ละกิ่งมีลำดับข้อความของตัวเองได้</li>
+    <li><code>else</code> สลับไปกิ่งคู่ขนานอีกกิ่ง</li>
+    <li>จบด้วย <code>end</code></li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>ตัวอย่างนี้ใช้แถบ activation เพื่อแสดงว่าใครกำลังทำงานอยู่</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>บอกว่าใครทำงานและนานแค่ไหน</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>activate Role</code> เพื่อเริ่ม</li>
+    <li>ใช้ <code>deactivate Role</code> เพื่อจบ</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>แสดงเวลาที่เซิร์ฟเวอร์กำลังประมวลผลคำขอ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนบทบาทเป็น <code>Server</code> และเปลี่ยนข้อความเป็น “processing”</li>
+    <li>แบบฝึกหัด 2: เพิ่มบรรทัดคำขอ แล้วใส่ <code>activate</code> หลังคำขอทันที</li>
+    <li>แบบฝึกหัด 3: เพิ่มข้อความกลางทาง เช่น “halfway” แล้วแทนด้วยข้อความของคุณ</li>
+    <li>แบบฝึกหัด 4: เพิ่มอีกบทบาทหนึ่ง พร้อม activation และข้อความของตัวเอง</li>
+    <li>แบบฝึกหัด 5: เลื่อนจุดเริ่ม/จบ activation ลงหนึ่งบรรทัด แล้วปรับข้อความ</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>สามารถวาง activate/deactivate ก่อนหรือหลังข้อความได้</li>
+    <li><code>activate</code> และ <code>deactivate</code> ควรเป็นคู่</li>
+    <li>ระหว่างที่บทบาท active สามารถแทรกข้อความได้</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>ตัวอย่างนี้แสดงการเพิ่มโน้ตแบบแปะ</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>เพิ่มคำอธิบายให้ชัดเจน</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>note left</code> หรือ <code>note right</code></li>
+    <li>จบโน้ตด้วย <code>end note</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>เตือนว่า “ขั้นตอนนี้อาจล้มเหลวได้”</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนข้อความในโน้ตเป็นของคุณ</li>
+    <li>แบบฝึกหัด 2: ย้ายโน้ตไปทางขวาและเปลี่ยนข้อความ</li>
+    <li>แบบฝึกหัด 3: เพิ่มโน้ตอีกอันข้างบทบาทอื่น</li>
+    <li>แบบฝึกหัด 4: ทำโน้ตให้เป็นสองบรรทัด โดยบรรทัดที่สองใส่เหตุผล</li>
+    <li>แบบฝึกหัด 5: ย้ายโน้ตไปหลังข้อความอีกบรรทัด</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>โน้ตวางได้ที่ <code>left</code>, <code>right</code> หรือ <code>over</code></li>
+    <li>โน้ตหลายบรรทัดใช้ <code>note</code> และ <code>end note</code></li>
+    <li>โน้ตไม่เปลี่ยนลำดับข้อความ</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>แผนภาพ Use Case คือรายการ “สิ่งที่ระบบทำได้”</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดงฟังก์ชันที่ผู้ใช้ต้องการอย่างชัดเจน</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>actor</code> สำหรับผู้ใช้</li>
+    <li>ใช้ <code>(UseCase)</code> สำหรับฟังก์ชัน</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ล็อกอิน ค้นหา ชำระเงิน ฯลฯ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนผู้ใช้เป็น <code>Teacher</code> และเปลี่ยน use case เป็น “create quiz”</li>
+    <li>แบบฝึกหัด 2: เพิ่ม use case ที่สองเพื่อแสดงอีกฟังก์ชันหนึ่ง</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนชื่อ use case และ actor</li>
+    <li>แบบฝึกหัด 4: เพิ่ม actor ที่สองและเชื่อมกับ use case หนึ่งตัว</li>
+    <li>แบบฝึกหัด 5: เปลี่ยน use case เป็นสถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>Use case เขียนในวงเล็บ: <code>(Login)</code></li>
+    <li>Actor เป็นรูปคน: <code>actor User</code></li>
+    <li>เชื่อม actor กับ use case ด้วยเส้น</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>แสดงการ include หรือ extend ระหว่าง use case</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>ทำเครื่องหมายขั้นตอนที่ใช้ร่วมกันหรือเป็นทางเลือก</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code><<include>></code> สำหรับ “ต้องมีเสมอ”</li>
+    <li>ใช้ <code><<extend>></code> สำหรับ “เป็นทางเลือก”</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ล็อกอินต้องมีการยืนยันเสมอ; การชำระเงินอาจมีส่วนลดแบบ extend</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยน use case เป็นตัวอย่างของคุณ</li>
+    <li>แบบฝึกหัด 2: สลับ include กับ extend</li>
+    <li>แบบฝึกหัด 3: เพิ่ม use case อีกตัวแล้ว include เข้าไป</li>
+    <li>แบบฝึกหัด 4: กลับทิศลูกศรและอัปเดตข้อความ</li>
+    <li>แบบฝึกหัด 5: เปลี่ยนข้อความความสัมพันธ์เป็นคำของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>รูปแบบ Include: <code>(A) .> (B) : <<include>></code></li>
+    <li>รูปแบบ Extend: <code>(A) .> (B) : <<extend>></code></li>
+    <li>ใช้ลูกศรเส้นประ</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>แผนภาพ Class อธิบายแอตทริบิวต์และเมธอด</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>จัดโครงสร้างข้อมูลให้เป็นระเบียบ</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>class</code> เพื่อประกาศคลาส</li>
+    <li>เขียนแอตทริบิวต์และเมธอดไว้ในวงเล็บปีกกา</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ออกแบบโมเดลข้อมูลของโปรแกรม</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนชื่อคลาสเป็นชื่อที่ชอบ เช่น <code>Book</code></li>
+    <li>แบบฝึกหัด 2: เพิ่มแอตทริบิวต์หรือเมธอดหนึ่งตัว</li>
+    <li>แบบฝึกหัด 3: ย่อชื่อฟิลด์หรือแปลเป็นภาษาไทย</li>
+    <li>แบบฝึกหัด 4: เพิ่มคลาสที่สองและแอตทริบิวต์สองตัว</li>
+    <li>แบบฝึกหัด 5: เปลี่ยนเมธอดให้เป็นการกระทำของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>รูปแบบคลาส: <code>class Name { ... }</code></li>
+    <li>แอตทริบิวต์คือฟิลด์ เมธอดมี <code>()</code></li>
+    <li>คลาสว่างก็ใช้ได้</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>ตัวอย่างนี้เพิ่มเมธอดและชนิดค่าที่คืนกลับ</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>อธิบายว่าคลาสทำอะไรได้บ้าง</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>เมธอดเขียนเป็น <code>name(): type</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>อธิบาย API หรือกฎธุรกิจ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เพิ่มเมธอดที่มีชนิดค่าที่คืนกลับ</li>
+    <li>แบบฝึกหัด 2: เปลี่ยนชื่อเมธอดเป็นการกระทำของคุณเอง</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนชนิดค่าที่คืนกลับเป็น <code>bool</code> หรือ <code>string</code></li>
+    <li>แบบฝึกหัด 4: เพิ่มเมธอดอีกหนึ่งตัวและทำให้หนึ่งตัวเป็น private</li>
+    <li>แบบฝึกหัด 5: ใช้สถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>เมธอดมีพารามิเตอร์ได้: <code>name(param): type</code></li>
+    <li>ชนิดค่าที่คืนกลับใช้โคลอน</li>
+    <li>เมธอดมีสัญลักษณ์การเข้าถึงได้</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>ตัวอย่างนี้แสดงการเข้าถึงแบบ public, private และ protected</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แยกสิ่งที่คนภายนอกเข้าถึงได้ออกจากรายละเอียดภายใน</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li><code>+</code> คือ public, <code>-</code> คือ private, <code>#</code> คือ protected</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ซ่อนรายละเอียดภายใน</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: ทำฟิลด์หนึ่งตัวเป็น private</li>
+    <li>แบบฝึกหัด 2: เพิ่มฟิลด์แบบ protected</li>
+    <li>แบบฝึกหัด 3: ทำเมธอดหนึ่งตัวเป็น public</li>
+    <li>แบบฝึกหัด 4: เพิ่มเมธอดแบบ private</li>
+    <li>แบบฝึกหัด 5: เปลี่ยนชื่อให้เป็นตัวอย่างของคุณ</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>สัญลักษณ์การเข้าถึงวางก่อนฟิลด์/เมธอด</li>
+    <li>สัญลักษณ์ที่ใช้บ่อย: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code></li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>ตัวอย่างนี้แสดงตัวบ่งชี้ abstract และ static</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แยก “ต้องนำไปทำต่อ” กับ “เครื่องมือร่วม”</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>Abstract ใช้ตัวเอียงหรือ <code>{abstract}</code></li>
+    <li>Static ใช้ <code>{static}</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>คลาสฐานและเมธอดยูทิลิตี</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: ทำเมธอดหนึ่งตัวเป็น static</li>
+    <li>แบบฝึกหัด 2: เปลี่ยนชื่อคลาสเป็นตัวอย่างของคุณ</li>
+    <li>แบบฝึกหัด 3: เพิ่มเมธอดแบบ abstract</li>
+    <li>แบบฝึกหัด 4: ใช้รูปแบบการแสดง abstract แบบอื่น</li>
+    <li>แบบฝึกหัด 5: ใช้สถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> แสดงคลาสหรือเมธอดแบบ abstract</li>
+    <li><code>{static}</code> แสดงเมธอดแบบ static</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>ตัวอย่างนี้แสดงการสืบทอด (inheritance)</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดงคลาสแม่และคลาสลูก</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>--|></code> สำหรับ inheritance</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>การจัดหมวดหมู่สัตว์</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนชื่อคลาสเป็นตัวอย่างของคุณ</li>
+    <li>แบบฝึกหัด 2: เพิ่มเส้น inheritance อีกเส้น</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนชื่อคลาสแม่</li>
+    <li>แบบฝึกหัด 4: เพิ่มคลาสลูกใหม่</li>
+    <li>แบบฝึกหัด 5: ใช้สถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> หมายถึง inheritance</li>
+    <li>ลูกศรชี้ไปที่คลาสแม่</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>ตัวอย่างนี้แสดง composition (การเป็นเจ้าของแบบแน่นแฟ้น)</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดงส่วนที่ต้องมีอยู่พร้อมกับทั้งหมดเสมอ</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>*--</code> สำหรับ composition</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>บ้านต้องมีห้องเสมอ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็นตัวอย่างของคุณ</li>
+    <li>แบบฝึกหัด 2: เปลี่ยน composition เป็น aggregation แล้วเปรียบเทียบ</li>
+    <li>แบบฝึกหัด 3: เพิ่มเส้น composition อีกเส้น</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนข้อความกำกับความสัมพันธ์</li>
+    <li>แบบฝึกหัด 5: สลับทิศทางและสังเกตผล</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> หมายถึง composition</li>
+    <li>สัญลักษณ์เพชรทึบอยู่ฝั่งเจ้าของ</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>ตัวอย่างนี้แสดง aggregation (การเป็นเจ้าของแบบหลวม)</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดงส่วนที่สามารถอยู่ได้อย่างอิสระ</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>o--</code> สำหรับ aggregation</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>คลาสหนึ่งและนักเรียนของมัน</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็นตัวอย่างของคุณ</li>
+    <li>แบบฝึกหัด 2: เปลี่ยน aggregation เป็น composition แล้วเปรียบเทียบ</li>
+    <li>แบบฝึกหัด 3: เพิ่มเส้น aggregation อีกเส้น</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนเป็นสถานการณ์อื่น</li>
+    <li>แบบฝึกหัด 5: สลับทิศทางและเพิ่มคำอธิบาย</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> หมายถึง aggregation</li>
+    <li>สัญลักษณ์เพชรโปร่งอยู่ฝั่งเจ้าของ</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>แผนภาพ Object แสดง “อินสแตนซ์ของคลาส”</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดงข้อมูลในช่วงเวลาหนึ่ง</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>object</code> เพื่อกำหนดอินสแตนซ์</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>แสดงค่าฟิลด์ของออบเจ็กต์</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนชื่อออบเจ็กต์เป็นตัวอย่างของคุณ</li>
+    <li>แบบฝึกหัด 2: เพิ่มออบเจ็กต์อีกตัว</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนฟิลด์เป็นข้อมูลของคุณ</li>
+    <li>แบบฝึกหัด 4: เชื่อมออบเจ็กต์สองตัวเข้าด้วยกัน</li>
+    <li>แบบฝึกหัด 5: ใช้สถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>รูปแบบออบเจ็กต์: <code>object name { ... }</code></li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>แผนภาพ Activity แสดงขั้นตอนในกระบวนการ</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>อธิบายเวิร์กโฟลว์</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>start</code> และ <code>stop</code></li>
+    <li>การกระทำเขียนเป็น <code>:action;</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>กระบวนการแอป การจัดการคำสั่งซื้อ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนการกระทำเป็นเวิร์กโฟลว์ของคุณ</li>
+    <li>แบบฝึกหัด 2: เพิ่มการกระทำหนึ่งรายการ</li>
+    <li>แบบฝึกหัด 3: ย้ายตำแหน่ง start/stop</li>
+    <li>แบบฝึกหัด 4: เพิ่มจุดตัดสินใจ</li>
+    <li>แบบฝึกหัด 5: ใช้สถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>ลำดับไหลจากบนลงล่าง</li>
+    <li>การกระทำเขียนในรูป <code>: ... ;</code></li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>แสดงกิ่งการตัดสินใจ</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>เห็นเส้นทางต่าง ๆ ชัดเจน</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ตรวจฟอร์ม, ชำระเงินสำเร็จ/ล้มเหลว</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเงื่อนไขเป็นของคุณ</li>
+    <li>แบบฝึกหัด 2: เพิ่มกิ่ง else ที่สอง</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนข้อความการกระทำเป็นคำของคุณ</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนข้อความ if ให้เป็นสถานการณ์ของคุณ</li>
+    <li>แบบฝึกหัด 5: สร้างกระบวนการของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> เริ่มกิ่งหนึ่ง</li>
+    <li><code>else</code> สลับไปอีกกิ่ง</li>
+    <li><code>endif</code> จบ block</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>แสดงการทำงานซ้ำ</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>อธิบายลูป</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>while</code> และ <code>endwhile</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ตรวจสถานะซ้ำ ๆ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเงื่อนไขเป็นของคุณ</li>
+    <li>แบบฝึกหัด 2: เพิ่มการกระทำในลูป</li>
+    <li>แบบฝึกหัด 3: ใช้สถานการณ์อื่น</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนแนวคิด while เป็น until</li>
+    <li>แบบฝึกหัด 5: เพิ่มการกระทำเริ่ม/จบ</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> เริ่มลูป</li>
+    <li><code>endwhile</code> จบลูป</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>Swimlane จัดกลุ่มขั้นตอนตามความรับผิดชอบ</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดงว่าใครรับผิดชอบแต่ละขั้นตอน</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>|Role|</code> เพื่อสลับเลน</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>เวิร์กโฟลว์ข้ามทีม</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เพิ่มบทบาทของ swimlane ใหม่</li>
+    <li>แบบฝึกหัด 2: ย้ายการกระทำไปยังเลนอื่น</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนชื่อเลนเป็นบทบาทของคุณ</li>
+    <li>แบบฝึกหัด 4: เพิ่มการกระทำอีกหนึ่งรายการ</li>
+    <li>แบบฝึกหัด 5: ใช้กระบวนการของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>ใช้ <code>|Name|</code> เพื่อเปลี่ยนเลน</li>
+    <li>การกระทำอยู่ในเลนปัจจุบัน</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>แผนภาพ Component อธิบายโมดูล</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดงโครงสร้างโมดูล</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>component</code> เพื่อประกาศคอมโพเนนต์</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ชั้นสถาปัตยกรรมของระบบ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เพิ่มคอมโพเนนต์หนึ่งตัว</li>
+    <li>แบบฝึกหัด 2: เปลี่ยนชื่อคอมโพเนนต์</li>
+    <li>แบบฝึกหัด 3: เพิ่มเส้นเชื่อม</li>
+    <li>แบบฝึกหัด 4: ใช้สถานการณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 5: จัดลำดับคอมโพเนนต์ใหม่</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>คอมโพเนนต์ใช้ <code>component</code></li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>จัดกลุ่มคอมโพเนนต์ไว้ในแพ็กเกจ</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>จัดระเบียบระบบขนาดใหญ่</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>package</code> ครอบคอมโพเนนต์</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>จัดกลุ่มตามฟีเจอร์</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เพิ่มแพ็กเกจหนึ่งชุด</li>
+    <li>แบบฝึกหัด 2: ย้ายคอมโพเนนต์ไปยังแพ็กเกจอื่น</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนชื่อแพ็กเกจ</li>
+    <li>แบบฝึกหัด 4: เพิ่มคอมโพเนนต์อีกตัว</li>
+    <li>แบบฝึกหัด 5: ใช้สถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>รูปแบบแพ็กเกจ: <code>package Name { ... }</code></li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>แผนภาพ Deployment แสดงเซิร์ฟเวอร์และโหนด</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>อธิบายการติดตั้งระบบ</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>node</code> เพื่อกำหนดโหนด</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>สถาปัตยกรรมการติดตั้งบนคลาวด์</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เพิ่มโหนดหนึ่งตัว</li>
+    <li>แบบฝึกหัด 2: เปลี่ยนชื่อโหนด</li>
+    <li>แบบฝึกหัด 3: เพิ่มเส้นเชื่อม</li>
+    <li>แบบฝึกหัด 4: ใช้สถานการณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 5: เปลี่ยนโหนดเป็นอุปกรณ์ของคุณ</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>โหนดใช้ <code>node</code></li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>แผนภาพ State แสดงการเปลี่ยนสถานะ</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>อธิบายการเปลี่ยนสถานะ</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>state</code> เพื่อกำหนดสถานะ</li>
+    <li>เชื่อมสถานะด้วยลูกศร</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>สถานะคำสั่งซื้อ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: ใช้ชื่อสถานะของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มสถานะอีกตัว</li>
+    <li>แบบฝึกหัด 3: เพิ่มการเปลี่ยนอีกเส้น</li>
+    <li>แบบฝึกหัด 4: ใช้กระบวนการของคุณเอง</li>
+    <li>แบบฝึกหัด 5: เปลี่ยนชื่อสถานะหนึ่งตัว</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>สถานะใช้ <code>state</code></li>
+    <li>การเปลี่ยนสถานะใช้ <code>--> </code></li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>สถานะแบบ Composite มีสถานะย่อยหลายตัว</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>จัดระเบียบสถานะที่ซับซ้อน</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>state Name { ... }</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>เวิร์กโฟลว์ที่ซับซ้อน</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เพิ่มสถานะย่อย</li>
+    <li>แบบฝึกหัด 2: ใช้สถานการณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 3: เพิ่มเส้นการเปลี่ยน</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนชื่อสถานะ Composite</li>
+    <li>แบบฝึกหัด 5: ใช้กระบวนการของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>สถานะแบบ Composite ใช้วงเล็บปีกกา</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>เงื่อนไข Guard ทำให้การเปลี่ยนสถานะชัดเจนขึ้น</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>กำหนดเงื่อนไขของการเปลี่ยนสถานะ</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>[condition]</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>เงื่อนไขการเปลี่ยนสถานะ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: ใช้เงื่อนไขของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มเงื่อนไข Guard อีกหนึ่งรายการ</li>
+    <li>แบบฝึกหัด 3: ใช้กระบวนการของคุณเอง</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนข้อความบนเส้นการเปลี่ยน</li>
+    <li>แบบฝึกหัด 5: ใช้ตัวอย่างของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>เงื่อนไข Guard อยู่ในวงเล็บเหลี่ยม</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>แผนภาพ Timing แสดงการเปลี่ยนสัญญาณ</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>อธิบายสัญญาณตามเวลา</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้การตั้งค่า <code>concise</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>การเปลี่ยนสัญญาณฮาร์ดแวร์</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็นสัญญาณของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มเส้นสัญญาณอีกเส้น</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนชื่อสัญญาณ</li>
+    <li>แบบฝึกหัด 4: ใช้ตัวอย่างของคุณเอง</li>
+    <li>แบบฝึกหัด 5: ใช้สถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>แผนภาพ Timing ใช้ <code>concise</code> ได้</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>แผนภาพ JSON แสดงโครงสร้างข้อมูล</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>ทำให้โครงสร้าง JSON อ่านง่ายขึ้น</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startjson</code> และ <code>@endjson</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>รูปแบบการตอบกลับของ API</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็น JSON ของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มฟิลด์หนึ่งตัว</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนค่าของข้อมูล</li>
+    <li>แบบฝึกหัด 4: ใช้สถานการณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 5: ใช้ข้อมูลของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>JSON ต้องอยู่ใน <code>@startjson</code></li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>แผนภาพ YAML แสดงโครงสร้างข้อมูล</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>ทำให้โครงสร้าง YAML อ่านง่ายขึ้น</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startyaml</code> และ <code>@endyaml</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ไฟล์ตั้งค่า</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็น YAML ของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มฟิลด์หนึ่งตัว</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนเนื้อหาข้อมูล</li>
+    <li>แบบฝึกหัด 4: ใช้สถานการณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 5: ใช้ข้อมูลของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>YAML ต้องอยู่ใน <code>@startyaml</code></li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>แผนภาพ EBNF แสดงกฎไวยากรณ์</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดงโครงสร้างไวยากรณ์อย่างชัดเจน</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startebnf</code> และ <code>@endebnf</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>อธิบายไวยากรณ์ของภาษาโปรแกรม</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็นไวยากรณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มกฎอีกหนึ่งข้อ</li>
+    <li>แบบฝึกหัด 3: ใช้ตัวอย่างของคุณเอง</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนสัญลักษณ์</li>
+    <li>แบบฝึกหัด 5: ใช้ไวยากรณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>EBNF ใช้ <code>@startebnf</code></li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>แผนภาพ Regex แสดงรูปแบบของเรกซ์เพรสชัน</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>อธิบายแพตเทิร์นของ regex</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startregex</code> และ <code>@endregex</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>เอกสารอธิบาย regex</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็น regex ของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มกฎอีกหนึ่งข้อ</li>
+    <li>แบบฝึกหัด 3: ใช้ตัวอย่างของคุณเอง</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนเนื้อหา</li>
+    <li>แบบฝึกหัด 5: ใช้ไวยากรณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>Regex ใช้ <code>@startregex</code></li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>แผนภาพโทโพโลยีเครือข่ายแบบง่าย</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดงการเชื่อมต่อเครือข่าย</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startnwdiag</code> และ <code>@endnwdiag</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>เราเตอร์และสวิตช์</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็นอุปกรณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มอุปกรณ์หนึ่งตัว</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนการเชื่อมต่อ</li>
+    <li>แบบฝึกหัด 4: ใช้สถานการณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 5: ใช้ตัวอย่างของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>nwdiag ใช้ <code>@startnwdiag</code></li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>แผนภาพไวร์เฟรมของหน้าจอ UI</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>สเก็ตช์หน้าจอได้อย่างรวดเร็ว</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startsalt</code> และ <code>@endsalt</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ต้นแบบหน้าจอ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็นหน้าจอของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มปุ่มหนึ่งปุ่ม</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนข้อความ</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนเลย์เอาต์</li>
+    <li>แบบฝึกหัด 5: ใช้สถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>Salt ใช้ <code>@startsalt</code></li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>แผนภาพสถาปัตยกรรมองค์กร</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>อธิบายสถาปัตยกรรมองค์กร</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startarchimate</code> และ <code>@endarchimate</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>สถาปัตยกรรมระบบขององค์กร</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็นสถาปัตยกรรมของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มคอมโพเนนต์หนึ่งตัว</li>
+    <li>แบบฝึกหัด 3: ใช้สถานการณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนชื่อรายการ</li>
+    <li>แบบฝึกหัด 5: ใช้ตัวอย่างของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>Archimate ใช้ <code>@startarchimate</code></li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>แผนภาพโฟลว์ของ SDL</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>อธิบายกระบวนการ</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startsdl</code> และ <code>@endsdl</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>โฟลว์การสื่อสาร</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็นกระบวนการของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มขั้นตอนหนึ่งขั้น</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนชื่อรายการ</li>
+    <li>แบบฝึกหัด 4: ใช้สถานการณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 5: ใช้ตัวอย่างของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>SDL ใช้ <code>@startsdl</code></li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>แผนภาพ Ditaa ด้วย ASCII art</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>วาดด้วยข้อความได้</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startditaa</code> และ <code>@endditaa</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>สเก็ตช์อย่างรวดเร็ว</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็น ASCII art ของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มบล็อกอีกหนึ่งบล็อก</li>
+    <li>แบบฝึกหัด 3: เปลี่ยนตัวอักษร</li>
+    <li>แบบฝึกหัด 4: ใช้สถานการณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 5: ใช้ตัวอย่างของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>Ditaa ใช้ <code>@startditaa</code></li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>แผนภูมิ Gantt แสดงตารางเวลาในช่วงเวลา</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>วางแผนไทม์ไลน์ของโครงการ</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startgantt</code> และ <code>@endgantt</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ตารางงานของโครงการ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็นตารางของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มงานหนึ่งงาน</li>
+    <li>แบบฝึกหัด 3: ใช้ตัวอย่างของคุณเอง</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนวันที่</li>
+    <li>แบบฝึกหัด 5: ใช้สถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>Gantt ใช้ <code>@startgantt</code></li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>ไทม์ไลน์ของเหตุการณ์</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>จัดเรียงเหตุการณ์ตามเวลา</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startchronology</code> และ <code>@endchronology</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ประวัติเหตุการณ์</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนเป็นเหตุการณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มเหตุการณ์อีกหนึ่งเหตุการณ์</li>
+    <li>แบบฝึกหัด 3: ใช้ตัวอย่างของคุณเอง</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนวันที่</li>
+    <li>แบบฝึกหัด 5: ใช้สถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>Chronology ใช้ <code>@startchronology</code></li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>MindMap แสดงลำดับชั้นของไอเดีย</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>จัดระเบียบความคิด</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startmindmap</code> และ <code>@endmindmap</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ระดมความคิด</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: ใช้หัวข้อของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มกิ่งก้าน</li>
+    <li>แบบฝึกหัด 3: ใช้ตัวอย่างของคุณเอง</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนข้อความ</li>
+    <li>แบบฝึกหัด 5: ใช้สถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>MindMap ใช้ <code>@startmindmap</code></li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>แผนภาพโครงสร้างงาน (WBS)</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แบ่งงานเป็นส่วนย่อย ๆ</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startwbs</code> และ <code>@endwbs</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>การแบ่งงานของโครงการ</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: ใช้งานของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มงานย่อย</li>
+    <li>แบบฝึกหัด 3: ใช้ตัวอย่างของคุณเอง</li>
+    <li>แบบฝึกหัด 4: เปลี่ยนข้อความ</li>
+    <li>แบบฝึกหัด 5: ใช้สถานการณ์ของคุณเอง</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>WBS ใช้ <code>@startwbs</code></li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>ใช้ AsciiMath สำหรับสูตร</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>เขียนสูตรได้รวดเร็ว</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>@startmath</code> และ <code>@endmath</code></li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>แสดงสูตรคณิตศาสตร์</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: ใช้สูตรของคุณเอง</li>
+    <li>แบบฝึกหัด 2: เพิ่มสูตรอีกหนึ่งสูตร</li>
+    <li>แบบฝึกหัด 3: ใช้ตัวอย่างของคุณเอง</li>
+    <li>แบบฝึกหัด 4: ใช้สถานการณ์ของคุณเอง</li>
+    <li>แบบฝึกหัด 5: เปลี่ยนสัญลักษณ์</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>รองรับสัญลักษณ์ทั่วไปของ AsciiMath</li>
+    <li>ครอบด้วย <code>@startmath</code> และ <code>@endmath</code></li>
+    <li><code>^</code> หมายถึงยกกำลัง, <code>/</code> หมายถึงหาร</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>แผนภาพ ER อธิบายตารางฐานข้อมูล</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>ออกแบบโครงสร้างฐานข้อมูล</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol>
+    <li>ใช้ <code>entity</code> เพื่อกำหนดตาราง</li>
+    <li>ใช้ <code>*</code> เพื่อทำเครื่องหมายคีย์หลัก</li>
+  </ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ออกแบบตารางผู้ใช้</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยนชื่อเป็น <code>Book</code> และฟิลด์เป็น <code>title</code>, <code>author</code></li>
+    <li>แบบฝึกหัด 2: เพิ่มฟิลด์หนึ่งตัว และเปลี่ยนชนิดหนึ่งเป็น <code>int</code></li>
+    <li>แบบฝึกหัด 3: เปลี่ยนชื่อฟิลด์คีย์หลักและชนิดของมัน</li>
+    <li>แบบฝึกหัด 4: เพิ่มตารางที่สองพร้อมสองฟิลด์</li>
+    <li>แบบฝึกหัด 5: เพิ่มเส้นคั่น และจัดลำดับฟิลด์ใหม่</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li>เส้นคั่น <code>--</code> ใช้แยกส่วน</li>
+    <li><code>*</code> แสดงฟิลด์คีย์หลัก</li>
+    <li>รูปแบบฟิลด์: <code>name: type</code></li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>ตัวอย่างนี้แสดงความสัมพันธ์ระหว่างตาราง</p>
+  <h3>ทำไมถึงใช้</h3>
+  <ul><li>แสดง one-to-many หรือ many-to-many</li></ul>
+  <h3>วิธีใช้</h3>
+  <ol><li><code>User ||--o{ Post</code> หมายถึง one-to-many</li></ol>
+  <h3>ตัวอย่างการใช้งาน</h3>
+  <ul><li>ผู้ใช้หนึ่งคนมีหลายโพสต์</li></ul>
+  <h3>แบบฝึกหัด (ง่ายสำหรับเด็ก)</h3>
+  <ol>
+    <li>แบบฝึกหัด 1: เปลี่ยน <code>User</code> เป็น <code>Student</code> และ <code>Post</code> เป็น <code>Homework</code> แล้วอัปเดตป้ายข้อความ</li>
+    <li>แบบฝึกหัด 2: เปลี่ยน one-to-many เป็น one-to-one แล้วอัปเดตคำอธิบาย</li>
+    <li>แบบฝึกหัด 3: เพิ่มความสัมพันธ์อีกเส้นกับตารางอื่นและเปลี่ยนชื่อ</li>
+    <li>แบบฝึกหัด 4: สลับทิศทางและปรับชื่อให้เหมาะสม</li>
+    <li>แบบฝึกหัด 5: ใช้ “one-to-many” แล้วใส่สถานการณ์ของคุณ</li>
+  </ol>
+  <h3>กฎไวยากรณ์ PlantUML (รายการครบถ้วน)</h3>
+  <ul class="rules">
+    <li><code>||</code> และ <code>o{</code> แสดงคาร์ดินัลลิตี้</li>
+    <li><code>||--o{</code> มักหมายถึง one-to-many</li>
+    <li>เส้นเชื่อมสองตารางเข้าด้วยกัน</li>
+  </ul>
+</div>

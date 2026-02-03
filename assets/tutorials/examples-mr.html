@@ -1,0 +1,929 @@
+<h1>Examples ट्युटोरियल (सोपा)</h1>
+<p class="note">
+  प्रत्येक उदाहरण काय दाखवते, का उपयुक्त आहे, कसे वापरायचे,
+  सामान्य उपयोग, आणि PlantUML नियम (पूर्ण, उपयोगी यादींसह)
+  सोप्या भाषेत समजावते.
+</p>
+
+<h2>अनुक्रमणिका</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>हे उदाहरण “A कडून B कडे संदेश” दाखवते.</p>
+  <h3>का वापरावे</h3>
+  <ul>
+    <li>संवादाचा क्रम स्पष्ट होतो.</li>
+    <li>“कोण आधी बोलतो” हे कळते.</li>
+  </ul>
+  <h3>कसे वापरावे</h3>
+  <ol>
+    <li><code>@startuml</code> ने सुरू करून <code>@enduml</code> ने संपवा.</li>
+    <li><code>Alice -> Bob: Message</code> असे लिहा.</li>
+  </ol>
+  <h3>उदाहरण उपयोग</h3>
+  <ul>
+    <li>लॉगिन फ्लो: User → System.</li>
+    <li>चॅटबॉट संवाद.</li>
+  </ul>
+  <h3>सराव</h3>
+  <ol>
+    <li>नावे बदलून रोजच्या संभाषणाचे उदाहरण लिहा.</li>
+    <li><code>participant</code> जोडून दोन संदेश लिहा.</li>
+    <li>दोन ओळींमध्ये विभागा.</li>
+    <li>पहिला बोलणारा बदला.</li>
+    <li>तिसरा पात्र जोडा.</li>
+  </ol>
+  <h3>PlantUML नियम</h3>
+  <ul class="rules">
+    <li><code>@startuml</code> ते <code>@enduml</code> आवश्यक.</li>
+    <li><code>A -> B</code> कॉल, <code>A --> B</code> उत्तर.</li>
+    <li>कोलन नंतर मजकूर.</li>
+    <li>वेळ वरून खाली.</li>
+    <li>मजकूर ऐच्छिक.</li>
+    <li>स्पेस असलेल्या नावांना quotes.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>रिक्वेस्ट‑रिस्पॉन्स दाखवतो.</p>
+  <h3>कसे वापरावे</h3>
+  <ol>
+    <li><code>A -> B</code> रिक्वेस्ट.</li>
+    <li><code>B --> A</code> उत्तर.</li>
+  </ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>Client/Server करा.</li>
+    <li>“query/result” लिहा.</li>
+    <li>आणखी एक जोडी जोडा.</li>
+    <li>पात्र बदला.</li>
+    <li>उत्तरापूर्वी self-message जोडा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules">
+    <li><code>--></code> सामान्यतः उत्तर दाखवते.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>एकाच पात्राकडून स्वतःलाच संदेश.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>Alice -> Alice: Process</code></li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>नाव बदला.</li>
+    <li>“डेटा वाचा” असा मजकूर.</li>
+    <li>आणखी एक self-message जोडा.</li>
+    <li>Robot नाव वापरा.</li>
+    <li>start/done संदेश जोडा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>Role -> Role</code> शक्य आहे.</li></ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>Actor, boundary, control, database प्रकार.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>User ला Student करा.</li>
+    <li>boundary App जोडा.</li>
+    <li>DB ला Books करा.</li>
+    <li>control जोडा.</li>
+    <li>क्रम बदला.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>प्रकार फक्त आयकॉन बदलतो.</li></ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>रंग/स्टाइलने महत्त्वाचे दाखवा.</p>
+  <h3>कसे वापरावे</h3>
+  <ol>
+    <li><code>skinparam</code> वापरा.</li>
+    <li>रंग: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>रंग बदला.</li>
+    <li>“start” संदेश लिहा.</li>
+    <li>तिसरा पात्र जोडा.</li>
+    <li>alignment बदला.</li>
+    <li>style नाव वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>रंग नाव किंवा hex वापरता येतो.</li></ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>“जर/नाहीतर” निवडी दाखवतो.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>alt</code> ... <code>else</code> ... <code>end</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>अटी बदला.</li>
+    <li>तिसरी शाखा जोडा.</li>
+    <li>alt शीर्षक बदला.</li>
+    <li>प्रत्येक शाखेत ओळ जोडा.</li>
+    <li>retry शाखा जोडा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>end</code> आवश्यक.</li></ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>पुन्हा‑पुन्हा होणारी क्रिया.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>loop</code> ... <code>end</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>loop लेबल बदला.</li>
+    <li>आत आणखी संदेश.</li>
+    <li>पात्र बदला.</li>
+    <li>अट लिहा.</li>
+    <li>loop बाहेर संदेश जोडा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>loop</code> ब्लॉक.</li></ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>समांतर कामे दाखवतो.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>par</code> ... <code>else</code> ... <code>end</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>Email/SMS शाखा करा.</li>
+    <li>प्रत्येक शाखेत ओळ जोडा.</li>
+    <li>तिसरी शाखा जोडा.</li>
+    <li>एका शाखेला “slow” करा.</li>
+    <li>आधी/नंतर संदेश जोडा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>par</code> समांतर ब्लॉक.</li></ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>पात्र कधी सक्रिय आहे ते दाखवते.</p>
+  <h3>कसे वापरावे</h3>
+  <ol>
+    <li><code>activate Role</code>, <code>deactivate Role</code>.</li>
+  </ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>Role ला Server करा.</li>
+    <li>request जोडा.</li>
+    <li>मधला संदेश जोडा.</li>
+    <li>आणखी role जोडा.</li>
+    <li>activate/deactivate हलवा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>activate/deactivate जोडीने.</li></ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>नोट्स जोडणे.</p>
+  <h3>कसे वापरावे</h3>
+  <ol>
+    <li><code>note left/right</code>.</li>
+    <li><code>end note</code> ने संपवा.</li>
+  </ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>नोट मजकूर बदला.</li>
+    <li>दिश बदला.</li>
+    <li>आणखी नोट जोडा.</li>
+    <li>दोन ओळींची नोट.</li>
+    <li>स्थान बदला.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>left/right/over</code> वापरता येते.</li></ul>
+</div>
+
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>सिस्टमची कामे दाखवते.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>actor</code> आणि <code>(UseCase)</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>Actor ला Teacher करा.</li>
+    <li>नवीन use case जोडा.</li>
+    <li>नावे बदला.</li>
+    <li>दुसरा actor जोडा.</li>
+    <li>तुमचे उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>(Login)</code> असे लिहा.</li></ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>Include/Extend संबंध.</p>
+  <h3>कसे वापरावे</h3>
+  <ol>
+    <li><code><<include>></code> नेहमी होते.</li>
+    <li><code><<extend>></code> वैकल्पिक.</li>
+  </ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>नावे बदला.</li>
+    <li>include/extend बदलून पहा.</li>
+    <li>नवीन use case जोडा.</li>
+    <li>दिश बदला.</li>
+    <li>वर्णन बदला.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules">
+    <li><code>(A) .> (B) : <<include>></code>.</li>
+    <li><code>(A) .> (B) : <<extend>></code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>क्लासमध्ये fields आणि methods असतात.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>class Name { ... }</code></li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>class नाव बदला.</li>
+    <li>field/method जोडा.</li>
+    <li>field नावे बदला.</li>
+    <li>दुसरा class जोडा.</li>
+    <li>method बदला.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>method मध्ये <code>()</code>.</li></ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>methods आणि return type.</p>
+  <h3>सराव</h3>
+  <ol>
+    <li>return type method जोडा.</li>
+    <li>method नाव बदला.</li>
+    <li>return type बदला.</li>
+    <li>private method जोडा.</li>
+    <li>तुमचे उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>name(): type</code> फॉरमॅट.</li></ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>public/private/protected.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>+</code>, <code>-</code>, <code>#</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>private field करा.</li>
+    <li>protected field जोडा.</li>
+    <li>public method करा.</li>
+    <li>private method जोडा.</li>
+    <li>नावे बदला.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>चिन्हे field/method आधी येतात.</li></ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>abstract/static दर्शवते.</p>
+  <h3>सराव</h3>
+  <ol>
+    <li>static method करा.</li>
+    <li>class नाव बदला.</li>
+    <li>abstract method जोडा.</li>
+    <li>दर्शवण्याची पद्धत बदला.</li>
+    <li>तुमचे उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>{abstract}</code>, <code>{static}</code>.</li></ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>वारसा संबंध.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>Child --|> Parent</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>नावे बदला.</li>
+    <li>आणखी लाइन जोडा.</li>
+    <li>parent नाव बदला.</li>
+    <li>नवीन child जोडा.</li>
+    <li>तुमचे उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>अॅरो parent कडे.</li></ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>मजबूत मालकी संबंध.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>Whole *-- Part</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>उदाहरण बदला.</li>
+    <li>aggregation शी तुलना करा.</li>
+    <li>आणखी लाइन जोडा.</li>
+    <li>लेबल बदला.</li>
+    <li>दिश बदला.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>भरलेला डायमंड मालक बाजूला.</li></ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>कमकुवत मालकी संबंध.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>Whole o-- Part</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>उदाहरण बदला.</li>
+    <li>composition शी तुलना करा.</li>
+    <li>आणखी लाइन जोडा.</li>
+    <li>नावे बदला.</li>
+    <li>दिश बदला.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>रिकामा डायमंड मालक बाजूला.</li></ul>
+</div>
+
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>विशिष्ट instance दाखवते.</p>
+  <h3>सराव</h3>
+  <ol>
+    <li>object नाव बदला.</li>
+    <li>आणखी object जोडा.</li>
+    <li>fields बदला.</li>
+    <li>objects जोडा.</li>
+    <li>तुमचे उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>object name { ... }</code>.</li></ul>
+</div>
+
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>वर्कफ्लो पावले.</p>
+  <h3>कसे वापरावे</h3>
+  <ol>
+    <li><code>start</code> आणि <code>stop</code>.</li>
+    <li>क्रिया: <code>:action;</code>.</li>
+  </ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>क्रिया बदला.</li>
+    <li>एक क्रिया जोडा.</li>
+    <li>start/stop बदला.</li>
+    <li>डिसिजन जोडा.</li>
+    <li>तुमचे उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>फ्लो वरून खाली.</li></ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>निर्णय शाखा.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>अट बदला.</li>
+    <li>आणखी else जोडा.</li>
+    <li>क्रिया मजकूर बदला.</li>
+    <li>if लेबल बदला.</li>
+    <li>तुमचे उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>endif</code> आवश्यक.</li></ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>while लूप.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>while</code> ... <code>endwhile</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>अट बदला.</li>
+    <li>आत क्रिया जोडा.</li>
+    <li>उदाहरण बदला.</li>
+    <li>“until” सारखे समजा.</li>
+    <li>start/stop जोडा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>endwhile</code> शेवट.</li></ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>जबाबदारीनुसार गट.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>|Role|</code> ने lane बदला.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>नवीन lane जोडा.</li>
+    <li>क्रिया दुसऱ्या lane मध्ये हलवा.</li>
+    <li>lane नावे बदला.</li>
+    <li>क्रिया जोडा.</li>
+    <li>तुमचे उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>|Name|</code> lane बदल.</li></ul>
+</div>
+
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>मॉड्यूल्स दाखवते.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>component</code> वापरा.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>component जोडा.</li>
+    <li>नाव बदला.</li>
+    <li>लिंक जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>क्रम बदला.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>component</code> कीवर्ड.</li></ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>Packages मध्ये गट.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>package Name { ... }</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>package जोडा.</li>
+    <li>component हलवा.</li>
+    <li>package नाव बदला.</li>
+    <li>component जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>package मध्ये components.</li></ul>
+</div>
+
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>सर्व्हर/नोड्स.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>node</code> वापरा.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>node जोडा.</li>
+    <li>नाव बदला.</li>
+    <li>लिंक जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>तुमचा device लिहा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>node</code> कीवर्ड.</li></ul>
+</div>
+
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>State बदल दाखवते.</p>
+  <h3>कसे वापरावे</h3>
+  <ol>
+    <li><code>state</code> वापरा.</li>
+    <li>अॅरोने जोडणी.</li>
+  </ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>नावे बदला.</li>
+    <li>नवीन state जोडा.</li>
+    <li>transition जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>नाव बदला.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li><code>--> </code> transition.</li></ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>एका state मध्ये sub‑states.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>state Name { ... }</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>substate जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>transition जोडा.</li>
+    <li>नाव बदला.</li>
+    <li>उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>braces मध्ये composite.</li></ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>transition अटी.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>[condition]</code> वापरा.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>तुमची अट लिहा.</li>
+    <li>आणखी guard जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>transition मजकूर बदला.</li>
+    <li>उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>guards चौकोनात.</li></ul>
+</div>
+
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>सिग्नल टाइमिंग बदल.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>concise</code> वापरा.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>सिग्नल नाव बदला.</li>
+    <li>आणखी सिग्नल जोडा.</li>
+    <li>डेटा बदला.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>तुमचा सिग्नल वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>Timing साठी <code>concise</code>.</li></ul>
+</div>
+
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>JSON डेटा स्ट्रक्चर.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startjson</code> ... <code>@endjson</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>JSON बदला.</li>
+    <li>field जोडा.</li>
+    <li>values बदला.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>डेटा वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>JSON ला <code>@startjson</code> वापरा.</li></ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>YAML डेटा स्ट्रक्चर.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startyaml</code> ... <code>@endyaml</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>YAML बदला.</li>
+    <li>field जोडा.</li>
+    <li>मजकूर बदला.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>डेटा वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>YAML ला <code>@startyaml</code> वापरा.</li></ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>EBNF नियम.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startebnf</code> ... <code>@endebnf</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>व्याकरण बदला.</li>
+    <li>नवीन नियम जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>चिन्हे बदला.</li>
+    <li>तुमचे व्याकरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>EBNF साठी <code>@startebnf</code>.</li></ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Regex पॅटर्न.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startregex</code> ... <code>@endregex</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>regex बदला.</li>
+    <li>नियम जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>मजकूर बदला.</li>
+    <li>व्याकरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>Regex साठी <code>@startregex</code>.</li></ul>
+</div>
+
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>साधा नेटवर्क टोपोलॉजी.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startnwdiag</code> ... <code>@endnwdiag</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>डिव्हाइसेस बदला.</li>
+    <li>डिव्हाइस जोडा.</li>
+    <li>कनेक्शन बदला.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>तुमचा नेटवर्क वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>nwdiag साठी <code>@startnwdiag</code>.</li></ul>
+</div>
+
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>UI वायरफ्रेम.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startsalt</code> ... <code>@endsalt</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>लेआउट बदला.</li>
+    <li>बटण जोडा.</li>
+    <li>मजकूर बदला.</li>
+    <li>क्रम बदला.</li>
+    <li>उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>Salt साठी <code>@startsalt</code>.</li></ul>
+</div>
+
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>एंटरप्राइज आर्किटेक्चर.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startarchimate</code> ... <code>@endarchimate</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>तुमची रचना वापरा.</li>
+    <li>कॉम्पोनंट जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>नावे बदला.</li>
+    <li>आर्किटेक्चर वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>Archimate साठी <code>@startarchimate</code>.</li></ul>
+</div>
+
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>SDL प्रक्रिया फ्लो.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startsdl</code> ... <code>@endsdl</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>प्रक्रिया बदला.</li>
+    <li>स्टेप जोडा.</li>
+    <li>नावे बदला.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>फ्लो वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>SDL साठी <code>@startsdl</code>.</li></ul>
+</div>
+
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>ASCII सह Ditaa ब्लॉक्स.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startditaa</code> ... <code>@endditaa</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>ASCII कला बदला.</li>
+    <li>ब्लॉक जोडा.</li>
+    <li>मजकूर बदला.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>स्केच वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>Ditaa साठी <code>@startditaa</code>.</li></ul>
+</div>
+
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>गँट टाइमलाइन.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startgantt</code> ... <code>@endgantt</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>टास्क बदला.</li>
+    <li>टास्क जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>तारीखा बदला.</li>
+    <li>योजना वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>Gantt साठी <code>@startgantt</code>.</li></ul>
+</div>
+
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>घटनांची टाइमलाइन.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startchronology</code> ... <code>@endchronology</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>घटना बदला.</li>
+    <li>नवीन घटना जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>तारीखा बदला.</li>
+    <li>तुमची टाइमलाइन वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>Chronology साठी <code>@startchronology</code>.</li></ul>
+</div>
+
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>आयडियांची संरचना.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startmindmap</code> ... <code>@endmindmap</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>तुमचा विषय वापरा.</li>
+    <li>ब्रँच जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>मजकूर बदला.</li>
+    <li>आयडिया वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>MindMap साठी <code>@startmindmap</code>.</li></ul>
+</div>
+
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>कामाचे विभाजन.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startwbs</code> ... <code>@endwbs</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>तुमची कामे वापरा.</li>
+    <li>सब‑टास्क जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>मजकूर बदला.</li>
+    <li>प्रोजेक्ट वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules"><li>WBS साठी <code>@startwbs</code>.</li></ul>
+</div>
+
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>AsciiMath सूत्रे.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>@startmath</code> ... <code>@endmath</code>.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>तुमचे सूत्र वापरा.</li>
+    <li>नवीन सूत्र जोडा.</li>
+    <li>उदाहरण वापरा.</li>
+    <li>संदर्भ बदला.</li>
+    <li>चिन्हे बदला.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules">
+    <li>AsciiMath चिन्हे समर्थित.</li>
+    <li><code>@startmath</code> ... <code>@endmath</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>डेटाबेस एंटिटी.</p>
+  <h3>कसे वापरावे</h3>
+  <ol>
+    <li><code>entity</code> वापरा.</li>
+    <li>Primary key साठी <code>*</code>.</li>
+  </ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>टेबल नाव बदला.</li>
+    <li>फील्ड जोडा.</li>
+    <li>primary key बदला.</li>
+    <li>दुसरे टेबल जोडा.</li>
+    <li>फील्ड क्रम बदला.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules">
+    <li><code>--</code> विभाजक.</li>
+    <li><code>*</code> primary key.</li>
+    <li>Field: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>टेबलमधील संबंध.</p>
+  <h3>कसे वापरावे</h3>
+  <ol><li><code>User ||--o{ Post</code> one‑to‑many.</li></ol>
+  <h3>सराव</h3>
+  <ol>
+    <li>User/Post नावे बदला.</li>
+    <li>one‑to‑one करा.</li>
+    <li>नवीन संबंध जोडा.</li>
+    <li>दिश बदलून मजकूर बदला.</li>
+    <li>तुमचे उदाहरण वापरा.</li>
+  </ol>
+  <h3>नियम</h3>
+  <ul class="rules">
+    <li><code>||</code>, <code>o{</code> cardinality.</li>
+    <li><code>||--o{</code> सहसा one‑to‑many.</li>
+  </ul>
+</div>

@@ -1,0 +1,1363 @@
+<h1>Masomo ya Mifano (Rahisi kwa Watoto)</h1>
+<p class="note">
+  Somo hili linaeleza kwa urahisi kila mfano unaochora nini, kwa nini ni muhimu,
+  jinsi ya kuutumia, matumizi ya kawaida, na sheria za sintaksia ya PlantUML
+  (zimekusanywa kama orodha kamili na zinazoweza kutumika).
+</p>
+
+<h2>Yaliyomo</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>Mfano huu unaonyesha “Mtu A anamtumia Mtu B ujumbe mmoja,” kama kupitisha noti.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul>
+    <li>Huonyesha mpangilio wa mazungumzo kwa njia rahisi.</li>
+    <li>Inafaa kwa hadithi za “nani anaongea kwanza, nani anajibu baadaye.”</li>
+  </ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Andika <code>@startuml</code> na <code>@enduml</code>.</li>
+    <li>Tumia <code>Alice -> Bob: Message</code> kuonyesha A anazungumza na B.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul>
+    <li>Mtiririko wa kuingia: User → System → Server.</li>
+    <li>Chatbot: Wewe unauliza → Bot inajibu.</li>
+  </ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha <code>Alice</code> na <code>Bob</code> kuwa majina unayopenda, kisha badilisha ujumbe uwe mazungumzo ya kila siku.</li>
+    <li>Mazoezi 2: Ongeza mstari wa <code>participant</code> kwanza, kisha badilisha ujumbe kuwa “uliza kwanza, kisha jibu.”</li>
+    <li>Mazoezi 3: Gawanya ujumbe kuwa mistari miwili: uliza kisha jibu, na ufupishe mstari mmoja.</li>
+    <li>Mazoezi 4: Badilisha anayeongea kwanza, kisha badilisha maandishi ya ujumbe.</li>
+    <li>Mazoezi 5: Ongeza mtu wa tatu aseme mstari mmoja, kisha ubadilishe jina la mtu mmoja.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Anza na <code>@startuml</code> na umalize kwa <code>@enduml</code>.</li>
+    <li>Washiriki wanaweza kutangazwa kwa <code>participant</code> au kutumika moja kwa moja.</li>
+    <li><code>A -> B</code> ni ujumbe, <code>A --> B</code> ni jibu.</li>
+    <li>Weka maandishi baada ya koloni: <code>A -> B: Hello</code>.</li>
+    <li>Muda huenda kutoka juu kwenda chini.</li>
+    <li>Mistari mingi ya ujumbe huonyesha mazungumzo marefu.</li>
+    <li>Maandishi ya ujumbe yanaweza kuachwa: <code>A -> B</code> ni halali.</li>
+    <li>Majina yenye nafasi yazingatie ndani ya nukuu.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>Mfano huu unaonyesha “ombi na jibu,” kama swali na jibu.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul>
+    <li>Huonyesha kwa uwazi hatua za ombi na jibu.</li>
+  </ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li><code>A -> B</code> ni ombi.</li>
+    <li><code>B --> A</code> ni jibu.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul>
+    <li>API call: Frontend → Backend → kurudisha data.</li>
+  </ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha wahusika kuwa <code>Client</code> na <code>Server</code>, na ujumbe kuwa “omba data / rudisha data.”</li>
+    <li>Mazoezi 2: Badilisha ombi kuwa “query,” na jibu kuwa “query result.”</li>
+    <li>Mazoezi 3: Ongeza jozi nyingine ya ombi/jibu (mistari 4 kwa jumla) na ubadilishe maandishi ya pili.</li>
+    <li>Mazoezi 4: Acha mtu mwingine ajibu, kisha rekebisha maandishi.</li>
+    <li>Mazoezi 5: Ongeza self-message ya “kujiandaa” kabla ya ombi, kisha fanya ombi liwe mahsusi zaidi.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li><code>-></code> hutuma ujumbe.</li>
+    <li><code>--></code> mara nyingi huonyesha jibu.</li>
+    <li>Ongeza maandishi kueleza yaliyomo kwenye jibu.</li>
+    <li>Ombi na jibu mara nyingi huja pamoja lakini si lazima.</li>
+    <li>Tangaza washiriki kwanza ili uwazi uwe zaidi.</li>
+    <li>Muda hutiririka kutoka juu kwenda chini.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>Hii ni “kuongea na wewe mwenyewe,” inaonyesha hatua ya ndani.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul>
+    <li>Huonyesha kazi ya ndani ya kitu bila wengine.</li>
+  </ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul>
+    <li>Hatua za algoriti, hesabu za ndani.</li>
+  </ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha <code>Alice</code> kuwa jina lako (mf. <code>Me</code>) na ubadilishe ujumbe kuwa jambo unalotaka kufanya leo.</li>
+    <li>Mazoezi 2: Badilisha hatua kuwa “soma data,” kisha ongeza <code>Me -> Me: kagua tena</code>.</li>
+    <li>Mazoezi 3: Badilisha ujumbe kuwa “fikiria,” kisha ongeza <code>Me -> Me: andika hoja muhimu</code>.</li>
+    <li>Mazoezi 4: Badilisha jina kuwa <code>Robot</code>, kisha ongeza <code>Robot -> Robot: chaji</code>.</li>
+    <li>Mazoezi 5: Ongeza <code>Me -> Me: start</code> juu na <code>Me -> Me: done</code> chini.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Ncha zote za mshale zinaweza kuwa mshiriki yuleyule.</li>
+    <li>Muundo wa msingi: <code>Role -> Role: Text</code>.</li>
+    <li>Majina yanaweza kutumika bila kutangazwa kabla.</li>
+    <li>Maandishi baada ya koloni ni ya hiari.</li>
+    <li>Self-message nyingi huonyesha hatua nyingi za ndani.</li>
+    <li>Inaweza kuambatana na <code>activate</code> / <code>deactivate</code>.</li>
+    <li>Muda hutiririka kutoka juu kwenda chini.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>Mfano huu unaonyesha ikoni tofauti kwa majukumu tofauti, kama mtu, mfumo, hifadhidata.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Ikoni husaidia kutambua jukumu haraka.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Mtiririko wa kuingia: User → Web → Logic → Database.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha <code>User</code> kuwa <code>Student</code> na ubadilishe ujumbe kuwa “ingia kwa kazi ya nyumbani.”</li>
+    <li>Mazoezi 2: Ongeza <code>boundary App</code>, kisha elekeza mshale kwa App kwanza.</li>
+    <li>Mazoezi 3: Badilisha <code>database DB</code> kuwa <code>database Books</code> na ubadilishe ujumbe.</li>
+    <li>Mazoezi 4: Ongeza jukumu la <code>control</code> na andika mstari mmoja wa mwingiliano.</li>
+    <li>Mazoezi 5: Badilisha mpangilio wa washiriki na rekebisha ujumbe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Aina ya jukumu hubadili mwonekano, si jina.</li>
+    <li>Tumia <code>-></code> kwa mwingiliano.</li>
+    <li>Muundo wa tangazo: <code>actor/boundary/control/database/entity Name</code>.</li>
+    <li>Tangaza majukumu kwanza, kisha tumia majina yao.</li>
+    <li>Majina yasiyotangazwa ni washiriki wa kawaida.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>Mfano huu unaonyesha rangi na mitindo ili kufanya mchoro uwe wazi zaidi.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Onyesha majukumu muhimu kwa rangi.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>skinparam</code> kurekebisha mitindo.</li>
+    <li>Ongeza rangi baada ya jukumu: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Onyesha “mfumo mkuu” kwa rangi angavu.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha <code>Alice</code> na rangi yake kuwa nyingine.</li>
+    <li>Mazoezi 2: Badilisha ujumbe kuwa “start,” na fanya jukumu lingine liwe giza zaidi.</li>
+    <li>Mazoezi 3: Ongeza jukumu la tatu na mpe rangi tofauti.</li>
+    <li>Mazoezi 4: Badilisha <code>skinparam sequenceMessageAlign</code> na rekebisha mstari mmoja.</li>
+    <li>Mazoezi 5: Tumia jina la mtindo (kama <code>#technology</code>) kwa jukumu moja na ubadilishe ujumbe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> hudhibiti upangaji, fonti, rangi, n.k.</li>
+    <li>Majukumu yanaweza kufuatwa na rangi au jina la mtindo.</li>
+    <li>Rangi zinaweza kuwa majina au hex, kama <code>#AliceBlue</code>.</li>
+    <li>Ukilitangaza jukumu lilelile tena, la mwisho ndilo linalotumika.</li>
+    <li>Mitindo haibadili sintaksia ya ujumbe.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>Mfano huu unaonyesha “ikiwa… vinginevyo…,” kama chaguo nyingi.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha matawi tofauti kwa masharti tofauti.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>alt</code> kuanza, <code>else</code> kwa tawi lingine, na <code>end</code> kumaliza.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Malipo yamefanikiwa au yameshindikana.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha masharti kuwa “pesa zipo / hakuna pesa,” na ubadilishe ujumbe.</li>
+    <li>Mazoezi 2: Ongeza tawi la tatu la <code>else</code> na uandike ujumbe mmoja.</li>
+    <li>Mazoezi 3: Badilisha kichwa cha <code>alt</code> kuwa hali yako, kisha hariri ujumbe.</li>
+    <li>Mazoezi 4: Ongeza mstari mmoja katika kila tawi na ubadilishe vichwa.</li>
+    <li>Mazoezi 5: Fanya tawi moja kuwa “jaribu tena baada ya kushindwa,” na lingine kuwa mwisho tofauti.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> huanza tawi.</li>
+    <li>Inaweza kuwa na matawi mengi ya <code>else</code>.</li>
+    <li>Maliza kwa <code>end</code>.</li>
+    <li>Kila tawi linaweza kuwa na ujumbe wengi.</li>
+    <li>Maandishi ya sharti ni ya hiari lakini yanapendekezwa.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>Mfano huu unaonyesha vitendo vinavyorudiwa.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha hatua zinazorudiwa.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Funga mistari inayorudiwa kwa <code>loop</code> na <code>end</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Kuangalia hali kila sekunde.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha lebo ya loop kuwa “kila mara 3,” na ubadilishe ujumbe.</li>
+    <li>Mazoezi 2: Ongeza ujumbe mwingine ndani ya loop, kisha ufupishe wa kwanza.</li>
+    <li>Mazoezi 3: Badilisha majina ya majukumu na ubadilishe ujumbe kuwa “inakagua.”</li>
+    <li>Mazoezi 4: Badilisha lebo ya loop kuwa sharti kama “mpaka ikamilike,” na urekebishe ujumbe.</li>
+    <li>Mazoezi 5: Ongeza ujumbe wa mwanzo/mwisho nje ya loop.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> inaweza kuwa kwenye mstari mmoja.</li>
+    <li><code>end</code> huimaliza block ya loop.</li>
+    <li>Ujumbe wengi unaweza kuwa ndani ya loop.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>Mfano huu unaonyesha mambo mawili yanayotokea kwa wakati mmoja.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha kazi zinazofanyika sambamba.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>par</code> kuanza, <code>else</code> kwa tawi lingine la sambamba, na <code>end</code> kumaliza.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Kujulisha huduma mbili kwa wakati mmoja.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha matawi kuwa “tuma barua pepe” na “tuma SMS,” na badilisha majukumu.</li>
+    <li>Mazoezi 2: Badilisha majukumu na ongeza mstari mwingine kwenye kila tawi.</li>
+    <li>Mazoezi 3: Ongeza tawi la tatu (<code>else</code>) na uandike ujumbe, kisha ufupishe mstari mmoja.</li>
+    <li>Mazoezi 4: Badilisha tawi moja kuwa “fanya polepole,” ongeza ujumbe wa mwisho, na urekebishe tawi jingine.</li>
+    <li>Mazoezi 5: Ongeza “anza kazi” kabla ya <code>par</code> na “imekamilika” baada ya <code>end</code>.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li><code>par</code> huunda block ya sambamba.</li>
+    <li>Kila tawi linaweza kuwa na mlolongo wake wa ujumbe.</li>
+    <li><code>else</code> hubadili kwenda tawi lingine la sambamba.</li>
+    <li>Maliza kwa <code>end</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>Mfano huu hutumia activation bars kuonyesha wakati jukumu linapofanya kazi.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha nani anafanya kazi na kwa muda gani.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>activate Role</code> kuanza.</li>
+    <li>Tumia <code>deactivate Role</code> kumaliza.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Kuonyesha muda wa usindikaji wa seva.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha jukumu kuwa <code>Server</code> na ujumbe kuwa “processing.”</li>
+    <li>Mazoezi 2: Ongeza mstari wa ombi, kisha weka <code>activate</code> baada ya ombi.</li>
+    <li>Mazoezi 3: Ongeza ujumbe wa katikati kama “halfway,” kisha ubadilishe na maandishi yako.</li>
+    <li>Mazoezi 4: Ongeza jukumu lingine lenye activation na ujumbe wake.</li>
+    <li>Mazoezi 5: Sogeza mwanzo/mwisho wa activation chini kwa mstari mmoja na urekebishe ujumbe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Unaweza kuweka activate/deactivate kabla au baada ya ujumbe.</li>
+    <li><code>activate</code> na <code>deactivate</code> zinapaswa kuwa jozi.</li>
+    <li>Ujumbe unaweza kuongezwa wakati jukumu likiwa active.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>Mfano huu unaonyesha jinsi ya kuongeza maelezo ya noti.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Kuongeza ufafanuzi kwa uwazi.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>note left</code> au <code>note right</code>.</li>
+    <li>Maliza noti kwa <code>end note</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Kukumbusha “hatua hii inaweza kushindwa.”</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha maandishi ya noti kuwa ukumbusho wako.</li>
+    <li>Mazoezi 2: Hamisha noti kwenda kulia na ubadilishe maandishi.</li>
+    <li>Mazoezi 3: Ongeza noti ya pili karibu na jukumu lingine.</li>
+    <li>Mazoezi 4: Fanya noti iwe mistari miwili na weka sababu kwenye mstari wa pili.</li>
+    <li>Mazoezi 5: Hamisha noti baada ya ujumbe mwingine.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Noti zinaweza kuwekwa <code>left</code>, <code>right</code>, au <code>over</code>.</li>
+    <li>Noti za mistari mingi hutumia <code>note</code> na <code>end note</code>.</li>
+    <li>Noti hazibadilishi mtiririko wa ujumbe.</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>Mchoro wa Use Case ni orodha ya “kile mfumo unaweza kufanya.”</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huorodhesha kwa uwazi kazi ambazo mtumiaji anahitaji.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>actor</code> kwa mtumiaji.</li>
+    <li>Tumia <code>(UseCase)</code> kwa kazi.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Kuingia, kutafuta, kulipa, n.k.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha mtumiaji kuwa <code>Teacher</code> na use case kuwa “create quiz.”</li>
+    <li>Mazoezi 2: Ongeza use case ya pili kuonyesha kazi nyingine.</li>
+    <li>Mazoezi 3: Badilisha majina ya use case na actor.</li>
+    <li>Mazoezi 4: Ongeza actor wa pili na umuunganishe na use case moja.</li>
+    <li>Mazoezi 5: Badilisha use case kwa hali yako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Use case huandikwa kwenye mabano: <code>(Login)</code>.</li>
+    <li>Actor huandikwa kama mchoro wa fimbo: <code>actor User</code>.</li>
+    <li>Unganisha actor na use case kwa mstari.</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>Huonyesha inclusion au extension kati ya use cases.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha hatua zinazoshirikiwa au mtiririko wa hiari.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code><<include>></code> kwa “lazima iwepo.”</li>
+    <li>Tumia <code><<extend>></code> kwa “hiari.”</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Kuingia lazima kujumuisha uthibitisho; malipo yanaweza kuongeza punguzo.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha use cases kuwa mfano wako mwenyewe.</li>
+    <li>Mazoezi 2: Badilisha include na extend.</li>
+    <li>Mazoezi 3: Ongeza use case nyingine na ui-include.</li>
+    <li>Mazoezi 4: Geuza mshale na sasisha maandishi.</li>
+    <li>Mazoezi 5: Badilisha maandishi ya uhusiano kwa maneno yako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Sintaksia ya Include: <code>(A) .> (B) : <<include>></code>.</li>
+    <li>Sintaksia ya Extend: <code>(A) .> (B) : <<extend>></code>.</li>
+    <li>Tumia mishale ya mistari ya nukta.</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>Mchoro wa class unaeleza sifa na methods.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Panga miundo ya data.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>class</code> kufafanua class.</li>
+    <li>Weka sifa na methods ndani ya mabano ya kujivisha.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Unda muundo wa data wa programu yako.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha jina la class kuwa kitu unachopenda, kama <code>Book</code>.</li>
+    <li>Mazoezi 2: Ongeza sifa au method mmoja.</li>
+    <li>Mazoezi 3: Fupisha jina la uwanja au utumie tafsiri.</li>
+    <li>Mazoezi 4: Ongeza class ya pili na sifa mbili.</li>
+    <li>Mazoezi 5: Badilisha method iwe tendo lako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Muundo wa class: <code>class Name { ... }</code>.</li>
+    <li>Sifa ni fields, methods hutumia <code>()</code>.</li>
+    <li>Class tupu inaruhusiwa.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>Mfano huu huongeza methods na return types.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Eleza class inaweza kufanya nini.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Methods huandikwa kama <code>name(): type</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Eleza APIs au business logic.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Ongeza method yenye return type.</li>
+    <li>Mazoezi 2: Badilisha jina la method kuwa tendo lako mwenyewe.</li>
+    <li>Mazoezi 3: Badilisha return type kuwa <code>bool</code> au <code>string</code>.</li>
+    <li>Mazoezi 4: Ongeza method nyingine na fanya moja iwe private.</li>
+    <li>Mazoezi 5: Tumia mfano wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Methods zinaweza kuwa na vigezo: <code>name(param): type</code>.</li>
+    <li>Return type hutumia koloni.</li>
+    <li>Methods zinaweza kuwa na alama za visibility.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>Mfano huu unaonyesha public, private, na protected access.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Tenganisha kinachoweza kufikiwa na watu wa nje.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li><code>+</code> public, <code>-</code> private, <code>#</code> protected.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Ficha maelezo ya ndani.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Fanya field moja iwe private.</li>
+    <li>Mazoezi 2: Ongeza field ya protected.</li>
+    <li>Mazoezi 3: Fanya method moja iwe public.</li>
+    <li>Mazoezi 4: Ongeza method ya private.</li>
+    <li>Mazoezi 5: Badilisha majina kwa mfano wako.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Alama za visibility huja kabla ya fields/methods.</li>
+    <li>Alama za kawaida: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>Mfano huu unaonyesha alama za abstract na static.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Tenganisha “lazima kutekelezwa” dhidi ya “zana za pamoja.”</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Abstract hutumia herufi italiki au <code>{abstract}</code>.</li>
+    <li>Static hutumia <code>{static}</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Base classes na utility methods.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Fanya method moja iwe static.</li>
+    <li>Mazoezi 2: Badilisha jina la class kwa mfano wako.</li>
+    <li>Mazoezi 3: Ongeza method ya abstract.</li>
+    <li>Mazoezi 4: Tumia mtindo mwingine wa kuonyesha abstract.</li>
+    <li>Mazoezi 5: Tumia mfano wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> huonyesha class au method ya abstract.</li>
+    <li><code>{static}</code> huonyesha method ya static.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>Mfano huu unaonyesha inheritance.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha class za mzazi na mtoto.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>--|></code> kwa inheritance.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Uainishaji wa wanyama.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha majina ya class kwa mfano wako.</li>
+    <li>Mazoezi 2: Ongeza mstari wa pili wa inheritance.</li>
+    <li>Mazoezi 3: Badilisha jina la class ya mzazi.</li>
+    <li>Mazoezi 4: Ongeza class mpya ya mtoto.</li>
+    <li>Mazoezi 5: Tumia mfano wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> ina maana ya inheritance.</li>
+    <li>Mshale unaelekea kwa mzazi.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>Mfano huu unaonyesha composition (umiliki mkali).</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha sehemu ambazo lazima ziwepo pamoja na kitu kizima.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>*--</code> kwa composition.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Nyumba lazima iwe na vyumba.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha kwa mfano wako mwenyewe.</li>
+    <li>Mazoezi 2: Badilisha composition kuwa aggregation na linganisha.</li>
+    <li>Mazoezi 3: Ongeza mstari wa pili wa composition.</li>
+    <li>Mazoezi 4: Badilisha maandishi ya lebo ya uhusiano.</li>
+    <li>Mazoezi 5: Geuza mwelekeo na uone mabadiliko.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> ina maana ya composition.</li>
+    <li>Almasi iliyojazwa iko upande wa mmiliki.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>Mfano huu unaonyesha aggregation (umiliki dhaifu).</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha sehemu zinazoweza kuwepo kwa kujitegemea.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>o--</code> kwa aggregation.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Class na wanafunzi wake.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha kwa mfano wako.</li>
+    <li>Mazoezi 2: Badilisha aggregation kuwa composition na linganisha.</li>
+    <li>Mazoezi 3: Ongeza mstari wa pili wa aggregation.</li>
+    <li>Mazoezi 4: Badilisha kuwa hali nyingine.</li>
+    <li>Mazoezi 5: Geuza mwelekeo na ongeza maelezo.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> ina maana ya aggregation.</li>
+    <li>Almasi iliyo wazi iko upande wa mmiliki.</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>Object diagrams huonyesha “instance ya class.”</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha data katika wakati maalum.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>object</code> kufafanua instance.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Huonyesha thamani za fields za object.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha jina la object kwa mfano wako.</li>
+    <li>Mazoezi 2: Ongeza object nyingine.</li>
+    <li>Mazoezi 3: Badilisha fields kwa data yako.</li>
+    <li>Mazoezi 4: Unganisha objects mbili.</li>
+    <li>Mazoezi 5: Tumia mfano wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Muundo wa object: <code>object name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>Activity diagrams huonyesha hatua katika mchakato.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Eleza workflows.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>start</code> na <code>stop</code>.</li>
+    <li>Vitendo huandikwa kama <code>:action;</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Mtiririko wa programu, uchakataji wa oda.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha vitendo kuwa workflow yako.</li>
+    <li>Mazoezi 2: Ongeza tendo moja.</li>
+    <li>Mazoezi 3: Hamisha nafasi za start/stop.</li>
+    <li>Mazoezi 4: Ongeza uamuzi.</li>
+    <li>Mazoezi 5: Tumia mfano wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Mtiririko huenda kutoka juu kwenda chini.</li>
+    <li>Vitendo huandikwa kama <code>: ... ;</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>Huonyesha matawi ya uamuzi.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha njia tofauti kwa uwazi.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Ukaguzi wa fomu, malipo kufanikiwa/kushindwa.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha sharti kwa lako mwenyewe.</li>
+    <li>Mazoezi 2: Ongeza tawi la pili la else.</li>
+    <li>Mazoezi 3: Badilisha maandishi ya tendo kwa maneno yako.</li>
+    <li>Mazoezi 4: Badilisha maandishi ya if kwa hali yako.</li>
+    <li>Mazoezi 5: Tengeneza mchakato wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> huanza tawi.</li>
+    <li><code>else</code> hubadilisha tawi.</li>
+    <li><code>endif</code> huimaliza block.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>Huonyesha vitendo vinavyorudiwa.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Eleza loops.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>while</code> na <code>endwhile</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Kurudia kukagua hali.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha sharti kwa lako.</li>
+    <li>Mazoezi 2: Ongeza tendo ndani ya loop.</li>
+    <li>Mazoezi 3: Tumia hali tofauti.</li>
+    <li>Mazoezi 4: Badilisha while kuwa until (kiakili).</li>
+    <li>Mazoezi 5: Ongeza vitendo vya mwanzo/mwisho.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> huanza loop.</li>
+    <li><code>endwhile</code> huimaliza loop.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>Swimlanes hugawanya hatua kulingana na uwajibikaji.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha nani anamiliki kila hatua.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>|Role|</code> kubadili lane.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Workflow kati ya timu.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Ongeza jukumu jipya la swimlane.</li>
+    <li>Mazoezi 2: Hamisha tendo kwenye lane nyingine.</li>
+    <li>Mazoezi 3: Badilisha majina ya lane kwa majukumu yako.</li>
+    <li>Mazoezi 4: Ongeza tendo jingine.</li>
+    <li>Mazoezi 5: Tumia mchakato wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Tumia <code>|Name|</code> kubadili lane.</li>
+    <li>Vitendo ni vya lane ya sasa.</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>Component diagrams huonyesha moduli.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha muundo wa moduli.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>component</code> kuunda component.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Tabaka za usanifu wa mfumo.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Ongeza component.</li>
+    <li>Mazoezi 2: Badilisha jina la component.</li>
+    <li>Mazoezi 3: Ongeza muunganisho.</li>
+    <li>Mazoezi 4: Tumia mfano wako mwenyewe.</li>
+    <li>Mazoezi 5: Panga upya components.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Components hutumia <code>component</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>Huweka components ndani ya packages.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huandaa mifumo mikubwa.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>package</code> kufunga components.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Kupanga kwa feature.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Ongeza package.</li>
+    <li>Mazoezi 2: Hamisha component kwenda package nyingine.</li>
+    <li>Mazoezi 3: Badilisha jina la package.</li>
+    <li>Mazoezi 4: Ongeza component.</li>
+    <li>Mazoezi 5: Tumia mfano wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Muundo wa package: <code>package Name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>Deployment diagrams huonyesha seva na nodes.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Eleza uhamishaji wa mfumo.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>node</code> kufafanua node.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Usanifu wa uhamishaji kwenye wingu.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Ongeza node.</li>
+    <li>Mazoezi 2: Badilisha jina la node.</li>
+    <li>Mazoezi 3: Ongeza muunganisho.</li>
+    <li>Mazoezi 4: Tumia mfano wako mwenyewe.</li>
+    <li>Mazoezi 5: Badilisha node kwa kifaa chako.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Nodes hutumia <code>node</code>.</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>State diagrams huonyesha mabadiliko kati ya states.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Eleza mabadiliko ya state.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>state</code> kufafanua states.</li>
+    <li>Unganisha states kwa mishale.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Mtiririko wa hali ya oda.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Tumia majina ya state yako mwenyewe.</li>
+    <li>Mazoezi 2: Ongeza state nyingine.</li>
+    <li>Mazoezi 3: Ongeza transition nyingine.</li>
+    <li>Mazoezi 4: Tumia mchakato wako mwenyewe.</li>
+    <li>Mazoezi 5: Badilisha jina la state moja.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>States hutumia <code>state</code>.</li>
+    <li>Transitions hutumia <code>--> </code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>Composite states zina sub-states nyingi.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Panga states tata.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>state Name { ... }</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Workflows tata.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Ongeza substate.</li>
+    <li>Mazoezi 2: Tumia mfano wako mwenyewe.</li>
+    <li>Mazoezi 3: Ongeza transition.</li>
+    <li>Mazoezi 4: Badilisha jina la composite state.</li>
+    <li>Mazoezi 5: Tumia mchakato wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Composite states hutumia mabano ya kujivisha.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>Guard conditions hufanya transitions ziwe sahihi zaidi.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha masharti ya transitions.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>[condition]</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Masharti ya state transition.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Tumia sharti lako mwenyewe.</li>
+    <li>Mazoezi 2: Ongeza sharti jingine la guard.</li>
+    <li>Mazoezi 3: Tumia mchakato wako mwenyewe.</li>
+    <li>Mazoezi 4: Badilisha maandishi ya transition.</li>
+    <li>Mazoezi 5: Tumia mfano wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Guard conditions huwekwa kwenye mabano ya mraba.</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>Timing diagrams huonyesha mabadiliko ya ishara.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Eleza ishara kwa muda.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia mipangilio ya <code>concise</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Mabadiliko ya ishara za vifaa.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha kuwa ishara yako mwenyewe.</li>
+    <li>Mazoezi 2: Ongeza mstari mwingine wa ishara.</li>
+    <li>Mazoezi 3: Badilisha majina ya ishara.</li>
+    <li>Mazoezi 4: Tumia mfano wako mwenyewe.</li>
+    <li>Mazoezi 5: Tumia hali yako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Timing diagrams zinaweza kutumia <code>concise</code>.</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>JSON diagrams huonyesha muundo wa data.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Hufanya muundo wa JSON kusomeka zaidi.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startjson</code> na <code>@endjson</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Muundo wa majibu ya API.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha na JSON yako mwenyewe.</li>
+    <li>Mazoezi 2: Ongeza field.</li>
+    <li>Mazoezi 3: Badilisha thamani za data.</li>
+    <li>Mazoezi 4: Tumia hali yako mwenyewe.</li>
+    <li>Mazoezi 5: Tumia data yako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>JSON lazima ifungwe na <code>@startjson</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>YAML diagrams huonyesha muundo wa data.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Hufanya muundo wa YAML kusomeka zaidi.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startyaml</code> na <code>@endyaml</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Faili za usanidi.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha na YAML yako mwenyewe.</li>
+    <li>Mazoezi 2: Ongeza field.</li>
+    <li>Mazoezi 3: Badilisha yaliyomo ya data.</li>
+    <li>Mazoezi 4: Tumia hali yako mwenyewe.</li>
+    <li>Mazoezi 5: Tumia data yako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>YAML lazima ifungwe na <code>@startyaml</code>.</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>EBNF diagrams huonyesha sheria za sarufi.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha muundo wa sarufi kwa uwazi.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startebnf</code> na <code>@endebnf</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Eleza sarufi ya lugha ya programu.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha na sarufi yako mwenyewe.</li>
+    <li>Mazoezi 2: Ongeza sheria nyingine.</li>
+    <li>Mazoezi 3: Tumia mfano wako mwenyewe.</li>
+    <li>Mazoezi 4: Badilisha alama.</li>
+    <li>Mazoezi 5: Tumia sarufi yako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>EBNF hutumia <code>@startebnf</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Regex diagrams huonyesha regular expressions.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Eleza regex patterns.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startregex</code> na <code>@endregex</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Hati za regex.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha na regex yako mwenyewe.</li>
+    <li>Mazoezi 2: Ongeza sheria nyingine.</li>
+    <li>Mazoezi 3: Tumia mfano wako mwenyewe.</li>
+    <li>Mazoezi 4: Badilisha maudhui.</li>
+    <li>Mazoezi 5: Tumia sarufi yako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Regex hutumia <code>@startregex</code>.</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>Mchoro wa topolojia rahisi ya mtandao.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha miunganisho ya mtandao.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startnwdiag</code> na <code>@endnwdiag</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Routers na switches.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha na vifaa vyako.</li>
+    <li>Mazoezi 2: Ongeza kifaa kimoja.</li>
+    <li>Mazoezi 3: Badilisha miunganisho.</li>
+    <li>Mazoezi 4: Tumia hali yako mwenyewe.</li>
+    <li>Mazoezi 5: Tumia mfano wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>nwdiag hutumia <code>@startnwdiag</code>.</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>Mchoro wa wireframe wa UI.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Kuchora skirini haraka.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startsalt</code> na <code>@endsalt</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Prototypes za skrini.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha na skrini yako.</li>
+    <li>Mazoezi 2: Ongeza kitufe.</li>
+    <li>Mazoezi 3: Badilisha maandishi.</li>
+    <li>Mazoezi 4: Badilisha mpangilio.</li>
+    <li>Mazoezi 5: Tumia hali yako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Salt hutumia <code>@startsalt</code>.</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>Mchoro wa usanifu wa shirika.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Eleza usanifu wa shirika.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startarchimate</code> na <code>@endarchimate</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Usanifu wa mifumo ya kampuni.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha na usanifu wako.</li>
+    <li>Mazoezi 2: Ongeza component.</li>
+    <li>Mazoezi 3: Tumia hali yako mwenyewe.</li>
+    <li>Mazoezi 4: Badilisha majina ya vipengele.</li>
+    <li>Mazoezi 5: Tumia mfano wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Archimate hutumia <code>@startarchimate</code>.</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>Mchoro wa mtiririko wa SDL.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Eleza michakato.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startsdl</code> na <code>@endsdl</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Mtiririko wa mawasiliano.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha na mchakato wako.</li>
+    <li>Mazoezi 2: Ongeza hatua moja.</li>
+    <li>Mazoezi 3: Badilisha majina ya vipengele.</li>
+    <li>Mazoezi 4: Tumia hali yako mwenyewe.</li>
+    <li>Mazoezi 5: Tumia mfano wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>SDL hutumia <code>@startsdl</code>.</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>Mchoro wa Ditaa kwa kutumia ASCII art.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Chora kwa kutumia maandishi.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startditaa</code> na <code>@endditaa</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Michoro ya haraka.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha na ASCII art yako.</li>
+    <li>Mazoezi 2: Ongeza block nyingine.</li>
+    <li>Mazoezi 3: Badilisha herufi.</li>
+    <li>Mazoezi 4: Tumia hali yako mwenyewe.</li>
+    <li>Mazoezi 5: Tumia mfano wako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Ditaa hutumia <code>@startditaa</code>.</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>Chati ya Gantt huonyesha ratiba kwa muda.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Panga ratiba ya mradi.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startgantt</code> na <code>@endgantt</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Ratiba za miradi.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha na ratiba yako.</li>
+    <li>Mazoezi 2: Ongeza kazi moja.</li>
+    <li>Mazoezi 3: Tumia mfano wako mwenyewe.</li>
+    <li>Mazoezi 4: Badilisha tarehe.</li>
+    <li>Mazoezi 5: Tumia hali yako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Gantt hutumia <code>@startgantt</code>.</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>Mlango wa wakati wa matukio.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Panga matukio kwa mpangilio wa muda.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startchronology</code> na <code>@endchronology</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Historia ya matukio.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha na matukio yako.</li>
+    <li>Mazoezi 2: Ongeza tukio lingine.</li>
+    <li>Mazoezi 3: Tumia mfano wako mwenyewe.</li>
+    <li>Mazoezi 4: Badilisha tarehe.</li>
+    <li>Mazoezi 5: Tumia hali yako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Chronology hutumia <code>@startchronology</code>.</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>MindMap huonyesha ngazi ya mawazo.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Panga mawazo.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startmindmap</code> na <code>@endmindmap</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Brainstorming.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Tumia mada yako mwenyewe.</li>
+    <li>Mazoezi 2: Ongeza matawi.</li>
+    <li>Mazoezi 3: Tumia mfano wako mwenyewe.</li>
+    <li>Mazoezi 4: Badilisha maandishi.</li>
+    <li>Mazoezi 5: Tumia hali yako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>MindMap hutumia <code>@startmindmap</code>.</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>Mchoro wa Work Breakdown Structure.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Gawanya kazi kuwa sehemu ndogo.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startwbs</code> na <code>@endwbs</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Mgawanyo wa kazi za mradi.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Tumia kazi zako mwenyewe.</li>
+    <li>Mazoezi 2: Ongeza kazi ndogo.</li>
+    <li>Mazoezi 3: Tumia mfano wako mwenyewe.</li>
+    <li>Mazoezi 4: Badilisha maandishi.</li>
+    <li>Mazoezi 5: Tumia hali yako mwenyewe.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>WBS hutumia <code>@startwbs</code>.</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>Tumia AsciiMath kwa fomula.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Fomula huandikwa kwa haraka.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>@startmath</code> na <code>@endmath</code>.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Kuonyesha fomula.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Tumia fomula yako mwenyewe.</li>
+    <li>Mazoezi 2: Ongeza fomula nyingine.</li>
+    <li>Mazoezi 3: Tumia mfano wako mwenyewe.</li>
+    <li>Mazoezi 4: Tumia hali yako mwenyewe.</li>
+    <li>Mazoezi 5: Badilisha alama.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Alama za kawaida za AsciiMath zinaungwa mkono.</li>
+    <li>Funga na <code>@startmath</code> na <code>@endmath</code>.</li>
+    <li><code>^</code> ni nguvu, <code>/</code> ni kugawanya.</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>ER diagrams huonyesha jedwali za hifadhidata.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Buni muundo wa hifadhidata.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol>
+    <li>Tumia <code>entity</code> kutaja jedwali.</li>
+    <li>Tumia <code>*</code> kuashiria primary key.</li>
+  </ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Ubunifu wa jedwali la mtumiaji.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha jina la jedwali kuwa <code>Book</code>, na fields kuwa <code>title</code>, <code>author</code>.</li>
+    <li>Mazoezi 2: Ongeza field, na badilisha aina moja kuwa <code>int</code>.</li>
+    <li>Mazoezi 3: Badilisha jina la primary key na aina yake.</li>
+    <li>Mazoezi 4: Ongeza jedwali la pili lenye fields mbili.</li>
+    <li>Mazoezi 5: Ongeza mstari wa kutenganisha na panga upya fields.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li>Mstari wa kutenganisha <code>--</code> hugawanya sehemu.</li>
+    <li><code>*</code> huonyesha primary key field.</li>
+    <li>Muundo wa field: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>Mfano huu unaonyesha mahusiano kati ya jedwali.</p>
+  <h3>Kwa nini uitumie</h3>
+  <ul><li>Huonyesha one-to-many au many-to-many.</li></ul>
+  <h3>Jinsi ya kutumia</h3>
+  <ol><li><code>User ||--o{ Post</code> inamaanisha one-to-many.</li></ol>
+  <h3>Matumizi yanayowezekana</h3>
+  <ul><li>Mtumiaji mmoja ana post nyingi.</li></ul>
+  <h3>Mazoezi (rahisi kwa watoto)</h3>
+  <ol>
+    <li>Mazoezi 1: Badilisha <code>User</code> kuwa <code>Student</code> na <code>Post</code> kuwa <code>Homework</code>, kisha sasisha lebo.</li>
+    <li>Mazoezi 2: Badilisha one-to-many kuwa one-to-one na sasisha maelezo.</li>
+    <li>Mazoezi 3: Ongeza uhusiano wa pili na jedwali jingine, kisha ubadilishe jina.</li>
+    <li>Mazoezi 4: Geuza mwelekeo na rekebisha majina.</li>
+    <li>Mazoezi 5: Acha “one-to-many” na tumia mfano wako.</li>
+  </ol>
+  <h3>Sheria za PlantUML (orodha kamili)</h3>
+  <ul class="rules">
+    <li><code>||</code> na <code>o{</code> huonyesha cardinality.</li>
+    <li><code>||--o{</code> mara nyingi ni one-to-many.</li>
+    <li>Mstari huunganisha jedwali mbili.</li>
+  </ul>
+</div>

@@ -1,0 +1,1363 @@
+<h1>Examples Tutorial (madali para sa mga bata)</h1>
+<p class="note">
+  Ipinapaliwanag ng tutorial na ito, sa simpleng paraan, kung ano ang iginuguhit ng bawat halimbawa,
+  bakit ito kapaki-pakinabang, paano ito gamitin, mga karaniwang gamit, at mga tuntunin ng PlantUML
+  (nakalista bilang kumpleto at praktikal na mga listahan).
+</p>
+
+<h2>Talaan ng Nilalaman</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>Ipinapakita ng halimbawang ito na “Ang Tao A ay nagpapadala ng mensahe kay Tao B,” parang pagpasa ng note.</p>
+  <h3>Bakit gamitin</h3>
+  <ul>
+    <li>Ipinapakita ang pagkakasunod ng pag-uusap para madaling maintindihan.</li>
+    <li>Maganda para sa mga kuwentong “sino ang unang nagsalita, sino ang sumunod na sumagot.”</li>
+  </ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Isulat ang <code>@startuml</code> at <code>@enduml</code>.</li>
+    <li>Gamitin ang <code>Alice -> Bob: Message</code> para ipakitang si A ay nakikipag-usap kay B.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul>
+    <li>Login flow: User → System → Server.</li>
+    <li>Chatbot: Ikaw ay nagtatanong → Bot ang sumasagot.</li>
+  </ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang <code>Alice</code> at <code>Bob</code> ng paboritong pangalan, at gawing pang-araw-araw na usapan ang mensahe.</li>
+    <li>Pagsasanay 2: Magdagdag muna ng linyang <code>participant</code>, tapos palitan ang mensahe ng “tanong muna, saka sagot.”</li>
+    <li>Pagsasanay 3: Hatiin ang mensahe sa dalawang linya: tanong muna, saka sagot, at paikliin ang isang linya.</li>
+    <li>Pagsasanay 4: Palitan kung sino ang unang nagsasalita, at baguhin ang teksto.</li>
+    <li>Pagsasanay 5: Magdagdag ng pangatlong tao na magsasabi ng isang linya, tapos palitan ang isang pangalan.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Magsimula sa <code>@startuml</code> at magtapos sa <code>@enduml</code>.</li>
+    <li>Maaaring ideklara ang mga participant gamit ang <code>participant</code> o gamitin nang direkta.</li>
+    <li><code>A -> B</code> ay mensahe, <code>A --> B</code> ay return.</li>
+    <li>Maglagay ng teksto pagkatapos ng colon: <code>A -> B: Hello</code>.</li>
+    <li>Mula itaas pababa ang daloy ng oras.</li>
+    <li>Maraming mensahe ang ibig sabihin ay mas mahabang usapan.</li>
+    <li>Maaaring wala ang teksto ng mensahe: <code>A -> B</code> ay valid.</li>
+    <li>Ang mga pangalang may space ay dapat nasa quotes.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>Ipinapakita ng halimbawang ito ang “request at response,” tulad ng tanong at sagot.</p>
+  <h3>Bakit gamitin</h3>
+  <ul>
+    <li>Malinaw na ipinapakita ang mga hakbang ng request at reply.</li>
+  </ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li><code>A -> B</code> ang request.</li>
+    <li><code>B --> A</code> ang response.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul>
+    <li>API call: Frontend → Backend → pagbabalik ng data.</li>
+  </ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang mga papel ng <code>Client</code> at <code>Server</code>, at gawing “kuha ng data / balik ng data” ang mensahe.</li>
+    <li>Pagsasanay 2: Palitan ang request ng “query,” at ang reply ng “query result.”</li>
+    <li>Pagsasanay 3: Magdagdag ng isa pang request at reply (apat na linya lahat) at palitan ang ikalawang teksto.</li>
+    <li>Pagsasanay 4: Iba ang mag-reply at ayusin ang teksto.</li>
+    <li>Pagsasanay 5: Magdagdag ng self-message na “preparing” bago ang request, tapos gawing mas tiyak ang request.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li><code>-></code> nagpapadala ng mensahe.</li>
+    <li><code>--></code> karaniwang nagpapakita ng return.</li>
+    <li>Magdagdag ng teksto para ilarawan ang nilalaman ng reply.</li>
+    <li>Karaniwan ay pares ang request at reply pero hindi required.</li>
+    <li>I-deklara muna ang participants kung gusto ng malinaw na diagram.</li>
+    <li>Mula itaas pababa ang daloy ng oras.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>Ito ay “pakikipag-usap sa sarili,” na nagpapakita ng internal na hakbang.</p>
+  <h3>Bakit gamitin</h3>
+  <ul>
+    <li>Pinapakita ang internal na gawain ng isang object nang walang iba.</li>
+  </ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul>
+    <li>Mga hakbang sa algorithm, internal na kalkulasyon.</li>
+  </ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang <code>Alice</code> ng pangalan mo (hal. <code>Me</code>) at palitan ang mensahe sa bagay na gusto mong gawin ngayon.</li>
+    <li>Pagsasanay 2: Palitan ang aksyon ng “basahin ang data,” tapos magdagdag ng <code>Me -> Me: i-check muli</code>.</li>
+    <li>Pagsasanay 3: Palitan ang mensahe ng “mag-isip,” tapos magdagdag ng <code>Me -> Me: isulat ang mahahalagang punto</code>.</li>
+    <li>Pagsasanay 4: Palitan ang pangalan ng <code>Robot</code>, tapos magdagdag ng <code>Robot -> Robot: mag-charge</code>.</li>
+    <li>Pagsasanay 5: Magdagdag ng <code>Me -> Me: start</code> sa itaas at <code>Me -> Me: done</code> sa ibaba.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Maaaring parehong participant ang magkabilang dulo ng arrow.</li>
+    <li>Basic na format: <code>Role -> Role: Text</code>.</li>
+    <li>Maaaring gamitin ang pangalan kahit walang naunang deklarasyon.</li>
+    <li>Opsyonal ang teksto pagkatapos ng colon.</li>
+    <li>Maraming self-message ang nagpapakita ng maraming internal na hakbang.</li>
+    <li>Maaaring ipares sa <code>activate</code> / <code>deactivate</code>.</li>
+    <li>Mula itaas pababa ang daloy ng oras.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>Ipinapakita ng halimbawang ito ang iba’t ibang icon para sa iba’t ibang role, tulad ng tao, system, database.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Mas mabilis makikilala ang role dahil sa icon.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Login flow: User → Web → Logic → Database.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang <code>User</code> ng <code>Student</code> at gawing “login ng homework” ang mensahe.</li>
+    <li>Pagsasanay 2: Magdagdag ng <code>boundary App</code>, tapos idaan muna ang arrow sa App.</li>
+    <li>Pagsasanay 3: Palitan ang <code>database DB</code> ng <code>database Books</code> at palitan ang mensahe.</li>
+    <li>Pagsasanay 4: Magdagdag ng role na <code>control</code> at isang linya ng interaction.</li>
+    <li>Pagsasanay 5: Ayusin ang pagkakasunod ng participants at i-update ang mga mensahe.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Ang uri ng role ay nagbabago ng hitsura, hindi ng pangalan.</li>
+    <li>Gamitin ang <code>-></code> para sa interaction.</li>
+    <li>Format ng deklarasyon: <code>actor/boundary/control/database/entity Name</code>.</li>
+    <li>I-deklara muna ang roles, saka gamitin ang pangalan.</li>
+    <li>Ang hindi nade-deklarang pangalan ay normal na participant.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>Ipinapakita ng halimbawang ito ang mga kulay at estilo para luminaw ang diagram.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>I-highlight ang mahahalagang role gamit ang kulay.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>skinparam</code> para ayusin ang estilo.</li>
+    <li>Maglagay ng kulay pagkatapos ng role: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Ipakita ang “core system” sa matingkad na kulay.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang <code>Alice</code> at ang kulay nito.</li>
+    <li>Pagsasanay 2: Palitan ang mensahe ng “start,” at gawing mas madilim ang ibang role.</li>
+    <li>Pagsasanay 3: Magdagdag ng pangatlong role at ibang kulay.</li>
+    <li>Pagsasanay 4: Palitan ang <code>skinparam sequenceMessageAlign</code> at ayusin ang isang linya.</li>
+    <li>Pagsasanay 5: Gumamit ng pangalan ng style (gaya ng <code>#technology</code>) at palitan ang mensahe.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> ang kumokontrol sa alignment, font, kulay, at iba pa.</li>
+    <li>Maaaring sundan ang role ng kulay o style name.</li>
+    <li>Maaaring pangalan ng kulay o hex, gaya ng <code>#AliceBlue</code>.</li>
+    <li>Kung muling ideklara ang parehong role, ang huli ang masusunod.</li>
+    <li>Hindi binabago ng style settings ang syntax ng mensahe.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>Ipinapakita ng halimbawa ang “if…else…,” parang maraming pagpipilian.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ipinapakita ang iba’t ibang sangay ayon sa kundisyon.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>alt</code> para magsimula, <code>else</code> para sa ibang sangay, at <code>end</code> para magtapos.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Tagumpay o kabiguan ng bayad.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang kundisyon ng “may pera / walang pera,” at baguhin ang mensahe.</li>
+    <li>Pagsasanay 2: Magdagdag ng pangatlong <code>else</code> branch at magsulat ng mensahe.</li>
+    <li>Pagsasanay 3: Palitan ang pamagat ng <code>alt</code> sa sarili mong senaryo, saka i-edit ang mga mensahe.</li>
+    <li>Pagsasanay 4: Magdagdag ng isang linya sa bawat branch at palitan ang mga pamagat.</li>
+    <li>Pagsasanay 5: Gawing “subukan muli pagkatapos mabigo” ang isang branch, at gawing ibang ending ang isa.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> ang nagsisimula ng branch.</li>
+    <li>Maaaring magkaroon ng maraming <code>else</code> branches.</li>
+    <li>Tapusin gamit ang <code>end</code>.</li>
+    <li>Bawat branch ay maaaring may maraming mensahe.</li>
+    <li>Opsyonal ang teksto ng kundisyon pero mas mainam kung meron.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>Ipinapakita ng halimbawang ito ang paulit-ulit na gawain.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ipinapakita ang mga hakbang na inuulit.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>loop</code> at <code>end</code> para balutin ang paulit-ulit na linya.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Mag-check ng status bawat segundo.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang label ng loop sa “bawat 3 beses,” at palitan ang mensahe.</li>
+    <li>Pagsasanay 2: Magdagdag ng isa pang mensahe sa loob ng loop at paikliin ang unang mensahe.</li>
+    <li>Pagsasanay 3: Palitan ang mga role at gawing “nagche-check” ang mensahe.</li>
+    <li>Pagsasanay 4: Palitan ang loop label ng kundisyon tulad ng “hanggang matapos,” at ayusin ang mensahe.</li>
+    <li>Pagsasanay 5: Magdagdag ng start/end messages sa labas ng loop at i-customize.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> maaaring nasa iisang linya.</li>
+    <li><code>end</code> ang nagtatapos ng loop block.</li>
+    <li>Maaaring may maraming mensahe sa loob ng loop.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>Ipinapakita ng halimbawa ang dalawang bagay na nangyayari nang sabay.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ipinapakita ang parallel na gawain.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>par</code> para magsimula, <code>else</code> para sa ibang parallel branch, at <code>end</code> para magtapos.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>I-notify ang dalawang serbisyo nang sabay.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang branches ng “send email” at “send SMS,” at palitan ang mga role.</li>
+    <li>Pagsasanay 2: Palitan ang mga role at magdagdag ng isang linya sa bawat branch.</li>
+    <li>Pagsasanay 3: Magdagdag ng pangatlong branch (<code>else</code>) at magsulat ng mensahe, tapos paikliin ang isang linya.</li>
+    <li>Pagsasanay 4: Palitan ang isang branch ng “dahan-dahan gawin,” magdagdag ng end message, at ayusin ang text ng kabila.</li>
+    <li>Pagsasanay 5: Magdagdag ng “start task” bago ang <code>par</code> at “done” pagkatapos ng <code>end</code>.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li><code>par</code> gumagawa ng parallel block.</li>
+    <li>Bawat branch ay maaaring may sariling sequence ng mensahe.</li>
+    <li><code>else</code> lumilipat sa ibang parallel branch.</li>
+    <li>Taposin gamit ang <code>end</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>Gumagamit ang halimbawa ng activation bars para ipakitang kailan abala ang isang role.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ipinapakita kung sino ang gumagawa at gaano katagal.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>activate Role</code> para magsimula.</li>
+    <li>Gamitin ang <code>deactivate Role</code> para magtapos.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Ipakita ang oras ng pagproseso ng server.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang role ng <code>Server</code> at ang mensahe ng “processing.”</li>
+    <li>Pagsasanay 2: Magdagdag ng request line, tapos ilagay ang <code>activate</code> pagkatapos ng request.</li>
+    <li>Pagsasanay 3: Magdagdag ng mid-progress message tulad ng “halfway,” tapos palitan ito ng sarili mong text.</li>
+    <li>Pagsasanay 4: Magdagdag ng ibang role kasama ang activation at mensahe nito.</li>
+    <li>Pagsasanay 5: Ilipat ang activation start/end ng isang linya pababa at ayusin ang mensahe.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Maaaring ilagay ang activate/deactivate bago o pagkatapos ng mga mensahe.</li>
+    <li><code>activate</code> at <code>deactivate</code> ay dapat magkapareha.</li>
+    <li>Maaaring mag-insert ng mensahe habang active ang role.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>Ipinapakita ng halimbawa kung paano magdagdag ng sticky-note annotations.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Nagdadagdag ng paliwanag para sa kalinawan.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>note left</code> o <code>note right</code>.</li>
+    <li>Tapusin ang note gamit ang <code>end note</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Paalala na “maaaring mag-fail ang hakbang na ito.”</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang teksto ng note ng sarili mong paalala.</li>
+    <li>Pagsasanay 2: Ilipat ang note sa kanan at palitan ang teksto.</li>
+    <li>Pagsasanay 3: Magdagdag ng pangalawang note sa tabi ng ibang role.</li>
+    <li>Pagsasanay 4: Gawing dalawang linya ang note at maglagay ng dahilan sa ikalawang linya.</li>
+    <li>Pagsasanay 5: Ilipat ang note pagkatapos ng ibang mensahe.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Maaaring ilagay ang notes sa <code>left</code>, <code>right</code>, o <code>over</code>.</li>
+    <li>Ang multi-line notes ay gumagamit ng <code>note</code> at <code>end note</code>.</li>
+    <li>Hindi binabago ng notes ang daloy ng mensahe.</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>Ang Use case diagram ay listahan ng “mga kaya ng system.”</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Malinaw na nililista ang mga function na kailangan ng user.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>actor</code> para sa user.</li>
+    <li>Gamitin ang <code>(UseCase)</code> para sa function.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Login, search, payment, atbp.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang user ng <code>Teacher</code> at ang use case ng “create quiz.”</li>
+    <li>Pagsasanay 2: Magdagdag ng pangalawang use case para magpakita ng isa pang function.</li>
+    <li>Pagsasanay 3: Palitan ang pangalan ng use case at actor.</li>
+    <li>Pagsasanay 4: Magdagdag ng pangalawang actor at ikabit sa isang use case.</li>
+    <li>Pagsasanay 5: Palitan ang use case ng sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Ang use case ay nasa parentheses: <code>(Login)</code>.</li>
+    <li>Ang actor ay stick figure: <code>actor User</code>.</li>
+    <li>I-konekta ang actor sa use case gamit ang isang linya.</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>Ipinapakita ang inclusion o extension sa pagitan ng use cases.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Markahan ang shared steps o optional flows.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code><<include>></code> para sa “laging kasama.”</li>
+    <li>Gamitin ang <code><<extend>></code> para sa “opsyonal.”</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Login laging may validation; payment maaaring may discount via extend.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang use cases ng sarili mong halimbawa.</li>
+    <li>Pagsasanay 2: Ipagpalit ang include at extend.</li>
+    <li>Pagsasanay 3: Magdagdag ng isa pang use case at i-include ito.</li>
+    <li>Pagsasanay 4: Baligtarin ang arrow at i-update ang teksto.</li>
+    <li>Pagsasanay 5: Palitan ang teksto ng relasyon sa sarili mong salita.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Include syntax: <code>(A) .> (B) : <<include>></code>.</li>
+    <li>Extend syntax: <code>(A) .> (B) : <<extend>></code>.</li>
+    <li>Gumamit ng dashed arrows.</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>Ang class diagrams ay naglalarawan ng attributes at methods.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ayusin ang data structures.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>class</code> para magdeklara ng class.</li>
+    <li>Ilagay ang attributes at methods sa loob ng braces.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Disenyo ng data model ng programa.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang class name ng gusto mo, tulad ng <code>Book</code>.</li>
+    <li>Pagsasanay 2: Magdagdag ng isang attribute o method.</li>
+    <li>Pagsasanay 3: Paikliin ang field name o isalin ito.</li>
+    <li>Pagsasanay 4: Magdagdag ng pangalawang class at dalawang attributes.</li>
+    <li>Pagsasanay 5: Palitan ang method ng sarili mong aksyon.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Format ng class: <code>class Name { ... }</code>.</li>
+    <li>Ang attributes ay fields, ang methods ay may <code>()</code>.</li>
+    <li>Pinapayagan ang empty classes.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>Ang halimbawang ito ay nagdadagdag ng methods at return types.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ilarawan kung ano ang kayang gawin ng class.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Ang methods ay isinusulat bilang <code>name(): type</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Paglalarawan ng APIs o business logic.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Magdagdag ng method na may return type.</li>
+    <li>Pagsasanay 2: Palitan ang method name ng sarili mong aksyon.</li>
+    <li>Pagsasanay 3: Palitan ang return type ng <code>bool</code> o <code>string</code>.</li>
+    <li>Pagsasanay 4: Magdagdag ng isa pang method at gawing private ang isa.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Maaaring may parameters ang methods: <code>name(param): type</code>.</li>
+    <li>Gumagamit ng colon para sa return type.</li>
+    <li>Maaaring may visibility symbols ang methods.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>Ipinapakita ang public, private, at protected access.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ihiwalay ang maaaring ma-access ng iba.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li><code>+</code> public, <code>-</code> private, <code>#</code> protected.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Itago ang internal na detalye.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Gawing private ang isang field.</li>
+    <li>Pagsasanay 2: Magdagdag ng protected field.</li>
+    <li>Pagsasanay 3: Gawing public ang isang method.</li>
+    <li>Pagsasanay 4: Magdagdag ng private method.</li>
+    <li>Pagsasanay 5: Palitan ang pangalan ayon sa sarili mong halimbawa.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Ang visibility symbols ay bago ang fields/methods.</li>
+    <li>Karaniwang simbolo: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>Ipinapakita ang abstract at static markers.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ihiwalay ang “kailangang i-implement” at “shared tools.”</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Abstract ay italic o <code>{abstract}</code>.</li>
+    <li>Static ay <code>{static}</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Base classes at utility methods.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Gawing static ang isang method.</li>
+    <li>Pagsasanay 2: Palitan ang class name ng sarili mong halimbawa.</li>
+    <li>Pagsasanay 3: Magdagdag ng abstract method.</li>
+    <li>Pagsasanay 4: Gamitin ang ibang abstract marker style.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> ang marka ng abstract class o method.</li>
+    <li><code>{static}</code> ang marka ng static method.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>Ipinapakita ng halimbawang ito ang inheritance.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ipinapakita ang parent at child classes.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>--|></code> para sa inheritance.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Pag-uuri ng mga hayop.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang mga class name sa sarili mong halimbawa.</li>
+    <li>Pagsasanay 2: Magdagdag ng pangalawang inheritance line.</li>
+    <li>Pagsasanay 3: Palitan ang pangalan ng parent class.</li>
+    <li>Pagsasanay 4: Magdagdag ng bagong child class.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> ay nangangahulugang inheritance.</li>
+    <li>Ang arrow ay nakaturo sa parent.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>Ipinapakita ng halimbawang ito ang composition (malakas na ownership).</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ipinapakita ang mga bahagi na dapat laging kasama ng kabuuan.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>*--</code> para sa composition.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Ang bahay ay laging may mga kwarto.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong halimbawa.</li>
+    <li>Pagsasanay 2: Palitan ang composition ng aggregation at ikumpara.</li>
+    <li>Pagsasanay 3: Magdagdag ng pangalawang composition line.</li>
+    <li>Pagsasanay 4: Palitan ang label ng relasyon.</li>
+    <li>Pagsasanay 5: Baligtarin ang direksyon at obserbahan.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> ay composition.</li>
+    <li>Ang filled diamond ay nasa side ng may-ari.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>Ipinapakita ng halimbawang ito ang aggregation (mahina na ownership).</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ipinapakita ang mga bahagi na puwedeng umiiral nang hiwalay.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>o--</code> para sa aggregation.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Isang klase at ang mga estudyante nito.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong halimbawa.</li>
+    <li>Pagsasanay 2: Palitan ang aggregation ng composition at ikumpara.</li>
+    <li>Pagsasanay 3: Magdagdag ng pangalawang aggregation line.</li>
+    <li>Pagsasanay 4: Palitan sa ibang senaryo.</li>
+    <li>Pagsasanay 5: Baligtarin ang direksyon at magdagdag ng paliwanag.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> ay aggregation.</li>
+    <li>Ang open diamond ay nasa side ng may-ari.</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>Ipinapakita ng object diagrams ang “class instance.”</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ipinapakita ang data sa isang tiyak na sandali.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>object</code> para mag-define ng instance.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Ipakita ang values ng fields ng isang object.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang object name sa sarili mong halimbawa.</li>
+    <li>Pagsasanay 2: Magdagdag ng isa pang object.</li>
+    <li>Pagsasanay 3: Palitan ang fields ng sarili mong data.</li>
+    <li>Pagsasanay 4: I-link ang dalawang object.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Format ng object: <code>object name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>Ipinapakita ng activity diagrams ang mga hakbang sa isang proseso.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ilarawan ang mga workflow.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>start</code> at <code>stop</code>.</li>
+    <li>Ang actions ay nasa anyong <code>:action;</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Daloy ng app, pagproseso ng order.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang actions sa sarili mong workflow.</li>
+    <li>Pagsasanay 2: Magdagdag ng isang action.</li>
+    <li>Pagsasanay 3: Ilipat ang start/stop.</li>
+    <li>Pagsasanay 4: Magdagdag ng decision.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Ang flow ay mula itaas pababa.</li>
+    <li>Ang actions ay isinusulat bilang <code>: ... ;</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>Ipinapakita ang decision branches.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Malinaw na ipinapakita ang iba’t ibang daan.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Pag-check ng form, tagumpay/kabiguan ng bayad.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang condition sa sarili mong gusto.</li>
+    <li>Pagsasanay 2: Magdagdag ng pangalawang else branch.</li>
+    <li>Pagsasanay 3: Palitan ang action text sa sarili mong salita.</li>
+    <li>Pagsasanay 4: Palitan ang if text sa sarili mong senaryo.</li>
+    <li>Pagsasanay 5: Gumawa ng sarili mong proseso.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> ang nagsisimula ng branch.</li>
+    <li><code>else</code> lumilipat sa ibang branch.</li>
+    <li><code>endif</code> ang nagtatapos ng block.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>Ipinapakita ang mga paulit-ulit na aksyon.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ilarawan ang loops.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>while</code> at <code>endwhile</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Paulit-ulit na pag-check ng status.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang condition sa sarili mong gusto.</li>
+    <li>Pagsasanay 2: Magdagdag ng action sa loob ng loop.</li>
+    <li>Pagsasanay 3: Gumamit ng ibang senaryo.</li>
+    <li>Pagsasanay 4: Isipin ang while bilang until (conceptually).</li>
+    <li>Pagsasanay 5: Magdagdag ng start/end actions.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> ang nagsisimula ng loop.</li>
+    <li><code>endwhile</code> ang nagtatapos ng loop.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>Ang swimlanes ay naggugrupo ng mga hakbang ayon sa responsibilidad.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ipinapakita kung sino ang may-ari ng bawat hakbang.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>|Role|</code> para lumipat ng lane.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Workflow sa pagitan ng mga team.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Magdagdag ng bagong swimlane role.</li>
+    <li>Pagsasanay 2: Ilipat ang isang action sa ibang lane.</li>
+    <li>Pagsasanay 3: Palitan ang lane names sa sarili mong roles.</li>
+    <li>Pagsasanay 4: Magdagdag ng isa pang action.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong proseso.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gamitin ang <code>|Name|</code> para magpalit ng lane.</li>
+    <li>Ang actions ay nasa kasalukuyang lane.</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>Ang component diagrams ay naglalarawan ng mga module.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ipinapakita ang istruktura ng modules.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>component</code> para magdeklara ng component.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Mga layer ng system architecture.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Magdagdag ng component.</li>
+    <li>Pagsasanay 2: Palitan ang pangalan ng component.</li>
+    <li>Pagsasanay 3: Magdagdag ng connection.</li>
+    <li>Pagsasanay 4: Gamitin ang sarili mong senaryo.</li>
+    <li>Pagsasanay 5: Ayusin ang pagkakasunod ng components.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gumagamit ang components ng <code>component</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>Gugrupu ang mga components sa loob ng packages.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ayusin ang malalaking sistema.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>package</code> para balutin ang components.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Pag-group ayon sa feature.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Magdagdag ng package.</li>
+    <li>Pagsasanay 2: Ilipat ang component sa ibang package.</li>
+    <li>Pagsasanay 3: Palitan ang pangalan ng package.</li>
+    <li>Pagsasanay 4: Magdagdag ng component.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Package format: <code>package Name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>Ang deployment diagrams ay nagpapakita ng servers at nodes.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ilarawan ang deployment ng system.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>node</code> para magdeklara ng node.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Cloud deployment architecture.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Magdagdag ng node.</li>
+    <li>Pagsasanay 2: Palitan ang pangalan ng node.</li>
+    <li>Pagsasanay 3: Magdagdag ng connection.</li>
+    <li>Pagsasanay 4: Gamitin ang sarili mong senaryo.</li>
+    <li>Pagsasanay 5: Palitan ang node ng sarili mong device.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Nodes use <code>node</code>.</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>Ipinapakita ng state diagrams ang transitions sa pagitan ng states.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ilarawan ang pagbabago ng state.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>state</code> para magdeklara ng states.</li>
+    <li>Ikonekta ang states gamit ang arrows.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Daloy ng status ng order.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Gamitin ang sarili mong state names.</li>
+    <li>Pagsasanay 2: Magdagdag ng isa pang state.</li>
+    <li>Pagsasanay 3: Magdagdag ng isa pang transition.</li>
+    <li>Pagsasanay 4: Gamitin ang sarili mong proseso.</li>
+    <li>Pagsasanay 5: Palitan ang pangalan ng isang state.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>States use <code>state</code>.</li>
+    <li>Transitions use <code>--> </code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>Ang composite states ay may maraming substates.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ayusin ang kumplikadong states.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>state Name { ... }</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Komplikadong workflows.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Magdagdag ng substate.</li>
+    <li>Pagsasanay 2: Gamitin ang sarili mong senaryo.</li>
+    <li>Pagsasanay 3: Magdagdag ng transition.</li>
+    <li>Pagsasanay 4: Palitan ang pangalan ng composite state.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong proseso.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Composite states use braces.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>Ang guard conditions ay nagpapalinaw sa transitions.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Minamarkahan ang conditions para sa transitions.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>[condition]</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Mga kondisyon ng state transition.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Gamitin ang sarili mong condition.</li>
+    <li>Pagsasanay 2: Magdagdag ng isa pang guard condition.</li>
+    <li>Pagsasanay 3: Gamitin ang sarili mong proseso.</li>
+    <li>Pagsasanay 4: Palitan ang transition text.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong halimbawa.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Ang guard conditions ay nasa brackets.</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>Ipinapakita ng timing diagrams ang pagbabago ng signal.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ilarawan ang signal sa paglipas ng oras.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>concise</code> settings.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Mga pagbabago ng hardware signal.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong signal.</li>
+    <li>Pagsasanay 2: Magdagdag ng isa pang signal line.</li>
+    <li>Pagsasanay 3: Palitan ang pangalan ng signals.</li>
+    <li>Pagsasanay 4: Gamitin ang sarili mong halimbawa.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Maaaring gamitin ang <code>concise</code> sa timing diagrams.</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>Ipinapakita ng JSON diagrams ang istruktura ng data.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Mas madaling basahin ang JSON structure.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startjson</code> at <code>@endjson</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Mga format ng API response.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong JSON.</li>
+    <li>Pagsasanay 2: Magdagdag ng field.</li>
+    <li>Pagsasanay 3: Palitan ang values ng data.</li>
+    <li>Pagsasanay 4: Gamitin ang sarili mong senaryo.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong data.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Dapat balutin ang JSON ng <code>@startjson</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>Ipinapakita ng YAML diagrams ang istruktura ng data.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Mas madaling basahin ang YAML structure.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startyaml</code> at <code>@endyaml</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Mga configuration files.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong YAML.</li>
+    <li>Pagsasanay 2: Magdagdag ng field.</li>
+    <li>Pagsasanay 3: Palitan ang content ng data.</li>
+    <li>Pagsasanay 4: Gamitin ang sarili mong senaryo.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong data.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Dapat balutin ang YAML ng <code>@startyaml</code>.</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>Ipinapakita ng EBNF diagrams ang grammar rules.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Malinaw na ipinapakita ang grammar structure.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startebnf</code> at <code>@endebnf</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Ilarawan ang grammar ng programming language.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong grammar.</li>
+    <li>Pagsasanay 2: Magdagdag ng isa pang rule.</li>
+    <li>Pagsasanay 3: Gamitin ang sarili mong halimbawa.</li>
+    <li>Pagsasanay 4: Palitan ang symbols.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong grammar.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gumagamit ang EBNF ng <code>@startebnf</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Ipinapakita ng Regex diagrams ang regular expressions.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ilarawan ang regex patterns.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startregex</code> at <code>@endregex</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Regex documentation.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong regex.</li>
+    <li>Pagsasanay 2: Magdagdag ng isa pang rule.</li>
+    <li>Pagsasanay 3: Gamitin ang sarili mong halimbawa.</li>
+    <li>Pagsasanay 4: Palitan ang content.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong grammar.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gumagamit ang Regex ng <code>@startregex</code>.</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>Network topology diagram.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ipinapakita ang network connections.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startnwdiag</code> at <code>@endnwdiag</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Routers at switches.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong devices.</li>
+    <li>Pagsasanay 2: Magdagdag ng device.</li>
+    <li>Pagsasanay 3: Palitan ang connections.</li>
+    <li>Pagsasanay 4: Gamitin ang sarili mong senaryo.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong halimbawa.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gumagamit ang nwdiag ng <code>@startnwdiag</code>.</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>UI wireframe diagram.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Mag-sketch ng screens nang mabilis.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startsalt</code> at <code>@endsalt</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Screen prototypes.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong screen.</li>
+    <li>Pagsasanay 2: Magdagdag ng button.</li>
+    <li>Pagsasanay 3: Palitan ang text.</li>
+    <li>Pagsasanay 4: Palitan ang layout.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gumagamit ang Salt ng <code>@startsalt</code>.</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>Enterprise architecture diagram.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ilarawan ang enterprise architecture.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startarchimate</code> at <code>@endarchimate</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Architecture ng system ng kumpanya.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong architecture.</li>
+    <li>Pagsasanay 2: Magdagdag ng component.</li>
+    <li>Pagsasanay 3: Gamitin ang sarili mong senaryo.</li>
+    <li>Pagsasanay 4: Palitan ang mga pangalan ng items.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong halimbawa.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gumagamit ang Archimate ng <code>@startarchimate</code>.</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>SDL flow diagram.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ilarawan ang mga proseso.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startsdl</code> at <code>@endsdl</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Daloy ng komunikasyon.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong proseso.</li>
+    <li>Pagsasanay 2: Magdagdag ng isang hakbang.</li>
+    <li>Pagsasanay 3: Palitan ang mga pangalan ng items.</li>
+    <li>Pagsasanay 4: Gamitin ang sarili mong senaryo.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong halimbawa.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gumagamit ang SDL ng <code>@startsdl</code>.</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>Ditaa diagram gamit ang ASCII art.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Gumuhit gamit ang text.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startditaa</code> at <code>@endditaa</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Mabilisang sketch.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong ASCII art.</li>
+    <li>Pagsasanay 2: Magdagdag ng isa pang block.</li>
+    <li>Pagsasanay 3: Palitan ang mga letra.</li>
+    <li>Pagsasanay 4: Gamitin ang sarili mong senaryo.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong halimbawa.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gumagamit ang Ditaa ng <code>@startditaa</code>.</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>Ang Gantt chart ay nagpapakita ng schedule sa paglipas ng panahon.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Magplano ng project timeline.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startgantt</code> at <code>@endgantt</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Mga project schedules.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong schedule.</li>
+    <li>Pagsasanay 2: Magdagdag ng task.</li>
+    <li>Pagsasanay 3: Gamitin ang sarili mong halimbawa.</li>
+    <li>Pagsasanay 4: Palitan ang dates.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gumagamit ang Gantt ng <code>@startgantt</code>.</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>Timeline ng mga pangyayari.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Iayos ang mga pangyayari ayon sa oras.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startchronology</code> at <code>@endchronology</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Kasaysayan ng mga event.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ng sarili mong events.</li>
+    <li>Pagsasanay 2: Magdagdag ng isa pang event.</li>
+    <li>Pagsasanay 3: Gamitin ang sarili mong halimbawa.</li>
+    <li>Pagsasanay 4: Palitan ang dates.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gumagamit ang Chronology ng <code>@startchronology</code>.</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>Ipinapakita ng mind map ang hierarchy ng mga ideya.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ayusin ang mga ideya.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startmindmap</code> at <code>@endmindmap</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Brainstorming.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Gamitin ang sarili mong paksa.</li>
+    <li>Pagsasanay 2: Magdagdag ng mga branch.</li>
+    <li>Pagsasanay 3: Gamitin ang sarili mong halimbawa.</li>
+    <li>Pagsasanay 4: Palitan ang text.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gumagamit ang MindMap ng <code>@startmindmap</code>.</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>Work Breakdown Structure diagram.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Hatiin ang gawain sa mas maliliit na bahagi.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startwbs</code> at <code>@endwbs</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Pagbubuo ng mga task sa proyekto.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Gamitin ang sarili mong tasks.</li>
+    <li>Pagsasanay 2: Magdagdag ng subtasks.</li>
+    <li>Pagsasanay 3: Gamitin ang sarili mong halimbawa.</li>
+    <li>Pagsasanay 4: Palitan ang text.</li>
+    <li>Pagsasanay 5: Gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Gumagamit ang WBS ng <code>@startwbs</code>.</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>Gamitin ang AsciiMath para sa mga formula.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Mas mabilis maisusulat ang mga formula.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>@startmath</code> at <code>@endmath</code>.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Pagpapakita ng mga formula.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Gamitin ang sarili mong formula.</li>
+    <li>Pagsasanay 2: Magdagdag ng isa pang formula.</li>
+    <li>Pagsasanay 3: Gamitin ang sarili mong halimbawa.</li>
+    <li>Pagsasanay 4: Gamitin ang sarili mong senaryo.</li>
+    <li>Pagsasanay 5: Palitan ang mga simbolo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Supported ang karaniwang simbolo ng AsciiMath.</li>
+    <li>Balutin ng <code>@startmath</code> at <code>@endmath</code>.</li>
+    <li><code>^</code> ay power, <code>/</code> ay division.</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>Inilalarawan ng ER diagrams ang mga database tables.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Disenyo ng istruktura ng database.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol>
+    <li>Gamitin ang <code>entity</code> para magdeklara ng table.</li>
+    <li>Gamitin ang <code>*</code> para markahan ang primary key.</li>
+  </ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Disenyo ng user table.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang table name ng <code>Book</code>, at ang fields ng <code>title</code>, <code>author</code>.</li>
+    <li>Pagsasanay 2: Magdagdag ng field at palitan ang isang type ng <code>int</code>.</li>
+    <li>Pagsasanay 3: Palitan ang primary key field at ang type nito.</li>
+    <li>Pagsasanay 4: Magdagdag ng pangalawang table na may dalawang fields.</li>
+    <li>Pagsasanay 5: Magdagdag ng separator line at ayusin ang fields.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li>Ang separator line <code>--</code> ay naghihiwalay ng sections.</li>
+    <li><code>*</code> ang marka ng primary key field.</li>
+    <li>Field format: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>Ipinapakita ng halimbawang ito ang mga relasyon sa pagitan ng tables.</p>
+  <h3>Bakit gamitin</h3>
+  <ul><li>Ipinapakita ang one-to-many o many-to-many.</li></ul>
+  <h3>Paano gamitin</h3>
+  <ol><li><code>User ||--o{ Post</code> ay nangangahulugang one-to-many.</li></ol>
+  <h3>Mga posibleng gamit</h3>
+  <ul><li>Isang user ay may maraming posts.</li></ul>
+  <h3>Pagsasanay (madali para sa mga bata)</h3>
+  <ol>
+    <li>Pagsasanay 1: Palitan ang <code>User</code> ng <code>Student</code> at <code>Post</code> ng <code>Homework</code>, tapos i-update ang label.</li>
+    <li>Pagsasanay 2: Palitan ang one-to-many ng one-to-one at i-update ang description.</li>
+    <li>Pagsasanay 3: Magdagdag ng pangalawang relasyon sa ibang table at palitan ang pangalan nito.</li>
+    <li>Pagsasanay 4: Baligtarin ang direksyon at ayusin ang mga pangalan.</li>
+    <li>Pagsasanay 5: Gawing “one-to-many” at gamitin ang sarili mong senaryo.</li>
+  </ol>
+  <h3>Mga tuntunin ng PlantUML (kumpletong listahan)</h3>
+  <ul class="rules">
+    <li><code>||</code> at <code>o{</code> ang nagpapakita ng cardinality.</li>
+    <li><code>||--o{</code> ay karaniwang one-to-many.</li>
+    <li>Ang linya ay kumokonekta sa dalawang tables.</li>
+  </ul>
+</div>

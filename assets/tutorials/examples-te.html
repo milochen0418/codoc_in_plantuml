@@ -1,0 +1,960 @@
+<h1>Examples ట్యుటోరియల్ (సరళంగా)</h1>
+<p class="note">
+  ప్రతి ఉదాహరణ ఏది చూపిస్తుందో, ఎందుకు ఉపయోగకరమో, ఎలా వాడాలో,
+  సాధారణ వినియోగాలు, మరియు PlantUML నియమాలు (పూర్తి, ఉపయోగించదగిన జాబితాలతో)
+  సులభంగా వివరిస్తుంది.
+</p>
+
+<h2>విషయ సూచిక</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>ఈ ఉదాహరణలో “A నుంచి B కి సందేశం” చూపిస్తుంది.</p>
+  <h3>ఎందుకు ఉపయోగించాలి</h3>
+  <ul>
+    <li>సందేశాల క్రమాన్ని స్పష్టంగా చూపిస్తుంది.</li>
+    <li>“ఎవరు మొదట మాట్లాడారు” అనేది సులభంగా అర్థమవుతుంది.</li>
+  </ul>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol>
+    <li><code>@startuml</code> తో ప్రారంభించి <code>@enduml</code> తో ముగించండి.</li>
+    <li><code>Alice -> Bob: Message</code> లాగా వ్రాయండి.</li>
+  </ol>
+  <h3>ఉదాహరణ వినియోగాలు</h3>
+  <ul>
+    <li>లాగిన్ ఫ్లో: User → System.</li>
+    <li>చాట్‌బాట్: User → Bot.</li>
+  </ul>
+  <h3>ప్రాక్టీస్ (సులభం)</h3>
+  <ol>
+    <li>పరిశ్రమ 1: పేర్లను మార్చి మీ రోజువారీ సందేశంగా రాయండి.</li>
+    <li>పరిశ్రమ 2: <code>participant</code> లైన్ జోడించి రెండు సందేశాలు రాయండి.</li>
+    <li>పరిశ్రమ 3: రెండు లైన్లుగా విడగొట్టండి.</li>
+    <li>పరిశ్రమ 4: మొదట మాట్లాడే వ్యక్తిని మార్చండి.</li>
+    <li>పరిశ్రమ 5: మూడో పాత్రను జోడించండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు (పూర్తి జాబితా)</h3>
+  <ul class="rules">
+    <li><code>@startuml</code> తో ప్రారంభించి <code>@enduml</code> తో ముగించాలి.</li>
+    <li><code>participant</code> తో ముందుగా ప్రకటించవచ్చు.</li>
+    <li><code>A -> B</code> కాల్, <code>A --> B</code> రిప్లై.</li>
+    <li>కోలోన్ తర్వాత మెసేజ్ రాయండి.</li>
+    <li>సమయం పై నుంచి కిందకు సాగుతుంది.</li>
+    <li>మెసేజ్ టెక్స్ట్ ఐచ్ఛికం.</li>
+    <li>స్పేస్ ఉన్న పేర్లు quotes లో ఉండాలి.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>ఇది “అభ్యర్థన–ప్రత్యుత్తరం” చూపిస్తుంది.</p>
+  <h3>ఎందుకు ఉపయోగించాలి</h3>
+  <ul><li>రిక్వెస్ట్ మరియు రిస్పాన్స్ క్రమాన్ని స్పష్టంగా చూపిస్తుంది.</li></ul>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol>
+    <li><code>A -> B</code> రిక్వెస్ట్.</li>
+    <li><code>B --> A</code> రిప్లై.</li>
+  </ol>
+  <h3>ఉదాహరణ వినియోగాలు</h3>
+  <ul><li>API కాల్‌లు.</li></ul>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>Client/Server పేర్లుగా మార్చండి.</li>
+    <li>మెసేజ్‌లను “query/result” గా మార్చండి.</li>
+    <li>మరొక రిక్వెస్ట్‑రిస్పాన్స్ జోడించండి.</li>
+    <li>పాత్రను మార్చి మెసేజ్ సరిపెట్టండి.</li>
+    <li>ప్రత్యుత్తరానికి ముందు self-message జోడించండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules">
+    <li><code>-></code> మెసేజ్, <code>--></code> రిప్లైకి సాధారణం.</li>
+    <li>రిస్పాన్స్ టెక్స్ట్ ఐచ్ఛికం.</li>
+    <li>సమయం పై నుండి కిందకు.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>ఒక పాత్ర తనకే సందేశం పంపడం చూపిస్తుంది.</p>
+  <h3>ఎందుకు ఉపయోగించాలి</h3>
+  <ul><li>లోపలి స్టెప్‌లను చూపడానికి.</li></ul>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>Alice -> Alice: Process</code></li></ol>
+  <h3>ఉదాహరణ వినియోగాలు</h3>
+  <ul><li>లోపలి లెక్కలు, రీపీట్.</li></ul>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>పేరు మీ పేరుగా మార్చండి.</li>
+    <li>“డేటా చదవు” అని మార్చండి.</li>
+    <li>ఇంకొక self‑message జోడించండి.</li>
+    <li>పేరు Robot గా మార్చండి.</li>
+    <li>start/done self‑messages జోడించండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules">
+    <li>సొంత పేరుకే అంబు ఉండవచ్చు.</li>
+    <li>రూపం: <code>Role -> Role: Text</code>.</li>
+    <li>మెసేజ్ టెక్స్ట్ ఐచ్ఛికం.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>Actor, boundary, control, database వంటి రకాల పాత్రలను చూపిస్తుంది.</p>
+  <h3>ఎందుకు ఉపయోగించాలి</h3>
+  <ul><li>పాత్రలను త్వరగా గుర్తించవచ్చు.</li></ul>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code> వాడండి.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>User ను Student గా మార్చండి.</li>
+    <li>boundary App జోడించండి.</li>
+    <li>DB ను Books గా మార్చండి.</li>
+    <li>control పాత్ర జోడించండి.</li>
+    <li>పాత్రల క్రమాన్ని మార్చండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules">
+    <li>రకం ఐకాన్ మారుస్తుంది, పేరు కాదు.</li>
+    <li><code>actor/boundary/control/database/entity Name</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>రంగులు, స్టైల్‌లతో ముఖ్య పాత్రలను చూపిస్తుంది.</p>
+  <h3>ఎందుకు ఉపయోగించాలి</h3>
+  <ul><li>ముఖ్యమైనవాటిని హైలైట్ చేయొచ్చు.</li></ul>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol>
+    <li><code>skinparam</code> తో స్టైల్ మార్చండి.</li>
+    <li><code>participant Alice #AliceBlue</code> లాగా రంగు ఇవ్వండి.</li>
+  </ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>పేరును మార్చి కొత్త రంగు పెట్టండి.</li>
+    <li>మెసేజ్‌ను “start” గా మార్చండి.</li>
+    <li>మూడో పాత్ర జోడించి రంగు ఇవ్వండి.</li>
+    <li>alignment మార్చండి.</li>
+    <li>style పేరుతో పరీక్షించండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> alignment, font, color మార్చుతుంది.</li>
+    <li>రంగు పేరు లేదా hex కోడ్ వాడొచ్చు.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>“అయితే/లేదంటే” అనే ఎంపికలను చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>alt</code> తో ప్రారంభించి <code>else</code>, <code>end</code> తో ముగించండి.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>షరతులను మార్చండి.</li>
+    <li>మూడో <code>else</code> జోడించండి.</li>
+    <li>alt శీర్షికను మార్చండి.</li>
+    <li>ప్రతి శాఖకు ఒక లైన్ జోడించండి.</li>
+    <li>“retry” శాఖ జోడించండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> శాఖను ప్రారంభిస్తుంది.</li>
+    <li><code>end</code> తో ముగించాలి.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>పునరావృతాన్ని చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>loop</code> మరియు <code>end</code> వాడండి.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>loop లేబుల్ మార్చండి.</li>
+    <li>loop లో మరో మెసేజ్ జోడించండి.</li>
+    <li>పాత్రలను మార్చండి.</li>
+    <li>నిబంధనాత్మక లేబుల్ ఇవ్వండి.</li>
+    <li>loop బయట start/end మెసేజ్ జోడించండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li><code>loop</code> ... <code>end</code> బ్లాక్.</li></ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>ఒకే సమయంలో జరిగే పనులు.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>par</code> తో ప్రారంభించి <code>else</code>, <code>end</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>email/SMS శాఖలు చేయండి.</li>
+    <li>ప్రతి శాఖకు ఒక లైన్ జోడించండి.</li>
+    <li>మూడో శాఖ జోడించండి.</li>
+    <li>ఒక శాఖను “slow” గా మార్చండి.</li>
+    <li>ముందు/తర్వాత సందేశాలు జోడించండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li><code>par</code> సమాంతర బ్లాక్.</li></ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>పాత్ర సక్రియంగా ఉన్న సమయం చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol>
+    <li><code>activate Role</code> తో ప్రారంభం.</li>
+    <li><code>deactivate Role</code> తో ముగింపు.</li>
+  </ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>Role ను Server గా మార్చండి.</li>
+    <li>రిక్వెస్ట్ లైన్ జోడించండి.</li>
+    <li>మధ్యలో మెసేజ్ జోడించండి.</li>
+    <li>మరొక role జోడించండి.</li>
+    <li>activate/deactivate ను మార్చి చూడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>activate/deactivate జతగా ఉండాలి.</li></ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>నోట్స్ జోడించడం చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol>
+    <li><code>note left</code> లేదా <code>note right</code>.</li>
+    <li><code>end note</code> తో ముగించండి.</li>
+  </ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>నోట్ టెక్స్ట్ మార్చండి.</li>
+    <li>నోట్ దిశ మార్చండి.</li>
+    <li>మరొక నోట్ జోడించండి.</li>
+    <li>రెండు లైన్ల నోట్ చేయండి.</li>
+    <li>నోట్ స్థానాన్ని మార్చండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li><code>left/right/over</code> నోట్లు.</li></ul>
+</div>
+
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>సిస్టమ్ చేయగల పనులను చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol>
+    <li><code>actor</code> మరియు <code>(UseCase)</code>.</li>
+  </ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>Actor ను Teacher గా మార్చండి.</li>
+    <li>ఇంకొక use case జోడించండి.</li>
+    <li>పేర్లను మార్చండి.</li>
+    <li>రెండో actor జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li><code>(Login)</code> లాగా వ్రాయాలి.</li></ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>Include/Extend సంబంధాలను చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol>
+    <li><code><<include>></code> ఎప్పుడూ ఉంటుంది.</li>
+    <li><code><<extend>></code> ఐచ్ఛికం.</li>
+  </ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>పేర్లను మార్చండి.</li>
+    <li>include/extend మార్పు చూడండి.</li>
+    <li>కొత్త use case జోడించండి.</li>
+    <li>అంబు దిశ మార్చండి.</li>
+    <li>వివరణ మార్చండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules">
+    <li><code>(A) .> (B) : <<include>></code>.</li>
+    <li><code>(A) .> (B) : <<extend>></code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>క్లాస్‌లో fields, methods ఉంటాయి.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>class Name { ... }</code></li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>class పేరు మార్చండి.</li>
+    <li>field లేదా method జోడించండి.</li>
+    <li>field పేర్లను మార్చండి.</li>
+    <li>రెండో class జోడించండి.</li>
+    <li>method ని మీ ఉదాహరణగా మార్చండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>Methods కు <code>()</code> ఉంటుంది.</li></ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>method మరియు return type చూపిస్తుంది.</p>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>return type method జోడించండి.</li>
+    <li>method పేరు మార్చండి.</li>
+    <li>return type ని bool/string గా మార్చండి.</li>
+    <li>private method జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>ఫార్మాట్: <code>name(): type</code>.</li></ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>public, private, protected చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>+</code>, <code>-</code>, <code>#</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>private field చేయండి.</li>
+    <li>protected field జోడించండి.</li>
+    <li>public method చేయండి.</li>
+    <li>private method జోడించండి.</li>
+    <li>పేర్లు మార్చండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>సింబల్స్ ఫీల్డ్/మెథడ్ ముందు వస్తాయి.</li></ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>abstract మరియు static చూపిస్తుంది.</p>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>static method చేయండి.</li>
+    <li>class పేరు మార్చండి.</li>
+    <li>abstract method జోడించండి.</li>
+    <li>abstract చూపే విధానం మార్చండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li><code>{abstract}</code>, <code>{static}</code>.</li></ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>inheritance చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>Child --|> Parent</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>పేర్లు మార్చండి.</li>
+    <li>ఇంకొక inheritance లైన్ జోడించండి.</li>
+    <li>parent పేరు మార్చండి.</li>
+    <li>కొత్త child జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>అంబు parent కి చూపిస్తుంది.</li></ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>బలమైన యజమాన్య సంబంధం.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>Whole *-- Part</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ ఉదాహరణగా మార్చండి.</li>
+    <li>aggregation తో పోల్చండి.</li>
+    <li>ఇంకొక composition జోడించండి.</li>
+    <li>లేబుల్ మార్చండి.</li>
+    <li>దిశ మార్చండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>నింపిన డైమండ్ యజమాని వైపు ఉంటుంది.</li></ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>బలహీన యజమాన్య సంబంధం.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>Whole o-- Part</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ ఉదాహరణగా మార్చండి.</li>
+    <li>composition తో పోల్చండి.</li>
+    <li>ఇంకొక aggregation జోడించండి.</li>
+    <li>పేరు మార్చండి.</li>
+    <li>దిశ మార్చండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>ఖాళీ డైమండ్ యజమాని వైపు ఉంటుంది.</li></ul>
+</div>
+
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>స్పెసిఫిక్ instance చూపిస్తుంది.</p>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>object పేరు మార్చండి.</li>
+    <li>ఇంకొక object జోడించండి.</li>
+    <li>fields మార్చండి.</li>
+    <li>objects ను కనెక్ట్ చేయండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li><code>object name { ... }</code>.</li></ul>
+</div>
+
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>వర్క్‌ఫ్లో స్టెప్‌లు.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol>
+    <li><code>start</code> మరియు <code>stop</code>.</li>
+    <li>చర్యలు: <code>:action;</code>.</li>
+  </ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>చర్యలను మార్చండి.</li>
+    <li>ఒక చర్య జోడించండి.</li>
+    <li>start/stop స్థానం మార్చండి.</li>
+    <li>డిసిషన్ జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>ఫ్లో పై నుండి కిందకు.</li></ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>డిసిషన్ శాఖలు.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>షరతు మార్చండి.</li>
+    <li>ఇంకొక else జోడించండి.</li>
+    <li>చర్యల టెక్స్ట్ మార్చండి.</li>
+    <li>if లేబుల్ మార్చండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li><code>endif</code> తో ముగించాలి.</li></ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>while లూప్.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>while</code> ... <code>endwhile</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>షరతు మార్చండి.</li>
+    <li>లోపల చర్య జోడించండి.</li>
+    <li>వేరే ఉదాహరణ వాడండి.</li>
+    <li>“until” లాగా ఊహించండి.</li>
+    <li>start/stop చర్యలు జోడించండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li><code>endwhile</code> ముగింపు.</li></ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>బాధ్యత ప్రకారం స్టెప్‌లను వేరు చేస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>|Role|</code> తో lane మార్చండి.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>కొత్త lane జోడించండి.</li>
+    <li>ఒక చర్యను మరో lane కి మార్చండి.</li>
+    <li>lane పేర్లు మార్చండి.</li>
+    <li>చర్య జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li><code>|Name|</code> lane మార్పు.</li></ul>
+</div>
+
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>మాడ్యూల్స్ చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>component</code> వాడండి.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>component జోడించండి.</li>
+    <li>పేరు మార్చండి.</li>
+    <li>లింక్ జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>క్రమం మార్చండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li><code>component</code> కీవర్డ్.</li></ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>Packages లో గ్రూప్ చేస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>package Name { ... }</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>package జోడించండి.</li>
+    <li>component ని మార్చండి.</li>
+    <li>package పేరు మార్చండి.</li>
+    <li>component జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>package లో components ఉంటాయి.</li></ul>
+</div>
+
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>సర్వర్లు/నోడ్స్ చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>node</code> వాడండి.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>node జోడించండి.</li>
+    <li>పేరు మార్చండి.</li>
+    <li>లింక్ జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>node ని మీ డివైస్‌గా మార్చండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li><code>node</code> కీవర్డ్.</li></ul>
+</div>
+
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>స్థితుల మధ్య మార్పులు.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol>
+    <li><code>state</code> తో states.</li>
+    <li>అంబులతో కనెక్ట్ చేయండి.</li>
+  </ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>state పేర్లు మార్చండి.</li>
+    <li>ఇంకొక state జోడించండి.</li>
+    <li>transition జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>పేరు మార్చండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li><code>--> </code> transition.</li></ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>ఒక state లో ఉప‑states.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>state Name { ... }</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>substate జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>transition జోడించండి.</li>
+    <li>పేరు మార్చండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>braces తో composite state.</li></ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>transition కి షరతు.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>[condition]</code> వాడండి.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ షరతు వాడండి.</li>
+    <li>ఇంకొక guard జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>transition టెక్స్ట్ మార్చండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>guardలు square bracketsలో ఉంటాయి.</li></ul>
+</div>
+
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>సిగ్నల్ టైమింగ్ మార్పులు.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>concise</code> ఉపయోగించండి.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>సిగ్నల్ పేరు మార్చండి.</li>
+    <li>ఇంకొక సిగ్నల్ జోడించండి.</li>
+    <li>డేటా మార్చండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>మీ సిగ్నల్ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>Timing డయాగ్రామ్‌లకు <code>concise</code>.</li></ul>
+</div>
+
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>JSON డేటా నిర్మాణం చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startjson</code> ... <code>@endjson</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ JSON మార్చండి.</li>
+    <li>field జోడించండి.</li>
+    <li>విలువలు మార్చండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>మీ డేటా వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>JSON ను <code>@startjson</code> తో చుట్టండి.</li></ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>YAML డేటా నిర్మాణం చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startyaml</code> ... <code>@endyaml</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ YAML మార్చండి.</li>
+    <li>field జోడించండి.</li>
+    <li>కంటెంట్ మార్చండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>మీ డేటా వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>YAML ను <code>@startyaml</code> తో చుట్టండి.</li></ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>EBNF వ్యాకరణ నియమాలు.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startebnf</code> ... <code>@endebnf</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ వ్యాకరణం వాడండి.</li>
+    <li>ఇంకొక రూల్ జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>సింబల్స్ మార్చండి.</li>
+    <li>మీ వ్యాకరణం వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>EBNF కి <code>@startebnf</code>.</li></ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Regex ప్యాటర్న్లు.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startregex</code> ... <code>@endregex</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ regex మార్చండి.</li>
+    <li>రూల్ జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>కంటెంట్ మార్చండి.</li>
+    <li>మీ వ్యాకరణం వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>Regex కి <code>@startregex</code>.</li></ul>
+</div>
+
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>సాదా నెట్‌వర్క్ టోపాలజీ.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startnwdiag</code> ... <code>@endnwdiag</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ డివైస్‌లుగా మార్చండి.</li>
+    <li>డివైస్ జోడించండి.</li>
+    <li>కనెక్షన్ మార్చండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>మీ టోపాలజీ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>nwdiag కి <code>@startnwdiag</code>.</li></ul>
+</div>
+
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>UI వైర్‌ఫ్రేమ్.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startsalt</code> ... <code>@endsalt</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>లేఅవుట్ మార్చండి.</li>
+    <li>బటన్ జోడించండి.</li>
+    <li>టెక్స్ట్ మార్చండి.</li>
+    <li>క్రమం మార్చండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>Salt కి <code>@startsalt</code>.</li></ul>
+</div>
+
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>ఎంటర్‌ప్రైజ్ ఆర్కిటెక్చర్.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startarchimate</code> ... <code>@endarchimate</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ నిర్మాణాన్ని వాడండి.</li>
+    <li>కాంపొనెంట్ జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>పేర్లు మార్చండి.</li>
+    <li>మీ ఆర్కిటెక్చర్ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>Archimate కి <code>@startarchimate</code>.</li></ul>
+</div>
+
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>SDL ప్రాసెస్ ఫ్లో.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startsdl</code> ... <code>@endsdl</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ ప్రాసెస్ వాడండి.</li>
+    <li>స్టెప్ జోడించండి.</li>
+    <li>పేర్లు మార్చండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>మీ ఫ్లో వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>SDL కి <code>@startsdl</code>.</li></ul>
+</div>
+
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>ASCII తో Ditaa బ్లాక్స్.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startditaa</code> ... <code>@endditaa</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>ASCII ఆర్ట్ మార్చండి.</li>
+    <li>బ్లాక్ జోడించండి.</li>
+    <li>టెక్స్ట్ మార్చండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>మీ స్కెచ్ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>Ditaa కి <code>@startditaa</code>.</li></ul>
+</div>
+
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>గాంట్ టైమ్‌లైన్.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startgantt</code> ... <code>@endgantt</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>టాస్క్‌లు మార్చండి.</li>
+    <li>టాస్క్ జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>తేదీలు మార్చండి.</li>
+    <li>మీ ప్లాన్ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>Gantt కి <code>@startgantt</code>.</li></ul>
+</div>
+
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>ఈవెంట్ టైమ్‌లైన్.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startchronology</code> ... <code>@endchronology</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>ఈవెంట్స్ మార్చండి.</li>
+    <li>కొత్త ఈవెంట్ జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>తేదీలు మార్చండి.</li>
+    <li>మీ టైమ్‌లైన్ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>Chronology కి <code>@startchronology</code>.</li></ul>
+</div>
+
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>ఆలోచనల హైరార్కీ.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startmindmap</code> ... <code>@endmindmap</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ టాపిక్ వాడండి.</li>
+    <li>బ్రాంచ్‌లు జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>టెక్స్ట్ మార్చండి.</li>
+    <li>మీ ఐడియాస్ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>MindMap కి <code>@startmindmap</code>.</li></ul>
+</div>
+
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>పనిని చిన్న భాగాలుగా విభజిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startwbs</code> ... <code>@endwbs</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ పనులు వాడండి.</li>
+    <li>సబ్‌టాస్క్‌లు జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>టెక్స్ట్ మార్చండి.</li>
+    <li>మీ ప్రాజెక్ట్ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules"><li>WBS కి <code>@startwbs</code>.</li></ul>
+</div>
+
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>AsciiMath తో ఫార్ములాలు.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>@startmath</code> ... <code>@endmath</code>.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>మీ ఫార్ములా వాడండి.</li>
+    <li>ఇంకొక ఫార్ములా జోడించండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+    <li>మీ సందర్భం వాడండి.</li>
+    <li>సింబల్స్ మార్చండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules">
+    <li>AsciiMath చిహ్నాలు సపోర్ట్ చేస్తుంది.</li>
+    <li><code>@startmath</code> ... <code>@endmath</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>డేటాబేస్ ఎంటిటీలను చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol>
+    <li><code>entity</code> వాడండి.</li>
+    <li>Primary key కి <code>*</code>.</li>
+  </ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>టేబుల్ పేరు మార్చండి.</li>
+    <li>ఫీల్డ్ జోడించండి.</li>
+    <li>primary key మార్చండి.</li>
+    <li>రెండో టేబుల్ జోడించండి.</li>
+    <li>ఫీల్డ్‌లను పునఃక్రమీకరించండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules">
+    <li><code>--</code> విభజన గీత.</li>
+    <li><code>*</code> primary key.</li>
+    <li>ఫీల్డ్: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>టేబుల్‌ల మధ్య సంబంధాలు చూపిస్తుంది.</p>
+  <h3>ఎలా ఉపయోగించాలి</h3>
+  <ol><li><code>User ||--o{ Post</code> one‑to‑many.</li></ol>
+  <h3>ప్రాక్టీస్</h3>
+  <ol>
+    <li>User/Post పేర్లను మార్చండి.</li>
+    <li>one‑to‑one గా మార్చండి.</li>
+    <li>మరో సంబంధం జోడించండి.</li>
+    <li>దిశ మార్చి టెక్స్ట్ సరిచేయండి.</li>
+    <li>మీ ఉదాహరణ వాడండి.</li>
+  </ol>
+  <h3>PlantUML నియమాలు</h3>
+  <ul class="rules">
+    <li><code>||</code>, <code>o{</code> cardinality.</li>
+    <li><code>||--o{</code> సాధారణంగా one‑to‑many.</li>
+  </ul>
+</div>

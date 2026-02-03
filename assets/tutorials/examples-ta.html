@@ -1,0 +1,1363 @@
+<h1>உதாரண வழிகாட்டி (குழந்தைகளுக்கு எளிது)</h1>
+<p class="note">
+  இந்த வழிகாட்டி ஒவ்வொரு உதாரணமும் என்ன வரைந்து காட்டுகிறது, ஏன் பயனுள்ளது,
+  எப்படி பயன்படுத்துவது, பொதுவான பயன்பாடுகள், மற்றும் PlantUML விதிகள்
+  (முழுமையான, பயன்படக்கூடிய பட்டியல்களாக) என்பதை எளிய முறையில் விளக்குகிறது.
+</p>
+
+<h2>பொருளடக்கம்</h2>
+<div class="toc">
+  <a href="#sequence-basics-simple-message">Sequence / BASICS / Simple Message</a>
+  <a href="#sequence-basics-return-message">Sequence / BASICS / Return Message</a>
+  <a href="#sequence-basics-self-message">Sequence / BASICS / Self-Message</a>
+  <a href="#sequence-participants-types">Sequence / PARTICIPANTS / Types</a>
+  <a href="#sequence-participants-colors-styles">Sequence / PARTICIPANTS / Colors &amp; Styles</a>
+  <a href="#sequence-control-flow-alt-else-choices">Sequence / CONTROL FLOW / Alt/Else (Choices)</a>
+  <a href="#sequence-control-flow-loop">Sequence / CONTROL FLOW / Loop</a>
+  <a href="#sequence-control-flow-parallel-par">Sequence / CONTROL FLOW / Parallel (Par)</a>
+  <a href="#sequence-advanced-activation">Sequence / ADVANCED / Activation</a>
+  <a href="#sequence-advanced-notes">Sequence / ADVANCED / Notes</a>
+
+  <a href="#use-case-basics-simple-use-case">Use Case / BASICS / Simple Use Case</a>
+  <a href="#use-case-relationships-include-extend">Use Case / RELATIONSHIPS / Include/Extend</a>
+
+  <a href="#class-basics-simple-class">Class / BASICS / Simple Class</a>
+  <a href="#class-basics-methods">Class / BASICS / Methods</a>
+  <a href="#class-visibility-access-levels">Class / VISIBILITY / Access Levels</a>
+  <a href="#class-visibility-abstract-static">Class / VISIBILITY / Abstract/Static</a>
+  <a href="#class-relationships-inheritance">Class / RELATIONSHIPS / Inheritance</a>
+  <a href="#class-relationships-composition">Class / RELATIONSHIPS / Composition</a>
+  <a href="#class-relationships-aggregation">Class / RELATIONSHIPS / Aggregation</a>
+
+  <a href="#object-basics-instance">Object / BASICS / Instance</a>
+
+  <a href="#activity-basics-flow">Activity / BASICS / Flow</a>
+  <a href="#activity-control-flow-if-then-else">Activity / CONTROL FLOW / If/Then/Else</a>
+  <a href="#activity-control-flow-while-loop">Activity / CONTROL FLOW / While Loop</a>
+  <a href="#activity-advanced-swimlanes">Activity / ADVANCED / Swimlanes</a>
+
+  <a href="#component-basics-components">Component / BASICS / Components</a>
+  <a href="#component-packages-grouping">Component / PACKAGES / Grouping</a>
+
+  <a href="#deployment-basics-nodes">Deployment / BASICS / Nodes</a>
+
+  <a href="#state-basics-transitions">State / BASICS / Transitions</a>
+  <a href="#state-advanced-composite">State / ADVANCED / Composite</a>
+  <a href="#state-advanced-guards">State / ADVANCED / Guards</a>
+
+  <a href="#timing-basics-digital">Timing / BASICS / Digital</a>
+
+  <a href="#json-yaml-data-json-view">JSON / YAML / DATA / JSON View</a>
+  <a href="#json-yaml-data-yaml-view">JSON / YAML / DATA / YAML View</a>
+
+  <a href="#ebnf-regex-grammar-ebnf">EBNF / Regex / GRAMMAR / EBNF</a>
+  <a href="#ebnf-regex-grammar-regex">EBNF / Regex / GRAMMAR / Regex</a>
+
+  <a href="#network-nwdiag-topology-simple-network">Network (nwdiag) / TOPOLOGY / Simple Network</a>
+
+  <a href="#ui-mockups-salt-wireframes-window">UI Mockups (Salt) / WIREFRAMES / Window</a>
+
+  <a href="#archimate-enterprise-basic">Archimate / ENTERPRISE / Basic</a>
+
+  <a href="#sdl-flow-process">SDL / FLOW / Process</a>
+
+  <a href="#ditaa-ascii-blocks">Ditaa / ASCII / Blocks</a>
+
+  <a href="#gantt-project-timeline">Gantt / PROJECT / Timeline</a>
+
+  <a href="#chronology-timeline-events">Chronology / TIMELINE / Events</a>
+
+  <a href="#mindmap-hierarchy-ideas">MindMap / HIERARCHY / Ideas</a>
+
+  <a href="#wbs-work-breakdown">WBS / WORK / Breakdown</a>
+
+  <a href="#mathematics-formulas-asciimath">Mathematics / FORMULAS / AsciiMath</a>
+
+  <a href="#database-er-entities-basic-entity">Database (ER) / ENTITIES / Basic Entity</a>
+  <a href="#database-er-entities-relationships">Database (ER) / ENTITIES / Relationships</a>
+</div>
+
+<!-- Sequence -->
+<div class="section" id="sequence-basics-simple-message">
+  <h2>Sequence / BASICS / Simple Message</h2>
+  <p>இந்த உதாரணம் “நபர் A, நபர் B‑க்கு ஒரு செய்தி அனுப்புகிறார்” என்பதைக் காட்டுகிறது; ஒரு குறிப்பு சீட்டு கொடுப்பதைப் போல.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul>
+    <li>உரையாடலின் வரிசையை எளிதாகப் புரியுமாறு காட்டுகிறது.</li>
+    <li>“யார் முதலில் பேசுகிறார், யார் பிறகு பதில் தருகிறார்” போன்ற கதைகளுக்கு சிறந்தது.</li>
+  </ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startuml</code> மற்றும் <code>@enduml</code> எழுதுங்கள்.</li>
+    <li><code>Alice -> Bob: Message</code> மூலம் A, B‑யுடன் பேசுவதை காட்டுங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul>
+    <li>லாகின் ஓட்டம்: User → System → Server.</li>
+    <li>சாட்போட்: நீங்கள் கேட்கிறீர்கள் → பாட்டு பதில் தருகிறது.</li>
+  </ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: <code>Alice</code> மற்றும் <code>Bob</code> ஐ விருப்பமான பெயர்களாக மாற்றி, செய்தியை தினசரி உரையாடலாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: முதலில் <code>participant</code> வரியை சேர்த்து, பின்னர் “முதலில் கேள், பிறகு பதில்” என்று மாற்றுங்கள்.</li>
+    <li>பயிற்சி 3: செய்தியை இரண்டு வரிகளாகப் பிரிக்கவும்: முதலில் கேள், பிறகு பதில்; ஒரு வரியை சுருக்கவும்.</li>
+    <li>பயிற்சி 4: முதலில் பேசுபவரை மாற்றி, செய்தி உரையையும் மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: மூன்றாவது நபரை சேர்த்து ஒரு வரி பேசச் செய்யுங்கள்; ஒரு பெயரை மாற்றவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>@startuml</code> இல் தொடங்கி <code>@enduml</code> இல் முடிக்கவும்.</li>
+    <li>பங்கேற்பாளர்களை <code>participant</code> மூலம் அறிவிக்கலாம் அல்லது நேரடியாக பயன்படுத்தலாம்.</li>
+    <li><code>A -> B</code> என்பது அழைப்பு, <code>A --> B</code> என்பது பதில்.</li>
+    <li>கோலன் பிறகு உரை எழுதவும்: <code>A -> B: Hello</code>.</li>
+    <li>நேரம் மேல் முதல் கீழ் செல்கிறது.</li>
+    <li>அதிக செய்தி வரிகள் நீளமான உரையாடலைக் காட்டும்.</li>
+    <li>செய்தி உரை விருப்பமானது: <code>A -> B</code> செல்லுபடியாகும்.</li>
+    <li>இடைவெளியுள்ள பெயர்கள் quotes உள்ளே இருக்க வேண்டும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-return-message">
+  <h2>Sequence / BASICS / Return Message</h2>
+  <p>இந்த உதாரணம் “கோரிக்கை மற்றும் பதில்” என்பதை காட்டுகிறது, கேள்வி‑பதில் போல.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul>
+    <li>கோரிக்கை மற்றும் பதில் படிகளை தெளிவாக காட்டுகிறது.</li>
+  </ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>A -> B</code> கோரிக்கை.</li>
+    <li><code>B --> A</code> பதில்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul>
+    <li>API அழைப்பு: Frontend → Backend → தரவு திரும்புகிறது.</li>
+  </ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: பாத்திரங்களை <code>Client</code> மற்றும் <code>Server</code> ஆக மாற்றி, செய்தியை “data கேள் / data திருப்பி அனுப்பு” என்று மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: கோரிக்கையை “query” என்றும் பதிலை “query result” என்றும் மாற்றுங்கள்.</li>
+    <li>பயிற்சி 3: இன்னொரு கோரிக்கை‑பதில் ஜோடியை சேர்த்து (மொத்தம் 4 வரிகள்), இரண்டாவது உரையை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: வேறொருவரை பதில் சொல்லச் செய்து, உரையை சரி செய்யுங்கள்.</li>
+    <li>பயிற்சி 5: கோரிக்கைக்கு முன் “preparing” self‑message ஒன்றைச் சேர்த்து, பின்னர் கோரிக்கையை தெளிவாக்குங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>-></code> ஒரு செய்தியை அனுப்பும்.</li>
+    <li><code>--></code> பொதுவாக பதிலை காட்டும்.</li>
+    <li>பதிலின் பொருளை விளக்க உரை சேர்க்கவும்.</li>
+    <li>கோரிக்கை‑பதில் ஜோடி பொதுவானது; கட்டாயமில்லை.</li>
+    <li>தெளிவுக்கு பங்கேற்பாளர்களை முன்பே அறிவிக்கலாம்.</li>
+    <li>நேரம் மேலிருந்து கீழே செல்லும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-basics-self-message">
+  <h2>Sequence / BASICS / Self-Message</h2>
+  <p>இது “தன்னுடன் பேசுவது,” ஒரு உள்ளக படியை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul>
+    <li>ஒரு பொருளின் உள்ளக பணியை மற்றவர்கள் இல்லாமல் காட்டுகிறது.</li>
+  </ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>Alice -> Alice: Process</code></li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul>
+    <li>அல்காரிதம் படிகள், உள்ளக கணக்குகள்.</li>
+  </ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: <code>Alice</code> ஐ உங்கள் பெயராக (எ.கா. <code>Me</code>) மாற்றி, இன்று செய்ய விரும்பும் செயலை எழுதுங்கள்.</li>
+    <li>பயிற்சி 2: செயலை “தரவு படி” என மாற்றி, <code>Me -> Me: மீண்டும் சரிபார்</code> சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: செய்தியை “சிந்தி” என்று மாற்றி, <code>Me -> Me: முக்கிய குறிப்புகள் எழுத</code> சேர்க்கவும்.</li>
+    <li>பயிற்சி 4: பெயரை <code>Robot</code> என்று மாற்றி, <code>Robot -> Robot: சார்ஜ்</code> சேர்க்கவும்.</li>
+    <li>பயிற்சி 5: மேலே <code>Me -> Me: start</code> மற்றும் கீழே <code>Me -> Me: done</code> சேர்க்கவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>அம்பின் இரு முனைகளும் ஒரே பங்கேற்பாளராக இருக்கலாம்.</li>
+    <li>அடிப்படை வடிவம்: <code>Role -> Role: Text</code>.</li>
+    <li>முன் அறிவிப்பு இல்லாமல் பெயர்களை பயன்படுத்தலாம்.</li>
+    <li>கோலன் பிறகு உரை விருப்பமானது.</li>
+    <li>பல self‑message கள் பல உள்ளக படிகளை காட்டும்.</li>
+    <li><code>activate</code> / <code>deactivate</code> உடன் பயன்படுத்தலாம்.</li>
+    <li>நேரம் மேல் முதல் கீழ்.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-types">
+  <h2>Sequence / PARTICIPANTS / Types</h2>
+  <p>இந்த உதாரணம் மனிதன், அமைப்பு, தரவுத்தளம் போன்ற வேறு வேறு பங்கு ஐகான்களை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>ஐகான்கள் பங்குகளை விரைவில் அடையாளம் காண உதவும்.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>actor</code>, <code>boundary</code>, <code>control</code>, <code>database</code>, <code>entity</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>லாகின் ஓட்டம்: User → Web → Logic → Database.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: <code>User</code> ஐ <code>Student</code> ஆக மாற்றி, செய்தியை “homework login” ஆக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: <code>boundary App</code> சேர்த்து, முதலில் App க்கு அம்பை அனுப்புங்கள்.</li>
+    <li>பயிற்சி 3: <code>database DB</code> ஐ <code>database Books</code> ஆக மாற்றி, செய்தியை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: <code>control</code> பங்கை சேர்த்து ஒரு தொடர்பு வரியை எழுதுங்கள்.</li>
+    <li>பயிற்சி 5: பங்கேற்பாளர்களின் வரிசையை மாற்றி, செய்திகளை சரி செய்யுங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>பங்கு வகை தோற்றத்தை மாற்றும்; பெயரை அல்ல.</li>
+    <li>தொடர்புக்கு <code>-></code> பயன்படுத்தப்படுகிறது.</li>
+    <li>அறிவிப்பு வடிவம்: <code>actor/boundary/control/database/entity Name</code>.</li>
+    <li>முதலில் பங்குகளை அறிவித்து, பின்னர் பெயரைப் பயன்படுத்துங்கள்.</li>
+    <li>அறிவிக்கப்படாத பெயர்கள் சாதாரண பங்கேற்பாளர்கள்.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-participants-colors-styles">
+  <h2>Sequence / PARTICIPANTS / Colors &amp; Styles</h2>
+  <p>இந்த உதாரணம் நிறங்கள் மற்றும் பாணிகளைப் பயன்படுத்தி விளக்கத்தை தெளிவாக்குகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>முக்கிய பங்குகளை நிறத்தால் 강조 செய்யலாம்.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>skinparam</code> மூலம் பாணியை மாற்றுங்கள்.</li>
+    <li>பங்குக்குப் பிறகு நிறம் சேர்க்கவும்: <code>participant Alice #AliceBlue</code>.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>“முக்கிய அமைப்பு” யை பிரகாசமான நிறத்தில் காட்டுதல்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: <code>Alice</code> பெயரை மாற்றி வேறு நிறம் கொடுங்கள்.</li>
+    <li>பயிற்சி 2: செய்தியை “start” ஆக்கி மற்ற பங்கைக் கருமையாக்குங்கள்.</li>
+    <li>பயிற்சி 3: மூன்றாவது பங்கை சேர்த்து வேறு நிறம் கொடுங்கள்.</li>
+    <li>பயிற்சி 4: <code>skinparam sequenceMessageAlign</code> மாற்றி ஒரு செய்தி வரியை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: <code>#technology</code> போன்ற style பெயரைப் பயன்படுத்தி செய்தியை மாற்றுங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>skinparam</code> alignment, font, நிறம் போன்றவை கட்டுப்படுத்தும்.</li>
+    <li>பங்குக்கு நிறம் அல்லது style பெயர் கொடுக்கலாம்.</li>
+    <li>நிறங்கள் பெயராகவும் hex ஆகவும் இருக்கலாம்: <code>#AliceBlue</code>.</li>
+    <li>ஒரே பங்கு மீண்டும் அறிவிக்கப்பட்டால் கடைசியானது பயன்படுத்தப்படும்.</li>
+    <li>பாணி அமைப்புகள் செய்தி இலக்கணத்தை மாற்றாது.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-alt-else-choices">
+  <h2>Sequence / CONTROL FLOW / Alt/Else (Choices)</h2>
+  <p>இந்த உதாரணம் “என்றால்… இல்லையெனில்…” போன்ற தேர்வுகளை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>வேறு நிபந்தனைகளுக்கு வேறு கிளைகள் காட்டும்.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>alt</code> கொண்டு தொடங்கி, மற்ற கிளைக்கு <code>else</code>, முடிக்க <code>end</code>.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>கட்டணம் வெற்றி அல்லது தோல்வி.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: நிபந்தனைகளை “பணம் உள்ளது / இல்லை” ஆக மாற்றி செய்தியை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: மூன்றாவது <code>else</code> கிளை சேர்த்து ஒரு செய்தி எழுதுங்கள்.</li>
+    <li>பயிற்சி 3: <code>alt</code> தலைப்பை உங்கள் சூழலாக மாற்றி செய்திகளை திருத்துங்கள்.</li>
+    <li>பயிற்சி 4: ஒவ்வொரு கிளைக்கும் ஒரு வரி சேர்த்து தலைப்புகளை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: “தோல்விக்குப் பிறகு மீண்டும் முயற்சி” கிளை உருவாக்குங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>alt Condition</code> ஒரு கிளையை தொடங்கும்.</li>
+    <li>பல <code>else</code> கிளைகள் இருக்கலாம்.</li>
+    <li><code>end</code> மூலம் முடிக்கவும்.</li>
+    <li>ஒவ்வொரு கிளையிலும் பல செய்திகள் இருக்கலாம்.</li>
+    <li>நிபந்தனை உரை விருப்பமானது ஆனால் பரிந்துரை செய்யப்படுகிறது.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-loop">
+  <h2>Sequence / CONTROL FLOW / Loop</h2>
+  <p>மறுமுறை செய்யும் செயலை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>மீண்டும் செய்யும் படிகளை காட்டுகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li>மீண்டும் வரும் வரிகளை <code>loop</code> மற்றும் <code>end</code> குள் வையுங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>ஒவ்வொரு நொடியும் நிலையைச் சோதித்தல்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: loop லேபிளை “ஒவ்வொரு 3 முறை” என்று மாற்றி செய்தியை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: loop உள்ளே ஒரு செய்தி சேர்த்து, முதன்மை செய்தியை சுருக்குங்கள்.</li>
+    <li>பயிற்சி 3: பங்குகளை மாற்றி செய்தியை “சோதிக்கிறது” என்று மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: loop லேபிளை “முடியும் வரை” போன்ற நிபந்தனையாக்குங்கள்.</li>
+    <li>பயிற்சி 5: loop வெளியே தொடக்க/முடிவு செய்திகள் சேர்க்கவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>loop count/condition</code> ஒரே வரியில் இருக்கலாம்.</li>
+    <li><code>end</code> loop block ஐ முடிக்கும்.</li>
+    <li>loop இல் பல செய்திகள் இருக்கலாம்.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-control-flow-parallel-par">
+  <h2>Sequence / CONTROL FLOW / Parallel (Par)</h2>
+  <p>ஒரே நேரத்தில் இரண்டு செயல்கள் நடப்பதை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>இணைச்செயல்களை காட்டும்.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>par</code> தொடங்கி, மற்ற இணை கிளைக்காக <code>else</code>, முடிக்க <code>end</code>.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>ஒரே நேரத்தில் இரண்டு சேவைகளுக்கு அறிவிப்பு.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: கிளைகளை “email அனுப்பு” மற்றும் “SMS அனுப்பு” என மாற்றி பங்குகளை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: பங்குகளை மாற்றி ஒவ்வொரு கிளைக்கும் ஒரு வரி சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: மூன்றாவது கிளை (<code>else</code>) சேர்த்து ஒரு செய்தி எழுதுங்கள்; ஒரு வரியை சுருக்கவும்.</li>
+    <li>பயிற்சி 4: ஒரு கிளையை “மெதுவாக செய்” என்று மாற்றி, முடிவு செய்தி சேர்க்கவும்.</li>
+    <li>பயிற்சி 5: <code>par</code> க்கு முன் “பணி தொடங்கு” மற்றும் <code>end</code> பின் “முடிந்தது” சேர்க்கவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>par</code> இணை block உருவாக்கும்.</li>
+    <li>ஒவ்வொரு கிளைக்கும் தனி செய்தி வரிசை இருக்கலாம்.</li>
+    <li><code>else</code> மற்ற இணை கிளைக்கு மாற்றும்.</li>
+    <li><code>end</code மூலம் முடிக்கவும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-activation">
+  <h2>Sequence / ADVANCED / Activation</h2>
+  <p>இங்கு activation bars மூலம் ஒரு பங்கு எப்போது பிஸியாக இருக்கிறது என்பதைக் காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>யார் வேலை செய்கிறார், எவ்வளவு நேரம் என்பதை காட்டும்.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li>தொடங்க <code>activate Role</code>.</li>
+    <li>முடிக்க <code>deactivate Role</code>.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>சர்வர் செயலாக்க நேரத்தை காட்டுதல்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: பங்கை <code>Server</code> ஆக மாற்றி “processing” என்று மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: ஒரு கோரிக்கை வரி சேர்த்து அதற்குப் பிறகு <code>activate</code> வை இடுங்கள்.</li>
+    <li>பயிற்சி 3: “halfway” போன்ற நடுப்பாதி செய்தியை சேர்த்து உங்கள் உரையால் மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: இன்னொரு பங்கை அதன் activation மற்றும் செய்தியுடன் சேர்க்கவும்.</li>
+    <li>பயிற்சி 5: activation தொடக்க/முடிவை ஒரு வரி கீழே நகர்த்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>activate/deactivate செய்திக்கு முன் அல்லது பின் இருக்கலாம்.</li>
+    <li><code>activate</code> மற்றும் <code>deactivate</code> ஜோடியாக இருக்க வேண்டும்.</li>
+    <li>பங்கு active ஆக இருக்கும் போது செய்திகள் சேர்க்கலாம்.</li>
+  </ul>
+</div>
+
+<div class="section" id="sequence-advanced-notes">
+  <h2>Sequence / ADVANCED / Notes</h2>
+  <p>இந்த உதாரணம் ஒட்டும் குறிப்புகளை சேர்ப்பதை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>விளக்கங்களை சேர்க்க உதவும்.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>note left</code> அல்லது <code>note right</code> பயன்படுத்தவும்.</li>
+    <li><code>end note</code> கொண்டு முடிக்கவும்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>“இந்த படி தோல்வியடையலாம்” என்ற நினைவூட்டல்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: குறிப்பின் உரையை உங்கள் குறிப்பாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: குறிப்பை வலப்பக்கம் நகர்த்து உரையை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 3: வேறு பங்கருகில் இன்னொரு குறிப்பை சேர்க்கவும்.</li>
+    <li>பயிற்சி 4: குறிப்பை இரண்டு வரிகளாக மாற்றி, இரண்டாவது வரியில் காரணம் எழுதுங்கள்.</li>
+    <li>பயிற்சி 5: குறிப்பை வேறு செய்திக்குப் பிறகு நகர்த்தவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>குறிப்புகளை <code>left</code>, <code>right</code>, அல்லது <code>over</code> வைக்கலாம்.</li>
+    <li>பல வரி குறிப்புக்கு <code>note</code> மற்றும் <code>end note</code> பயன்படுத்தப்படும்.</li>
+    <li>குறிப்புகள் செய்தியின் ஓட்டத்தை மாற்றாது.</li>
+  </ul>
+</div>
+
+<!-- Use Case -->
+<div class="section" id="use-case-basics-simple-use-case">
+  <h2>Use Case / BASICS / Simple Use Case</h2>
+  <p>Use case வரைபடம் “அமைப்பு செய்யக்கூடியவை” என்ற பட்டியல்.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>பயனாளி தேவைப்படும் செயல்பாடுகளை தெளிவாக காட்டும்.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li>பயனாளிக்காக <code>actor</code> பயன்படுத்தவும்.</li>
+    <li>செயல்பாட்டுக்கு <code>(UseCase)</code> பயன்படுத்தவும்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>லாகின், தேடல், கட்டணம் முதலியவை.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: பயனாளியை <code>Teacher</code> ஆக மாற்றி, use case ஐ “create quiz” ஆக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: இன்னொரு use case சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: use case மற்றும் actor பெயர்களை மாற்றவும்.</li>
+    <li>பயிற்சி 4: இரண்டாவது actor சேர்த்து ஒரு use case க்கு இணைக்கவும்.</li>
+    <li>பயிற்சி 5: உங்கள் சொந்த சூழலைப் பயன்படுத்தவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Use case வட்டக்குறியீட்டில் எழுதப்படும்: <code>(Login)</code>.</li>
+    <li>Actor ஒரு stick figure: <code>actor User</code>.</li>
+    <li>Actor ஐ use case க்கு கோடால் இணைக்கவும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="use-case-relationships-include-extend">
+  <h2>Use Case / RELATIONSHIPS / Include/Extend</h2>
+  <p>Use case களுக்கிடையிலான include/extend தொடர்பை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>பொது படிகள் அல்லது விருப்ப ஓட்டங்களை குறிக்கிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code><<include>></code> என்பது “எப்போதும் சேரும்”.</li>
+    <li><code><<extend>></code> என்பது “விருப்பம்”.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>லாகின் கட்டாய சரிபார்ப்பை கொண்டது; கட்டணம் தள்ளுபடியை extend ஆகக் கொண்டிருக்கலாம்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: Use case பெயர்களை உங்கள் உதாரணமாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: include மற்றும் extend ஐ மாற்றி இடுங்கள்.</li>
+    <li>பயிற்சி 3: புதிய use case சேர்த்து include செய்யுங்கள்.</li>
+    <li>பயிற்சி 4: அம்பை மாறாக மாற்றி உரையை புதுப்பிக்கவும்.</li>
+    <li>பயிற்சி 5: தொடர்பின் உரையை உங்கள் சொற்களாக மாற்றுங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Include syntax: <code>(A) .> (B) : <<include>></code>.</li>
+    <li>Extend syntax: <code>(A) .> (B) : <<extend>></code>.</li>
+    <li>துளை கோடான அம்பை பயன்படுத்துங்கள்.</li>
+  </ul>
+</div>
+
+<!-- Class -->
+<div class="section" id="class-basics-simple-class">
+  <h2>Class / BASICS / Simple Class</h2>
+  <p>Class வரைபடம் attributes மற்றும் methods ஐ விவரிக்கும்.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>தரவுக் கட்டமைப்பை ஒழுங்குபடுத்துகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>class</code> மூலம் class வரையறுக்கவும்.</li>
+    <li>attributes மற்றும் methods ஐ braces உள்ளே எழுதவும்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>பிரோகிராமின் data model வடிவமைப்பு.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: class பெயரை <code>Book</code> போன்றதாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: ஒரு attribute அல்லது method சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: field பெயரை சுருக்கவும் அல்லது மொழிபெயர்க்கவும்.</li>
+    <li>பயிற்சி 4: இரண்டாவது class மற்றும் இரண்டு attribute சேர்க்கவும்.</li>
+    <li>பயிற்சி 5: method ஐ உங்கள் செயலில் மாற்றவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Class வடிவம்: <code>class Name { ... }</code>.</li>
+    <li>Attributes என்பது fields; methods க்கு <code>()</code> இருக்கும்.</li>
+    <li>காலியான class கூட செல்லும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-basics-methods">
+  <h2>Class / BASICS / Methods</h2>
+  <p>இந்த உதாரணம் methods மற்றும் return types சேர்க்கிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>class என்ன செய்ய முடியும் என்பதை காட்டுகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li>Methods வடிவம்: <code>name(): type</code>.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>API அல்லது business logic விளக்கம்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: return type கொண்ட method சேர்க்கவும்.</li>
+    <li>பயிற்சி 2: method பெயரை உங்கள் செயலாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 3: return type ஐ <code>bool</code> அல்லது <code>string</code> ஆக மாற்றவும்.</li>
+    <li>பயிற்சி 4: இன்னொரு method சேர்த்து ஒன்றை private ஆக்குங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் சூழலை பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Methods க்கு parameters இருக்கலாம்: <code>name(param): type</code>.</li>
+    <li>Return type க்கு colon பயன்படுத்தப்படுகிறது.</li>
+    <li>Methods இல் visibility symbols இருக்கலாம்.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-access-levels">
+  <h2>Class / VISIBILITY / Access Levels</h2>
+  <p>public, private, protected அணுகலை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>வெளி அணுகல் மற்றும் உள்ளக விவரங்களை பிரிக்கிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>+</code> public, <code>-</code> private, <code>#</code> protected.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>உள்ளக விவரங்களை மறைப்பது.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: ஒரு field ஐ private ஆக்குங்கள்.</li>
+    <li>பயிற்சி 2: protected field ஒன்றை சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: ஒரு method ஐ public ஆக்குங்கள்.</li>
+    <li>பயிற்சி 4: private method ஒன்றைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 5: பெயர்களை உங்கள் உதாரணமாக மாற்றுங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Visibility symbols fields/methods முன் வரும்.</li>
+    <li>அடிக்கடி பயன்படுத்தப்படும் சின்னங்கள்: <code>+</code>, <code>-</code>, <code>#</code>, <code>~</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-visibility-abstract-static">
+  <h2>Class / VISIBILITY / Abstract/Static</h2>
+  <p>abstract மற்றும் static குறிகள் காட்டப்படுகின்றன.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>“இணைக்க வேண்டும்” மற்றும் “பொது கருவி” என்பதைக் வேறுபடுத்துகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li>Abstract: italic அல்லது <code>{abstract}</code>.</li>
+    <li>Static: <code>{static}</code>.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>Base classes மற்றும் utility methods.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: ஒரு method ஐ static ஆக்குங்கள்.</li>
+    <li>பயிற்சி 2: class பெயரை உங்கள் உதாரணமாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 3: abstract method ஒன்றை சேர்க்கவும்.</li>
+    <li>பயிற்சி 4: abstract குறியை வேறு முறையில் காட்டவும்.</li>
+    <li>பயிற்சி 5: உங்கள் சூழலை பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>{abstract}</code> abstract class அல்லது method ஐ காட்டும்.</li>
+    <li><code>{static}</code> static method ஐ காட்டும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-inheritance">
+  <h2>Class / RELATIONSHIPS / Inheritance</h2>
+  <p>இந்த உதாரணம் inheritance ஐ காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>முதன்மை மற்றும் துணை class களை காட்டுகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li>inheritance க்கு <code>--|></code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>விலங்குகளின் வகைப்பாடு.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: class பெயர்களை உங்கள் உதாரணமாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: இன்னொரு inheritance வரியைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: parent class பெயரை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: புதிய child class ஒன்றைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 5: உங்கள் சூழலை பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>Child --|> Parent</code> என்பது inheritance.</li>
+    <li>அம்பு parent க்கு சுட்டும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-composition">
+  <h2>Class / RELATIONSHIPS / Composition</h2>
+  <p>இந்த உதாரணம் composition (மிக வலுவான உரிமை) காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>முழுதில்லாமல் பகுதி இருக்க முடியாது என்பதைக் காட்டுகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li>composition க்கு <code>*--</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>ஒரு வீடு எப்போதும் அறைகள் கொண்டுள்ளது.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் உதாரணமாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: composition ஐ aggregation ஆக மாற்றி ஒப்பிடுங்கள்.</li>
+    <li>பயிற்சி 3: இன்னொரு composition வரியை சேர்க்கவும்.</li>
+    <li>பயிற்சி 4: உறவு லேபிள் உரையை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: திசையை மாற்றி பாருங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>Whole *-- Part</code> என்பது composition.</li>
+    <li>கட்டியான வைரம் உரிமையாளர் பக்கம் இருக்கும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="class-relationships-aggregation">
+  <h2>Class / RELATIONSHIPS / Aggregation</h2>
+  <p>இந்த உதாரணம் aggregation (பலவீனமான உரிமை) காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>பகுதிகள் தனியாகவும் இருக்க முடியும் என்பதை காட்டுகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li>aggregation க்கு <code>o--</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>ஒரு வகுப்பு மற்றும் அதன் மாணவர்கள்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் உதாரணமாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: aggregation ஐ composition ஆக மாற்றி ஒப்பிடுங்கள்.</li>
+    <li>பயிற்சி 3: இன்னொரு aggregation வரியைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 4: வேறு சூழலாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: திசையை மாற்றி விளக்கம் சேர்க்கவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>Whole o-- Part</code> என்பது aggregation.</li>
+    <li>வெற்று வைரம் உரிமையாளர் பக்கம் இருக்கும்.</li>
+  </ul>
+</div>
+
+<!-- Object -->
+<div class="section" id="object-basics-instance">
+  <h2>Object / BASICS / Instance</h2>
+  <p>Object வரைபடம் “class instance” ஐ காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>ஒரு குறிப்பிட்ட நேரத்தின் தரவை காட்டுகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>object</code> மூலம் instance உருவாக்கவும்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>ஒரு object இன் field மதிப்புகளை காட்டுதல்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: object பெயரை உங்கள் உதாரணமாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: இன்னொரு object சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: fields ஐ உங்கள் தரவாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: இரண்டு objects ஐ இணைக்கவும்.</li>
+    <li>பயிற்சி 5: உங்கள் சூழலை பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Object வடிவம்: <code>object name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Activity -->
+<div class="section" id="activity-basics-flow">
+  <h2>Activity / BASICS / Flow</h2>
+  <p>Activity வரைபடம் செயல்முறையின் படிகளை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>Workflow களை விவரிக்கிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>start</code> மற்றும் <code>stop</code> பயன்படுத்தவும்.</li>
+    <li>செயல்களை <code>:action;</code> வடிவில் எழுதவும்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>ஆப் ஓட்டம், ஆர்டர் செயலாக்கம்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: செயல்களை உங்கள் workflow ஆக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: ஒரு செயலைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: start/stop இடங்களை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: ஒரு தீர்மானத்தைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 5: உங்கள் சூழலை பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>ஓட்டம் மேல் இருந்து கீழ் செல்கிறது.</li>
+    <li>செயல்கள் <code>: ... ;</code> ஆக எழுதப்படும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-if-then-else">
+  <h2>Activity / CONTROL FLOW / If/Then/Else</h2>
+  <p>தீர்மான கிளைகளை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>வேறு பாதைகளை தெளிவாக காட்டும்.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>if</code>, <code>then</code>, <code>else</code>, <code>endif</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>படிவ சரிபார்ப்பு, கட்டணம் வெற்றி/தோல்வி.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: நிபந்தனையை உங்கள் சொந்ததாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: இரண்டாவது else கிளையைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: செயல் உரையை உங்கள் சொந்த வார்த்தைகளாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: if உரையை உங்கள் சூழலுக்கு மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் சொந்த செயல்முறையை உருவாக்குங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>if (condition) then (label)</code> ஒரு கிளையை தொடங்கும்.</li>
+    <li><code>else</code> மற்ற கிளைக்கு மாற்றும்.</li>
+    <li><code>endif</code> block ஐ முடிக்கும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-control-flow-while-loop">
+  <h2>Activity / CONTROL FLOW / While Loop</h2>
+  <p>மீண்டும் நடைபெறும் செயல்களை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>Loops ஐ விளக்குகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>while</code> மற்றும் <code>endwhile</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>நிலையை மீண்டும் மீண்டும் சோதித்தல்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: நிபந்தனையை உங்கள் சொந்ததாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: loop உள்ளே ஒரு செயல் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: வேறு சூழலைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 4: while ஐ conceptually until ஆக எண்ணுங்கள்.</li>
+    <li>பயிற்சி 5: தொடக்கம்/முடிவு செயல்களைச் சேர்க்கவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>while (condition)</code> loop ஐ தொடங்கும்.</li>
+    <li><code>endwhile</code> loop ஐ முடிக்கும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="activity-advanced-swimlanes">
+  <h2>Activity / ADVANCED / Swimlanes</h2>
+  <p>Swimlane பொறுப்பு அடிப்படையில் படிகளை குழுபடுத்துகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>ஒவ்வொரு படிக்கும் பொறுப்பு யாருடையது என்பதை காட்டுகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>|Role|</code> மூலம் lane மாற்றவும்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>குழுக்களுக்கிடையேயான workflow.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: புதிய swimlane பங்கைக் சேர்க்கவும்.</li>
+    <li>பயிற்சி 2: ஒரு செயலை மற்ற lane க்கு நகர்த்துங்கள்.</li>
+    <li>பயிற்சி 3: lane பெயர்களை உங்கள் பங்குகளாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: இன்னொரு செயல் சேர்க்கவும்.</li>
+    <li>பயிற்சி 5: உங்கள் செயல்முறையைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>|Name|</code> மூலம் lane மாறும்.</li>
+    <li>செயல்கள் தற்போதைய lane இல் இருக்கும்.</li>
+  </ul>
+</div>
+
+<!-- Component -->
+<div class="section" id="component-basics-components">
+  <h2>Component / BASICS / Components</h2>
+  <p>Component வரைபடம் மாட்யூல்களை விவரிக்கிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>மாட்யூல் கட்டமைப்பைக் காட்டுகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>component</code> மூலம் component உருவாக்குங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>System architecture layers.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: ஒரு component சேர்க்கவும்.</li>
+    <li>பயிற்சி 2: component பெயரை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 3: ஒரு இணைப்பைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 4: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 5: components ஐ மறுசீரமைக்கவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Components இற்கு <code>component</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<div class="section" id="component-packages-grouping">
+  <h2>Component / PACKAGES / Grouping</h2>
+  <p>Components ஐ packages குள் குழுபடுத்துகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>பெரிய அமைப்புகளை ஒழுங்குபடுத்துகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>package</code> பயன்படுத்தி components ஐ உள்ளே வையுங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>செயல்பாடு அடிப்படையில் குழுபடுத்தல்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: ஒரு package சேர்க்கவும்.</li>
+    <li>பயிற்சி 2: ஒரு component ஐ வேறு package க்கு நகர்த்தவும்.</li>
+    <li>பயிற்சி 3: package பெயரை மாற்றவும்.</li>
+    <li>பயிற்சி 4: ஒரு component சேர்க்கவும்.</li>
+    <li>பயிற்சி 5: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Package வடிவம்: <code>package Name { ... }</code>.</li>
+  </ul>
+</div>
+
+<!-- Deployment -->
+<div class="section" id="deployment-basics-nodes">
+  <h2>Deployment / BASICS / Nodes</h2>
+  <p>Deployment வரைபடம் servers மற்றும் nodes ஐ காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>System deployment ஐ விளக்குகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>node</code> மூலம் node உருவாக்குங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>Cloud deployment architecture.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: ஒரு node சேர்க்கவும்.</li>
+    <li>பயிற்சி 2: node பெயரை மாற்றவும்.</li>
+    <li>பயிற்சி 3: ஒரு இணைப்பைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 4: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 5: node ஐ உங்கள் சாதனமாக மாற்றுங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Nodes க்கு <code>node</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<!-- State -->
+<div class="section" id="state-basics-transitions">
+  <h2>State / BASICS / Transitions</h2>
+  <p>State வரைபடம் நிலைகளுக்கிடையிலான மாற்றங்களை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>நிலை மாற்றங்களை விளக்குகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>state</code> மூலம் states உருவாக்குங்கள்.</li>
+    <li>states ஐ அம்புகளால் இணைக்கவும்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>ஆர்டர் நிலை ஓட்டம்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் state பெயர்களைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 2: இன்னொரு state சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: இன்னொரு transition சேர்க்கவும்.</li>
+    <li>பயிற்சி 4: உங்கள் செயல்முறையைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 5: ஒரு state பெயரை மாற்றவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>States க்கு <code>state</code> பயன்படுத்தப்படுகிறது.</li>
+    <li>Transitions க்கு <code>--> </code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-composite">
+  <h2>State / ADVANCED / Composite</h2>
+  <p>Composite states பல sub‑states கொண்டது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>சிக்கலான states ஐ ஒழுங்குபடுத்துகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>state Name { ... }</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>சிக்கலான workflows.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: ஒரு substate சேர்க்கவும்.</li>
+    <li>பயிற்சி 2: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 3: ஒரு transition சேர்க்கவும்.</li>
+    <li>பயிற்சி 4: composite state பெயரை மாற்றவும்.</li>
+    <li>பயிற்சி 5: உங்கள் செயல்முறையைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Composite states க்கு braces பயன்படுத்தப்படும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="state-advanced-guards">
+  <h2>State / ADVANCED / Guards</h2>
+  <p>Guard நிபந்தனைகள் transitions ஐ மேலும் தெளிவாக்குகின்றன.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>Transition க்கான நிபந்தனை காட்டப்படுகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>[condition]</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>State transition நிபந்தனைகள்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் நிபந்தனையைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 2: இன்னொரு guard நிபந்தனை சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: உங்கள் செயல்முறையைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 4: transition உரையை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Guard நிபந்தனைகள் சதுர கோள்களில் இருக்கும்.</li>
+  </ul>
+</div>
+
+<!-- Timing -->
+<div class="section" id="timing-basics-digital">
+  <h2>Timing / BASICS / Digital</h2>
+  <p>Timing வரைபடம் சிக்னல் மாற்றங்களை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>நேரத்திற்கேற்ப சிக்னலை விளக்குகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>concise</code> அமைப்பைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>ஹார்ட்வேர் சிக்னல் மாற்றங்கள்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் சிக்னலாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: இன்னொரு சிக்னல் வரியைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: சிக்னல் பெயரை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Timing வரைபடங்களில் <code>concise</code> பயன்படுத்தலாம்.</li>
+  </ul>
+</div>
+
+<!-- JSON / YAML -->
+<div class="section" id="json-yaml-data-json-view">
+  <h2>JSON / YAML / DATA / JSON View</h2>
+  <p>JSON வரைபடம் தரவின் கட்டமைப்பை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>JSON கட்டமைப்பை வாசிக்க எளிதாக்குகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startjson</code> மற்றும் <code>@endjson</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>API பதில் வடிவங்கள்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் JSON ஐ மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: ஒரு field சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: தரவு மதிப்புகளை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் தரவைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>JSON ஐ <code>@startjson</code> கொண்டு சுற்றவும்.</li>
+  </ul>
+</div>
+
+<div class="section" id="json-yaml-data-yaml-view">
+  <h2>JSON / YAML / DATA / YAML View</h2>
+  <p>YAML வரைபடம் தரவின் கட்டமைப்பை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>YAML கட்டமைப்பை வாசிக்க எளிதாக்குகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startyaml</code> மற்றும் <code>@endyaml</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>அமைப்பு கோப்புகள்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் YAML ஐ மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: ஒரு field சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: தரவு உள்ளடக்கத்தை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் தரவைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>YAML ஐ <code>@startyaml</code> கொண்டு சுற்றவும்.</li>
+  </ul>
+</div>
+
+<!-- EBNF / Regex -->
+<div class="section" id="ebnf-regex-grammar-ebnf">
+  <h2>EBNF / Regex / GRAMMAR / EBNF</h2>
+  <p>EBNF வரைபடம் இலக்கண விதிகளை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>இலக்கண கட்டமைப்பை தெளிவாக காட்டுகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startebnf</code> மற்றும் <code>@endebnf</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>ப்ரோகிராமிங் மொழி இலக்கணம் விளக்கம்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் இலக்கணமாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: இன்னொரு விதியைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 4: சின்னங்களை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் இலக்கணத்தைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>EBNF இல் <code>@startebnf</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<div class="section" id="ebnf-regex-grammar-regex">
+  <h2>EBNF / Regex / GRAMMAR / Regex</h2>
+  <p>Regex வரைபடம் regular expression களை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>Regex pattern களை விளக்குகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startregex</code> மற்றும் <code>@endregex</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>Regex ஆவணமாக்கல்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் regex ஐ மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: இன்னொரு விதி சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 4: உள்ளடக்கத்தை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் இலக்கணத்தைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Regex இல் <code>@startregex</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<!-- Network -->
+<div class="section" id="network-nwdiag-topology-simple-network">
+  <h2>Network (nwdiag) / TOPOLOGY / Simple Network</h2>
+  <p>எளிய நெட்வொர்க் டோபாலஜி வரைபடம்.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>நெட்வொர்க் இணைப்புகளை காட்டுகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startnwdiag</code> மற்றும் <code>@endnwdiag</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>ரூட்டர்கள் மற்றும் ஸ்விட்ச்கள்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் சாதனங்களாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: ஒரு சாதனத்தைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: இணைப்புகளை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>nwdiag இல் <code>@startnwdiag</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<!-- UI Mockups -->
+<div class="section" id="ui-mockups-salt-wireframes-window">
+  <h2>UI Mockups (Salt) / WIREFRAMES / Window</h2>
+  <p>UI வைர்ஃப்ரேம் வரைபடம்.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>திரைகளை விரைவாக வரைந்து காட்ட உதவும்.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startsalt</code> மற்றும் <code>@endsalt</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>திரை மாதிரிகள்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் திரையை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: ஒரு பொத்தானைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: உரையை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: லேஅவுட் மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Salt இல் <code>@startsalt</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<!-- Archimate -->
+<div class="section" id="archimate-enterprise-basic">
+  <h2>Archimate / ENTERPRISE / Basic</h2>
+  <p>எண்டர்ப்ரைஸ் கட்டமைப்பு வரைபடம்.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>எண்டர்ப்ரைஸ் அமைப்பை விளக்குகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startarchimate</code> மற்றும் <code>@endarchimate</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>நிறுவன அமைப்பு கட்டமைப்பு.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் கட்டமைப்பாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: ஒரு component சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 4: உருப்படிகளின் பெயர்களை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Archimate இல் <code>@startarchimate</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<!-- SDL -->
+<div class="section" id="sdl-flow-process">
+  <h2>SDL / FLOW / Process</h2>
+  <p>SDL ஓட்ட வரைபடம்.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>செயல்முறைகளை விளக்குகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startsdl</code> மற்றும் <code>@endsdl</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>தொடர்பு ஓட்டம்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் செயல்முறையாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: ஒரு படி சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: உருப்படி பெயர்களை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>SDL இல் <code>@startsdl</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<!-- Ditaa -->
+<div class="section" id="ditaa-ascii-blocks">
+  <h2>Ditaa / ASCII / Blocks</h2>
+  <p>ASCII art கொண்டு Ditaa வரைபடம்.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>உரையால் வரைந்து காட்டலாம்.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startditaa</code> மற்றும் <code>@endditaa</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>விரைவு ஸ்கெட்ச்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் ASCII art ஐ மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: இன்னொரு block சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: எழுத்துகளை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Ditaa இல் <code>@startditaa</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<!-- Gantt -->
+<div class="section" id="gantt-project-timeline">
+  <h2>Gantt / PROJECT / Timeline</h2>
+  <p>Gantt விளக்கப்படம் நேர அட்டவணையை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>திட்டத்தின் கால அட்டவணையை திட்டமிடலாம்.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startgantt</code> மற்றும் <code>@endgantt</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>திட்ட கால அட்டவணைகள்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் கால அட்டவணையை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: ஒரு பணியைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 4: தேதிகளை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Gantt இல் <code>@startgantt</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<!-- Chronology -->
+<div class="section" id="chronology-timeline-events">
+  <h2>Chronology / TIMELINE / Events</h2>
+  <p>நிகழ்வுகளின் காலவரிசை.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>நிகழ்வுகளை நேர வரிசையில் ஒழுங்குபடுத்துகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startchronology</code> மற்றும் <code>@endchronology</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>நிகழ்வு வரலாறு.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் நிகழ்வுகளாக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: இன்னொரு நிகழ்வைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 4: தேதிகளை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>Chronology இல் <code>@startchronology</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<!-- MindMap -->
+<div class="section" id="mindmap-hierarchy-ideas">
+  <h2>MindMap / HIERARCHY / Ideas</h2>
+  <p>MindMap ஐடியாக்களின் தரவரிசையை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>கருத்துகளை ஒழுங்குபடுத்துகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startmindmap</code> மற்றும் <code>@endmindmap</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>Brainstorming.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் தலைப்பை பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 2: கிளைகளைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 4: உரையை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>MindMap இல் <code>@startmindmap</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<!-- WBS -->
+<div class="section" id="wbs-work-breakdown">
+  <h2>WBS / WORK / Breakdown</h2>
+  <p>Work Breakdown Structure வரைபடம்.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>வேலையை சிறிய பகுதிகளாக பிரிக்கிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startwbs</code> மற்றும் <code>@endwbs</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>திட்ட பணிகளின் பிரிப்பு.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் பணிகளைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 2: துணை பணிகளைச் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 4: உரையை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 5: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>WBS இல் <code>@startwbs</code> பயன்படுத்தப்படுகிறது.</li>
+  </ul>
+</div>
+
+<!-- Mathematics -->
+<div class="section" id="mathematics-formulas-asciimath">
+  <h2>Mathematics / FORMULAS / AsciiMath</h2>
+  <p>சூத்திரங்களுக்கு AsciiMath பயன்படுத்தவும்.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>சூத்திரங்களை விரைவாக எழுதலாம்.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>@startmath</code> மற்றும் <code>@endmath</code> பயன்படுத்துங்கள்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>சூத்திரங்களை காண்பித்தல்.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: உங்கள் சூத்திரத்தைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 2: இன்னொரு சூத்திரம் சேர்க்கவும்.</li>
+    <li>பயிற்சி 3: உங்கள் உதாரணத்தைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 4: உங்கள் சூழலைப் பயன்படுத்துங்கள்.</li>
+    <li>பயிற்சி 5: சின்னங்களை மாற்றுங்கள்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li>AsciiMath பொதுச்சின்னங்கள் ஆதரிக்கப்படுகின்றன.</li>
+    <li><code>@startmath</code> மற்றும் <code>@endmath</code> கொண்டு சுற்றுங்கள்.</li>
+    <li><code>^</code> என்பது power, <code>/</code> என்பது division.</li>
+  </ul>
+</div>
+
+<!-- Database (ER) -->
+<div class="section" id="database-er-entities-basic-entity">
+  <h2>Database (ER) / ENTITIES / Basic Entity</h2>
+  <p>ER வரைபடம் தரவுத்தள அட்டவணைகளை விவரிக்கிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>தரவுத்தள கட்டமைப்பை வடிவமைக்கிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol>
+    <li><code>entity</code> மூலம் அட்டவணையை வரையறுக்கவும்.</li>
+    <li>Primary key க்காக <code>*</code> பயன்படுத்தவும்.</li>
+  </ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>User அட்டவணை வடிவமைப்பு.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: அட்டவணை பெயரை <code>Book</code> ஆக மாற்றி, fields ஐ <code>title</code>, <code>author</code> ஆக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 2: ஒரு field சேர்த்து, ஒரு type ஐ <code>int</code> ஆக மாற்றுங்கள்.</li>
+    <li>பயிற்சி 3: primary key field பெயர் மற்றும் வகையை மாற்றுங்கள்.</li>
+    <li>பயிற்சி 4: இரண்டு fields கொண்ட இரண்டாவது அட்டவணை சேர்க்கவும்.</li>
+    <li>பயிற்சி 5: பிரிப்புக் கோடு சேர்த்து fields ஐ மறுவரிசைப்படுத்தவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>--</code> பிரிப்புக் கோடு பகுதிகளை பிரிக்கிறது.</li>
+    <li><code>*</code> primary key field ஐ காட்டுகிறது.</li>
+    <li>Field வடிவம்: <code>name: type</code>.</li>
+  </ul>
+</div>
+
+<div class="section" id="database-er-entities-relationships">
+  <h2>Database (ER) / ENTITIES / Relationships</h2>
+  <p>இந்த உதாரணம் அட்டவணைகளுக்கிடையேயான தொடர்புகளை காட்டுகிறது.</p>
+  <h3>ஏன் பயன்படுத்த வேண்டும்</h3>
+  <ul><li>one‑to‑many அல்லது many‑to‑many ஐ காட்டுகிறது.</li></ul>
+  <h3>எப்படி பயன்படுத்துவது</h3>
+  <ol><li><code>User ||--o{ Post</code> என்பது one‑to‑many.</li></ol>
+  <h3>எடுத்துக்காட்டான பயன்பாடுகள்</h3>
+  <ul><li>ஒரு user க்கு பல posts.</li></ul>
+  <h3>பயிற்சி (குழந்தைகளுக்கு எளிது)</h3>
+  <ol>
+    <li>பயிற்சி 1: <code>User</code> ஐ <code>Student</code> ஆகவும் <code>Post</code> ஐ <code>Homework</code> ஆகவும் மாற்றி, label ஐ புதுப்பிக்கவும்.</li>
+    <li>பயிற்சி 2: one‑to‑many ஐ one‑to‑one ஆக மாற்றி விளக்கத்தை புதுப்பிக்கவும்.</li>
+    <li>பயிற்சி 3: இன்னொரு தொடர்பைச் சேர்த்து அட்டவணை பெயரை மாற்றவும்.</li>
+    <li>பயிற்சி 4: திசையை மாற்றி பெயர்களை சரி செய்யவும்.</li>
+    <li>பயிற்சி 5: “one‑to‑many” ஐ வைத்துக் கொண்டு உங்கள் சூழலை பயன்படுத்தவும்.</li>
+  </ol>
+  <h3>PlantUML விதிகள் (முழுப் பட்டியல்)</h3>
+  <ul class="rules">
+    <li><code>||</code> மற்றும் <code>o{</code> cardinality ஐ காட்டும்.</li>
+    <li><code>||--o{</code> பெரும்பாலும் one‑to‑many ஆகும்.</li>
+    <li>கோடு இரண்டு அட்டவணைகளை இணைக்கிறது.</li>
+  </ul>
+</div>
