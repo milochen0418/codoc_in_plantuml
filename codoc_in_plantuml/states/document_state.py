@@ -59,7 +59,7 @@ deactivate App
         format_type = "svg"
         if "@startditaa" in self._code.lower():
             format_type = "png"
-        return PlantUML.get_url(self._code, format=format_type)
+        return PlantUML.get_image_source(self._code, format=format_type)
 
     def _get_user_color(self) -> str:
         colors = [

@@ -12,6 +12,7 @@ authors = [
 dependencies = [
 	"reflex==0.8.25",
 	"reflex-monaco",
+	"python-dotenv",
 ]
 
 [tool.poetry]
