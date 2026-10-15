@@ -17,7 +17,7 @@ def palette_item(label: str, icon: str, type_id: str, color: str) -> rx.Componen
 
 
 @rx.memo
-def node_card(node: dict) -> rx.Component:
+def node_card(node: rx.Var[dict[str, str]]) -> rx.Component:
     return rx.el.div(
         rx.el.div(
             rx.icon("grip-vertical", class_name="w-4 h-4 text-gray-400 mr-2"),

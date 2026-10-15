@@ -1,2 +1,2 @@
-reflex==0.8.25
+reflex[pydantic]==0.10.0
 reflex-monaco

@@ -22,7 +22,8 @@ It pairs a Monaco-based code editor with an always-on diagram preview—so you c
 ## Getting Started
 
 This project uses [Poetry](https://python-poetry.org/) for dependency management.
-Make sure you have **Python 3.11** and Poetry installed.
+Make sure you have **Python 3.11 – 3.15** and Poetry installed.
+If Node.js is installed, it must be **22.22.0 or newer** (required by Reflex 0.10).
 
 ### 1) Clone
 
@@ -31,9 +32,10 @@ git clone https://github.com/milochen0418/codoc_in_plantuml.git
 cd codoc_in_plantuml
 ```
 
-### 2) (Recommended) Ensure Poetry uses Python 3.11
+### 2) (Recommended) Ensure Poetry uses a supported Python
 
-Poetry may auto-select a different Python version (e.g. 3.12+). This project targets **3.11**.
+This project supports **Python 3.11 – 3.15** (`requires-python = ">=3.11,<3.16"`).
+If Poetry selects a version outside this range, switch it, for example to 3.11:
 
 ```bash
 poetry env use python3.11
@@ -123,4 +125,4 @@ MIT License. See [LICENSE](LICENSE).
 
 - **Reflex**: Full-stack Python web framework
 - **reflex-monaco**: Monaco Editor integration
-- **Python 3.11**
+- **Python 3.11 – 3.15**

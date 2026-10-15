@@ -13,10 +13,10 @@ If you already read them earlier in the session, **re-check** when unsure.
 
 ## 1) Python / Poetry requirements (strict)
 
-This project targets **Python 3.11**. **Don't create the virtual environment of Python 3.14**
+This project supports **Python 3.11 – 3.15** (`requires-python = ">=3.11,<3.16"` in `pyproject.toml`). **Don't create a virtual environment with a Python outside this range** (e.g. 3.10 or 3.16+).
 
 - Prefer Poetry-managed environments.
-- If Poetry selected another Python (e.g. 3.12+), switch it:
+- If Poetry selected an unsupported Python, switch it to a supported one, e.g.:
 
 ```bash
 poetry env use python3.11
@@ -24,7 +24,7 @@ poetry env info
 poetry install
 ```
 
-If `python3.11` is not available on PATH, use an absolute path to the 3.11 executable.
+If `python3.11` is not available on PATH, use an absolute path to the executable.
 
 ## 2) Default rule: use `poetry run` for scripts
 
